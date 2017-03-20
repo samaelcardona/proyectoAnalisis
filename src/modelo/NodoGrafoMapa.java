@@ -15,13 +15,25 @@ public class NodoGrafoMapa {
     private int id;
     private int x;
     private int y;
+    private int ancho;
+    private int alto;
     private boolean activo;
 
-    public NodoGrafoMapa(int id, int x, int y, boolean activo) {
+    public NodoGrafoMapa(int id, int x, int y, int ancho, int alto, boolean activo) {
         this.id = id;
         this.x = x;
         this.y = y;
+        this.ancho = ancho;
+        this.alto = alto;
         this.activo = activo;
+    }
+
+    public int getAncho() {
+        return ancho;
+    }
+
+    public int getAlto() {
+        return alto;
     }
 
     public int getId() {
@@ -56,7 +68,13 @@ public class NodoGrafoMapa {
         this.activo = activo;
     }
     
-    
+     public void setAncho(int ancho) {
+        this.ancho = ancho;
+    }
+
+    public void setAlto(int alto) {
+        this.alto = alto;
+    }
     
     
     
