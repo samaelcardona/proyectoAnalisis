@@ -5,6 +5,8 @@
  */
 package modelo;
 
+import java.awt.Rectangle;
+
 /**
  *
  * @author SAMAEL
@@ -17,6 +19,7 @@ public class NodoGrafoMapa {
     private int y;
     private int ancho;
     private int alto;
+    private Rectangle area;
     private boolean activo;
 
     public NodoGrafoMapa(int id, int x, int y, int ancho, int alto, boolean activo) {
@@ -26,8 +29,19 @@ public class NodoGrafoMapa {
         this.ancho = ancho;
         this.alto = alto;
         this.activo = activo;
+        this.area=new Rectangle(x, y, ancho, alto);
     }
 
+    public Rectangle getArea() {
+        return area;
+    }
+
+    public void setArea(Rectangle area) {
+        this.area = area;
+    }
+
+    
+    
     public int getAncho() {
         return ancho;
     }

@@ -21,8 +21,9 @@ public class Ciudad {
     private LinkedList<Calle> listaCalles;
     private LinkedList<Edificio> listaEdificos;
     private String [][] matrizPosicionObjetosCiudad;
+    private LinkedList<AristaGrafoMapa> listaDeTransicionesAristas;
 
-    public Ciudad(int id, int tamano ) {
+    public Ciudad(int id, int tamano) {
         this.id = id;
         this.tamano = tamano;
         this.listaAutomoviles = new LinkedList<>();
@@ -30,6 +31,15 @@ public class Ciudad {
         this.listaCalles = new LinkedList<>();
         this.listaEdificos = new LinkedList<>();
         this.matrizPosicionObjetosCiudad =new String[tamano][tamano];
+        this.listaDeTransicionesAristas=new LinkedList<>();
+    }
+
+    public LinkedList<AristaGrafoMapa> getListaDeTransicionesAristas() {
+        return listaDeTransicionesAristas;
+    }
+
+    public void setListaDeTransicionesAristas(LinkedList<AristaGrafoMapa> listaDeTransicionesAristas) {
+        this.listaDeTransicionesAristas = listaDeTransicionesAristas;
     }
 
     public int getId() {
