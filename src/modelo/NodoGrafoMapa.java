@@ -40,8 +40,6 @@ public class NodoGrafoMapa {
         this.area = area;
     }
 
-    
-    
     public int getAncho() {
         return ancho;
     }

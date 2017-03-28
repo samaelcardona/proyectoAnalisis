@@ -11,6 +11,7 @@ package vista;
  */
 public class crearMapaPanel extends javax.swing.JPanel {
 
+    static int tamano;
     /**
      * Creates new form crearMapaPanel
      */
@@ -27,6 +28,9 @@ public class crearMapaPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        setMinimumSize(new java.awt.Dimension(112, 112));
+        setPreferredSize(new java.awt.Dimension(112, 112));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -40,6 +44,16 @@ public class crearMapaPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
 
+    public void recibirDatosPanel (int tamano){
+      this.tamano=tamano;
+    }    
+    
+    public void crearCuadricualaPanel(){
+       
+    }
+            
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }

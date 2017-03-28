@@ -5,17 +5,64 @@
  */
 package vista;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Frame;
+import javafx.scene.layout.Pane;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author SAMAEL
  */
 public class crearMapaFrame extends javax.swing.JFrame {
-
+    
+    int tamanoMapa=0;
+    int id=0;
+    static int seleccion;
+    static crearMapaFrame frameMapa;
+   
+    
     /**
      * Creates new form crearMapaFrame
      */
     public crearMapaFrame() {
         initComponents();
+        
+        seleccion=JOptionPane.showOptionDialog(
+                                                    new JFrame(),
+                                                    "¿DESEA CREAR UN NUEVO MAPA?", 
+                                                    "INICIO",
+                                                    JOptionPane.YES_NO_CANCEL_OPTION,
+                                                    JOptionPane.QUESTION_MESSAGE,
+                                                    null,    // null para icono por defecto.
+                                                    new Object[] { "SI", "NO","CANCELAR" },   // null para YES, NO y CANCEL
+                                                    "SI");
+        if (seleccion==0) {
+            tamanoMapa=Integer.parseInt(JOptionPane.showInputDialog("INGRESE EL TAMAÑO DEL MAPA A CREAR"));
+            id=Integer.parseInt(JOptionPane.showInputDialog("INGRESE IDENTIFICADOR NUMERICO \n PARA LA NUEVA CIUDAD"));
+            
+            if(this.tamanoMapa<4){
+                System.out.println("entro al tamano");
+                jScrollPane2.setPreferredSize(new Dimension((this.tamanoMapa*112), (this.tamanoMapa*112)));
+                jScrollPane2.revalidate();
+
+            }
+            crearMapaPanel2.recibirDatosPanel(this.tamanoMapa);
+            crearMapaPanel2.setPreferredSize(new Dimension((this.tamanoMapa*112), (this.tamanoMapa*112)));
+            crearMapaPanel2.setBackground(Color.yellow);
+
+                
+            
+            
+        }
+        if (seleccion==2) {
+            System.out.println("cancelo");
+            System.exit(0);
+        }
+      
+       
     }
 
     /**
@@ -27,8 +74,6 @@ public class crearMapaFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        crearMapaPanel1 = new vista.crearMapaPanel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
@@ -37,21 +82,10 @@ public class crearMapaFrame extends javax.swing.JFrame {
         jRadioButton6 = new javax.swing.JRadioButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        crearMapaPanel2 = new vista.crearMapaPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        javax.swing.GroupLayout crearMapaPanel1Layout = new javax.swing.GroupLayout(crearMapaPanel1);
-        crearMapaPanel1.setLayout(crearMapaPanel1Layout);
-        crearMapaPanel1Layout.setHorizontalGroup(
-            crearMapaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 535, Short.MAX_VALUE)
-        );
-        crearMapaPanel1Layout.setVerticalGroup(
-            crearMapaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 326, Short.MAX_VALUE)
-        );
-
-        jScrollPane1.setViewportView(crearMapaPanel1);
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -65,16 +99,36 @@ public class crearMapaFrame extends javax.swing.JFrame {
 
         jRadioButton6.setText("jRadioButton6");
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Guardar Nuevo Mapa");
 
-        jButton2.setText("jButton2");
+        jButton2.setText("Cargar Nuevo Mapa");
+
+        jScrollPane2.setEnabled(false);
+        jScrollPane2.setMinimumSize(new java.awt.Dimension(112, 112));
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(448, 448));
+
+        crearMapaPanel2.setMinimumSize(new java.awt.Dimension(112, 112));
+        crearMapaPanel2.setPreferredSize(new java.awt.Dimension(448, 448));
+
+        javax.swing.GroupLayout crearMapaPanel2Layout = new javax.swing.GroupLayout(crearMapaPanel2);
+        crearMapaPanel2.setLayout(crearMapaPanel2Layout);
+        crearMapaPanel2Layout.setHorizontalGroup(
+            crearMapaPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 463, Short.MAX_VALUE)
+        );
+        crearMapaPanel2Layout.setVerticalGroup(
+            crearMapaPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 451, Short.MAX_VALUE)
+        );
+
+        jScrollPane2.setViewportView(crearMapaPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jRadioButton1)
                     .addComponent(jRadioButton2)
@@ -82,40 +136,38 @@ public class crearMapaFrame extends javax.swing.JFrame {
                     .addComponent(jRadioButton4)
                     .addComponent(jRadioButton5)
                     .addComponent(jRadioButton6))
-                .addGap(42, 42, 42)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
-                .addContainerGap())
+                        .addComponent(jButton2))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addComponent(jRadioButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton6)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jRadioButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jRadioButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jRadioButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jRadioButton4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jRadioButton5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jRadioButton6))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
@@ -151,13 +203,15 @@ public class crearMapaFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new crearMapaFrame().setVisible(true);
+                  frameMapa=new crearMapaFrame();
+                  frameMapa.setVisible(true);
+               
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private vista.crearMapaPanel crearMapaPanel1;
+    private vista.crearMapaPanel crearMapaPanel2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JRadioButton jRadioButton1;
@@ -166,6 +220,6 @@ public class crearMapaFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JRadioButton jRadioButton5;
     private javax.swing.JRadioButton jRadioButton6;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
