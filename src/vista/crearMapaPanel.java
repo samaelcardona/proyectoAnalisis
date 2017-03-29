@@ -13,7 +13,7 @@ import java.awt.Graphics;
  */
 public class crearMapaPanel extends javax.swing.JPanel {
 
-    static int tamano;
+    
     /**
      * Creates new form crearMapaPanel
      */
