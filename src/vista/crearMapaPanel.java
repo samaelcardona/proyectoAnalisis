@@ -77,7 +77,7 @@ public class crearMapaPanel extends javax.swing.JPanel {
         
     }
     
-    
+    //ya estamos conectados?
             
     
     
