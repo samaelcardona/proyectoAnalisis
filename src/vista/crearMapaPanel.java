@@ -46,7 +46,7 @@ public class crearMapaPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    //final
+   
     
 
     @Override
@@ -54,31 +54,25 @@ public class crearMapaPanel extends javax.swing.JPanel {
         super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
         
         
-        ///horizontal
+        ///aca se grafica las lineas horizontales para la cuadricula
         g.drawLine(6, 0, 6, 560);
-         
         for (int i = 0; i < 10; i++) {
              g.drawLine((i*112)-6, 0, (i*112)-6, 560);
         }
-        
         for (int i = 0; i < 10; i++) {
              g.drawLine((i*112)+6, 0, (i*112)+6, 560);
         }
-        
         g.drawLine(1114, 0, 1114, 560);
         
         
-        ///vertical
+        ///aca se grafica las lineas  verticales para la cuadricula.
         g.drawLine(6, 0, 6, 560);
-         
         for (int i = 0; i < 5; i++) {
              g.drawLine(0, (i*112)-6, 1120, (i*112)-6);
         }
-        
         for (int i = 0; i < 5; i++) {
              g.drawLine(0, (i*112)+6, 1120, (i*112)+6);
         }
-        
         g.drawLine(0,554 , 1120, 554);
         
     }
