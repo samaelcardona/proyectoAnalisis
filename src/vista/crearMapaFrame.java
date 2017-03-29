@@ -5,12 +5,15 @@
  */
 package vista;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Frame;
 import javafx.scene.layout.Pane;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -18,10 +21,10 @@ import javax.swing.JOptionPane;
  */
 public class crearMapaFrame extends javax.swing.JFrame {
     
-    int tamanoMapa=0;
     int id=0;
     static int seleccion;
     static crearMapaFrame frameMapa;
+    
    
     
     /**
@@ -29,6 +32,8 @@ public class crearMapaFrame extends javax.swing.JFrame {
      */
     public crearMapaFrame() {
         initComponents();
+       
+        
         
         seleccion=JOptionPane.showOptionDialog(
                                                     new JFrame(),
@@ -40,21 +45,7 @@ public class crearMapaFrame extends javax.swing.JFrame {
                                                     new Object[] { "SI", "NO","CANCELAR" },   // null para YES, NO y CANCEL
                                                     "SI");
         if (seleccion==0) {
-            tamanoMapa=Integer.parseInt(JOptionPane.showInputDialog("INGRESE EL TAMAÑO DEL MAPA A CREAR"));
             id=Integer.parseInt(JOptionPane.showInputDialog("INGRESE IDENTIFICADOR NUMERICO \n PARA LA NUEVA CIUDAD"));
-            
-            if(this.tamanoMapa<4){
-                System.out.println("entro al tamano");
-                jScrollPane2.setPreferredSize(new Dimension((this.tamanoMapa*112), (this.tamanoMapa*112)));
-                jScrollPane2.revalidate();
-
-            }
-            crearMapaPanel2.recibirDatosPanel(this.tamanoMapa);
-            crearMapaPanel2.setPreferredSize(new Dimension((this.tamanoMapa*112), (this.tamanoMapa*112)));
-            crearMapaPanel2.setBackground(Color.yellow);
-
-                
-            
             
         }
         if (seleccion==2) {
@@ -82,8 +73,8 @@ public class crearMapaFrame extends javax.swing.JFrame {
         jRadioButton6 = new javax.swing.JRadioButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        crearMapaPanel2 = new vista.crearMapaPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        crearMapaPanel1 = new vista.crearMapaPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -103,25 +94,26 @@ public class crearMapaFrame extends javax.swing.JFrame {
 
         jButton2.setText("Cargar Nuevo Mapa");
 
-        jScrollPane2.setEnabled(false);
-        jScrollPane2.setMinimumSize(new java.awt.Dimension(112, 112));
-        jScrollPane2.setPreferredSize(new java.awt.Dimension(448, 448));
+        jScrollPane1.setDoubleBuffered(true);
+        jScrollPane1.setFocusCycleRoot(true);
+        jScrollPane1.setMinimumSize(new java.awt.Dimension(1120, 560));
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(1120, 560));
 
-        crearMapaPanel2.setMinimumSize(new java.awt.Dimension(112, 112));
-        crearMapaPanel2.setPreferredSize(new java.awt.Dimension(448, 448));
+        crearMapaPanel1.setMinimumSize(new java.awt.Dimension(1120, 560));
+        crearMapaPanel1.setPreferredSize(new java.awt.Dimension(1120, 560));
 
-        javax.swing.GroupLayout crearMapaPanel2Layout = new javax.swing.GroupLayout(crearMapaPanel2);
-        crearMapaPanel2.setLayout(crearMapaPanel2Layout);
-        crearMapaPanel2Layout.setHorizontalGroup(
-            crearMapaPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 463, Short.MAX_VALUE)
+        javax.swing.GroupLayout crearMapaPanel1Layout = new javax.swing.GroupLayout(crearMapaPanel1);
+        crearMapaPanel1.setLayout(crearMapaPanel1Layout);
+        crearMapaPanel1Layout.setHorizontalGroup(
+            crearMapaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1120, Short.MAX_VALUE)
         );
-        crearMapaPanel2Layout.setVerticalGroup(
-            crearMapaPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 451, Short.MAX_VALUE)
+        crearMapaPanel1Layout.setVerticalGroup(
+            crearMapaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 560, Short.MAX_VALUE)
         );
 
-        jScrollPane2.setViewportView(crearMapaPanel2);
+        jScrollPane1.setViewportView(crearMapaPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -136,14 +128,16 @@ public class crearMapaFrame extends javax.swing.JFrame {
                     .addComponent(jRadioButton4)
                     .addComponent(jRadioButton5)
                     .addComponent(jRadioButton6))
-                .addGap(34, 34, 34)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE))
-                .addContainerGap(28, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,8 +160,8 @@ public class crearMapaFrame extends javax.swing.JFrame {
                         .addComponent(jRadioButton5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jRadioButton6))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -211,7 +205,7 @@ public class crearMapaFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private vista.crearMapaPanel crearMapaPanel2;
+    private vista.crearMapaPanel crearMapaPanel1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JRadioButton jRadioButton1;
@@ -220,6 +214,6 @@ public class crearMapaFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JRadioButton jRadioButton5;
     private javax.swing.JRadioButton jRadioButton6;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

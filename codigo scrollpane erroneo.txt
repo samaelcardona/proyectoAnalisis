@@ -1,0 +1,17 @@
+if(this.tamanoMapa<4){
+                jscrollPanelMapa.setBounds(100, 100, (this.tamanoMapa*112), (this.tamanoMapa*112));
+                jscrollPanelMapa.setViewportView(panelMapa);
+                jscrollPanelMapa.getViewport().setView(panelMapa);
+                panelMapa.setLayout(null);
+                
+
+            }
+            else{
+                jscrollPanelMapa.setBounds(100, 100, 448, 448);
+                jscrollPanelMapa.setViewportView(panelMapa);
+                jscrollPanelMapa.getViewport().setView(panelMapa);
+                panelMapa.recibirDatosPanel(this.tamanoMapa);
+                panelMapa.setPreferredSize(new Dimension((this.tamanoMapa*112), (this.tamanoMapa*112)));
+                panelMapa.setBackground(Color.yellow);
+                frameMapa.getContentPane().add(jscrollPanelMapa);
+            }

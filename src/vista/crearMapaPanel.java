@@ -5,6 +5,8 @@
  */
 package vista;
 
+import java.awt.Graphics;
+
 /**
  *
  * @author SAMAEL
@@ -28,29 +30,60 @@ public class crearMapaPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setMinimumSize(new java.awt.Dimension(112, 112));
-        setPreferredSize(new java.awt.Dimension(112, 112));
+        setFocusTraversalPolicyProvider(true);
+        setMinimumSize(new java.awt.Dimension(1120, 560));
+        setPreferredSize(new java.awt.Dimension(1120, 560));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 1120, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 560, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
-    public void recibirDatosPanel (int tamano){
-      this.tamano=tamano;
-    }    
     
-    public void crearCuadricualaPanel(){
-       
+    
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
+        
+        
+        ///horizontal
+        g.drawLine(6, 0, 6, 560);
+         
+        for (int i = 0; i < 10; i++) {
+             g.drawLine((i*112)-6, 0, (i*112)-6, 560);
+        }
+        
+        for (int i = 0; i < 10; i++) {
+             g.drawLine((i*112)+6, 0, (i*112)+6, 560);
+        }
+        
+        g.drawLine(1114, 0, 1114, 560);
+        
+        
+        ///vertical
+        g.drawLine(6, 0, 6, 560);
+         
+        for (int i = 0; i < 5; i++) {
+             g.drawLine(0, (i*112)-6, 1120, (i*112)-6);
+        }
+        
+        for (int i = 0; i < 5; i++) {
+             g.drawLine(0, (i*112)+6, 1120, (i*112)+6);
+        }
+        
+        g.drawLine(0,554 , 1120, 554);
+        
     }
+    
+    
             
     
     
