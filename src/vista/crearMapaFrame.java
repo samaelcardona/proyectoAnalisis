@@ -21,8 +21,6 @@ import javax.swing.JScrollPane;
  */
 public class crearMapaFrame extends javax.swing.JFrame {
     
-    int id=0;
-    static int seleccion;
     static crearMapaFrame frameMapa;
     
    
@@ -32,27 +30,7 @@ public class crearMapaFrame extends javax.swing.JFrame {
      */
     public crearMapaFrame() {
         initComponents();
-       
-        
-        
-        seleccion=JOptionPane.showOptionDialog(
-                                                    new JFrame(),
-                                                    "¿DESEA CREAR UN NUEVO MAPA?", 
-                                                    "INICIO",
-                                                    JOptionPane.YES_NO_CANCEL_OPTION,
-                                                    JOptionPane.QUESTION_MESSAGE,
-                                                    null,    // null para icono por defecto.
-                                                    new Object[] { "SI", "NO","CANCELAR" },   // null para YES, NO y CANCEL
-                                                    "SI");
-        if (seleccion==0) {
-            id=Integer.parseInt(JOptionPane.showInputDialog("INGRESE IDENTIFICADOR NUMERICO \n PARA LA NUEVA CIUDAD"));
-            
-        }
-        if (seleccion==2) {
-            System.out.println("cancelo");
-            System.exit(0);
-        }
-      
+
        
     }
 

@@ -15,3 +15,28 @@ if(this.tamanoMapa<4){
                 panelMapa.setBackground(Color.yellow);
                 frameMapa.getContentPane().add(jscrollPanelMapa);
             }
+
+
+
+
+codigo inicial
+
+
+
+        seleccion=JOptionPane.showOptionDialog(
+                                                    new JFrame(),
+                                                    "¿DESEA CREAR UN NUEVO MAPA?", 
+                                                    "INICIO",
+                                                    JOptionPane.YES_NO_CANCEL_OPTION,
+                                                    JOptionPane.QUESTION_MESSAGE,
+                                                    null,    // null para icono por defecto.
+                                                    new Object[] { "SI", "NO","CANCELAR" },   // null para YES, NO y CANCEL
+                                                    "SI");
+        if (seleccion==0) {
+            id=Integer.parseInt(JOptionPane.showInputDialog("INGRESE IDENTIFICADOR NUMERICO \n PARA LA NUEVA CIUDAD"));
+            
+        }
+        if (seleccion==2) {
+            System.out.println("cancelo");
+            System.exit(0);
+        }
