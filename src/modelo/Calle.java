@@ -15,6 +15,7 @@ import javax.swing.ImageIcon;
  */
 public class Calle {
    //identificador de calle 
+    //clavi aca no se para que es este id
     private int id;
     //posicion x de la calle
     private int x;

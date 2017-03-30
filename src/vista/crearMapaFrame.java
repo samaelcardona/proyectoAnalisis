@@ -9,11 +9,16 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Frame;
+import java.awt.List;
+import java.util.LinkedList;
 import javafx.scene.layout.Pane;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
+import modelo.Calle;
 
 /**
  *
@@ -22,7 +27,8 @@ import javax.swing.JScrollPane;
 public class crearMapaFrame extends javax.swing.JFrame {
     
     static crearMapaFrame frameMapa;
-    
+    LinkedList<JRadioButton> botones; 
+    LinkedList<Calle> calles;
    
     
     /**
@@ -30,8 +36,27 @@ public class crearMapaFrame extends javax.swing.JFrame {
      */
     public crearMapaFrame() {
         initComponents();
-
-       
+        botones = new LinkedList();
+        calles = new LinkedList();
+        
+        this.botones.add(jRadioButton1);
+        this.botones.add(jRadioButton2);
+        this.botones.add(jRadioButton3);
+        this.botones.add(jRadioButton4);
+        this.botones.add(jRadioButton5);
+        this.botones.add(jRadioButton6);
+        
+        
+       for (int i = 0; i < 6; i++) {
+            this.grupoBotones.add(botones.get(i));
+            ImageIcon imagen=new ImageIcon("src\\imagenes\\calles\\"+i+".png");
+            this.botones.get(i).setIcon(imagen);            
+            //Calle(int id, int x, int y, int ancho, int alto, ImageIcon imagen, String tipo, String sentido, int velocidad, boolean movimiento); 
+            this.calles.add(new Calle(i, -50, -50, imagen.getIconWidth(),imagen.getIconHeight(),imagen, "tipo", "sentido", 100, true));
+            
+        }
+        addKeyListener(crearMapaPanel1);
+        setFocusable(true);
     }
 
     /**
@@ -43,38 +68,97 @@ public class crearMapaFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        grupoBotones = new javax.swing.ButtonGroup();
         panelFondoPaginaInicial1 = new vista.PanelFondoPaginaInicial();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
         jRadioButton5 = new javax.swing.JRadioButton();
         jRadioButton6 = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         crearMapaPanel1 = new vista.crearMapaPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+
+        JScrollPane scrollPane = new JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jRadioButton1.setText("jRadioButton1");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
 
-        jRadioButton2.setText("jRadioButton2");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
 
-        jRadioButton3.setText("jRadioButton3");
+        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton3ActionPerformed(evt);
+            }
+        });
 
-        jRadioButton4.setText("jRadioButton4");
+        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton4ActionPerformed(evt);
+            }
+        });
 
-        jRadioButton5.setText("jRadioButton5");
+        jRadioButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton5ActionPerformed(evt);
+            }
+        });
 
-        jRadioButton6.setText("jRadioButton6");
+        jRadioButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton6ActionPerformed(evt);
+            }
+        });
 
-        jButton1.setText("Guardar Nuevo Mapa");
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(3, 3, 3)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jRadioButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jRadioButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jRadioButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jRadioButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jRadioButton6))
+                .addContainerGap(145, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jRadioButton1)
+                .addGap(3, 3, 3)
+                .addComponent(jRadioButton2)
+                .addGap(3, 3, 3)
+                .addComponent(jRadioButton3)
+                .addGap(3, 3, 3)
+                .addComponent(jRadioButton4)
+                .addGap(0, 0, 0)
+                .addComponent(jRadioButton5)
+                .addGap(3, 3, 3)
+                .addComponent(jRadioButton6)
+                .addContainerGap(283, Short.MAX_VALUE))
+        );
 
-        jButton2.setText("Cargar Nuevo Mapa");
+        jScrollPane3.setViewportView(jPanel1);
 
         jScrollPane1.setDoubleBuffered(true);
         jScrollPane1.setFocusCycleRoot(true);
@@ -94,6 +178,10 @@ public class crearMapaFrame extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(crearMapaPanel1);
 
+        jButton1.setText("Guardar Nuevo Mapa");
+
+        jButton2.setText("Cargar Nuevo Mapa");
+
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Documentos/masIcon.png"))); // NOI18N
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,24 +194,17 @@ public class crearMapaFrame extends javax.swing.JFrame {
         panelFondoPaginaInicial1Layout.setHorizontalGroup(
             panelFondoPaginaInicial1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFondoPaginaInicial1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
                 .addGroup(panelFondoPaginaInicial1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelFondoPaginaInicial1Layout.createSequentialGroup()
-                        .addGroup(panelFondoPaginaInicial1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jRadioButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jRadioButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jRadioButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jRadioButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jRadioButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(58, 58, 58)
-                        .addGroup(panelFondoPaginaInicial1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelFondoPaginaInicial1Layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(panelFondoPaginaInicial1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelFondoPaginaInicial1Layout.createSequentialGroup()
+                            .addComponent(jButton1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButton2))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         panelFondoPaginaInicial1Layout.setVerticalGroup(
@@ -136,20 +217,11 @@ public class crearMapaFrame extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelFondoPaginaInicial1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelFondoPaginaInicial1Layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
-                        .addGap(3, 3, 3)
-                        .addComponent(jRadioButton2)
-                        .addGap(3, 3, 3)
-                        .addComponent(jRadioButton3)
-                        .addGap(3, 3, 3)
-                        .addComponent(jRadioButton4)
-                        .addComponent(jRadioButton5)
-                        .addGap(3, 3, 3)
-                        .addComponent(jRadioButton6))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(panelFondoPaginaInicial1Layout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         getContentPane().add(panelFondoPaginaInicial1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, -1));
@@ -170,6 +242,36 @@ public class crearMapaFrame extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        //this.ocultarBordes();
+        if (jRadioButton1.isSelected()) {
+            System.out.println("selecciono 1");
+        }
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        //this.ocultarBordes();
+        if (jRadioButton2.isSelected()) {
+            System.out.println("selecciono 2");
+        }
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+        //this.ocultarBordes();
+    }//GEN-LAST:event_jRadioButton3ActionPerformed
+
+    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
+        //this.ocultarBordes();
+    }//GEN-LAST:event_jRadioButton4ActionPerformed
+
+    private void jRadioButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton5ActionPerformed
+        //this.ocultarBordes();
+    }//GEN-LAST:event_jRadioButton5ActionPerformed
+
+    private void jRadioButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton6ActionPerformed
+        //this.ocultarBordes();
+    }//GEN-LAST:event_jRadioButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -207,13 +309,22 @@ public class crearMapaFrame extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void ocultarBordes()
+    {
+        this.botones.stream().forEach((boton)->{
+            if(boton.isBorderPainted())
+                boton.setBorderPainted(false);
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
     private vista.crearMapaPanel crearMapaPanel1;
+    private javax.swing.ButtonGroup grupoBotones;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
@@ -221,6 +332,7 @@ public class crearMapaFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton5;
     private javax.swing.JRadioButton jRadioButton6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
     private vista.PanelFondoPaginaInicial panelFondoPaginaInicial1;
     // End of variables declaration//GEN-END:variables
 }

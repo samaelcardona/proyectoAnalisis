@@ -5,21 +5,35 @@
  */
 package vista;
 
+import java.awt.Color;
+import java.awt.Event;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import modelo.Calle;
 
 /**
  *
  * @author SAMAEL
  */
-public class crearMapaPanel extends javax.swing.JPanel {
+public class crearMapaPanel extends javax.swing.JPanel implements MouseMotionListener,MouseListener,KeyListener{
 
     int x=10;
     int y=5;
-    /**
-     * Creates new form crearMapaPanel
-     */
+    Calle calle;
+    
+    
+    
     public crearMapaPanel() {
         initComponents();
+        addKeyListener(this);
+        setFocusable(true);
+        setFocusTraversalKeysEnabled(false);
+        addMouseListener(this);
+        addMouseMotionListener(this);
     }
 
     /**
@@ -75,6 +89,13 @@ public class crearMapaPanel extends javax.swing.JPanel {
         }
         g.drawLine(0,554 , 1120, 554);
         
+        if(calle!=null)
+        {
+            g.drawImage(calle.getImagen().getImage(), calle.getX(), calle.getY(), calle.getAncho(), calle.getAlto(), this);
+            g.setColor(Color.white);
+            g.drawRect(calle.getX(), calle.getY(), calle.getAncho(), calle.getAlto());
+        }
+        
     }
     
     
@@ -102,4 +123,64 @@ public class crearMapaPanel extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void mouseDragged(MouseEvent me) {
+                
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        if(calle!=null)
+        {
+            calle.setX(e.getX());
+            calle.setY(e.getY());
+            repaint();
+        }
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent me) {
+        
+    }
+
+    @Override
+    public void mousePressed(MouseEvent me) {
+        
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent me) {
+        
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        if(calle!=null)
+        {
+            calle.setX(e.getX());
+            calle.setY(e.getY());
+            repaint();
+        }
+    }
+
+    @Override
+    public void mouseExited(MouseEvent me) {
+        
+    }
+
+    @Override
+    public void keyTyped(KeyEvent ke) {
+        
+    }
+
+    @Override
+    public void keyPressed(KeyEvent ke) {
+        
+    }
+
+    @Override
+    public void keyReleased(KeyEvent ke) {
+        
+    }
 }

@@ -51,6 +51,7 @@ public class paginaInicial extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jButton1.setText("<html><p>Crear O Modificar</p><p ALIGN=center>Mapa</p></html>"); // NOI18N
+        jButton1.setToolTipText("");
         jButton1.setActionCommand("<html><p>Crear O Modificar</p><p>Mapa</p></html>");
         jButton1.setMaximumSize(new java.awt.Dimension(51, 176));
         jButton1.setMinimumSize(new java.awt.Dimension(51, 176));
