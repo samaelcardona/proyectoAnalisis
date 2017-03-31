@@ -5,36 +5,25 @@
  */
 package vista;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Frame;
-import java.awt.List;
 import java.util.LinkedList;
-import javafx.scene.layout.Pane;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
 import modelo.Calle;
+
 
 /**
  *
  * @author SAMAEL
  */
-public class crearMapaFrame extends javax.swing.JFrame {
-    
-    static crearMapaFrame frameMapa;
+public class FrameCrearMapa extends javax.swing.JFrame {
+
+    static FrameCrearMapa frameMapa;
     LinkedList<JRadioButton> botones; 
     LinkedList<Calle> calles;
-   
-    
     /**
-     * Creates new form crearMapaFrame
+     * Creates new form FrameCrearMapa
      */
-    public crearMapaFrame() {
+    public FrameCrearMapa() {
         initComponents();
         botones = new LinkedList();
         calles = new LinkedList();
@@ -48,14 +37,14 @@ public class crearMapaFrame extends javax.swing.JFrame {
         
         
        for (int i = 0; i < 6; i++) {
-            this.grupoBotones.add(botones.get(i));
+            this.buttonGroup1.add(botones.get(i));
             ImageIcon imagen=new ImageIcon("src\\imagenes\\calles\\"+i+".png");
             this.botones.get(i).setIcon(imagen);            
             //Calle(int id, int x, int y, int ancho, int alto, ImageIcon imagen, String tipo, String sentido, int velocidad, boolean movimiento); 
             this.calles.add(new Calle(i, -50, -50, imagen.getIconWidth(),imagen.getIconHeight(),imagen, "tipo", "sentido", 100, true));
             
         }
-        addKeyListener(crearMapaPanel1);
+       // addKeyListener(crearMapaPanel1);
         setFocusable(true);
     }
 
@@ -68,8 +57,7 @@ public class crearMapaFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        grupoBotones = new javax.swing.ButtonGroup();
-        panelFondoPaginaInicial1 = new vista.PanelFondoPaginaInicial();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jScrollPane3 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jRadioButton1 = new javax.swing.JRadioButton();
@@ -78,16 +66,16 @@ public class crearMapaFrame extends javax.swing.JFrame {
         jRadioButton4 = new javax.swing.JRadioButton();
         jRadioButton5 = new javax.swing.JRadioButton();
         jRadioButton6 = new javax.swing.JRadioButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        crearMapaPanel1 = new vista.crearMapaPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-
-        JScrollPane scrollPane = new JScrollPane();
+        panelCrearMapa1 = new vista.PanelCrearMapa();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setMaximumSize(new java.awt.Dimension(1400, 700));
+        setMinimumSize(new java.awt.Dimension(1400, 700));
+        setPreferredSize(new java.awt.Dimension(1400, 700));
+        getContentPane().setLayout(null);
 
         jScrollPane3.setPreferredSize(new java.awt.Dimension(428, 569));
         jScrollPane3.setWheelScrollingEnabled(false);
@@ -163,89 +151,37 @@ public class crearMapaFrame extends javax.swing.JFrame {
 
         jScrollPane3.setViewportView(jPanel1);
 
-        jScrollPane1.setDoubleBuffered(true);
-        jScrollPane1.setFocusCycleRoot(true);
-        jScrollPane1.setMinimumSize(new java.awt.Dimension(1120, 560));
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(1120, 560));
-
-        javax.swing.GroupLayout crearMapaPanel1Layout = new javax.swing.GroupLayout(crearMapaPanel1);
-        crearMapaPanel1.setLayout(crearMapaPanel1Layout);
-        crearMapaPanel1Layout.setHorizontalGroup(
-            crearMapaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1128, Short.MAX_VALUE)
-        );
-        crearMapaPanel1Layout.setVerticalGroup(
-            crearMapaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 567, Short.MAX_VALUE)
-        );
-
-        jScrollPane1.setViewportView(crearMapaPanel1);
+        getContentPane().add(jScrollPane3);
+        jScrollPane3.setBounds(20, 70, 149, 460);
 
         jButton1.setText("Guardar Nuevo Mapa");
+        getContentPane().add(jButton1);
+        jButton1.setBounds(230, 30, 135, 23);
 
         jButton2.setText("Cargar Nuevo Mapa");
+        getContentPane().add(jButton2);
+        jButton2.setBounds(410, 30, 129, 23);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Documentos/masIcon.png"))); // NOI18N
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelFondoPaginaInicial1Layout = new javax.swing.GroupLayout(panelFondoPaginaInicial1);
-        panelFondoPaginaInicial1.setLayout(panelFondoPaginaInicial1Layout);
-        panelFondoPaginaInicial1Layout.setHorizontalGroup(
-            panelFondoPaginaInicial1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelFondoPaginaInicial1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(panelFondoPaginaInicial1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelFondoPaginaInicial1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                        .addGroup(panelFondoPaginaInicial1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoPaginaInicial1Layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2)
-                                .addGap(860, 860, 860))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1130, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(22, Short.MAX_VALUE))
+        javax.swing.GroupLayout panelCrearMapa1Layout = new javax.swing.GroupLayout(panelCrearMapa1);
+        panelCrearMapa1.setLayout(panelCrearMapa1Layout);
+        panelCrearMapa1Layout.setHorizontalGroup(
+            panelCrearMapa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 940, Short.MAX_VALUE)
         );
-        panelFondoPaginaInicial1Layout.setVerticalGroup(
-            panelFondoPaginaInicial1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelFondoPaginaInicial1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(panelFondoPaginaInicial1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(1, 1, 1)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelFondoPaginaInicial1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(14, Short.MAX_VALUE))
+        panelCrearMapa1Layout.setVerticalGroup(
+            panelCrearMapa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 560, Short.MAX_VALUE)
         );
 
-        getContentPane().add(panelFondoPaginaInicial1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 660));
+        getContentPane().add(panelCrearMapa1);
+        panelCrearMapa1.setBounds(230, 70, 1120, 560);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Documentos/FondoPaginaInicial.png"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 1400, 700);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
-        
-       
-        crearMapaPanel1.setSize(new Dimension((int)(crearMapaPanel1.getSize().getWidth())+112, (int)(crearMapaPanel1.getSize().getHeight())+112));
-        crearMapaPanel1.setPreferredSize(new Dimension((int)(crearMapaPanel1.getSize().getWidth())+0, (int)(crearMapaPanel1.getSize().getHeight())+0));
-        
-        crearMapaPanel1.setX(crearMapaPanel1.getX()+1);
-        crearMapaPanel1.setY(crearMapaPanel1.getY()+1);
-       
-        
-        
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         //this.ocultarBordes();
@@ -294,40 +230,39 @@ public class crearMapaFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(crearMapaFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameCrearMapa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(crearMapaFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameCrearMapa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(crearMapaFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameCrearMapa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(crearMapaFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameCrearMapa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                  frameMapa=new crearMapaFrame();
+                 frameMapa=new FrameCrearMapa();
                   frameMapa.setVisible(true);
-               
             }
         });
     }
     
-    private void ocultarBordes()
-    {
-        this.botones.stream().forEach((boton)->{
-            if(boton.isBorderPainted())
+    private void ocultarBordes() {
+        this.botones.stream().forEach((boton) -> {
+            if (boton.isBorderPainted()) {
                 boton.setBorderPainted(false);
+            }
         });
     }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private vista.crearMapaPanel crearMapaPanel1;
-    private javax.swing.ButtonGroup grupoBotones;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
@@ -335,8 +270,7 @@ public class crearMapaFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JRadioButton jRadioButton5;
     private javax.swing.JRadioButton jRadioButton6;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private vista.PanelFondoPaginaInicial panelFondoPaginaInicial1;
+    private vista.PanelCrearMapa panelCrearMapa1;
     // End of variables declaration//GEN-END:variables
 }

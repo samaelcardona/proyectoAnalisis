@@ -6,7 +6,6 @@
 package vista;
 
 import java.awt.Color;
-import java.awt.Event;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -19,21 +18,23 @@ import modelo.Calle;
  *
  * @author SAMAEL
  */
-public class crearMapaPanel extends javax.swing.JPanel implements MouseMotionListener,MouseListener,KeyListener{
+public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionListener,MouseListener,KeyListener{
 
-    int x=10;
+     int x=10;
     int y=5;
     Calle calle;
-    
-    
-    
-    public crearMapaPanel() {
+    /**
+     * Creates new form PanelCrearMapa
+     */
+    public PanelCrearMapa() {
         initComponents();
+        
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
         addMouseListener(this);
         addMouseMotionListener(this);
+        
     }
 
     /**
@@ -45,7 +46,7 @@ public class crearMapaPanel extends javax.swing.JPanel implements MouseMotionLis
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setFocusTraversalPolicyProvider(true);
+        setMaximumSize(new java.awt.Dimension(1120, 560));
         setMinimumSize(new java.awt.Dimension(1120, 560));
         setPreferredSize(new java.awt.Dimension(1120, 560));
 
@@ -61,126 +62,91 @@ public class crearMapaPanel extends javax.swing.JPanel implements MouseMotionLis
         );
     }// </editor-fold>//GEN-END:initComponents
 
-   
-    
-
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
-        
-         ///aca se grafica las lineas horizontales para la cuadricula
+        ///aca se grafica las lineas horizontales para la cuadricula
         g.drawLine(6, 0, 6, 560);
         for (int i = 0; i < x; i++) {
-             g.drawLine((i*112)-6, 0, (i*112)-6, 560);
+            g.drawLine((i * 112) - 6, 0, (i * 112) - 6, 560);
         }
         for (int i = 0; i < x; i++) {
-             g.drawLine((i*112)+6, 0, (i*112)+6, 560);
+            g.drawLine((i * 112) + 6, 0, (i * 112) + 6, 560);
         }
         g.drawLine(1114, 0, 1114, 560);
-        
-        
+
         ///aca se grafica las lineas  verticales para la cuadricula.
         g.drawLine(6, 0, 6, 560);
         for (int i = 0; i < y; i++) {
-             g.drawLine(0, (i*112)-6, 1120, (i*112)-6);
+            g.drawLine(0, (i * 112) - 6, 1120, (i * 112) - 6);
         }
         for (int i = 0; i < y; i++) {
-             g.drawLine(0, (i*112)+6, 1120, (i*112)+6);
+            g.drawLine(0, (i * 112) + 6, 1120, (i * 112) + 6);
         }
-        g.drawLine(0,554 , 1120, 554);
-        
-        if(calle!=null)
-        {
+        g.drawLine(0, 554, 1120, 554);
+
+        if (calle != null) {
             g.drawImage(calle.getImagen().getImage(), calle.getX(), calle.getY(), calle.getAncho(), calle.getAlto(), this);
             g.setColor(Color.white);
             g.drawRect(calle.getX(), calle.getY(), calle.getAncho(), calle.getAlto());
         }
-        
-    }
     
-    
-    
-   
-
-    public int getX() {
-        return x;
     }
 
-    public int getY() {
-        return y;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-    
-   
     
     
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    // End of variables declaration//GEN-END:variables
-
+    
     @Override
     public void mouseDragged(MouseEvent me) {
-                
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void mouseMoved(MouseEvent e) {
-        if(calle!=null)
-        {
-            calle.setX(e.getX());
-            calle.setY(e.getY());
-            repaint();
-        }
+    public void mouseMoved(MouseEvent me) {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseClicked(MouseEvent me) {
-        
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mousePressed(MouseEvent me) {
-        
+      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseReleased(MouseEvent me) {
-        
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void mouseEntered(MouseEvent e) {
-        if(calle!=null)
-        {
-            calle.setX(e.getX());
-            calle.setY(e.getY());
-            repaint();
-        }
+    public void mouseEntered(MouseEvent me) {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseExited(MouseEvent me) {
-        
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void keyTyped(KeyEvent ke) {
-        
+      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void keyPressed(KeyEvent ke) {
-        
+     //   throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void keyReleased(KeyEvent ke) {
-        
+      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // End of variables declaration//GEN-END:variables
 }
