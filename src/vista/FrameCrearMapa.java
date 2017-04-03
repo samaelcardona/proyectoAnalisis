@@ -58,6 +58,9 @@ public class FrameCrearMapa extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        panelCrearMapa1 = new vista.PanelCrearMapa();
         jScrollPane3 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jRadioButton1 = new javax.swing.JRadioButton();
@@ -66,16 +69,35 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         jRadioButton4 = new javax.swing.JRadioButton();
         jRadioButton5 = new javax.swing.JRadioButton();
         jRadioButton6 = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        panelCrearMapa1 = new vista.PanelCrearMapa();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1400, 700));
-        setMinimumSize(new java.awt.Dimension(1400, 700));
-        setPreferredSize(new java.awt.Dimension(1400, 700));
+        setMaximumSize(new java.awt.Dimension(1350, 700));
+        setMinimumSize(new java.awt.Dimension(1350, 700));
+        setPreferredSize(new java.awt.Dimension(1350, 700));
         getContentPane().setLayout(null);
+
+        jButton1.setText("Guardar Nuevo Mapa");
+        getContentPane().add(jButton1);
+        jButton1.setBounds(1170, 490, 140, 23);
+
+        jButton2.setText("Cargar Nuevo Mapa");
+        getContentPane().add(jButton2);
+        jButton2.setBounds(1170, 520, 140, 23);
+
+        javax.swing.GroupLayout panelCrearMapa1Layout = new javax.swing.GroupLayout(panelCrearMapa1);
+        panelCrearMapa1.setLayout(panelCrearMapa1Layout);
+        panelCrearMapa1Layout.setHorizontalGroup(
+            panelCrearMapa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1120, Short.MAX_VALUE)
+        );
+        panelCrearMapa1Layout.setVerticalGroup(
+            panelCrearMapa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 560, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(panelCrearMapa1);
+        panelCrearMapa1.setBounds(10, 10, 1120, 560);
 
         jScrollPane3.setPreferredSize(new java.awt.Dimension(428, 569));
         jScrollPane3.setWheelScrollingEnabled(false);
@@ -152,29 +174,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         jScrollPane3.setViewportView(jPanel1);
 
         getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(20, 70, 149, 460);
-
-        jButton1.setText("Guardar Nuevo Mapa");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(230, 30, 135, 23);
-
-        jButton2.setText("Cargar Nuevo Mapa");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(410, 30, 129, 23);
-
-        javax.swing.GroupLayout panelCrearMapa1Layout = new javax.swing.GroupLayout(panelCrearMapa1);
-        panelCrearMapa1.setLayout(panelCrearMapa1Layout);
-        panelCrearMapa1Layout.setHorizontalGroup(
-            panelCrearMapa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 940, Short.MAX_VALUE)
-        );
-        panelCrearMapa1Layout.setVerticalGroup(
-            panelCrearMapa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 560, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(panelCrearMapa1);
-        panelCrearMapa1.setBounds(230, 70, 1120, 560);
+        jScrollPane3.setBounds(1170, 10, 149, 460);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Documentos/FondoPaginaInicial.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -184,33 +184,46 @@ public class FrameCrearMapa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        //this.ocultarBordes();
-        if (jRadioButton1.isSelected()) {
-            System.out.println("selecciono 1");
-        }
+        this.ocultarBordes();
+        this.jRadioButton1.setBorderPainted(true);
+        this.panelCrearMapa1.setCalle(calles.get(0));
+        
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        //this.ocultarBordes();
-        if (jRadioButton2.isSelected()) {
-            System.out.println("selecciono 2");
-        }
+        this.ocultarBordes();
+        this.jRadioButton2.setBorderPainted(true);
+        this.panelCrearMapa1.setCalle(calles.get(1));
+        
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
-        //this.ocultarBordes();
+        this.ocultarBordes();
+        this.jRadioButton3.setBorderPainted(true);
+        this.panelCrearMapa1.setCalle(calles.get(2));
+        
+
     }//GEN-LAST:event_jRadioButton3ActionPerformed
 
     private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
-        //this.ocultarBordes();
+        
+        this.ocultarBordes();
+        this.jRadioButton4.setBorderPainted(true);
+        this.panelCrearMapa1.setCalle(calles.get(3));
     }//GEN-LAST:event_jRadioButton4ActionPerformed
 
     private void jRadioButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton5ActionPerformed
-        //this.ocultarBordes();
+        
+        this.ocultarBordes();
+        this.jRadioButton5.setBorderPainted(true);
+        this.panelCrearMapa1.setCalle(calles.get(4));
     }//GEN-LAST:event_jRadioButton5ActionPerformed
 
     private void jRadioButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton6ActionPerformed
-        //this.ocultarBordes();
+        
+        this.ocultarBordes();
+        this.jRadioButton6.setBorderPainted(true);
+        this.panelCrearMapa1.setCalle(calles.get(5));
     }//GEN-LAST:event_jRadioButton6ActionPerformed
 
     /**

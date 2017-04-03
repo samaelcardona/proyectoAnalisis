@@ -102,8 +102,14 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
     }
 
     @Override
-    public void mouseMoved(MouseEvent me) {
+    public void mouseMoved(MouseEvent e) {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (calle != null) {
+            calle.setX(e.getX());
+            calle.setY(e.getY());
+            repaint();
+        }
+    
     }
 
     @Override
@@ -122,8 +128,14 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
     }
 
     @Override
-    public void mouseEntered(MouseEvent me) {
+    public void mouseEntered(MouseEvent e) {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (calle != null) {
+            calle.setX(e.getX());
+            calle.setY(e.getY());
+            repaint();
+        }
+    
     }
 
     @Override
@@ -146,6 +158,29 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
       //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public Calle getCalle() {
+        return calle;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public void setCalle(Calle calle) {
+        this.calle = calle;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
