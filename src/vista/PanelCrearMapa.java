@@ -154,7 +154,6 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
         
         if (cuadroSeleccionado!=null) {
             
-            System.out.println("x "+cuadroSeleccionado[0]+" y "+cuadroSeleccionado[1]);
             if (calle!=null) {
                 if (calle.getSentido()=="") {
                     if (true) {
