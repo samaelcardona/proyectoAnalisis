@@ -13,6 +13,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import modelo.Calle;
+import modelo.PuntosLimiteCuadricula;
 
 /**
  *
@@ -20,9 +21,13 @@ import modelo.Calle;
  */
 public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionListener,MouseListener,KeyListener{
 
-     int x=10;
-    int y=5;
+     int x=20;
+    int y=10;
     Calle calle;
+    PuntosLimiteCuadricula [][] matrizPuntosLimitesCuadriculaMapa=new PuntosLimiteCuadricula[20][10];
+    String [][] matrizLetrasElementosInternosCuadriculaMapa=new String[20][10];
+    int [][] matrizCuadriculaMapa=new int[20][10];
+    
     /**
      * Creates new form PanelCrearMapa
      */
@@ -35,8 +40,16 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
         addMouseListener(this);
         addMouseMotionListener(this);
         
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 10; j++) {
+             matrizPuntosLimitesCuadriculaMapa[i][j]=new PuntosLimiteCuadricula();
+            }
+        }
+        
+       
+        
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,31 +78,44 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
-        ///aca se grafica las lineas horizontales para la cuadricula
-        g.drawLine(6, 0, 6, 560);
+        ///aca se grafica las lineas horizontales para la cuadricula        
         for (int i = 0; i < x; i++) {
-            g.drawLine((i * 112) - 6, 0, (i * 112) - 6, 560);
+            g.drawLine((i * 56) - 3, 0, (i * 56) - 3, 560);
         }
+        
         for (int i = 0; i < x; i++) {
-            g.drawLine((i * 112) + 6, 0, (i * 112) + 6, 560);
+           g.drawLine((i * 56) + 3, 0, (i * 56) + 3, 560);
         }
+        
         g.drawLine(1114, 0, 1114, 560);
 
         ///aca se grafica las lineas  verticales para la cuadricula.
-        g.drawLine(6, 0, 6, 560);
+        g.drawLine(3, 0, 3, 560);
         for (int i = 0; i < y; i++) {
-            g.drawLine(0, (i * 112) - 6, 1120, (i * 112) - 6);
+            g.drawLine(0, (i * 56) - 3, 1120, (i * 56) - 3);
         }
         for (int i = 0; i < y; i++) {
-            g.drawLine(0, (i * 112) + 6, 1120, (i * 112) + 6);
+            g.drawLine(0, (i * 56) + 3, 1120, (i * 56) + 3);
         }
-        g.drawLine(0, 554, 1120, 554);
+        g.drawLine(0, 557, 1120, 554);
 
+        //llenar matriz 
+        for (int i = 1; i <= x; i++) {
+            for (int j = 1; j <= y; j++) {
+                matrizPuntosLimitesCuadriculaMapa[i-1][j-1].setX1(((i-1)*56));
+                matrizPuntosLimitesCuadriculaMapa[i-1][j-1].setX2((i*56)-3);
+                matrizPuntosLimitesCuadriculaMapa[i-1][j-1].setY1(((j-1)*56));
+                matrizPuntosLimitesCuadriculaMapa[i-1][j-1].setY2((j*56)-3);
+            }
+        }
+        
         if (calle != null) {
             g.drawImage(calle.getImagen().getImage(), calle.getX(), calle.getY(), calle.getAncho(), calle.getAlto(), this);
             g.setColor(Color.white);
             g.drawRect(calle.getX(), calle.getY(), calle.getAncho(), calle.getAlto());
         }
+        
+        repaint();
     
     }
 
@@ -97,24 +123,73 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
     
     
     @Override
-    public void mouseDragged(MouseEvent me) {
+    public void mouseDragged(MouseEvent e) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+    
     }
 
     @Override
     public void mouseMoved(MouseEvent e) {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         if (calle != null) {
-            calle.setX(e.getX());
-            calle.setY(e.getY());
+            calle.setX(e.getX()-50);
+            calle.setY(e.getY()-50);
             repaint();
         }
+        
     
     }
 
     @Override
-    public void mouseClicked(MouseEvent me) {
+    public void mouseClicked(MouseEvent e) {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+        int x=(int)e.getPoint().getX();
+        int y=(int)e.getPoint().getY();
+        int [] cuadroSeleccionado=new int[2];
+        cuadroSeleccionado=retornarPosicionCuadriculaSeleccionada(x, y);
+        
+        
+        
+        if (cuadroSeleccionado!=null) {
+            
+            System.out.println("x "+cuadroSeleccionado[0]+" y "+cuadroSeleccionado[1]);
+            if (calle!=null) {
+                if (calle.getSentido()=="") {
+                    if (true) {
+                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]]="";
+                    }
+                }
+            }
+            if (true) {
+                
+            }
+            if (true) {
+                
+            }
+        }
+        
+        
+        
+        
+        /*
+        //ciclo para mostrar las matrices
+        String cadena;
+    
+            System.out.println("");
+
+              for (int i = 0; i < 10; i++) {
+                  cadena="";
+                for (int j = 0; j < 20; j++) {
+                   cadena=cadena+"para x "+j+" y "+i+"[ x1 "+matrizPuntosLimitesCuadriculaMapa[j][i].getX1()+" x2 "+matrizPuntosLimitesCuadriculaMapa[j][i].getX2()+" y1 "+matrizPuntosLimitesCuadriculaMapa[j][i].getY1()+" y2 "+matrizPuntosLimitesCuadriculaMapa[j][i].getY2()+"] ";
+                }
+                  System.out.println(cadena);
+            }
+
+              System.out.println("pos x " + e.getX());
+              System.out.println("pos y " + e.getY());
+        */
     }
 
     @Override
@@ -158,6 +233,42 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
       //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    public int [] retornarPosicionCuadriculaSeleccionada(int x, int y){
+        
+        boolean encontroX=false;
+        boolean encontroY=false;
+        int i=0;
+        int j=0;
+        int [] datosXY=new int[2];
+
+        //para encontrar limites en x 
+        while (i<20&&encontroX==false) {    
+            if (matrizPuntosLimitesCuadriculaMapa[i][j].getX1()<=x&&matrizPuntosLimitesCuadriculaMapa[i][j].getX2()>=x) {
+                    encontroX=true;
+                    datosXY[0]=i;
+                }
+            i++;
+        }
+        
+        //para encontrar limites en y despues de haber encontrado x
+        if (encontroX==true) {
+            while (j<10&&encontroY==false) {                
+                if (matrizPuntosLimitesCuadriculaMapa[datosXY[0]][j].getY1()<=y&&matrizPuntosLimitesCuadriculaMapa[datosXY[0]][j].getY2()>=y) {
+                    encontroY=true;
+                    datosXY[1]=j;
+                }
+                j++;  
+            }
+        }
+        else{
+            System.out.println("verifique posiciones seleccionadas");
+        }
+        if (encontroY==true) {
+            return datosXY;  
+        }
+          return null;
+    }
+    
     public int getX() {
         return x;
     }
