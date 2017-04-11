@@ -57,6 +57,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         }
        // addKeyListener(crearMapaPanel1);
         setFocusable(true);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -70,6 +71,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         panelCrearMapa1 = new vista.PanelCrearMapa();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -93,12 +95,24 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1350, 700));
         setMinimumSize(new java.awt.Dimension(1350, 700));
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1350, 700));
         getContentPane().setLayout(null);
 
         jButton1.setText("Guardar Nuevo Mapa");
         getContentPane().add(jButton1);
         jButton1.setBounds(1170, 490, 140, 23);
+
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Documentos/cerrarIcon.png"))); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3);
+        jButton3.setBounds(1330, 0, 20, 20);
 
         jButton2.setText("Cargar Nuevo Mapa");
         getContentPane().add(jButton2);
@@ -395,6 +409,10 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.panelCrearMapa1.setCalle(calles.get(15));
     }//GEN-LAST:event_jRadioButton16ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -444,6 +462,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
