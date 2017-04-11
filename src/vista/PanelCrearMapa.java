@@ -133,8 +133,8 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
     public void mouseMoved(MouseEvent e) {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         if (calle != null) {
-            calle.setX(e.getX()-50);
-            calle.setY(e.getY()-50);
+            calle.setX(e.getX()-23);
+            calle.setY(e.getY()-23);
             repaint();
         }
         

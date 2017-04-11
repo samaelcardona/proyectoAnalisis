@@ -34,9 +34,20 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.botones.add(jRadioButton4);
         this.botones.add(jRadioButton5);
         this.botones.add(jRadioButton6);
+        this.botones.add(jRadioButton7);
+        this.botones.add(jRadioButton8);
+        this.botones.add(jRadioButton9);
+        this.botones.add(jRadioButton10);
+        this.botones.add(jRadioButton11);
+        this.botones.add(jRadioButton12);
+        this.botones.add(jRadioButton13);
+        this.botones.add(jRadioButton14);
+        this.botones.add(jRadioButton15);
+        this.botones.add(jRadioButton16);
         
         
-       for (int i = 0; i < 6; i++) {
+        
+       for (int i = 0; i < botones.size(); i++) {
             this.buttonGroup1.add(botones.get(i));
             ImageIcon imagen=new ImageIcon("src\\imagenes\\calles\\"+i+".png");
             this.botones.get(i).setIcon(imagen);            
@@ -69,12 +80,20 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         jRadioButton4 = new javax.swing.JRadioButton();
         jRadioButton5 = new javax.swing.JRadioButton();
         jRadioButton6 = new javax.swing.JRadioButton();
+        jRadioButton7 = new javax.swing.JRadioButton();
+        jRadioButton8 = new javax.swing.JRadioButton();
+        jRadioButton9 = new javax.swing.JRadioButton();
+        jRadioButton10 = new javax.swing.JRadioButton();
+        jRadioButton11 = new javax.swing.JRadioButton();
+        jRadioButton12 = new javax.swing.JRadioButton();
+        jRadioButton13 = new javax.swing.JRadioButton();
+        jRadioButton14 = new javax.swing.JRadioButton();
+        jRadioButton15 = new javax.swing.JRadioButton();
+        jRadioButton16 = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1350, 700));
         setMinimumSize(new java.awt.Dimension(1350, 700));
-        setPreferredSize(new java.awt.Dimension(1350, 700));
         getContentPane().setLayout(null);
 
         jButton1.setText("Guardar Nuevo Mapa");
@@ -138,6 +157,66 @@ public class FrameCrearMapa extends javax.swing.JFrame {
             }
         });
 
+        jRadioButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton7ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton8ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton9ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton10ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton11ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton12ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton13ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton14ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton15ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton16ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -150,7 +229,17 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                     .addComponent(jRadioButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jRadioButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jRadioButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButton6))
+                    .addComponent(jRadioButton6)
+                    .addComponent(jRadioButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jRadioButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jRadioButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jRadioButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jRadioButton11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jRadioButton12)
+                    .addComponent(jRadioButton13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jRadioButton14)
+                    .addComponent(jRadioButton15)
+                    .addComponent(jRadioButton16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(145, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -168,6 +257,26 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                 .addComponent(jRadioButton5)
                 .addGap(3, 3, 3)
                 .addComponent(jRadioButton6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jRadioButton7)
+                .addGap(3, 3, 3)
+                .addComponent(jRadioButton8)
+                .addGap(3, 3, 3)
+                .addComponent(jRadioButton9)
+                .addGap(3, 3, 3)
+                .addComponent(jRadioButton10)
+                .addGap(0, 0, 0)
+                .addComponent(jRadioButton11)
+                .addGap(3, 3, 3)
+                .addComponent(jRadioButton12)
+                .addGap(0, 0, 0)
+                .addComponent(jRadioButton13)
+                .addGap(3, 3, 3)
+                .addComponent(jRadioButton14)
+                .addGap(0, 0, 0)
+                .addComponent(jRadioButton16)
+                .addGap(3, 3, 3)
+                .addComponent(jRadioButton15)
                 .addContainerGap(405, Short.MAX_VALUE))
         );
 
@@ -226,6 +335,66 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.panelCrearMapa1.setCalle(calles.get(5));
     }//GEN-LAST:event_jRadioButton6ActionPerformed
 
+    private void jRadioButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton7ActionPerformed
+       this.ocultarBordes();
+        this.jRadioButton7.setBorderPainted(true);
+        this.panelCrearMapa1.setCalle(calles.get(6));
+    }//GEN-LAST:event_jRadioButton7ActionPerformed
+
+    private void jRadioButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton8ActionPerformed
+        this.ocultarBordes();
+        this.jRadioButton8.setBorderPainted(true);
+        this.panelCrearMapa1.setCalle(calles.get(7));
+    }//GEN-LAST:event_jRadioButton8ActionPerformed
+
+    private void jRadioButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton9ActionPerformed
+        this.ocultarBordes();
+        this.jRadioButton9.setBorderPainted(true);
+        this.panelCrearMapa1.setCalle(calles.get(8));
+    }//GEN-LAST:event_jRadioButton9ActionPerformed
+
+    private void jRadioButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton10ActionPerformed
+        this.ocultarBordes();
+        this.jRadioButton10.setBorderPainted(true);
+        this.panelCrearMapa1.setCalle(calles.get(9));
+    }//GEN-LAST:event_jRadioButton10ActionPerformed
+
+    private void jRadioButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton11ActionPerformed
+        this.ocultarBordes();
+        this.jRadioButton11.setBorderPainted(true);
+        this.panelCrearMapa1.setCalle(calles.get(10));
+    }//GEN-LAST:event_jRadioButton11ActionPerformed
+
+    private void jRadioButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton12ActionPerformed
+        this.ocultarBordes();
+        this.jRadioButton12.setBorderPainted(true);
+        this.panelCrearMapa1.setCalle(calles.get(11));
+    }//GEN-LAST:event_jRadioButton12ActionPerformed
+
+    private void jRadioButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton13ActionPerformed
+        this.ocultarBordes();
+        this.jRadioButton13.setBorderPainted(true);
+        this.panelCrearMapa1.setCalle(calles.get(12));
+    }//GEN-LAST:event_jRadioButton13ActionPerformed
+
+    private void jRadioButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton14ActionPerformed
+        this.ocultarBordes();
+        this.jRadioButton14.setBorderPainted(true);
+        this.panelCrearMapa1.setCalle(calles.get(13));
+    }//GEN-LAST:event_jRadioButton14ActionPerformed
+
+    private void jRadioButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton15ActionPerformed
+        this.ocultarBordes();
+        this.jRadioButton15.setBorderPainted(true);
+        this.panelCrearMapa1.setCalle(calles.get(14));
+    }//GEN-LAST:event_jRadioButton15ActionPerformed
+
+    private void jRadioButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton16ActionPerformed
+        this.ocultarBordes();
+        this.jRadioButton16.setBorderPainted(true);
+        this.panelCrearMapa1.setCalle(calles.get(15));
+    }//GEN-LAST:event_jRadioButton16ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -278,11 +447,21 @@ public class FrameCrearMapa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton10;
+    private javax.swing.JRadioButton jRadioButton11;
+    private javax.swing.JRadioButton jRadioButton12;
+    private javax.swing.JRadioButton jRadioButton13;
+    private javax.swing.JRadioButton jRadioButton14;
+    private javax.swing.JRadioButton jRadioButton15;
+    private javax.swing.JRadioButton jRadioButton16;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JRadioButton jRadioButton5;
     private javax.swing.JRadioButton jRadioButton6;
+    private javax.swing.JRadioButton jRadioButton7;
+    private javax.swing.JRadioButton jRadioButton8;
+    private javax.swing.JRadioButton jRadioButton9;
     private javax.swing.JScrollPane jScrollPane3;
     private vista.PanelCrearMapa panelCrearMapa1;
     // End of variables declaration//GEN-END:variables
