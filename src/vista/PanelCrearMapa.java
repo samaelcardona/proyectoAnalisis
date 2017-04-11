@@ -27,6 +27,8 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
     PuntosLimiteCuadricula [][] matrizPuntosLimitesCuadriculaMapa=new PuntosLimiteCuadricula[20][10];
     String [][] matrizLetrasElementosInternosCuadriculaMapa=new String[20][10];
     int [][] matrizCuadriculaMapa=new int[20][10];
+    String sentidoCalle="";
+    String tipoCalle="";
     
     /**
      * Creates new form PanelCrearMapa
@@ -155,6 +157,12 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
         if (cuadroSeleccionado!=null) {
             
             if (calle!=null) {
+                FormularioParaLaTomaDeDatosSegunSamaelCardonaClavijo formularioTomaDeDatos=new FormularioParaLaTomaDeDatosSegunSamaelCardonaClavijo();
+                formularioTomaDeDatos.recibirPanel(this);
+                formularioTomaDeDatos.setVisible(true);
+                
+                System.out.println("sentido " + this.sentidoCalle);
+                
                 if (calle.getSentido()=="") {
                     if (true) {
                         matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]]="";
@@ -294,4 +302,9 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
+
+    void recibirDatosFormulario(String tipo, String sentido) {
+      this.sentidoCalle=sentido;
+      this.tipoCalle=tipo;
+    }
 }

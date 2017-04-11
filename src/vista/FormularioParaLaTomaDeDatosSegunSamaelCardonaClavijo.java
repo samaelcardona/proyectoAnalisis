@@ -11,13 +11,21 @@ public class FormularioParaLaTomaDeDatosSegunSamaelCardonaClavijo extends javax.
 
     String sentido;
     String tipo;
+    PanelCrearMapa panel=new PanelCrearMapa();
     
     
     public FormularioParaLaTomaDeDatosSegunSamaelCardonaClavijo() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-
+    
+    public void recibirPanel(PanelCrearMapa panelA){
+        
+        this.panel=panelA;
+        
+    }
+    
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -118,7 +126,8 @@ public class FormularioParaLaTomaDeDatosSegunSamaelCardonaClavijo extends javax.
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         sentido=(String)comboSentido.getSelectedItem();
         tipo=(String)comboTipo.getSelectedItem();
-        System.out.println("jajaja: "+sentido+ " - "+tipo);
+        
+         this.panel.recibirDatosFormulario(this.tipo,this.sentido);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
