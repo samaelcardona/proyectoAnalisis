@@ -129,8 +129,7 @@ public class FormularioParaLaTomaDeDatosSegunSamaelCardonaClavijo extends javax.
         sentido=(String)comboSentido.getSelectedItem();
         tipo=(String)comboTipo.getSelectedItem();
         
-        this.panel.recibirDatosFormulario(this.tipo,this.sentido);
-        this.panel.modificarCalle(this.xPosicionDelEvento,this.yPosicionDelEvento);
+        this.panel.recibirDatosFormularioYmodificarCalle(this.xPosicionDelEvento,this.yPosicionDelEvento,this.tipo,this.sentido);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

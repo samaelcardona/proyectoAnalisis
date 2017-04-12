@@ -213,22 +213,24 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
             }
         */    
               
-        frame.getjRadioButton1().setSelected(false);
-        frame.getjRadioButton10().setSelected(false);
-        frame.getjRadioButton11().setSelected(false);
-        frame.getjRadioButton12().setSelected(false);
-        frame.getjRadioButton13().setSelected(false);
-        frame.getjRadioButton14().setSelected(false);
-        frame.getjRadioButton15().setSelected(false);
-        frame.getjRadioButton16().setSelected(false);
-        frame.getjRadioButton9().setSelected(false);
-        frame.getjRadioButton8().setSelected(false);
-        frame.getjRadioButton7().setSelected(false);
-        frame.getjRadioButton6().setSelected(false);
-        frame.getjRadioButton5().setSelected(false);
-        frame.getjRadioButton4().setSelected(false);
-        frame.getjRadioButton3().setSelected(false);
-        frame.getjRadioButton2().setSelected(false);
+        if (frame!=null) {
+             frame.getjRadioButton1().setSelected(false);
+             frame.getjRadioButton10().setSelected(false);
+             frame.getjRadioButton11().setSelected(false);
+             frame.getjRadioButton12().setSelected(false);
+             frame.getjRadioButton13().setSelected(false);
+             frame.getjRadioButton14().setSelected(false);
+             frame.getjRadioButton15().setSelected(false);
+             frame.getjRadioButton16().setSelected(false);
+             frame.getjRadioButton9().setSelected(false);
+             frame.getjRadioButton8().setSelected(false);
+             frame.getjRadioButton7().setSelected(false);
+             frame.getjRadioButton6().setSelected(false);
+             frame.getjRadioButton5().setSelected(false);
+             frame.getjRadioButton4().setSelected(false);
+             frame.getjRadioButton3().setSelected(false);
+             frame.getjRadioButton2().setSelected(false);
+        }
     }
 
     @Override
@@ -308,14 +310,12 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
           return null;
     }
     
-    public void recibirDatosFormulario(String tipo, String sentido) {
-         calle.setSentido(sentido);
+    
+    
+    
+    public void recibirDatosFormularioYmodificarCalle(int x, int y,String tipo, String sentido){
+        calle.setSentido(sentido);
          calle.setTipo(tipo); 
-    }
-    
-    
-    public void modificarCalle(int x, int y){
-        
          if(!calle.getSentido().equals("")||!calle.getTipo().equals("")) { 
                     
                   
