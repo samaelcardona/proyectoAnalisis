@@ -98,13 +98,16 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1350, 700));
         setMinimumSize(new java.awt.Dimension(1350, 700));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1350, 700));
         getContentPane().setLayout(null);
 
         jButton1.setText("Guardar Nuevo Mapa");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1);
         jButton1.setBounds(1170, 490, 140, 23);
 
@@ -441,6 +444,19 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        for (int i = 0; i < calles.size(); i++) {
+            System.out.println("calle " + calles.get(i).getId());
+            System.out.println("  sentido "+ calles.get(i).getSentido());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    public void agregarCalleALaLista(Calle calle) {
+        calles.add(calle);
+    }
+    
+   
+    
     public JRadioButton getjRadioButton1() {
         return jRadioButton1;
     }
@@ -577,4 +593,6 @@ public class FrameCrearMapa extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private vista.PanelCrearMapa panelCrearMapa1;
     // End of variables declaration//GEN-END:variables
+
+    
 }
