@@ -27,8 +27,11 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
     PuntosLimiteCuadricula [][] matrizPuntosLimitesCuadriculaMapa=new PuntosLimiteCuadricula[20][10];
     String [][] matrizLetrasElementosInternosCuadriculaMapa=new String[20][10];
     int [][] matrizCuadriculaMapa=new int[20][10];
-    String sentidoCalle="";
-    String tipoCalle="";
+    private FrameCrearMapa frame;
+    int contadorDeCalles=0;
+    int contadorDeEdificios=0;
+    int contadorDeArboles=0;
+  
     
     /**
      * Creates new form PanelCrearMapa
@@ -45,6 +48,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 10; j++) {
              matrizPuntosLimitesCuadriculaMapa[i][j]=new PuntosLimiteCuadricula();
+             matrizLetrasElementosInternosCuadriculaMapa[i][j]="";
             }
         }
         
@@ -121,7 +125,9 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
     
     }
 
-    
+    public void recibirFrameCrearMapa(FrameCrearMapa frameRecibido){
+        this.frame=frameRecibido;
+    }
     
     
     @Override
@@ -149,26 +155,21 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
     
         int x=(int)e.getPoint().getX();
         int y=(int)e.getPoint().getY();
+        
         int [] cuadroSeleccionado=new int[2];
         cuadroSeleccionado=retornarPosicionCuadriculaSeleccionada(x, y);
         
         
-        
         if (cuadroSeleccionado!=null) {
-            
-            if (calle!=null) {
-                FormularioParaLaTomaDeDatosSegunSamaelCardonaClavijo formularioTomaDeDatos=new FormularioParaLaTomaDeDatosSegunSamaelCardonaClavijo();
-                formularioTomaDeDatos.recibirPanel(this);
-                formularioTomaDeDatos.setVisible(true);
-                
-                System.out.println("sentido " + this.sentidoCalle);
-                
-                if (calle.getSentido()=="") {
-                    if (true) {
-                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]]="";
-                    }
-                }
+             if (!matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].equals("")) {
+                 System.out.println("verifique posicion de calle");
             }
+            if (calle!=null&&matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].equals("")) {
+                FormularioParaLaTomaDeDatosSegunSamaelCardonaClavijo formularioTomaDeDatos=new FormularioParaLaTomaDeDatosSegunSamaelCardonaClavijo();
+                formularioTomaDeDatos.recibirPanel(this,cuadroSeleccionado[0],cuadroSeleccionado[1]);
+                formularioTomaDeDatos.setVisible(true);
+            }
+           
             if (true) {
                 
             }
@@ -176,12 +177,9 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                 
             }
         }
-        
-        
-        
-        
+
         /*
-        //ciclo para mostrar las matrices
+        //ciclo para mostrar las matrices de limites
         String cadena;
     
             System.out.println("");
@@ -197,6 +195,39 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
               System.out.println("pos x " + e.getX());
               System.out.println("pos y " + e.getY());
         */
+        
+        /*
+        //ciclo para mostrar las matrices de elementos 
+        String cadena;
+    
+            System.out.println("");
+
+            System.out.println("    0  1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18  19  20 ");
+              for (int i = 0; i < 10; i++) {
+                  cadena=i+" ";
+                for (int j = 0; j < 20; j++) {
+                   cadena=cadena+"  "+matrizLetrasElementosInternosCuadriculaMapa[j][i];
+                }
+                  System.out.println(cadena);
+            }
+        */    
+              
+        frame.getjRadioButton1().setSelected(false);
+        frame.getjRadioButton10().setSelected(false);
+        frame.getjRadioButton11().setSelected(false);
+        frame.getjRadioButton12().setSelected(false);
+        frame.getjRadioButton13().setSelected(false);
+        frame.getjRadioButton14().setSelected(false);
+        frame.getjRadioButton15().setSelected(false);
+        frame.getjRadioButton16().setSelected(false);
+        frame.getjRadioButton9().setSelected(false);
+        frame.getjRadioButton8().setSelected(false);
+        frame.getjRadioButton7().setSelected(false);
+        frame.getjRadioButton6().setSelected(false);
+        frame.getjRadioButton5().setSelected(false);
+        frame.getjRadioButton4().setSelected(false);
+        frame.getjRadioButton3().setSelected(false);
+        frame.getjRadioButton2().setSelected(false);
     }
 
     @Override
@@ -276,6 +307,63 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
           return null;
     }
     
+    public void recibirDatosFormulario(String tipo, String sentido) {
+         calle.setSentido(sentido);
+         calle.setTipo(tipo); 
+    }
+    
+    
+    public void modificarCalle(int x, int y){
+        
+         if(!calle.getSentido().equals("")||!calle.getTipo().equals("")) { 
+                    
+                  
+                    
+                    if ("Urbana".equals(calle.getTipo())) {
+                        calle.setVelocidad(60);
+                        if ("Derecha".equals(calle.getSentido())) {
+                            calle.setId(contadorDeCalles);
+                            matrizLetrasElementosInternosCuadriculaMapa[x][y]="r";
+                            contadorDeCalles++;
+                        }
+                        if ("Izquierda".equals(calle.getSentido())) {
+                            calle.setId(contadorDeCalles);
+                            matrizLetrasElementosInternosCuadriculaMapa[x][y]="l";
+                            contadorDeCalles++;
+                        }
+                        if ("Doble sentido".equals(calle.getSentido())) {
+                            calle.setId(contadorDeCalles);
+                            matrizLetrasElementosInternosCuadriculaMapa[x][y]="h";
+                            contadorDeCalles++;
+                        }
+                    }
+                    
+                    if ("Carretera".equals(calle.getTipo())) {
+                        calle.setVelocidad(100);
+                        if ("Derecha".equals(calle.getSentido())) {
+                            calle.setId(contadorDeCalles);
+                            matrizLetrasElementosInternosCuadriculaMapa[x][y]="R";
+                            contadorDeCalles++;
+                        }
+                        if ("Izquierda".equals(calle.getSentido())) {
+                            calle.setId(contadorDeCalles);
+                            matrizLetrasElementosInternosCuadriculaMapa[x][y]="L";
+                            contadorDeCalles++;
+                        }
+                        if ("Doble sentido".equals(calle.getSentido())) {
+                            calle.setId(contadorDeCalles);
+                            matrizLetrasElementosInternosCuadriculaMapa[x][y]="H";
+                            contadorDeCalles++;
+                        }
+                    }
+                    
+                }
+         calle=null;
+    }
+    
+    
+    
+    
     public int getX() {
         return x;
     }
@@ -303,8 +391,5 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 
-    void recibirDatosFormulario(String tipo, String sentido) {
-      this.sentidoCalle=sentido;
-      this.tipoCalle=tipo;
-    }
+   
 }

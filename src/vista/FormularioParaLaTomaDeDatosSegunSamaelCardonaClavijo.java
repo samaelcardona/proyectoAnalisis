@@ -12,6 +12,8 @@ public class FormularioParaLaTomaDeDatosSegunSamaelCardonaClavijo extends javax.
     String sentido;
     String tipo;
     PanelCrearMapa panel=new PanelCrearMapa();
+    int xPosicionDelEvento=0;
+    int yPosicionDelEvento=0;
     
     
     public FormularioParaLaTomaDeDatosSegunSamaelCardonaClavijo() {
@@ -19,10 +21,10 @@ public class FormularioParaLaTomaDeDatosSegunSamaelCardonaClavijo extends javax.
         this.setLocationRelativeTo(null);
     }
     
-    public void recibirPanel(PanelCrearMapa panelA){
-        
+    public void recibirPanel(PanelCrearMapa panelA,int x,int y){
         this.panel=panelA;
-        
+        this.xPosicionDelEvento=x;
+        this.yPosicionDelEvento=y;
     }
     
    
@@ -127,7 +129,8 @@ public class FormularioParaLaTomaDeDatosSegunSamaelCardonaClavijo extends javax.
         sentido=(String)comboSentido.getSelectedItem();
         tipo=(String)comboTipo.getSelectedItem();
         
-         this.panel.recibirDatosFormulario(this.tipo,this.sentido);
+        this.panel.recibirDatosFormulario(this.tipo,this.sentido);
+        this.panel.modificarCalle(this.xPosicionDelEvento,this.yPosicionDelEvento);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
