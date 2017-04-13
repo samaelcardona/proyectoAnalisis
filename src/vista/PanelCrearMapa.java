@@ -12,6 +12,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import modelo.Arbol;
 import modelo.Calle;
 import modelo.PuntosLimiteCuadricula;
 
@@ -24,6 +25,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
      int x=20;
     int y=10;
     Calle calle;
+    Arbol arbol;
     PuntosLimiteCuadricula [][] matrizPuntosLimitesCuadriculaMapa=new PuntosLimiteCuadricula[20][10];
     String [][] matrizLetrasElementosInternosCuadriculaMapa=new String[20][10];
     //Matriz para agregar los Id de cada calle de la cuadricula
@@ -123,6 +125,11 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
             g.setColor(Color.white);
             g.drawRect(calle.getX(), calle.getY(), calle.getAncho(), calle.getAlto());
         }
+        if (arbol != null) {
+            g.drawImage(arbol.getImagen().getImage(), arbol.getX(), arbol.getY(), arbol.getAncho(), arbol.getAlto(), this);
+            g.setColor(Color.white);
+            g.drawRect(arbol.getX(), arbol.getY(), arbol.getAncho(), arbol.getAlto());
+        }
         
         /// solo para las calles pero luego se modifica para los edificios tomando la matriz de elementos (String) 
         //y graficando toca que crear una matriz de edificios y los arboles si normal 
@@ -156,6 +163,11 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
         if (calle != null) {
             calle.setX(e.getX()-23);
             calle.setY(e.getY()-23);
+            repaint();
+        }
+         if (arbol != null) {
+            arbol.setX(e.getX()-23);
+            arbol.setY(e.getY()-23);
             repaint();
         }
         
@@ -204,15 +216,26 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                     
                     
                 }
-                if (this.orientacion=="interseccion") {
+                if (this.orientacion=="interseccionArribaDerecha"||this.orientacion=="interseccionAbajoDerecha"||this.orientacion=="interseccionAbajoIzquierda"||this.orientacion=="interseccionAbajoIzquierda") {
                     formularioTomaDeDatos.recibirPanel(this,cuadroSeleccionado[0],cuadroSeleccionado[1]);
                     formularioTomaDeDatos.setVisible(true);
                 }
                
             } 
            
-            if (true) {
-                
+            if (arbol!=null&&matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].equals("")) {
+                if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("r")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("R")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("l")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("L")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("h")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("H")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("xDR")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("XDR")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("xDL")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("XDL")) {
+                    /// llamo metodo para graficar arbol
+                }
+                if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("r")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("R")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("l")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("L")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("h")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("H")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("xUR")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("XUR")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("xUL")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("XUL")) {
+                    ///llamo metodo para graficar arbol
+                }
+                if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("t")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("T")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("d")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("D")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("v")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("V")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("xUR")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("XUR")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("xDR")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("XDR")) {
+                    ///llamo metodo para graficar arbol
+                }
+                if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("t")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("T")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("d")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("D")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("v")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("V")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("xUL")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("XUL")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("xDL")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("XDL")) {
+                    ///llamo metodo para graficar arbol
+                }
             }
             if (true) {
                 
@@ -375,6 +398,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
         calle.setTipo(tipo); 
         calle.setX((int)matrizPuntosLimitesCuadriculaMapa[x][y].getX1());
         calle.setY((int)matrizPuntosLimitesCuadriculaMapa[x][y].getY1());
+        
         if(!calle.getSentido().equals("")||!calle.getTipo().equals("")) { 
 
             //agregar validaciones para que solo pueda agregar al lado una calle que si funcione
@@ -483,11 +507,11 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                  }
 
             }
-            if (this.orientacion=="interseccion") {
+            if (this.orientacion=="interseccionArribaDerecha") {
                 if ("Urbana".equals(calle.getTipo())) {
                     calle.setVelocidad(60);
                     calle.setId(contadorDeCalles);
-                    matrizLetrasElementosInternosCuadriculaMapa[x][y]="x";
+                    matrizLetrasElementosInternosCuadriculaMapa[x][y]="xUR";
                     matrizCuadriculaMapa[x][y]=calle.getId();
                     frame.agregarCalleALaLista(calle);
                     contadorDeCalles++;
@@ -495,7 +519,61 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                if ("Carretera".equals(calle.getTipo())) {
                     calle.setVelocidad(100);
                     calle.setId(contadorDeCalles);
-                    matrizLetrasElementosInternosCuadriculaMapa[x][y]="X";
+                    matrizLetrasElementosInternosCuadriculaMapa[x][y]="XUR";
+                    matrizCuadriculaMapa[x][y]=calle.getId();
+                    frame.agregarCalleALaLista(calle);
+                    contadorDeCalles++;
+                }
+            }
+            if (this.orientacion=="interseccionAbajoDerecha") {
+                if ("Urbana".equals(calle.getTipo())) {
+                    calle.setVelocidad(60);
+                    calle.setId(contadorDeCalles);
+                    matrizLetrasElementosInternosCuadriculaMapa[x][y]="xDR";
+                    matrizCuadriculaMapa[x][y]=calle.getId();
+                    frame.agregarCalleALaLista(calle);
+                    contadorDeCalles++;
+                }
+               if ("Carretera".equals(calle.getTipo())) {
+                    calle.setVelocidad(100);
+                    calle.setId(contadorDeCalles);
+                    matrizLetrasElementosInternosCuadriculaMapa[x][y]="XDR";
+                    matrizCuadriculaMapa[x][y]=calle.getId();
+                    frame.agregarCalleALaLista(calle);
+                    contadorDeCalles++;
+                }
+            }
+               if(this.orientacion=="interseccionArribaIzquierda") {
+                if ("Urbana".equals(calle.getTipo())) {
+                    calle.setVelocidad(60);
+                    calle.setId(contadorDeCalles);
+                    matrizLetrasElementosInternosCuadriculaMapa[x][y]="xUL";
+                    matrizCuadriculaMapa[x][y]=calle.getId();
+                    frame.agregarCalleALaLista(calle);
+                    contadorDeCalles++;
+                }
+               if ("Carretera".equals(calle.getTipo())) {
+                    calle.setVelocidad(100);
+                    calle.setId(contadorDeCalles);
+                    matrizLetrasElementosInternosCuadriculaMapa[x][y]="XUL";
+                    matrizCuadriculaMapa[x][y]=calle.getId();
+                    frame.agregarCalleALaLista(calle);
+                    contadorDeCalles++;
+                }
+            }
+            if (this.orientacion=="interseccionAbajoIzquierda") {
+                if ("Urbana".equals(calle.getTipo())) {
+                    calle.setVelocidad(60);
+                    calle.setId(contadorDeCalles);
+                    matrizLetrasElementosInternosCuadriculaMapa[x][y]="xDL";
+                    matrizCuadriculaMapa[x][y]=calle.getId();
+                    frame.agregarCalleALaLista(calle);
+                    contadorDeCalles++;
+                }
+               if ("Carretera".equals(calle.getTipo())) {
+                    calle.setVelocidad(100);
+                    calle.setId(contadorDeCalles);
+                    matrizLetrasElementosInternosCuadriculaMapa[x][y]="XDL";
                     matrizCuadriculaMapa[x][y]=calle.getId();
                     frame.agregarCalleALaLista(calle);
                     contadorDeCalles++;
@@ -520,8 +598,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                 }
             }
             
-         }
-                    
+         }         
          calle=null;
     }
     
@@ -552,6 +629,15 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
         this.calle = calle;
         this.orientacion=orientacion;
     }
+
+    public Arbol getArbol() {
+        return arbol;
+    }
+
+    public void setArbol(Arbol arbol) {
+        this.arbol = arbol;
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
