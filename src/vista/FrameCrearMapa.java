@@ -45,6 +45,10 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.botones.add(jRadioButton14);
         this.botones.add(jRadioButton15);
         this.botones.add(jRadioButton16);
+        this.botones.add(jRadioButton17);
+        this.botones.add(jRadioButton18);
+        this.botones.add(jRadioButton19);
+        this.botones.add(jRadioButton20);
         
         ///cambio para no crear de una vez cada boton
         listaImagenesParaSeleccionar=new ImageIcon[botones.size()];
@@ -95,13 +99,15 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         jRadioButton14 = new javax.swing.JRadioButton();
         jRadioButton15 = new javax.swing.JRadioButton();
         jRadioButton16 = new javax.swing.JRadioButton();
+        jRadioButton17 = new javax.swing.JRadioButton();
+        jRadioButton18 = new javax.swing.JRadioButton();
+        jRadioButton19 = new javax.swing.JRadioButton();
+        jRadioButton20 = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1350, 700));
         setMinimumSize(new java.awt.Dimension(1350, 700));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1350, 700));
         getContentPane().setLayout(null);
 
         jButton1.setText("Guardar Nuevo Mapa");
@@ -234,6 +240,30 @@ public class FrameCrearMapa extends javax.swing.JFrame {
             }
         });
 
+        jRadioButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton17ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton18ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton19ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton20ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -256,7 +286,11 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                     .addComponent(jRadioButton13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jRadioButton14)
                     .addComponent(jRadioButton15)
-                    .addComponent(jRadioButton16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jRadioButton16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jRadioButton17)
+                    .addComponent(jRadioButton18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jRadioButton19)
+                    .addComponent(jRadioButton20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(145, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -294,6 +328,14 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                 .addComponent(jRadioButton16)
                 .addGap(3, 3, 3)
                 .addComponent(jRadioButton15)
+                .addGap(0, 0, 0)
+                .addComponent(jRadioButton20)
+                .addGap(3, 3, 3)
+                .addComponent(jRadioButton19)
+                .addGap(0, 0, 0)
+                .addComponent(jRadioButton18)
+                .addGap(3, 3, 3)
+                .addComponent(jRadioButton17)
                 .addContainerGap(405, Short.MAX_VALUE))
         );
 
@@ -370,7 +412,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.jRadioButton8.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         ///arbol
-        this.panelCrearMapa1.setCalle(null);
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[7].getIconWidth(),listaImagenesParaSeleccionar[7].getIconHeight(),listaImagenesParaSeleccionar[7], "", "", 0, true));
     }//GEN-LAST:event_jRadioButton8ActionPerformed
 
     private void jRadioButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton9ActionPerformed
@@ -378,7 +420,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.jRadioButton9.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //arbol
-        this.panelCrearMapa1.setCalle(null);
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[8].getIconWidth(),listaImagenesParaSeleccionar[8].getIconHeight(),listaImagenesParaSeleccionar[8], "", "", 0, true));
     }//GEN-LAST:event_jRadioButton9ActionPerformed
 
     private void jRadioButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton10ActionPerformed
@@ -386,7 +428,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.jRadioButton10.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //arbol
-       this.panelCrearMapa1.setCalle(null);
+       this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[9].getIconWidth(),listaImagenesParaSeleccionar[9].getIconHeight(),listaImagenesParaSeleccionar[9], "", "", 0, true));
     }//GEN-LAST:event_jRadioButton10ActionPerformed
 
     private void jRadioButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton11ActionPerformed
@@ -394,7 +436,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.jRadioButton11.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //edificio
-        this.panelCrearMapa1.setCalle(null);
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[10].getIconWidth(),listaImagenesParaSeleccionar[10].getIconHeight(),listaImagenesParaSeleccionar[10], "", "", 0, true));
     }//GEN-LAST:event_jRadioButton11ActionPerformed
 
     private void jRadioButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton12ActionPerformed
@@ -402,7 +444,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.jRadioButton12.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //edificio
-        this.panelCrearMapa1.setCalle(null);
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[11].getIconWidth(),listaImagenesParaSeleccionar[11].getIconHeight(),listaImagenesParaSeleccionar[11], "", "", 0, true));
     }//GEN-LAST:event_jRadioButton12ActionPerformed
 
     private void jRadioButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton13ActionPerformed
@@ -410,7 +452,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.jRadioButton13.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //edificio
-        this.panelCrearMapa1.setCalle(null);
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[12].getIconWidth(),listaImagenesParaSeleccionar[12].getIconHeight(),listaImagenesParaSeleccionar[12], "", "", 0, true));
     }//GEN-LAST:event_jRadioButton13ActionPerformed
 
     private void jRadioButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton14ActionPerformed
@@ -418,7 +460,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.jRadioButton14.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //edificio
-        this.panelCrearMapa1.setCalle(null);
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[13].getIconWidth(),listaImagenesParaSeleccionar[13].getIconHeight(),listaImagenesParaSeleccionar[13], "", "", 0, true));
     }//GEN-LAST:event_jRadioButton14ActionPerformed
 
     private void jRadioButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton15ActionPerformed
@@ -426,7 +468,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.jRadioButton15.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //edificio
-        this.panelCrearMapa1.setCalle(null);
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[14].getIconWidth(),listaImagenesParaSeleccionar[14].getIconHeight(),listaImagenesParaSeleccionar[14], "", "", 0, true));
     }//GEN-LAST:event_jRadioButton15ActionPerformed
 
     private void jRadioButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton16ActionPerformed
@@ -434,12 +476,40 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.jRadioButton16.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //edificio
-        this.panelCrearMapa1.setCalle(null);
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[15].getIconWidth(),listaImagenesParaSeleccionar[15].getIconHeight(),listaImagenesParaSeleccionar[15], "", "", 0, true));
     }//GEN-LAST:event_jRadioButton16ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jRadioButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton17ActionPerformed
+        this.ocultarBordes();
+        this.jRadioButton17.setBorderPainted(true);
+        this.panelCrearMapa1.recibirFrameCrearMapa(this);        
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[16].getIconWidth(),listaImagenesParaSeleccionar[16].getIconHeight(),listaImagenesParaSeleccionar[16], "", "", 0, true));
+    }//GEN-LAST:event_jRadioButton17ActionPerformed
+
+    private void jRadioButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton18ActionPerformed
+        this.ocultarBordes();
+        this.jRadioButton17.setBorderPainted(true);
+        this.panelCrearMapa1.recibirFrameCrearMapa(this);        
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[17].getIconWidth(),listaImagenesParaSeleccionar[17].getIconHeight(),listaImagenesParaSeleccionar[17], "", "", 0, true));
+    }//GEN-LAST:event_jRadioButton18ActionPerformed
+
+    private void jRadioButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton19ActionPerformed
+        this.ocultarBordes();
+        this.jRadioButton19.setBorderPainted(true);
+        this.panelCrearMapa1.recibirFrameCrearMapa(this);        
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[18].getIconWidth(),listaImagenesParaSeleccionar[18].getIconHeight(),listaImagenesParaSeleccionar[18], "", "", 0, true));
+    }//GEN-LAST:event_jRadioButton19ActionPerformed
+
+    private void jRadioButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton20ActionPerformed
+        this.ocultarBordes();
+        this.jRadioButton20.setBorderPainted(true);
+        this.panelCrearMapa1.recibirFrameCrearMapa(this);        
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[19].getIconWidth(),listaImagenesParaSeleccionar[19].getIconHeight(),listaImagenesParaSeleccionar[19], "", "", 0, true));
+    }//GEN-LAST:event_jRadioButton20ActionPerformed
 
     public JRadioButton getjRadioButton1() {
         return jRadioButton1;
@@ -566,7 +636,11 @@ public class FrameCrearMapa extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton14;
     private javax.swing.JRadioButton jRadioButton15;
     private javax.swing.JRadioButton jRadioButton16;
+    private javax.swing.JRadioButton jRadioButton17;
+    private javax.swing.JRadioButton jRadioButton18;
+    private javax.swing.JRadioButton jRadioButton19;
     private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButton20;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JRadioButton jRadioButton5;

@@ -108,7 +108,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jRadioButton1" alignment="0" max="32767" attributes="0"/>
@@ -127,6 +127,10 @@
                           <Component id="jRadioButton14" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jRadioButton15" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jRadioButton16" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jRadioButton17" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jRadioButton18" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jRadioButton19" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jRadioButton20" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="145" max="32767" attributes="0"/>
                   </Group>
@@ -167,6 +171,14 @@
                       <Component id="jRadioButton16" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
                       <Component id="jRadioButton15" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                      <Component id="jRadioButton20" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
+                      <Component id="jRadioButton19" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                      <Component id="jRadioButton18" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
+                      <Component id="jRadioButton17" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="405" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -251,6 +263,26 @@
             <Component class="javax.swing.JRadioButton" name="jRadioButton16">
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton16ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="jRadioButton17">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton17ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="jRadioButton18">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton18ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="jRadioButton19">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton19ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="jRadioButton20">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton20ActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
