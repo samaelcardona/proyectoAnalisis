@@ -5,6 +5,9 @@
  */
 package vista;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+
 
 public class FormularioParaLaTomaDeDatosSegunSamaelCardonaClavijo extends javax.swing.JFrame {
 
@@ -133,6 +136,21 @@ public class FormularioParaLaTomaDeDatosSegunSamaelCardonaClavijo extends javax.
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public JComboBox getComboSentido() {
+        return comboSentido;
+    }
+
+    public JButton getjButton1() {
+        return jButton1;
+    }
+
+    public JComboBox getComboTipo() {
+        return comboTipo;
+    }
+
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -168,7 +186,7 @@ public class FormularioParaLaTomaDeDatosSegunSamaelCardonaClavijo extends javax.
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox comboSentido;
     private javax.swing.JComboBox comboTipo;
