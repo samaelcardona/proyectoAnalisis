@@ -26,6 +26,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
     Calle calle;
     PuntosLimiteCuadricula [][] matrizPuntosLimitesCuadriculaMapa=new PuntosLimiteCuadricula[20][10];
     String [][] matrizLetrasElementosInternosCuadriculaMapa=new String[20][10];
+    //Matriz para agregar los Id de cada calle de la cuadricula
     int [][] matrizCuadriculaMapa=new int[20][10];
     private FrameCrearMapa frame;
     int contadorDeCalles=0;
@@ -324,16 +325,22 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                         if ("Derecha".equals(calle.getSentido())) {
                             calle.setId(contadorDeCalles);
                             matrizLetrasElementosInternosCuadriculaMapa[x][y]="r";
+                            matrizCuadriculaMapa[x][y]=calle.getId();
+                            frame.agregarCalleALaLista(calle);
                             contadorDeCalles++;
                         }
                         if ("Izquierda".equals(calle.getSentido())) {
                             calle.setId(contadorDeCalles);
                             matrizLetrasElementosInternosCuadriculaMapa[x][y]="l";
+                            matrizCuadriculaMapa[x][y]=calle.getId();
+                            frame.agregarCalleALaLista(calle);
                             contadorDeCalles++;
                         }
                         if ("Doble sentido".equals(calle.getSentido())) {
                             calle.setId(contadorDeCalles);
                             matrizLetrasElementosInternosCuadriculaMapa[x][y]="h";
+                            matrizCuadriculaMapa[x][y]=calle.getId();
+                            frame.agregarCalleALaLista(calle);
                             contadorDeCalles++;
                         }
                     }
@@ -343,16 +350,22 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                         if ("Derecha".equals(calle.getSentido())) {
                             calle.setId(contadorDeCalles);
                             matrizLetrasElementosInternosCuadriculaMapa[x][y]="R";
+                            matrizCuadriculaMapa[x][y]=calle.getId();
+                            frame.agregarCalleALaLista(calle);
                             contadorDeCalles++;
                         }
                         if ("Izquierda".equals(calle.getSentido())) {
                             calle.setId(contadorDeCalles);
                             matrizLetrasElementosInternosCuadriculaMapa[x][y]="L";
+                            matrizCuadriculaMapa[x][y]=calle.getId();
+                            frame.agregarCalleALaLista(calle);
                             contadorDeCalles++;
                         }
                         if ("Doble sentido".equals(calle.getSentido())) {
                             calle.setId(contadorDeCalles);
                             matrizLetrasElementosInternosCuadriculaMapa[x][y]="H";
+                            matrizCuadriculaMapa[x][y]=calle.getId();
+                            frame.agregarCalleALaLista(calle);
                             contadorDeCalles++;
                         }
                     }
