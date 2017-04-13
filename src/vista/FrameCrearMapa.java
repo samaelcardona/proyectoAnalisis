@@ -592,7 +592,22 @@ public class FrameCrearMapa extends javax.swing.JFrame {
     public JRadioButton getjRadioButton9() {
         return jRadioButton9;
     }
+    
+     public javax.swing.JRadioButton getjRadioButton17() {
+        return jRadioButton17;
+    }
 
+    public javax.swing.JRadioButton getjRadioButton18() {
+        return jRadioButton18;
+    }
+
+    public javax.swing.JRadioButton getjRadioButton19() {
+        return jRadioButton19;
+    }
+
+    public javax.swing.JRadioButton getjRadioButton20() {
+        return jRadioButton20;
+    }
     
     /**
      * @param args the command line arguments
@@ -670,5 +685,6 @@ public class FrameCrearMapa extends javax.swing.JFrame {
     private vista.PanelCrearMapa panelCrearMapa1;
     // End of variables declaration//GEN-END:variables
 
+   
     
 }
