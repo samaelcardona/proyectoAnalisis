@@ -32,6 +32,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
     int contadorDeCalles=0;
     int contadorDeEdificios=0;
     int contadorDeArboles=0;
+    String orientacion="";
   
     
     /**
@@ -167,9 +168,37 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
             }
             if (calle!=null&&matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].equals("")) {
                 FormularioParaLaTomaDeDatosSegunSamaelCardonaClavijo formularioTomaDeDatos=new FormularioParaLaTomaDeDatosSegunSamaelCardonaClavijo();
-                formularioTomaDeDatos.recibirPanel(this,cuadroSeleccionado[0],cuadroSeleccionado[1]);
-                formularioTomaDeDatos.setVisible(true);
-            }
+               
+                if (this.orientacion=="horizontal") {
+                     formularioTomaDeDatos.recibirPanel(this,cuadroSeleccionado[0],cuadroSeleccionado[1]);
+                     formularioTomaDeDatos.setVisible(true);
+                }
+                if (this.orientacion=="vertical") {
+                    
+                    formularioTomaDeDatos.getComboSentido().removeAllItems();
+                    formularioTomaDeDatos.getComboSentido().addItem("Arriba");
+                    formularioTomaDeDatos.getComboSentido().addItem("Abajo");
+                    formularioTomaDeDatos.getComboSentido().addItem("Doble sentido");
+                    
+                    formularioTomaDeDatos.recibirPanel(this,cuadroSeleccionado[0],cuadroSeleccionado[1]);
+                    formularioTomaDeDatos.setVisible(true);
+                }
+                if (this.orientacion=="interseccionCruzada") {
+                    formularioTomaDeDatos.getComboSentido().removeAllItems();
+                    formularioTomaDeDatos.getComboSentido().addItem("Doble sentido");
+                    formularioTomaDeDatos.recibirPanel(this,cuadroSeleccionado[0],cuadroSeleccionado[1]);
+                    formularioTomaDeDatos.getComboTipo().removeAllItems();
+                    formularioTomaDeDatos.getComboTipo().addItem("Urbana");
+                    formularioTomaDeDatos.getjButton1().doClick();
+                    
+                    
+                }
+                if (this.orientacion=="interseccion") {
+                    formularioTomaDeDatos.recibirPanel(this,cuadroSeleccionado[0],cuadroSeleccionado[1]);
+                    formularioTomaDeDatos.setVisible(true);
+                }
+               
+            } 
            
             if (true) {
                 
@@ -315,62 +344,153 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
     
     public void recibirDatosFormularioYmodificarCalle(int x, int y,String tipo, String sentido){
         calle.setSentido(sentido);
-         calle.setTipo(tipo); 
-         if(!calle.getSentido().equals("")||!calle.getTipo().equals("")) { 
-                    
-                  
-                    
+        calle.setTipo(tipo); 
+        if(!calle.getSentido().equals("")||!calle.getTipo().equals("")) { 
+
+            if (this.orientacion=="horizontal") {
                     if ("Urbana".equals(calle.getTipo())) {
-                        calle.setVelocidad(60);
-                        if ("Derecha".equals(calle.getSentido())) {
-                            calle.setId(contadorDeCalles);
-                            matrizLetrasElementosInternosCuadriculaMapa[x][y]="r";
-                            matrizCuadriculaMapa[x][y]=calle.getId();
-                            frame.agregarCalleALaLista(calle);
-                            contadorDeCalles++;
-                        }
-                        if ("Izquierda".equals(calle.getSentido())) {
-                            calle.setId(contadorDeCalles);
-                            matrizLetrasElementosInternosCuadriculaMapa[x][y]="l";
-                            matrizCuadriculaMapa[x][y]=calle.getId();
-                            frame.agregarCalleALaLista(calle);
-                            contadorDeCalles++;
-                        }
-                        if ("Doble sentido".equals(calle.getSentido())) {
-                            calle.setId(contadorDeCalles);
-                            matrizLetrasElementosInternosCuadriculaMapa[x][y]="h";
-                            matrizCuadriculaMapa[x][y]=calle.getId();
-                            frame.agregarCalleALaLista(calle);
-                            contadorDeCalles++;
-                        }
-                    }
-                    
-                    if ("Carretera".equals(calle.getTipo())) {
-                        calle.setVelocidad(100);
-                        if ("Derecha".equals(calle.getSentido())) {
-                            calle.setId(contadorDeCalles);
-                            matrizLetrasElementosInternosCuadriculaMapa[x][y]="R";
-                            matrizCuadriculaMapa[x][y]=calle.getId();
-                            frame.agregarCalleALaLista(calle);
-                            contadorDeCalles++;
-                        }
-                        if ("Izquierda".equals(calle.getSentido())) {
-                            calle.setId(contadorDeCalles);
-                            matrizLetrasElementosInternosCuadriculaMapa[x][y]="L";
-                            matrizCuadriculaMapa[x][y]=calle.getId();
-                            frame.agregarCalleALaLista(calle);
-                            contadorDeCalles++;
-                        }
-                        if ("Doble sentido".equals(calle.getSentido())) {
-                            calle.setId(contadorDeCalles);
-                            matrizLetrasElementosInternosCuadriculaMapa[x][y]="H";
-                            matrizCuadriculaMapa[x][y]=calle.getId();
-                            frame.agregarCalleALaLista(calle);
-                            contadorDeCalles++;
-                        }
-                    }
-                    
+                     calle.setVelocidad(60);
+                     if ("Derecha".equals(calle.getSentido())) {
+                         calle.setId(contadorDeCalles);
+                         matrizLetrasElementosInternosCuadriculaMapa[x][y]="r";
+                         matrizCuadriculaMapa[x][y]=calle.getId();
+                         frame.agregarCalleALaLista(calle);
+                         contadorDeCalles++;
+                     }
+                     if ("Izquierda".equals(calle.getSentido())) {
+                         calle.setId(contadorDeCalles);
+                         matrizLetrasElementosInternosCuadriculaMapa[x][y]="l";
+                         matrizCuadriculaMapa[x][y]=calle.getId();
+                         frame.agregarCalleALaLista(calle);
+                         contadorDeCalles++;
+                     }
+                     if ("Doble sentido".equals(calle.getSentido())) {
+                         calle.setId(contadorDeCalles);
+                         matrizLetrasElementosInternosCuadriculaMapa[x][y]="h";
+                         matrizCuadriculaMapa[x][y]=calle.getId();
+                         frame.agregarCalleALaLista(calle);
+                         contadorDeCalles++;
+                     }
+                 }
+
+                 if ("Carretera".equals(calle.getTipo())) {
+                     calle.setVelocidad(100);
+                     if ("Derecha".equals(calle.getSentido())) {
+                         calle.setId(contadorDeCalles);
+                         matrizLetrasElementosInternosCuadriculaMapa[x][y]="R";
+                         matrizCuadriculaMapa[x][y]=calle.getId();
+                         frame.agregarCalleALaLista(calle);
+                         contadorDeCalles++;
+                     }
+                     if ("Izquierda".equals(calle.getSentido())) {
+                         calle.setId(contadorDeCalles);
+                         matrizLetrasElementosInternosCuadriculaMapa[x][y]="L";
+                         matrizCuadriculaMapa[x][y]=calle.getId();
+                         frame.agregarCalleALaLista(calle);
+                         contadorDeCalles++;
+                     }
+                     if ("Doble sentido".equals(calle.getSentido())) {
+                         calle.setId(contadorDeCalles);
+                         matrizLetrasElementosInternosCuadriculaMapa[x][y]="H";
+                         matrizCuadriculaMapa[x][y]=calle.getId();
+                         frame.agregarCalleALaLista(calle);
+                         contadorDeCalles++;
+                     }
+                 }
+
+            }
+            
+            if (this.orientacion=="vertical") {
+                    if ("Urbana".equals(calle.getTipo())) {
+                     calle.setVelocidad(60);
+                     if ("Arriba".equals(calle.getSentido())) {
+                         calle.setId(contadorDeCalles);
+                         matrizLetrasElementosInternosCuadriculaMapa[x][y]="t";
+                         matrizCuadriculaMapa[x][y]=calle.getId();
+                         frame.agregarCalleALaLista(calle);
+                         contadorDeCalles++;
+                     }
+                     if ("Abajo".equals(calle.getSentido())) {
+                         calle.setId(contadorDeCalles);
+                         matrizLetrasElementosInternosCuadriculaMapa[x][y]="d";
+                         matrizCuadriculaMapa[x][y]=calle.getId();
+                         frame.agregarCalleALaLista(calle);
+                         contadorDeCalles++;
+                     }
+                     if ("Doble sentido".equals(calle.getSentido())) {
+                         calle.setId(contadorDeCalles);
+                         matrizLetrasElementosInternosCuadriculaMapa[x][y]="v";
+                         matrizCuadriculaMapa[x][y]=calle.getId();
+                         frame.agregarCalleALaLista(calle);
+                         contadorDeCalles++;
+                     }
+                 }
+
+                 if ("Carretera".equals(calle.getTipo())) {
+                     calle.setVelocidad(100);
+                     if ("Arriba".equals(calle.getSentido())) {
+                         calle.setId(contadorDeCalles);
+                         matrizLetrasElementosInternosCuadriculaMapa[x][y]="T";
+                         matrizCuadriculaMapa[x][y]=calle.getId();
+                         frame.agregarCalleALaLista(calle);
+                         contadorDeCalles++;
+                     }
+                     if ("Abajo".equals(calle.getSentido())) {
+                         calle.setId(contadorDeCalles);
+                         matrizLetrasElementosInternosCuadriculaMapa[x][y]="D";
+                         matrizCuadriculaMapa[x][y]=calle.getId();
+                         frame.agregarCalleALaLista(calle);
+                         contadorDeCalles++;
+                     }
+                     if ("Doble sentido".equals(calle.getSentido())) {
+                         calle.setId(contadorDeCalles);
+                         matrizLetrasElementosInternosCuadriculaMapa[x][y]="V";
+                         matrizCuadriculaMapa[x][y]=calle.getId();
+                         frame.agregarCalleALaLista(calle);
+                         contadorDeCalles++;
+                     }
+                 }
+
+            }
+            if (this.orientacion=="interseccion") {
+                if ("Urbana".equals(calle.getTipo())) {
+                    calle.setVelocidad(60);
+                    calle.setId(contadorDeCalles);
+                    matrizLetrasElementosInternosCuadriculaMapa[x][y]="x";
+                    matrizCuadriculaMapa[x][y]=calle.getId();
+                    frame.agregarCalleALaLista(calle);
+                    contadorDeCalles++;
                 }
+               if ("Carretera".equals(calle.getTipo())) {
+                    calle.setVelocidad(100);
+                    calle.setId(contadorDeCalles);
+                    matrizLetrasElementosInternosCuadriculaMapa[x][y]="X";
+                    matrizCuadriculaMapa[x][y]=calle.getId();
+                    frame.agregarCalleALaLista(calle);
+                    contadorDeCalles++;
+                }
+            }
+            if (this.orientacion=="interseccionCruzada") {
+                 if ("Urbana".equals(calle.getTipo())) {
+                    calle.setVelocidad(60);
+                    calle.setId(contadorDeCalles);
+                    matrizLetrasElementosInternosCuadriculaMapa[x][y]="xx";
+                    matrizCuadriculaMapa[x][y]=calle.getId();
+                    frame.agregarCalleALaLista(calle);
+                    contadorDeCalles++;
+                }
+               if ("Carretera".equals(calle.getTipo())) {
+                    calle.setVelocidad(100);
+                    calle.setId(contadorDeCalles);
+                    matrizLetrasElementosInternosCuadriculaMapa[x][y]="XX";
+                    matrizCuadriculaMapa[x][y]=calle.getId();
+                    frame.agregarCalleALaLista(calle);
+                    contadorDeCalles++;
+                }
+            }
+            
+         }
+                    
          calle=null;
     }
     
@@ -397,8 +517,9 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
         this.y = y;
     }
 
-    public void setCalle(Calle calle) {
+    public void setCalle(Calle calle,String orientacion) {
         this.calle = calle;
+        this.orientacion=orientacion;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
