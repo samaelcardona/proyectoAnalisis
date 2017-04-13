@@ -51,6 +51,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
             for (int j = 0; j < 10; j++) {
              matrizPuntosLimitesCuadriculaMapa[i][j]=new PuntosLimiteCuadricula();
              matrizLetrasElementosInternosCuadriculaMapa[i][j]="";
+             matrizCuadriculaMapa[i][j]=-1;
             }
         }
         
@@ -121,6 +122,16 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
             g.drawImage(calle.getImagen().getImage(), calle.getX(), calle.getY(), calle.getAncho(), calle.getAlto(), this);
             g.setColor(Color.white);
             g.drawRect(calle.getX(), calle.getY(), calle.getAncho(), calle.getAlto());
+        }
+        
+        /// solo para las calles pero luego se modifica para los edificios tomando la matriz de elementos (String) 
+        //y graficando toca que crear una matriz de edificios y los arboles si normal 
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 20; j++) {
+                if (matrizCuadriculaMapa[j][i]!=-1) {
+                     g.drawImage(frame.getCalles().get(matrizCuadriculaMapa[j][i]).getImagen().getImage(), frame.getCalles().get(matrizCuadriculaMapa[j][i]).getX(), frame.getCalles().get(matrizCuadriculaMapa[j][i]).getY(), frame.getCalles().get(matrizCuadriculaMapa[j][i]).getAncho(), frame.getCalles().get(matrizCuadriculaMapa[j][i]).getAlto(), this);  
+                }
+            }
         }
         
         repaint();
@@ -241,7 +252,24 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                   System.out.println(cadena);
             }
         */    
-              
+        
+       /*
+        //ciclo para mostrar las matrices de id 
+        String cadena;
+    
+            System.out.println("");
+
+            System.out.println("    0  1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18  19  20 ");
+              for (int i = 0; i < 10; i++) {
+                  cadena=i+" ";
+                for (int j = 0; j < 20; j++) {
+                   cadena=cadena+"  "+matrizCuadriculaMapa[j][i];
+                }
+                  System.out.println(cadena);
+            }
+           
+        */
+       
         if (frame!=null) {
              frame.getjRadioButton1().setSelected(false);
              frame.getjRadioButton10().setSelected(false);
@@ -345,8 +373,11 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
     public void recibirDatosFormularioYmodificarCalle(int x, int y,String tipo, String sentido){
         calle.setSentido(sentido);
         calle.setTipo(tipo); 
+        calle.setX((int)matrizPuntosLimitesCuadriculaMapa[x][y].getX1());
+        calle.setY((int)matrizPuntosLimitesCuadriculaMapa[x][y].getY1());
         if(!calle.getSentido().equals("")||!calle.getTipo().equals("")) { 
 
+            //agregar validaciones para que solo pueda agregar al lado una calle que si funcione
             if (this.orientacion=="horizontal") {
                     if ("Urbana".equals(calle.getTipo())) {
                      calle.setVelocidad(60);

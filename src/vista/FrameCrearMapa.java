@@ -530,9 +530,11 @@ public class FrameCrearMapa extends javax.swing.JFrame {
     public void agregarCalleALaLista(Calle calle) {
         calles.add(calle);
     }
-    
-   
-    
+
+    public LinkedList<Calle> getCalles() {
+        return calles;
+    }
+
     public JRadioButton getjRadioButton1() {
         return jRadioButton1;
     }
