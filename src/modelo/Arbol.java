@@ -12,11 +12,10 @@ import javax.swing.ImageIcon;
  *
  * @author SAMAEL
  */
-public class Edificio {
+public class Arbol {
     
     
     private int id;
-    private String nombre;
     private int x;
     private int y;
     private int ancho;
@@ -24,9 +23,8 @@ public class Edificio {
     private ImageIcon imagen;
     private Rectangle area;
 
-    public Edificio(int id, String nombre, int x, int y, int ancho, int alto, ImageIcon imagen) {
+    public Arbol(int id, int x, int y, int ancho, int alto, ImageIcon imagen) {
         this.id = id;
-        this.nombre = nombre;
         this.x = x;
         this.y = y;
         this.ancho = ancho;
@@ -37,10 +35,6 @@ public class Edificio {
 
     public int getId() {
         return id;
-    }
-
-    public String getNombre() {
-        return nombre;
     }
 
     public int getX() {
@@ -71,10 +65,6 @@ public class Edificio {
         this.id = id;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public void setX(int x) {
         this.x = x;
     }
@@ -99,6 +89,5 @@ public class Edificio {
         this.area = area;
     }
     
-     
     
 }
