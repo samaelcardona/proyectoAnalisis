@@ -14,6 +14,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import modelo.Arbol;
 import modelo.Calle;
+import modelo.Edificio;
 import modelo.PuntosLimiteCuadricula;
 
 /**
@@ -26,10 +27,13 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
     int y=10;
     Calle calle;
     Arbol arbol;
+    Edificio edificio;
     PuntosLimiteCuadricula [][] matrizPuntosLimitesCuadriculaMapa=new PuntosLimiteCuadricula[20][10];
     String [][] matrizLetrasElementosInternosCuadriculaMapa=new String[20][10];
     //Matriz para agregar los Id de cada calle de la cuadricula
-    int [][] matrizCuadriculaMapa=new int[20][10];
+    int [][] matrizCuadriculaMapaIdCalles=new int[20][10];
+    int [][] matrizCuadriculaMapaIdArboles=new int[20][10];
+    int [][] matrizCuadriculaMapaIdEdificios=new int[20][10];
     private FrameCrearMapa frame;
     int contadorDeCalles=0;
     int contadorDeEdificios=0;
@@ -53,7 +57,9 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
             for (int j = 0; j < 10; j++) {
              matrizPuntosLimitesCuadriculaMapa[i][j]=new PuntosLimiteCuadricula();
              matrizLetrasElementosInternosCuadriculaMapa[i][j]="";
-             matrizCuadriculaMapa[i][j]=-1;
+             matrizCuadriculaMapaIdCalles[i][j]=-1;
+             matrizCuadriculaMapaIdArboles[i][j]=-1;
+             matrizCuadriculaMapaIdEdificios[i][j]=-1;
             }
         }
         
@@ -130,13 +136,28 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
             g.setColor(Color.white);
             g.drawRect(arbol.getX(), arbol.getY(), arbol.getAncho(), arbol.getAlto());
         }
+        if (edificio != null) {
+            g.drawImage(edificio.getImagen().getImage(), edificio.getX(), edificio.getY(), edificio.getAncho(), edificio.getAlto(), this);
+            g.setColor(Color.white);
+            g.drawRect(edificio.getX(), edificio.getY(), edificio.getAncho(), edificio.getAlto());
+        }
         
         /// solo para las calles pero luego se modifica para los edificios tomando la matriz de elementos (String) 
         //y graficando toca que crear una matriz de edificios y los arboles si normal 
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 20; j++) {
-                if (matrizCuadriculaMapa[j][i]!=-1) {
-                     g.drawImage(frame.getCalles().get(matrizCuadriculaMapa[j][i]).getImagen().getImage(), frame.getCalles().get(matrizCuadriculaMapa[j][i]).getX(), frame.getCalles().get(matrizCuadriculaMapa[j][i]).getY(), frame.getCalles().get(matrizCuadriculaMapa[j][i]).getAncho(), frame.getCalles().get(matrizCuadriculaMapa[j][i]).getAlto(), this);  
+                if (!"".equals(matrizLetrasElementosInternosCuadriculaMapa[j][i])) {
+                    if (matrizCuadriculaMapaIdCalles[j][i]!=-1) {
+                        g.drawImage(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getImagen().getImage(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getX(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getY(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getAncho(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getAlto(), this);  
+                    }
+                    if (matrizCuadriculaMapaIdArboles[j][i]!=-1) {
+                        g.drawImage(frame.getArboles().get(matrizCuadriculaMapaIdArboles[j][i]).getImagen().getImage(), frame.getArboles().get(matrizCuadriculaMapaIdArboles[j][i]).getX(), frame.getArboles().get(matrizCuadriculaMapaIdArboles[j][i]).getY(), frame.getArboles().get(matrizCuadriculaMapaIdArboles[j][i]).getAncho(), frame.getArboles().get(matrizCuadriculaMapaIdArboles[j][i]).getAlto(), this);  
+                    }
+                    
+                    if (matrizCuadriculaMapaIdEdificios[j][i]!=-1) {
+                        g.drawImage(frame.getEdificios().get(matrizCuadriculaMapaIdEdificios[j][i]).getImagen().getImage(), frame.getEdificios().get(matrizCuadriculaMapaIdEdificios[j][i]).getX(), frame.getEdificios().get(matrizCuadriculaMapaIdEdificios[j][i]).getY(), frame.getEdificios().get(matrizCuadriculaMapaIdEdificios[j][i]).getAncho(), frame.getEdificios().get(matrizCuadriculaMapaIdEdificios[j][i]).getAlto(), this);  
+                    }
+                     
                 }
             }
         }
@@ -168,6 +189,11 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
          if (arbol != null) {
             arbol.setX(e.getX()-23);
             arbol.setY(e.getY()-23);
+            repaint();
+        }
+        if (edificio != null) {
+            edificio.setX(e.getX()-23);
+            edificio.setY(e.getY()-23);
             repaint();
         }
         
@@ -216,7 +242,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                     
                     
                 }
-                if (this.orientacion=="interseccionArribaDerecha"||this.orientacion=="interseccionAbajoDerecha"||this.orientacion=="interseccionAbajoIzquierda"||this.orientacion=="interseccionAbajoIzquierda") {
+                if (this.orientacion=="interseccionArribaDerecha"||this.orientacion=="interseccionAbajoDerecha"||this.orientacion=="interseccionArribaIzquierda"||this.orientacion=="interseccionAbajoIzquierda") {
                     formularioTomaDeDatos.recibirPanel(this,cuadroSeleccionado[0],cuadroSeleccionado[1]);
                     formularioTomaDeDatos.setVisible(true);
                 }
@@ -226,18 +252,100 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
             if (arbol!=null&&matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].equals("")) {
                 if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("r")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("R")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("l")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("L")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("h")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("H")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("xDR")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("XDR")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("xDL")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("XDL")) {
                     /// llamo metodo para graficar arbol
+                    arbol.setId(contadorDeArboles);
+                    arbol.setX((int)matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                    arbol.setY((int)matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+                    
+                    matrizCuadriculaMapaIdArboles[cuadroSeleccionado[0]][cuadroSeleccionado[1]]=arbol.getId();
+                     matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]]="A";
+                    frame.agregarArbolALaLista(arbol);
+                    contadorDeArboles++;
                 }
                 if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("r")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("R")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("l")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("L")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("h")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("H")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("xUR")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("XUR")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("xUL")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("XUL")) {
                     ///llamo metodo para graficar arbol
+                    arbol.setId(contadorDeArboles);
+                    arbol.setX((int)matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                    arbol.setY((int)matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+                    
+                    matrizCuadriculaMapaIdArboles[cuadroSeleccionado[0]][cuadroSeleccionado[1]]=arbol.getId();
+                     matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]]="A";
+                    frame.agregarArbolALaLista(arbol);
+                    contadorDeArboles++;
+                    
                 }
                 if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("t")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("T")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("d")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("D")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("v")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("V")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("xUR")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("XUR")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("xDR")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("XDR")) {
                     ///llamo metodo para graficar arbol
+                    arbol.setId(contadorDeArboles);
+                    arbol.setX((int)matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                    arbol.setY((int)matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+                    
+                    matrizCuadriculaMapaIdArboles[cuadroSeleccionado[0]][cuadroSeleccionado[1]]=arbol.getId();
+                     matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]]="A";
+                    frame.agregarArbolALaLista(arbol);
+                    contadorDeArboles++;
                 }
                 if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("t")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("T")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("d")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("D")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("v")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("V")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("xUL")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("XUL")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("xDL")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("XDL")) {
                     ///llamo metodo para graficar arbol
+                    arbol.setId(contadorDeArboles);
+                    arbol.setX((int)matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                    arbol.setY((int)matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+                    
+                    matrizCuadriculaMapaIdArboles[cuadroSeleccionado[0]][cuadroSeleccionado[1]]=arbol.getId();
+                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]]="A";
+                    frame.agregarArbolALaLista(arbol);
+                    contadorDeArboles++;
                 }
+                arbol=null;
+                
             }
-            if (true) {
+            
+           if (edificio!=null&&matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].equals("")) {
+                if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("r")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("R")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("l")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("L")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("h")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("H")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("xDR")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("XDR")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("xDL")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("XDL")) {
+                    /// llamo metodo para graficar edificio
+                    edificio.setId(contadorDeEdificios);
+                    edificio.setX((int)matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                    edificio.setY((int)matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+                    
+                    matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]]=edificio.getId();
+                     matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]]="A";
+                    frame.agregarEdificioALaLista(edificio);
+                    contadorDeEdificios++;
+                }
+                if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("r")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("R")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("l")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("L")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("h")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("H")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("xUR")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("XUR")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("xUL")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("XUL")) {
+                    ///llamo metodo para graficar edificio
+                    edificio.setId(contadorDeEdificios);
+                    edificio.setX((int)matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                    edificio.setY((int)matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+                    
+                    matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]]=edificio.getId();
+                     matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]]="A";
+                    frame.agregarEdificioALaLista(edificio);
+                    contadorDeEdificios++;
+                    
+                }
+                if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("t")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("T")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("d")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("D")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("v")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("V")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("xUR")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("XUR")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("xDR")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("XDR")) {
+                    ///llamo metodo para graficar edificio
+                    edificio.setId(contadorDeEdificios);
+                    edificio.setX((int)matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                    edificio.setY((int)matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+                    
+                    matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]]=edificio.getId();
+                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]]="A";
+                    frame.agregarEdificioALaLista(edificio);
+                    contadorDeEdificios++;
+                }
+                if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("t")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("T")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("d")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("D")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("v")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("V")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("xUL")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("XUL")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("xDL")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("XDL")) {
+                    ///llamo metodo para graficar edificio
+                    edificio.setId(contadorDeEdificios);
+                    edificio.setX((int)matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                    edificio.setY((int)matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+                    
+                    matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]]=edificio.getId();
+                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]]="A";
+                    frame.agregarEdificioALaLista(edificio);
+                    contadorDeEdificios++;
+                }
+                edificio=null;
                 
             }
         }
@@ -286,7 +394,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
               for (int i = 0; i < 10; i++) {
                   cadena=i+" ";
                 for (int j = 0; j < 20; j++) {
-                   cadena=cadena+"  "+matrizCuadriculaMapa[j][i];
+                   cadena=cadena+"  "+matrizCuadriculaMapaIdCalles[j][i];
                 }
                   System.out.println(cadena);
             }
@@ -408,21 +516,21 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                      if ("Derecha".equals(calle.getSentido())) {
                          calle.setId(contadorDeCalles);
                          matrizLetrasElementosInternosCuadriculaMapa[x][y]="r";
-                         matrizCuadriculaMapa[x][y]=calle.getId();
+                         matrizCuadriculaMapaIdCalles[x][y]=calle.getId();
                          frame.agregarCalleALaLista(calle);
                          contadorDeCalles++;
                      }
                      if ("Izquierda".equals(calle.getSentido())) {
                          calle.setId(contadorDeCalles);
                          matrizLetrasElementosInternosCuadriculaMapa[x][y]="l";
-                         matrizCuadriculaMapa[x][y]=calle.getId();
+                         matrizCuadriculaMapaIdCalles[x][y]=calle.getId();
                          frame.agregarCalleALaLista(calle);
                          contadorDeCalles++;
                      }
                      if ("Doble sentido".equals(calle.getSentido())) {
                          calle.setId(contadorDeCalles);
                          matrizLetrasElementosInternosCuadriculaMapa[x][y]="h";
-                         matrizCuadriculaMapa[x][y]=calle.getId();
+                         matrizCuadriculaMapaIdCalles[x][y]=calle.getId();
                          frame.agregarCalleALaLista(calle);
                          contadorDeCalles++;
                      }
@@ -433,21 +541,21 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                      if ("Derecha".equals(calle.getSentido())) {
                          calle.setId(contadorDeCalles);
                          matrizLetrasElementosInternosCuadriculaMapa[x][y]="R";
-                         matrizCuadriculaMapa[x][y]=calle.getId();
+                         matrizCuadriculaMapaIdCalles[x][y]=calle.getId();
                          frame.agregarCalleALaLista(calle);
                          contadorDeCalles++;
                      }
                      if ("Izquierda".equals(calle.getSentido())) {
                          calle.setId(contadorDeCalles);
                          matrizLetrasElementosInternosCuadriculaMapa[x][y]="L";
-                         matrizCuadriculaMapa[x][y]=calle.getId();
+                         matrizCuadriculaMapaIdCalles[x][y]=calle.getId();
                          frame.agregarCalleALaLista(calle);
                          contadorDeCalles++;
                      }
                      if ("Doble sentido".equals(calle.getSentido())) {
                          calle.setId(contadorDeCalles);
                          matrizLetrasElementosInternosCuadriculaMapa[x][y]="H";
-                         matrizCuadriculaMapa[x][y]=calle.getId();
+                         matrizCuadriculaMapaIdCalles[x][y]=calle.getId();
                          frame.agregarCalleALaLista(calle);
                          contadorDeCalles++;
                      }
@@ -461,21 +569,21 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                      if ("Arriba".equals(calle.getSentido())) {
                          calle.setId(contadorDeCalles);
                          matrizLetrasElementosInternosCuadriculaMapa[x][y]="t";
-                         matrizCuadriculaMapa[x][y]=calle.getId();
+                         matrizCuadriculaMapaIdCalles[x][y]=calle.getId();
                          frame.agregarCalleALaLista(calle);
                          contadorDeCalles++;
                      }
                      if ("Abajo".equals(calle.getSentido())) {
                          calle.setId(contadorDeCalles);
                          matrizLetrasElementosInternosCuadriculaMapa[x][y]="d";
-                         matrizCuadriculaMapa[x][y]=calle.getId();
+                         matrizCuadriculaMapaIdCalles[x][y]=calle.getId();
                          frame.agregarCalleALaLista(calle);
                          contadorDeCalles++;
                      }
                      if ("Doble sentido".equals(calle.getSentido())) {
                          calle.setId(contadorDeCalles);
                          matrizLetrasElementosInternosCuadriculaMapa[x][y]="v";
-                         matrizCuadriculaMapa[x][y]=calle.getId();
+                         matrizCuadriculaMapaIdCalles[x][y]=calle.getId();
                          frame.agregarCalleALaLista(calle);
                          contadorDeCalles++;
                      }
@@ -486,21 +594,21 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                      if ("Arriba".equals(calle.getSentido())) {
                          calle.setId(contadorDeCalles);
                          matrizLetrasElementosInternosCuadriculaMapa[x][y]="T";
-                         matrizCuadriculaMapa[x][y]=calle.getId();
+                         matrizCuadriculaMapaIdCalles[x][y]=calle.getId();
                          frame.agregarCalleALaLista(calle);
                          contadorDeCalles++;
                      }
                      if ("Abajo".equals(calle.getSentido())) {
                          calle.setId(contadorDeCalles);
                          matrizLetrasElementosInternosCuadriculaMapa[x][y]="D";
-                         matrizCuadriculaMapa[x][y]=calle.getId();
+                         matrizCuadriculaMapaIdCalles[x][y]=calle.getId();
                          frame.agregarCalleALaLista(calle);
                          contadorDeCalles++;
                      }
                      if ("Doble sentido".equals(calle.getSentido())) {
                          calle.setId(contadorDeCalles);
                          matrizLetrasElementosInternosCuadriculaMapa[x][y]="V";
-                         matrizCuadriculaMapa[x][y]=calle.getId();
+                         matrizCuadriculaMapaIdCalles[x][y]=calle.getId();
                          frame.agregarCalleALaLista(calle);
                          contadorDeCalles++;
                      }
@@ -512,7 +620,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                     calle.setVelocidad(60);
                     calle.setId(contadorDeCalles);
                     matrizLetrasElementosInternosCuadriculaMapa[x][y]="xUR";
-                    matrizCuadriculaMapa[x][y]=calle.getId();
+                    matrizCuadriculaMapaIdCalles[x][y]=calle.getId();
                     frame.agregarCalleALaLista(calle);
                     contadorDeCalles++;
                 }
@@ -520,7 +628,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                     calle.setVelocidad(100);
                     calle.setId(contadorDeCalles);
                     matrizLetrasElementosInternosCuadriculaMapa[x][y]="XUR";
-                    matrizCuadriculaMapa[x][y]=calle.getId();
+                    matrizCuadriculaMapaIdCalles[x][y]=calle.getId();
                     frame.agregarCalleALaLista(calle);
                     contadorDeCalles++;
                 }
@@ -530,7 +638,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                     calle.setVelocidad(60);
                     calle.setId(contadorDeCalles);
                     matrizLetrasElementosInternosCuadriculaMapa[x][y]="xDR";
-                    matrizCuadriculaMapa[x][y]=calle.getId();
+                    matrizCuadriculaMapaIdCalles[x][y]=calle.getId();
                     frame.agregarCalleALaLista(calle);
                     contadorDeCalles++;
                 }
@@ -538,7 +646,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                     calle.setVelocidad(100);
                     calle.setId(contadorDeCalles);
                     matrizLetrasElementosInternosCuadriculaMapa[x][y]="XDR";
-                    matrizCuadriculaMapa[x][y]=calle.getId();
+                    matrizCuadriculaMapaIdCalles[x][y]=calle.getId();
                     frame.agregarCalleALaLista(calle);
                     contadorDeCalles++;
                 }
@@ -548,7 +656,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                     calle.setVelocidad(60);
                     calle.setId(contadorDeCalles);
                     matrizLetrasElementosInternosCuadriculaMapa[x][y]="xUL";
-                    matrizCuadriculaMapa[x][y]=calle.getId();
+                    matrizCuadriculaMapaIdCalles[x][y]=calle.getId();
                     frame.agregarCalleALaLista(calle);
                     contadorDeCalles++;
                 }
@@ -556,7 +664,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                     calle.setVelocidad(100);
                     calle.setId(contadorDeCalles);
                     matrizLetrasElementosInternosCuadriculaMapa[x][y]="XUL";
-                    matrizCuadriculaMapa[x][y]=calle.getId();
+                    matrizCuadriculaMapaIdCalles[x][y]=calle.getId();
                     frame.agregarCalleALaLista(calle);
                     contadorDeCalles++;
                 }
@@ -566,7 +674,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                     calle.setVelocidad(60);
                     calle.setId(contadorDeCalles);
                     matrizLetrasElementosInternosCuadriculaMapa[x][y]="xDL";
-                    matrizCuadriculaMapa[x][y]=calle.getId();
+                    matrizCuadriculaMapaIdCalles[x][y]=calle.getId();
                     frame.agregarCalleALaLista(calle);
                     contadorDeCalles++;
                 }
@@ -574,7 +682,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                     calle.setVelocidad(100);
                     calle.setId(contadorDeCalles);
                     matrizLetrasElementosInternosCuadriculaMapa[x][y]="XDL";
-                    matrizCuadriculaMapa[x][y]=calle.getId();
+                    matrizCuadriculaMapaIdCalles[x][y]=calle.getId();
                     frame.agregarCalleALaLista(calle);
                     contadorDeCalles++;
                 }
@@ -584,7 +692,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                     calle.setVelocidad(60);
                     calle.setId(contadorDeCalles);
                     matrizLetrasElementosInternosCuadriculaMapa[x][y]="xx";
-                    matrizCuadriculaMapa[x][y]=calle.getId();
+                    matrizCuadriculaMapaIdCalles[x][y]=calle.getId();
                     frame.agregarCalleALaLista(calle);
                     contadorDeCalles++;
                 }
@@ -592,7 +700,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                     calle.setVelocidad(100);
                     calle.setId(contadorDeCalles);
                     matrizLetrasElementosInternosCuadriculaMapa[x][y]="XX";
-                    matrizCuadriculaMapa[x][y]=calle.getId();
+                    matrizCuadriculaMapaIdCalles[x][y]=calle.getId();
                     frame.agregarCalleALaLista(calle);
                     contadorDeCalles++;
                 }
@@ -637,6 +745,15 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
     public void setArbol(Arbol arbol) {
         this.arbol = arbol;
     }
+
+    public void setEdificio(Edificio edificio) {
+        this.edificio = edificio;
+    }
+
+    public Edificio getEdificio() {
+        return edificio;
+    }
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

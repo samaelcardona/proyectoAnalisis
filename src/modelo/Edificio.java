@@ -16,7 +16,7 @@ public class Edificio {
     
     
     private int id;
-    private int nombre;
+    private String nombre;
     private int x;
     private int y;
     private int ancho;
@@ -24,7 +24,7 @@ public class Edificio {
     private ImageIcon imagen;
     private Rectangle area;
 
-    public Edificio(int id, int nombre, int x, int y, int ancho, int alto, ImageIcon imagen) {
+    public Edificio(int id, String nombre, int x, int y, int ancho, int alto, ImageIcon imagen) {
         this.id = id;
         this.nombre = nombre;
         this.x = x;
@@ -39,7 +39,7 @@ public class Edificio {
         return id;
     }
 
-    public int getNombre() {
+    public String getNombre() {
         return nombre;
     }
 
@@ -71,7 +71,7 @@ public class Edificio {
         this.id = id;
     }
 
-    public void setNombre(int nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 

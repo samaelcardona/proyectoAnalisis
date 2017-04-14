@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JRadioButton;
 import modelo.Arbol;
 import modelo.Calle;
+import modelo.Edificio;
 
 
 /**
@@ -21,6 +22,8 @@ public class FrameCrearMapa extends javax.swing.JFrame {
     static FrameCrearMapa frameMapa;
     LinkedList<JRadioButton> botones; 
     LinkedList<Calle> calles;
+    LinkedList<Arbol> arboles;
+    LinkedList<Edificio> edificios;
     ImageIcon [] listaImagenesParaSeleccionar;
     /**
      * Creates new form FrameCrearMapa
@@ -29,6 +32,8 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         initComponents();
         botones = new LinkedList();
         calles = new LinkedList();
+        arboles=new LinkedList<>();
+        edificios=new LinkedList<>();
         
         this.botones.add(jRadioButton1);
         this.botones.add(jRadioButton2);
@@ -452,7 +457,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.jRadioButton12.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //arbol
-        this.panelCrearMapa1.setArbol(new Arbol(0, 0, 0, listaImagenesParaSeleccionar[11].getIconWidth(), listaImagenesParaSeleccionar[11].getIconHeight(), listaImagenesParaSeleccionar[11]));
+        this.panelCrearMapa1.setArbol(new Arbol(0, -50, -50, listaImagenesParaSeleccionar[11].getIconWidth(), listaImagenesParaSeleccionar[11].getIconHeight(), listaImagenesParaSeleccionar[11]));
 
     }//GEN-LAST:event_jRadioButton12ActionPerformed
 
@@ -461,7 +466,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.jRadioButton13.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
        //arbol
-        this.panelCrearMapa1.setArbol(new Arbol(0, 0, 0, listaImagenesParaSeleccionar[12].getIconWidth(), listaImagenesParaSeleccionar[12].getIconHeight(), listaImagenesParaSeleccionar[12]));
+        this.panelCrearMapa1.setArbol(new Arbol(0, -50, -50, listaImagenesParaSeleccionar[12].getIconWidth(), listaImagenesParaSeleccionar[12].getIconHeight(), listaImagenesParaSeleccionar[12]));
 
     }//GEN-LAST:event_jRadioButton13ActionPerformed
 
@@ -470,7 +475,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.jRadioButton14.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
        //arbol
-        this.panelCrearMapa1.setArbol(new Arbol(0, 0, 0, listaImagenesParaSeleccionar[13].getIconWidth(), listaImagenesParaSeleccionar[13].getIconHeight(), listaImagenesParaSeleccionar[13]));
+        this.panelCrearMapa1.setArbol(new Arbol(0, -50, -50, listaImagenesParaSeleccionar[13].getIconWidth(), listaImagenesParaSeleccionar[13].getIconHeight(), listaImagenesParaSeleccionar[13]));
     }//GEN-LAST:event_jRadioButton14ActionPerformed
 
     private void jRadioButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton15ActionPerformed
@@ -478,6 +483,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.jRadioButton15.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //edificio
+        this.panelCrearMapa1.setEdificio(new Edificio(0, "hospital", -50, -50, listaImagenesParaSeleccionar[14].getIconWidth(), listaImagenesParaSeleccionar[14].getIconHeight(), listaImagenesParaSeleccionar[14]));
       
 
     }//GEN-LAST:event_jRadioButton15ActionPerformed
@@ -487,6 +493,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.jRadioButton16.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //edificio
+        this.panelCrearMapa1.setEdificio(new Edificio(0, "casa", -50, -50, listaImagenesParaSeleccionar[15].getIconWidth(), listaImagenesParaSeleccionar[15].getIconHeight(), listaImagenesParaSeleccionar[15]));
       
     }//GEN-LAST:event_jRadioButton16ActionPerformed
 
@@ -499,6 +506,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.jRadioButton17.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);        
        //edificio
+       this.panelCrearMapa1.setEdificio(new Edificio(0, "oficina", -50, -50, listaImagenesParaSeleccionar[16].getIconWidth(), listaImagenesParaSeleccionar[16].getIconHeight(), listaImagenesParaSeleccionar[16]));
     }//GEN-LAST:event_jRadioButton17ActionPerformed
 
     private void jRadioButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton18ActionPerformed
@@ -506,6 +514,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.jRadioButton17.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);        
          //edificio
+         this.panelCrearMapa1.setEdificio(new Edificio(0, "banco", -50, -50, listaImagenesParaSeleccionar[17].getIconWidth(), listaImagenesParaSeleccionar[17].getIconHeight(), listaImagenesParaSeleccionar[17]));
     }//GEN-LAST:event_jRadioButton18ActionPerformed
 
     private void jRadioButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton19ActionPerformed
@@ -513,6 +522,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.jRadioButton19.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);        
          //edificio
+         this.panelCrearMapa1.setEdificio(new Edificio(0, "tienda", -50, -50, listaImagenesParaSeleccionar[18].getIconWidth(), listaImagenesParaSeleccionar[18].getIconHeight(), listaImagenesParaSeleccionar[18]));
     }//GEN-LAST:event_jRadioButton19ActionPerformed
 
     private void jRadioButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton20ActionPerformed
@@ -520,6 +530,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.jRadioButton20.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);        
          //edificio
+        this.panelCrearMapa1.setEdificio(new Edificio(0, "policia", -50, -50, listaImagenesParaSeleccionar[19].getIconWidth(), listaImagenesParaSeleccionar[19].getIconHeight(), listaImagenesParaSeleccionar[19]));
     }//GEN-LAST:event_jRadioButton20ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -527,15 +538,35 @@ public class FrameCrearMapa extends javax.swing.JFrame {
             System.out.println("calle " + calles.get(i).getId());
             System.out.println("  sentido "+ calles.get(i).getSentido());
         }
+        for (int i = 0; i < arboles.size(); i++) {
+            System.out.println("arbol " + arboles.get(i).getId());
+            System.out.println("  x "+ arboles.get(i).getX());
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void agregarCalleALaLista(Calle calle) {
         calles.add(calle);
     }
+     public void agregarArbolALaLista(Arbol arbol) {
+        arboles.add(arbol);
+    }
+     public void agregarEdificioALaLista(Edificio edificio) { 
+        edificios.add(edificio);
+    }
 
     public LinkedList<Calle> getCalles() {
         return calles;
     }
+
+    public LinkedList<Arbol> getArboles() {
+        return arboles;
+    }
+
+    public LinkedList<Edificio> getEdificios() {
+        return edificios;
+    }
+    
+    
 
     public JRadioButton getjRadioButton1() {
         return jRadioButton1;
