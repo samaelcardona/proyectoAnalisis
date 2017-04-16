@@ -150,7 +150,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         );
 
         getContentPane().add(panelCrearMapa1);
-        panelCrearMapa1.setBounds(10, 10, 1120, 560);
+        panelCrearMapa1.setBounds(20, 10, 1120, 560);
 
         jScrollPane3.setPreferredSize(new java.awt.Dimension(428, 569));
         jScrollPane3.setWheelScrollingEnabled(false);
