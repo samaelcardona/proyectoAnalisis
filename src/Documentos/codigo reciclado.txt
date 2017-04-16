@@ -25,7 +25,7 @@ codigo inicial
 
         seleccion=JOptionPane.showOptionDialog(
                                                     new JFrame(),
-                                                    "¿DESEA CREAR UN NUEVO MAPA?", 
+                                                    "ï¿½DESEA CREAR UN NUEVO MAPA?", 
                                                     "INICIO",
                                                     JOptionPane.YES_NO_CANCEL_OPTION,
                                                     JOptionPane.QUESTION_MESSAGE,
@@ -40,3 +40,13 @@ codigo inicial
             System.out.println("cancelo");
             System.exit(0);
         }
+
+
+
+
+//condicional para las restricciones de calle
+if (matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="r"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xUL"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xDL"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XUL"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XDL"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XX"||
+                            matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="r"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xUR"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xDR"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XUD"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XDD") {
+
+
+}
