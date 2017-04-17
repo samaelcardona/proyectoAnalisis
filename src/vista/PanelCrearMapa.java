@@ -1759,18 +1759,40 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
 
                 esPrimeraCalle = false;
             } else {
-                if (matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == null) {
+                //para y-1
+                if (y<1&&x>0&&x<19)  {
 
                 }
-                if (matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == null) {
+                //para y+1
+                if (y>8&&x>0&&x<19) {
 
                 }
-                if (matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == null) {
+                //para x-1
+                if (x>18&&y>0&&y<9) {
 
                 }
-                if (matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == null) {
+                //para x+1
+                if (x<1&&y>0&&y<9) {
 
                 }
+                //para la esquina 0,0 donde  y-1 y x-1 listo
+                if (x<1&&y<1) {
+                
+                }
+                //para la esquina 0,9 donde  y+1 y x-1
+                if (x<1&&y>8) {
+                    
+                }
+                //para la esquina 19,0 donde  y-1 y x+1 listo
+                if (x>18&&y<1) {
+                    
+                }
+                //para la esquina 19,9 donde  y+1 y x+1 listo
+                if (x>18&&y>8) {
+                    
+                }
+                
+                
 
                 ////hacer validaciones con el condicional del txt almacenado en los documentos.. tener en cuenta las direcciones
                 if (this.orientacion == "horizontal") {
