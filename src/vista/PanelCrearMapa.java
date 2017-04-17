@@ -234,18 +234,19 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
             }
             ///pinto los arboles aqui 
             if (arbol != null && matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].equals("")) {
-               //uno para y-1
+              
+                //uno para y-1 Listo
                 if (y<1&&x>0&&x<19) {
                     if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("r")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("R")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("l")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("L")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("h")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("H")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDL")) {
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("R")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("l")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("L")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("h")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("H")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDL")) {
                         /// llamo metodo para graficar arbol
                         arbol.setId(contadorDeArboles);
                         arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
@@ -256,37 +257,17 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                         frame.agregarArbolALaLista(arbol);
                         contadorDeArboles++;
                     }
-                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("r")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("R")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("l")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("L")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("h")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("H")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUL")) {
-                        ///llamo metodo para graficar arbol
-                        arbol.setId(contadorDeArboles);
-                        arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
-                        arbol.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
-
-                        matrizCuadriculaMapaIdArboles[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = arbol.getId();
-                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
-                        frame.agregarArbolALaLista(arbol);
-                        contadorDeArboles++;
-
-                    }
+                    
                     if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("t")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("T")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("d")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("D")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("v")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("V")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xDR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XDR")) {
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("T")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("d")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("D")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("v")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("V")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XDR")) {
                         ///llamo metodo para graficar arbol
                         arbol.setId(contadorDeArboles);
                         arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
@@ -298,15 +279,15 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                         contadorDeArboles++;
                     }
                     if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("t")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("T")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("d")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("D")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("v")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("V")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xUL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XUL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xDL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XDL")) {
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("T")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("d")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("D")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("v")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("V")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xUL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XUL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xDL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XDL")) {
                         ///llamo metodo para graficar arbol
                         arbol.setId(contadorDeArboles);
                         arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
@@ -319,38 +300,18 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                     }
                 }
                 
-                //dos para y+1
+                //dos para y+1 listo 
                 if (y>8&&x>0&&x<19) {
-                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("r")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("R")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("l")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("L")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("h")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("H")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDL")) {
-                        /// llamo metodo para graficar arbol
-                        arbol.setId(contadorDeArboles);
-                        arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
-                        arbol.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
-
-                        matrizCuadriculaMapaIdArboles[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = arbol.getId();
-                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
-                        frame.agregarArbolALaLista(arbol);
-                        contadorDeArboles++;
-                    }
                     if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("r")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("R")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("l")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("L")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("h")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("H")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUL")) {
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("R")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("l")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("L")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("h")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("H")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUL")) {
                         ///llamo metodo para graficar arbol
                         arbol.setId(contadorDeArboles);
                         arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
@@ -363,15 +324,15 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
 
                     }
                     if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("t")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("T")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("d")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("D")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("v")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("V")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xDR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XDR")) {
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("T")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("d")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("D")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("v")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("V")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XDR")) {
                         ///llamo metodo para graficar arbol
                         arbol.setId(contadorDeArboles);
                         arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
@@ -383,15 +344,15 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                         contadorDeArboles++;
                     }
                     if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("t")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("T")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("d")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("D")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("v")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("V")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xUL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XUL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xDL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XDL")) {
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("T")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("d")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("D")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("v")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("V")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xUL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XUL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xDL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XDL")) {
                         ///llamo metodo para graficar arbol
                         arbol.setId(contadorDeArboles);
                         arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
@@ -404,18 +365,18 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                     }
                 }
 
-                //tres para x+1
+                //tres para x+1 listo 
                 if (x>18&&y>0&&y<9) {
                     if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("r")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("R")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("l")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("L")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("h")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("H")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDL")) {
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("R")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("l")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("L")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("h")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("H")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDL")) {
                         /// llamo metodo para graficar arbol
                         arbol.setId(contadorDeArboles);
                         arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
@@ -427,15 +388,15 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                         contadorDeArboles++;
                     }
                     if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("r")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("R")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("l")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("L")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("h")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("H")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUL")) {
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("R")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("l")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("L")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("h")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("H")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUL")) {
                         ///llamo metodo para graficar arbol
                         arbol.setId(contadorDeArboles);
                         arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
@@ -446,37 +407,17 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                         frame.agregarArbolALaLista(arbol);
                         contadorDeArboles++;
 
-                    }
-                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("t")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("T")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("d")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("D")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("v")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("V")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xDR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XDR")) {
-                        ///llamo metodo para graficar arbol
-                        arbol.setId(contadorDeArboles);
-                        arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
-                        arbol.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
-
-                        matrizCuadriculaMapaIdArboles[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = arbol.getId();
-                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
-                        frame.agregarArbolALaLista(arbol);
-                        contadorDeArboles++;
-                    }
+                    } 
                     if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("t")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("T")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("d")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("D")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("v")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("V")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xUL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XUL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xDL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XDL")) {
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("T")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("d")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("D")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("v")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("V")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xUL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XUL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xDL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XDL")) {
                         ///llamo metodo para graficar arbol
                         arbol.setId(contadorDeArboles);
                         arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
@@ -488,18 +429,18 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                         contadorDeArboles++;
                     }
                 }
-                //cuatro para x-1
+                //cuatro para x-1 listo
                 if (x<1&&y>0&&y<9) {
                     if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("r")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("R")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("l")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("L")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("h")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("H")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDL")) {
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("R")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("l")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("L")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("h")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("H")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDL")) {
                         /// llamo metodo para graficar arbol
                         arbol.setId(contadorDeArboles);
                         arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
@@ -511,15 +452,15 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                         contadorDeArboles++;
                     }
                     if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("r")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("R")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("l")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("L")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("h")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("H")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUL")) {
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("R")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("l")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("L")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("h")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("H")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUL")) {
                         ///llamo metodo para graficar arbol
                         arbol.setId(contadorDeArboles);
                         arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
@@ -532,35 +473,15 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
 
                     }
                     if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("t")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("T")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("d")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("D")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("v")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("V")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xDR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XDR")) {
-                        ///llamo metodo para graficar arbol
-                        arbol.setId(contadorDeArboles);
-                        arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
-                        arbol.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
-
-                        matrizCuadriculaMapaIdArboles[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = arbol.getId();
-                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
-                        frame.agregarArbolALaLista(arbol);
-                        contadorDeArboles++;
-                    }
-                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("t")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("T")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("d")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("D")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("v")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("V")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xUL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XUL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xDL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XDL")) {
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("T")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("d")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("D")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("v")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("V")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XDR")) {
                         ///llamo metodo para graficar arbol
                         arbol.setId(contadorDeArboles);
                         arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
@@ -572,18 +493,18 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                         contadorDeArboles++;
                     }
                 }
-                //para la esquina 0,0 donde  y-1 y x-1
+                //para la esquina 0,0 donde  y-1 y x-1 listo
                 if (x<1&&y<1) {
                     if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("r")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("R")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("l")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("L")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("h")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("H")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDL")) {
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("R")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("l")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("L")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("h")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("H")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDL")) {
                         /// llamo metodo para graficar arbol
                         arbol.setId(contadorDeArboles);
                         arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
@@ -594,57 +515,16 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                         frame.agregarArbolALaLista(arbol);
                         contadorDeArboles++;
                     }
-                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("r")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("R")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("l")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("L")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("h")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("H")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUL")) {
-                        ///llamo metodo para graficar arbol
-                        arbol.setId(contadorDeArboles);
-                        arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
-                        arbol.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
-
-                        matrizCuadriculaMapaIdArboles[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = arbol.getId();
-                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
-                        frame.agregarArbolALaLista(arbol);
-                        contadorDeArboles++;
-
-                    }
                     if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("t")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("T")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("d")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("D")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("v")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("V")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xDR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XDR")) {
-                        ///llamo metodo para graficar arbol
-                        arbol.setId(contadorDeArboles);
-                        arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
-                        arbol.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
-
-                        matrizCuadriculaMapaIdArboles[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = arbol.getId();
-                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
-                        frame.agregarArbolALaLista(arbol);
-                        contadorDeArboles++;
-                    }
-                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("t")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("T")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("d")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("D")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("v")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("V")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xUL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XUL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xDL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XDL")) {
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("T")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("d")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("D")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("v")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("V")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XDR")) {
                         ///llamo metodo para graficar arbol
                         arbol.setId(contadorDeArboles);
                         arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
@@ -658,36 +538,16 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                 }
                 //para la esquina 0,9 donde  y+1 y x-1
                 if (x<1&&y>8) {
-                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("r")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("R")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("l")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("L")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("h")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("H")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDL")) {
-                        /// llamo metodo para graficar arbol
-                        arbol.setId(contadorDeArboles);
-                        arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
-                        arbol.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
-
-                        matrizCuadriculaMapaIdArboles[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = arbol.getId();
-                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
-                        frame.agregarArbolALaLista(arbol);
-                        contadorDeArboles++;
-                    }
                     if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("r")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("R")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("l")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("L")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("h")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("H")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUL")) {
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("R")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("l")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("L")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("h")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("H")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUL")) {
                         ///llamo metodo para graficar arbol
                         arbol.setId(contadorDeArboles);
                         arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
@@ -700,15 +560,15 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
 
                     }
                     if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("t")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("T")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("d")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("D")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("v")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("V")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xDR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XDR")) {
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("T")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("d")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("D")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("v")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("V")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XDR")) {
                         ///llamo metodo para graficar arbol
                         arbol.setId(contadorDeArboles);
                         arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
@@ -718,82 +578,21 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                         matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
                         frame.agregarArbolALaLista(arbol);
                         contadorDeArboles++;
-                    }
-                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("t")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("T")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("d")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("D")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("v")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("V")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xUL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XUL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xDL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XDL")) {
-                        ///llamo metodo para graficar arbol
-                        arbol.setId(contadorDeArboles);
-                        arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
-                        arbol.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
-
-                        matrizCuadriculaMapaIdArboles[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = arbol.getId();
-                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
-                        frame.agregarArbolALaLista(arbol);
-                        contadorDeArboles++;
-                    }
+                    }  
                 }
-                //para la esquina 19,0 donde  y-1 y x+1
+                //para la esquina 19,0 donde  y-1 y x+1 listo
                 if (x>18&&y<1) {
                     if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("r")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("R")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("l")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("L")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("h")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("H")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDL")) {
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("R")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("l")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("L")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("h")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("H")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDL")) {
                         /// llamo metodo para graficar arbol
-                        arbol.setId(contadorDeArboles);
-                        arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
-                        arbol.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
-
-                        matrizCuadriculaMapaIdArboles[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = arbol.getId();
-                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
-                        frame.agregarArbolALaLista(arbol);
-                        contadorDeArboles++;
-                    }
-                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("r")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("R")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("l")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("L")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("h")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("H")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUL")) {
-                        ///llamo metodo para graficar arbol
-                        arbol.setId(contadorDeArboles);
-                        arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
-                        arbol.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
-
-                        matrizCuadriculaMapaIdArboles[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = arbol.getId();
-                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
-                        frame.agregarArbolALaLista(arbol);
-                        contadorDeArboles++;
-
-                    }
-                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("t")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("T")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("d")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("D")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("v")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("V")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xDR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XDR")) {
-                        ///llamo metodo para graficar arbol
                         arbol.setId(contadorDeArboles);
                         arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
                         arbol.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
@@ -824,28 +623,8 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                         contadorDeArboles++;
                     }
                 }
-                //para la esquina 19,9 donde  y+1 y x+1
+                //para la esquina 19,9 donde  y+1 y x+1 listo
                 if (x>18&&y>8) {
-                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("r")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("R")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("l")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("L")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("h")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("H")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDL")) {
-                        /// llamo metodo para graficar arbol
-                        arbol.setId(contadorDeArboles);
-                        arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
-                        arbol.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
-
-                        matrizCuadriculaMapaIdArboles[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = arbol.getId();
-                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
-                        frame.agregarArbolALaLista(arbol);
-                        contadorDeArboles++;
-                    }
                     if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("r")
                             || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("R")
                             || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("l")
@@ -866,26 +645,6 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                         frame.agregarArbolALaLista(arbol);
                         contadorDeArboles++;
 
-                    }
-                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("t")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("T")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("d")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("D")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("v")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("V")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xDR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XDR")) {
-                        ///llamo metodo para graficar arbol
-                        arbol.setId(contadorDeArboles);
-                        arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
-                        arbol.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
-
-                        matrizCuadriculaMapaIdArboles[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = arbol.getId();
-                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
-                        frame.agregarArbolALaLista(arbol);
-                        contadorDeArboles++;
                     }
                     if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("t")
                             || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("T")
@@ -908,20 +667,18 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                         contadorDeArboles++;
                     }
                 }
-                
-                
                 //cinco para los dentro de los limites.
                 if (y>0&&y<9&&x>0&&x<19) {
                     if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("r")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("R")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("l")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("L")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("h")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("H")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDL")) {
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("R")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("l")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("L")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("h")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("H")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDL")) {
                         /// llamo metodo para graficar arbol
                         arbol.setId(contadorDeArboles);
                         arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
@@ -933,15 +690,15 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                         contadorDeArboles++;
                     }
                     if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("r")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("R")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("l")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("L")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("h")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("H")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUL")) {
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("R")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("l")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("L")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("h")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("H")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUL")) {
                         ///llamo metodo para graficar arbol
                         arbol.setId(contadorDeArboles);
                         arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
@@ -954,15 +711,15 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
 
                     }
                     if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("t")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("T")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("d")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("D")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("v")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("V")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XUR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xDR")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XDR")) {
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("T")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("d")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("D")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("v")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("V")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XDR")) {
                         ///llamo metodo para graficar arbol
                         arbol.setId(contadorDeArboles);
                         arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
@@ -974,15 +731,15 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                         contadorDeArboles++;
                     }
                     if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("t")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("T")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("d")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("D")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("v")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("V")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xUL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XUL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xDL")
-                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XDL")) {
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("T")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("d")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("D")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("v")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("V")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xUL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XUL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xDL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XDL")) {
                         ///llamo metodo para graficar arbol
                         arbol.setId(contadorDeArboles);
                         arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
@@ -1000,8 +757,12 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
 
             }
 
+            ///// para pintar edificios 
             if (edificio != null && matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].equals("")) {
-                if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("r")
+
+                //uno para y-1 Listo
+                if (y<1&&x>0&&x<19) {
+                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("r")
                         || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("R")
                         || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("l")
                         || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("L")
@@ -1011,38 +772,18 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                         || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDR")
                         || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDL")
                         || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDL")) {
-                    /// llamo metodo para graficar edificio
-                    edificio.setId(contadorDeEdificios);
-                    edificio.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
-                    edificio.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+                        /// llamo metodo para graficar edificio
+                        edificio.setId(contadorDeArboles);
+                        edificio.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                        edificio.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
 
-                    matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = edificio.getId();
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
-                    frame.agregarEdificioALaLista(edificio);
-                    contadorDeEdificios++;
-                }
-                if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("r")
-                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("R")
-                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("l")
-                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("L")
-                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("h")
-                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("H")
-                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUR")
-                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUR")
-                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUL")
-                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUL")) {
-                    ///llamo metodo para graficar edificio
-                    edificio.setId(contadorDeEdificios);
-                    edificio.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
-                    edificio.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
-
-                    matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = edificio.getId();
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
-                    frame.agregarEdificioALaLista(edificio);
-                    contadorDeEdificios++;
-
-                }
-                if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("t")
+                        matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = edificio.getId();
+                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
+                        frame.agregarEdificioALaLista(edificio);
+                        contadorDeArboles++;
+                    }
+                    
+                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("t")
                         || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("T")
                         || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("d")
                         || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("D")
@@ -1052,17 +793,17 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                         || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XUR")
                         || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xDR")
                         || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XDR")) {
-                    ///llamo metodo para graficar edificio
-                    edificio.setId(contadorDeEdificios);
-                    edificio.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
-                    edificio.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+                        ///llamo metodo para graficar edificio
+                        edificio.setId(contadorDeArboles);
+                        edificio.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                        edificio.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
 
-                    matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = edificio.getId();
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
-                    frame.agregarEdificioALaLista(edificio);
-                    contadorDeEdificios++;
-                }
-                if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("t")
+                        matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = edificio.getId();
+                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
+                        frame.agregarEdificioALaLista(edificio);
+                        contadorDeArboles++;
+                    }
+                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("t")
                         || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("T")
                         || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("d")
                         || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("D")
@@ -1072,18 +813,470 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                         || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XUL")
                         || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xDL")
                         || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XDL")) {
-                    ///llamo metodo para graficar edificio
-                    edificio.setId(contadorDeEdificios);
-                    edificio.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
-                    edificio.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+                        ///llamo metodo para graficar edificio
+                        edificio.setId(contadorDeArboles);
+                        edificio.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                        edificio.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
 
-                    matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = edificio.getId();
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
-                    frame.agregarEdificioALaLista(edificio);
-                    contadorDeEdificios++;
+                        matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = edificio.getId();
+                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
+                        frame.agregarEdificioALaLista(edificio);
+                        contadorDeArboles++;
+                    }
+                }
+                
+                //dos para y+1 listo 
+                if (y>8&&x>0&&x<19) {
+                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("r")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("R")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("l")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("L")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("h")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("H")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUL")) {
+                        ///llamo metodo para graficar edificio
+                        edificio.setId(contadorDeArboles);
+                        edificio.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                        edificio.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+
+                        matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = edificio.getId();
+                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
+                        frame.agregarEdificioALaLista(edificio);
+                        contadorDeArboles++;
+
+                    }
+                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("t")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("T")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("d")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("D")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("v")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("V")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XDR")) {
+                        ///llamo metodo para graficar edificio
+                        edificio.setId(contadorDeArboles);
+                        edificio.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                        edificio.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+
+                        matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = edificio.getId();
+                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
+                        frame.agregarEdificioALaLista(edificio);
+                        contadorDeArboles++;
+                    }
+                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("t")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("T")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("d")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("D")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("v")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("V")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xUL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XUL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xDL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XDL")) {
+                        ///llamo metodo para graficar edificio
+                        edificio.setId(contadorDeArboles);
+                        edificio.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                        edificio.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+
+                        matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = edificio.getId();
+                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
+                        frame.agregarEdificioALaLista(edificio);
+                        contadorDeArboles++;
+                    }
+                }
+
+                //tres para x+1 listo 
+                if (x>18&&y>0&&y<9) {
+                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("r")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("R")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("l")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("L")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("h")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("H")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDL")) {
+                        /// llamo metodo para graficar edificio
+                        edificio.setId(contadorDeArboles);
+                        edificio.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                        edificio.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+
+                        matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = edificio.getId();
+                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
+                        frame.agregarEdificioALaLista(edificio);
+                        contadorDeArboles++;
+                    }
+                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("r")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("R")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("l")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("L")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("h")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("H")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUL")) {
+                        ///llamo metodo para graficar edificio
+                        edificio.setId(contadorDeArboles);
+                        edificio.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                        edificio.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+
+                        matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = edificio.getId();
+                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
+                        frame.agregarEdificioALaLista(edificio);
+                        contadorDeArboles++;
+
+                    } 
+                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("t")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("T")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("d")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("D")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("v")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("V")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xUL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XUL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xDL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XDL")) {
+                        ///llamo metodo para graficar edificio
+                        edificio.setId(contadorDeArboles);
+                        edificio.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                        edificio.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+
+                        matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = edificio.getId();
+                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
+                        frame.agregarEdificioALaLista(edificio);
+                        contadorDeArboles++;
+                    }
+                }
+                //cuatro para x-1 listo
+                if (x<1&&y>0&&y<9) {
+                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("r")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("R")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("l")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("L")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("h")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("H")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDL")) {
+                        /// llamo metodo para graficar edificio
+                        edificio.setId(contadorDeArboles);
+                        edificio.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                        edificio.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+
+                        matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = edificio.getId();
+                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
+                        frame.agregarEdificioALaLista(edificio);
+                        contadorDeArboles++;
+                    }
+                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("r")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("R")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("l")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("L")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("h")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("H")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUL")) {
+                        ///llamo metodo para graficar edificio
+                        edificio.setId(contadorDeArboles);
+                        edificio.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                        edificio.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+
+                        matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = edificio.getId();
+                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
+                        frame.agregarEdificioALaLista(edificio);
+                        contadorDeArboles++;
+
+                    }
+                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("t")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("T")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("d")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("D")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("v")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("V")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XDR")) {
+                        ///llamo metodo para graficar edificio
+                        edificio.setId(contadorDeArboles);
+                        edificio.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                        edificio.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+
+                        matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = edificio.getId();
+                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
+                        frame.agregarEdificioALaLista(edificio);
+                        contadorDeArboles++;
+                    }
+                }
+                //para la esquina 0,0 donde  y-1 y x-1 listo
+                if (x<1&&y<1) {
+                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("r")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("R")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("l")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("L")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("h")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("H")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDL")) {
+                        /// llamo metodo para graficar edificio
+                        edificio.setId(contadorDeArboles);
+                        edificio.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                        edificio.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+
+                        matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = edificio.getId();
+                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
+                        frame.agregarEdificioALaLista(edificio);
+                        contadorDeArboles++;
+                    }
+                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("t")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("T")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("d")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("D")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("v")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("V")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XDR")) {
+                        ///llamo metodo para graficar edificio
+                        edificio.setId(contadorDeArboles);
+                        edificio.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                        edificio.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+
+                        matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = edificio.getId();
+                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
+                        frame.agregarEdificioALaLista(edificio);
+                        contadorDeArboles++;
+                    }
+                }
+                //para la esquina 0,9 donde  y+1 y x-1
+                if (x<1&&y>8) {
+                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("r")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("R")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("l")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("L")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("h")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("H")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUL")) {
+                        ///llamo metodo para graficar edificio
+                        edificio.setId(contadorDeArboles);
+                        edificio.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                        edificio.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+
+                        matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = edificio.getId();
+                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
+                        frame.agregarEdificioALaLista(edificio);
+                        contadorDeArboles++;
+
+                    }
+                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("t")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("T")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("d")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("D")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("v")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("V")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XDR")) {
+                        ///llamo metodo para graficar edificio
+                        edificio.setId(contadorDeArboles);
+                        edificio.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                        edificio.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+
+                        matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = edificio.getId();
+                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
+                        frame.agregarEdificioALaLista(edificio);
+                        contadorDeArboles++;
+                    }  
+                }
+                //para la esquina 19,0 donde  y-1 y x+1 listo
+                if (x>18&&y<1) {
+                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("r")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("R")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("l")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("L")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("h")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("H")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDL")) {
+                        /// llamo metodo para graficar edificio
+                        edificio.setId(contadorDeArboles);
+                        edificio.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                        edificio.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+
+                        matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = edificio.getId();
+                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
+                        frame.agregarEdificioALaLista(edificio);
+                        contadorDeArboles++;
+                    }
+                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("t")
+                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("T")
+                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("d")
+                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("D")
+                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("v")
+                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("V")
+                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xUL")
+                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XUL")
+                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xDL")
+                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XDL")) {
+                        ///llamo metodo para graficar edificio
+                        edificio.setId(contadorDeArboles);
+                        edificio.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                        edificio.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+
+                        matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = edificio.getId();
+                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
+                        frame.agregarEdificioALaLista(edificio);
+                        contadorDeArboles++;
+                    }
+                }
+                //para la esquina 19,9 donde  y+1 y x+1 listo
+                if (x>18&&y>8) {
+                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("r")
+                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("R")
+                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("l")
+                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("L")
+                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("h")
+                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("H")
+                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUR")
+                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUR")
+                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUL")
+                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUL")) {
+                        ///llamo metodo para graficar edificio
+                        edificio.setId(contadorDeArboles);
+                        edificio.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                        edificio.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+
+                        matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = edificio.getId();
+                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
+                        frame.agregarEdificioALaLista(edificio);
+                        contadorDeArboles++;
+
+                    }
+                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("t")
+                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("T")
+                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("d")
+                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("D")
+                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("v")
+                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("V")
+                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xUL")
+                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XUL")
+                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xDL")
+                            || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XDL")) {
+                        ///llamo metodo para graficar edificio
+                        edificio.setId(contadorDeArboles);
+                        edificio.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                        edificio.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+
+                        matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = edificio.getId();
+                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
+                        frame.agregarEdificioALaLista(edificio);
+                        contadorDeArboles++;
+                    }
+                }
+                //cinco para los dentro de los limites.
+                if (y>0&&y<9&&x>0&&x<19) {
+                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("r")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("R")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("l")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("L")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("h")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("H")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDL")) {
+                        /// llamo metodo para graficar edificio
+                        edificio.setId(contadorDeArboles);
+                        edificio.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                        edificio.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+
+                        matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = edificio.getId();
+                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
+                        frame.agregarEdificioALaLista(edificio);
+                        contadorDeArboles++;
+                    }
+                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("r")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("R")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("l")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("L")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("h")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("H")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUL")) {
+                        ///llamo metodo para graficar edificio
+                        edificio.setId(contadorDeArboles);
+                        edificio.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                        edificio.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+
+                        matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = edificio.getId();
+                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
+                        frame.agregarEdificioALaLista(edificio);
+                        contadorDeArboles++;
+
+                    }
+                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("t")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("T")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("d")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("D")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("v")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("V")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XDR")) {
+                        ///llamo metodo para graficar edificio
+                        edificio.setId(contadorDeArboles);
+                        edificio.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                        edificio.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+
+                        matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = edificio.getId();
+                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
+                        frame.agregarEdificioALaLista(edificio);
+                        contadorDeArboles++;
+                    }
+                    if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("t")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("T")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("d")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("D")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("v")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("V")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xUL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XUL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xDL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XDL")) {
+                        ///llamo metodo para graficar edificio
+                        edificio.setId(contadorDeArboles);
+                        edificio.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                        edificio.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+
+                        matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = edificio.getId();
+                        matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
+                        frame.agregarEdificioALaLista(edificio);
+                        contadorDeArboles++;
+                    }
                 }
                 edificio = null;
-
             }
         }
 
