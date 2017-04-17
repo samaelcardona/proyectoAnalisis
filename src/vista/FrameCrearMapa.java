@@ -534,14 +534,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton20ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        for (int i = 0; i < calles.size(); i++) {
-            System.out.println("calle " + calles.get(i).getId());
-            System.out.println("  sentido "+ calles.get(i).getSentido());
-        }
-        for (int i = 0; i < arboles.size(); i++) {
-            System.out.println("arbol " + arboles.get(i).getId());
-            System.out.println("  x "+ arboles.get(i).getX());
-        }
+        panelCrearMapa1.mostrarMatricezEnConsola();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void agregarCalleALaLista(Calle calle) {
