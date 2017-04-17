@@ -21,53 +21,50 @@ import modelo.PuntosLimiteCuadricula;
  *
  * @author SAMAEL
  */
-public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionListener,MouseListener,KeyListener{
+public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionListener, MouseListener, KeyListener {
 
-     int x=20;
-    int y=10;
+    int x = 20;
+    int y = 10;
     Calle calle;
     Arbol arbol;
     Edificio edificio;
-    PuntosLimiteCuadricula [][] matrizPuntosLimitesCuadriculaMapa=new PuntosLimiteCuadricula[20][10];
-    String [][] matrizLetrasElementosInternosCuadriculaMapa=new String[20][10];
+    PuntosLimiteCuadricula[][] matrizPuntosLimitesCuadriculaMapa = new PuntosLimiteCuadricula[20][10];
+    String[][] matrizLetrasElementosInternosCuadriculaMapa = new String[20][10];
     //Matriz para agregar los Id de cada calle de la cuadricula
-    int [][] matrizCuadriculaMapaIdCalles=new int[20][10];
-    int [][] matrizCuadriculaMapaIdArboles=new int[20][10];
-    int [][] matrizCuadriculaMapaIdEdificios=new int[20][10];
+    int[][] matrizCuadriculaMapaIdCalles = new int[20][10];
+    int[][] matrizCuadriculaMapaIdArboles = new int[20][10];
+    int[][] matrizCuadriculaMapaIdEdificios = new int[20][10];
     private FrameCrearMapa frame;
-    int contadorDeCalles=0;
-    int contadorDeEdificios=0;
-    int contadorDeArboles=0;
-    String orientacion="";
-    boolean esPrimeraCalle=true;
-  
-    
+    int contadorDeCalles = 0;
+    int contadorDeEdificios = 0;
+    int contadorDeArboles = 0;
+    String orientacion = "";
+    boolean esPrimeraCalle = true;
+
     /**
      * Creates new form PanelCrearMapa
      */
     public PanelCrearMapa() {
         initComponents();
-        
+
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
         addMouseListener(this);
         addMouseMotionListener(this);
-        
+
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 10; j++) {
-             matrizPuntosLimitesCuadriculaMapa[i][j]=new PuntosLimiteCuadricula();
-             matrizLetrasElementosInternosCuadriculaMapa[i][j]="";
-             matrizCuadriculaMapaIdCalles[i][j]=-1;
-             matrizCuadriculaMapaIdArboles[i][j]=-1;
-             matrizCuadriculaMapaIdEdificios[i][j]=-1;
+                matrizPuntosLimitesCuadriculaMapa[i][j] = new PuntosLimiteCuadricula();
+                matrizLetrasElementosInternosCuadriculaMapa[i][j] = "";
+                matrizCuadriculaMapaIdCalles[i][j] = -1;
+                matrizCuadriculaMapaIdArboles[i][j] = -1;
+                matrizCuadriculaMapaIdEdificios[i][j] = -1;
             }
         }
-        
-       
-        
+
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -98,26 +95,26 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
         super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
         ///aca se grafica las lineas horizontales para la cuadricula
         for (int i = 0; i <= x; i++) {
-            g.drawLine((i * 56) , 0, (i * 56) , 560);
-        }        
+            g.drawLine((i * 56), 0, (i * 56), 560);
+        }
         g.drawLine(1119, 0, 1119, 560);
 
         ///aca se grafica las lineas  verticales para la cuadricula.
         for (int i = 0; i <= y; i++) {
-            g.drawLine(0, (i * 56) , 1120, (i * 56));
+            g.drawLine(0, (i * 56), 1120, (i * 56));
         }
         g.drawLine(0, 559, 1120, 559);
 
         //llenar matriz 
         for (int i = 1; i <= x; i++) {
             for (int j = 1; j <= y; j++) {
-                matrizPuntosLimitesCuadriculaMapa[i-1][j-1].setX1(((i-1)*56));
-                matrizPuntosLimitesCuadriculaMapa[i-1][j-1].setX2((i*56)-3);
-                matrizPuntosLimitesCuadriculaMapa[i-1][j-1].setY1(((j-1)*56));
-                matrizPuntosLimitesCuadriculaMapa[i-1][j-1].setY2((j*56)-3);
+                matrizPuntosLimitesCuadriculaMapa[i - 1][j - 1].setX1(((i - 1) * 56));
+                matrizPuntosLimitesCuadriculaMapa[i - 1][j - 1].setX2((i * 56) - 3);
+                matrizPuntosLimitesCuadriculaMapa[i - 1][j - 1].setY1(((j - 1) * 56));
+                matrizPuntosLimitesCuadriculaMapa[i - 1][j - 1].setY2((j * 56) - 3);
             }
         }
-        
+
         if (calle != null) {
             g.drawImage(calle.getImagen().getImage(), calle.getX(), calle.getY(), calle.getAncho(), calle.getAlto(), this);
             g.setColor(Color.white);
@@ -133,414 +130,402 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
             g.setColor(Color.white);
             g.drawRect(edificio.getX(), edificio.getY(), edificio.getAncho(), edificio.getAlto());
         }
-        
+
         /// solo para las calles pero luego se modifica para los edificios tomando la matriz de elementos (String) 
         //y graficando toca que crear una matriz de edificios y los arboles si normal 
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 20; j++) {
                 if (!"".equals(matrizLetrasElementosInternosCuadriculaMapa[j][i])) {
-                    if (matrizCuadriculaMapaIdCalles[j][i]!=-1) {
-                        g.drawImage(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getImagen().getImage(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getX(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getY(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getAncho(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getAlto(), this);  
+                    if (matrizCuadriculaMapaIdCalles[j][i] != -1) {
+                        g.drawImage(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getImagen().getImage(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getX(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getY(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getAncho(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getAlto(), this);
                     }
-                    if (matrizCuadriculaMapaIdArboles[j][i]!=-1) {
-                        g.drawImage(frame.getArboles().get(matrizCuadriculaMapaIdArboles[j][i]).getImagen().getImage(), frame.getArboles().get(matrizCuadriculaMapaIdArboles[j][i]).getX(), frame.getArboles().get(matrizCuadriculaMapaIdArboles[j][i]).getY(), frame.getArboles().get(matrizCuadriculaMapaIdArboles[j][i]).getAncho(), frame.getArboles().get(matrizCuadriculaMapaIdArboles[j][i]).getAlto(), this);  
+                    if (matrizCuadriculaMapaIdArboles[j][i] != -1) {
+                        g.drawImage(frame.getArboles().get(matrizCuadriculaMapaIdArboles[j][i]).getImagen().getImage(), frame.getArboles().get(matrizCuadriculaMapaIdArboles[j][i]).getX(), frame.getArboles().get(matrizCuadriculaMapaIdArboles[j][i]).getY(), frame.getArboles().get(matrizCuadriculaMapaIdArboles[j][i]).getAncho(), frame.getArboles().get(matrizCuadriculaMapaIdArboles[j][i]).getAlto(), this);
                     }
-                    
-                    if (matrizCuadriculaMapaIdEdificios[j][i]!=-1) {
-                        g.drawImage(frame.getEdificios().get(matrizCuadriculaMapaIdEdificios[j][i]).getImagen().getImage(), frame.getEdificios().get(matrizCuadriculaMapaIdEdificios[j][i]).getX(), frame.getEdificios().get(matrizCuadriculaMapaIdEdificios[j][i]).getY(), frame.getEdificios().get(matrizCuadriculaMapaIdEdificios[j][i]).getAncho(), frame.getEdificios().get(matrizCuadriculaMapaIdEdificios[j][i]).getAlto(), this);  
+
+                    if (matrizCuadriculaMapaIdEdificios[j][i] != -1) {
+                        g.drawImage(frame.getEdificios().get(matrizCuadriculaMapaIdEdificios[j][i]).getImagen().getImage(), frame.getEdificios().get(matrizCuadriculaMapaIdEdificios[j][i]).getX(), frame.getEdificios().get(matrizCuadriculaMapaIdEdificios[j][i]).getY(), frame.getEdificios().get(matrizCuadriculaMapaIdEdificios[j][i]).getAncho(), frame.getEdificios().get(matrizCuadriculaMapaIdEdificios[j][i]).getAlto(), this);
                     }
-                     
+
                 }
             }
         }
-        
+
         repaint();
-    
+
     }
 
-    public void recibirFrameCrearMapa(FrameCrearMapa frameRecibido){
-        this.frame=frameRecibido;
+    public void recibirFrameCrearMapa(FrameCrearMapa frameRecibido) {
+        this.frame = frameRecibido;
     }
-    
-    
+
     @Override
     public void mouseDragged(MouseEvent e) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        
-    
+
     }
 
     @Override
     public void mouseMoved(MouseEvent e) {
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         if (calle != null) {
-            calle.setX(e.getX()-23);
-            calle.setY(e.getY()-23);
+            calle.setX(e.getX() - 23);
+            calle.setY(e.getY() - 23);
             repaint();
         }
-         if (arbol != null) {
-            arbol.setX(e.getX()-23);
-            arbol.setY(e.getY()-23);
+        if (arbol != null) {
+            arbol.setX(e.getX() - 23);
+            arbol.setY(e.getY() - 23);
             repaint();
         }
         if (edificio != null) {
-            edificio.setX(e.getX()-23);
-            edificio.setY(e.getY()-23);
+            edificio.setX(e.getX() - 23);
+            edificio.setY(e.getY() - 23);
             repaint();
         }
-        
-    
+
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    
-        int x=(int)e.getPoint().getX();
-        int y=(int)e.getPoint().getY();
-        
-        int [] cuadroSeleccionado=new int[2];
-        cuadroSeleccionado=retornarPosicionCuadriculaSeleccionada(x, y);
-        
-        
-        if (cuadroSeleccionado!=null) {
-             if (!matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].equals("")) {
-                 System.out.println("verifique posicion de calle");
+
+        int x = (int) e.getPoint().getX();
+        int y = (int) e.getPoint().getY();
+
+        int[] cuadroSeleccionado = new int[2];
+        cuadroSeleccionado = retornarPosicionCuadriculaSeleccionada(x, y);
+
+        if (cuadroSeleccionado != null) {
+            if (!matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].equals("")) {
+                System.out.println("verifique posicion de calle");
             }
-            if (calle!=null&&matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].equals("")) {
-                FormularioParaLaTomaDeDatosSegunSamaelCardonaClavijo formularioTomaDeDatos=new FormularioParaLaTomaDeDatosSegunSamaelCardonaClavijo();
-               
-                if (this.orientacion=="horizontal") {
-                     formularioTomaDeDatos.recibirPanel(this,cuadroSeleccionado[0],cuadroSeleccionado[1]);
-                     formularioTomaDeDatos.setVisible(true);
+            if (calle != null && matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].equals("")) {
+                FormularioParaLaTomaDeDatosSegunSamaelCardonaClavijo formularioTomaDeDatos = new FormularioParaLaTomaDeDatosSegunSamaelCardonaClavijo();
+
+                if (this.orientacion == "horizontal") {
+                    formularioTomaDeDatos.recibirPanel(this, cuadroSeleccionado[0], cuadroSeleccionado[1]);
+                    formularioTomaDeDatos.setVisible(true);
                 }
-                if (this.orientacion=="vertical") {
-                    
+                if (this.orientacion == "vertical") {
+
                     formularioTomaDeDatos.getComboSentido().removeAllItems();
                     formularioTomaDeDatos.getComboSentido().addItem("Arriba");
                     formularioTomaDeDatos.getComboSentido().addItem("Abajo");
                     formularioTomaDeDatos.getComboSentido().addItem("Doble sentido");
-                    
-                    formularioTomaDeDatos.recibirPanel(this,cuadroSeleccionado[0],cuadroSeleccionado[1]);
+
+                    formularioTomaDeDatos.recibirPanel(this, cuadroSeleccionado[0], cuadroSeleccionado[1]);
                     formularioTomaDeDatos.setVisible(true);
                 }
-                if (this.orientacion=="interseccionCruzada") {
+                if (this.orientacion == "interseccionCruzada") {
                     formularioTomaDeDatos.getComboSentido().removeAllItems();
                     formularioTomaDeDatos.getComboSentido().addItem("Doble sentido");
-                    formularioTomaDeDatos.recibirPanel(this,cuadroSeleccionado[0],cuadroSeleccionado[1]);
+                    formularioTomaDeDatos.recibirPanel(this, cuadroSeleccionado[0], cuadroSeleccionado[1]);
                     formularioTomaDeDatos.getComboTipo().removeAllItems();
                     formularioTomaDeDatos.getComboTipo().addItem("Urbana");
                     formularioTomaDeDatos.getjButton1().doClick();
-                    
-                    
+
                 }
-                if (this.orientacion=="interseccionArribaDerecha"||this.orientacion=="interseccionAbajoDerecha"||this.orientacion=="interseccionArribaIzquierda"||this.orientacion=="interseccionAbajoIzquierda") {
-                    formularioTomaDeDatos.recibirPanel(this,cuadroSeleccionado[0],cuadroSeleccionado[1]);
+                if (this.orientacion == "interseccionArribaDerecha" || this.orientacion == "interseccionAbajoDerecha" || this.orientacion == "interseccionArribaIzquierda" || this.orientacion == "interseccionAbajoIzquierda") {
+                    formularioTomaDeDatos.recibirPanel(this, cuadroSeleccionado[0], cuadroSeleccionado[1]);
                     formularioTomaDeDatos.setVisible(true);
                 }
-               
-            } 
-           ///pinto los arboles aqui 
-            if (arbol!=null&&matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].equals("")) {
+
+            }
+            ///pinto los arboles aqui 
+            if (arbol != null && matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].equals("")) {
                 if (esPrimeraCalle) {
-                    
+
                 }
-                if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("r")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("R")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("l")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("L")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("h")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("H")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("xDR")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("XDR")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("xDL")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("XDL")) {
+                if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("r") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("R") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("l") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("L") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("h") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("H") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDR") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDR") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDL") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDL")) {
                     /// llamo metodo para graficar arbol
                     arbol.setId(contadorDeArboles);
-                    arbol.setX((int)matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
-                    arbol.setY((int)matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
-                    
-                    matrizCuadriculaMapaIdArboles[cuadroSeleccionado[0]][cuadroSeleccionado[1]]=arbol.getId();
-                     matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]]="A";
+                    arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                    arbol.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+
+                    matrizCuadriculaMapaIdArboles[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = arbol.getId();
+                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
                     frame.agregarArbolALaLista(arbol);
                     contadorDeArboles++;
                 }
-                if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("r")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("R")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("l")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("L")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("h")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("H")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("xUR")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("XUR")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("xUL")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("XUL")) {
+                if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("r") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("R") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("l") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("L") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("h") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("H") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUR") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUR") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUL") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUL")) {
                     ///llamo metodo para graficar arbol
                     arbol.setId(contadorDeArboles);
-                    arbol.setX((int)matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
-                    arbol.setY((int)matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
-                    
-                    matrizCuadriculaMapaIdArboles[cuadroSeleccionado[0]][cuadroSeleccionado[1]]=arbol.getId();
-                     matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]]="A";
+                    arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                    arbol.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+
+                    matrizCuadriculaMapaIdArboles[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = arbol.getId();
+                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
                     frame.agregarArbolALaLista(arbol);
                     contadorDeArboles++;
-                    
+
                 }
-                if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("t")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("T")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("d")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("D")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("v")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("V")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("xUR")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("XUR")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("xDR")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("XDR")) {
+                if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("t") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("T") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("d") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("D") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("v") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("V") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xUR") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XUR") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xDR") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XDR")) {
                     ///llamo metodo para graficar arbol
                     arbol.setId(contadorDeArboles);
-                    arbol.setX((int)matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
-                    arbol.setY((int)matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
-                    
-                    matrizCuadriculaMapaIdArboles[cuadroSeleccionado[0]][cuadroSeleccionado[1]]=arbol.getId();
-                     matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]]="A";
+                    arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                    arbol.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+
+                    matrizCuadriculaMapaIdArboles[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = arbol.getId();
+                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
                     frame.agregarArbolALaLista(arbol);
                     contadorDeArboles++;
                 }
-                if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("t")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("T")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("d")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("D")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("v")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("V")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("xUL")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("XUL")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("xDL")||matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("XDL")) {
+                if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("t") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("T") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("d") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("D") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("v") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("V") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xUL") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XUL") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xDL") || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XDL")) {
                     ///llamo metodo para graficar arbol
                     arbol.setId(contadorDeArboles);
-                    arbol.setX((int)matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
-                    arbol.setY((int)matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
-                    
-                    matrizCuadriculaMapaIdArboles[cuadroSeleccionado[0]][cuadroSeleccionado[1]]=arbol.getId();
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]]="A";
+                    arbol.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                    arbol.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+
+                    matrizCuadriculaMapaIdArboles[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = arbol.getId();
+                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
                     frame.agregarArbolALaLista(arbol);
                     contadorDeArboles++;
                 }
-                arbol=null;
-                
+                arbol = null;
+
             }
-            
-           if (edificio!=null&&matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].equals("")) {
-                if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("r")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("R")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("l")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("L")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("h")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("H")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("xDR")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("XDR")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("xDL")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]+1].equals("XDL")) {
+
+            if (edificio != null && matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].equals("")) {
+                if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("r")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("R")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("l")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("L")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("h")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("H")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("xDL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] + 1].equals("XDL")) {
                     /// llamo metodo para graficar edificio
                     edificio.setId(contadorDeEdificios);
-                    edificio.setX((int)matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
-                    edificio.setY((int)matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
-                    
-                    matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]]=edificio.getId();
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]]="A";
+                    edificio.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                    edificio.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+
+                    matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = edificio.getId();
+                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
                     frame.agregarEdificioALaLista(edificio);
                     contadorDeEdificios++;
                 }
-                if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("r")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("R")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("l")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("L")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("h")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("H")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("xUR")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("XUR")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("xUL")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]-1].equals("XUL")) {
+                if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("r")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("R")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("l")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("L")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("h")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("H")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("xUL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1] - 1].equals("XUL")) {
                     ///llamo metodo para graficar edificio
                     edificio.setId(contadorDeEdificios);
-                    edificio.setX((int)matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
-                    edificio.setY((int)matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
-                    
-                    matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]]=edificio.getId();
-                     matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]]="A";
+                    edificio.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                    edificio.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+
+                    matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = edificio.getId();
+                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
                     frame.agregarEdificioALaLista(edificio);
                     contadorDeEdificios++;
-                    
+
                 }
-                if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("t")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("T")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("d")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("D")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("v")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("V")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("xUR")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("XUR")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("xDR")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]+1][cuadroSeleccionado[1]].equals("XDR")) {
+                if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("t")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("T")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("d")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("D")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("v")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("V")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XUR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("xDR")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] + 1][cuadroSeleccionado[1]].equals("XDR")) {
                     ///llamo metodo para graficar edificio
                     edificio.setId(contadorDeEdificios);
-                    edificio.setX((int)matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
-                    edificio.setY((int)matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
-                    
-                    matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]]=edificio.getId();
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]]="A";
+                    edificio.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                    edificio.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+
+                    matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = edificio.getId();
+                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
                     frame.agregarEdificioALaLista(edificio);
                     contadorDeEdificios++;
                 }
-                if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("t")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("T")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("d")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("D")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("v")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("V")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("xUL")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("XUL")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("xDL")||
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]-1][cuadroSeleccionado[1]].equals("XDL")) {
+                if (matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("t")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("T")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("d")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("D")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("v")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("V")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xUL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XUL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("xDL")
+                        || matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0] - 1][cuadroSeleccionado[1]].equals("XDL")) {
                     ///llamo metodo para graficar edificio
                     edificio.setId(contadorDeEdificios);
-                    edificio.setX((int)matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
-                    edificio.setY((int)matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
-                    
-                    matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]]=edificio.getId();
-                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]]="A";
+                    edificio.setX((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getX1());
+                    edificio.setY((int) matrizPuntosLimitesCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]].getY1());
+
+                    matrizCuadriculaMapaIdEdificios[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = edificio.getId();
+                    matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] = "A";
                     frame.agregarEdificioALaLista(edificio);
                     contadorDeEdificios++;
                 }
-                edificio=null;
-                
+                edificio = null;
+
             }
         }
 
         /*
-        //ciclo para mostrar las matrices de limites
-        String cadena;
+         //ciclo para mostrar las matrices de limites
+         String cadena;
     
-            System.out.println("");
+         System.out.println("");
 
-              for (int i = 0; i < 10; i++) {
-                  cadena="";
-                for (int j = 0; j < 20; j++) {
-                   cadena=cadena+"para x "+j+" y "+i+"[ x1 "+matrizPuntosLimitesCuadriculaMapa[j][i].getX1()+" x2 "+matrizPuntosLimitesCuadriculaMapa[j][i].getX2()+" y1 "+matrizPuntosLimitesCuadriculaMapa[j][i].getY1()+" y2 "+matrizPuntosLimitesCuadriculaMapa[j][i].getY2()+"] ";
-                }
-                  System.out.println(cadena);
-            }
+         for (int i = 0; i < 10; i++) {
+         cadena="";
+         for (int j = 0; j < 20; j++) {
+         cadena=cadena+"para x "+j+" y "+i+"[ x1 "+matrizPuntosLimitesCuadriculaMapa[j][i].getX1()+" x2 "+matrizPuntosLimitesCuadriculaMapa[j][i].getX2()+" y1 "+matrizPuntosLimitesCuadriculaMapa[j][i].getY1()+" y2 "+matrizPuntosLimitesCuadriculaMapa[j][i].getY2()+"] ";
+         }
+         System.out.println(cadena);
+         }
 
-              System.out.println("pos x " + e.getX());
-              System.out.println("pos y " + e.getY());
-        */
-        
+         System.out.println("pos x " + e.getX());
+         System.out.println("pos y " + e.getY());
+         */
         /*
-        //ciclo para mostrar las matrices de elementos 
-        String cadena;
+         //ciclo para mostrar las matrices de elementos 
+         String cadena;
     
-            System.out.println("");
+         System.out.println("");
 
-            System.out.println("    0  1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18  19  20 ");
-              for (int i = 0; i < 10; i++) {
-                  cadena=i+" ";
-                for (int j = 0; j < 20; j++) {
-                   cadena=cadena+"  "+matrizLetrasElementosInternosCuadriculaMapa[j][i];
-                }
-                  System.out.println(cadena);
-            }
-        */    
-        
-       /*
-        //ciclo para mostrar las matrices de id 
-        String cadena;
+         System.out.println("    0  1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18  19  20 ");
+         for (int i = 0; i < 10; i++) {
+         cadena=i+" ";
+         for (int j = 0; j < 20; j++) {
+         cadena=cadena+"  "+matrizLetrasElementosInternosCuadriculaMapa[j][i];
+         }
+         System.out.println(cadena);
+         }
+         */
+        /*
+         //ciclo para mostrar las matrices de id 
+         String cadena;
     
-            System.out.println("");
+         System.out.println("");
 
-            System.out.println("    0  1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18  19  20 ");
-              for (int i = 0; i < 10; i++) {
-                  cadena=i+" ";
-                for (int j = 0; j < 20; j++) {
-                   cadena=cadena+"  "+matrizCuadriculaMapaIdCalles[j][i];
-                }
-                  System.out.println(cadena);
-            }
+         System.out.println("    0  1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18  19  20 ");
+         for (int i = 0; i < 10; i++) {
+         cadena=i+" ";
+         for (int j = 0; j < 20; j++) {
+         cadena=cadena+"  "+matrizCuadriculaMapaIdCalles[j][i];
+         }
+         System.out.println(cadena);
+         }
            
-        */
-       
-        if (frame!=null) {
-             frame.getjRadioButton1().setSelected(false);
-             frame.getjRadioButton10().setSelected(false);
-             frame.getjRadioButton11().setSelected(false);
-             frame.getjRadioButton12().setSelected(false);
-             frame.getjRadioButton13().setSelected(false);
-             frame.getjRadioButton14().setSelected(false);
-             frame.getjRadioButton15().setSelected(false);
-             frame.getjRadioButton16().setSelected(false);
-             frame.getjRadioButton9().setSelected(false);
-             frame.getjRadioButton8().setSelected(false);
-             frame.getjRadioButton7().setSelected(false);
-             frame.getjRadioButton6().setSelected(false);
-             frame.getjRadioButton5().setSelected(false);
-             frame.getjRadioButton4().setSelected(false);
-             frame.getjRadioButton3().setSelected(false);
-             frame.getjRadioButton2().setSelected(false);
+         */
+        if (frame != null) {
+            frame.getjRadioButton1().setSelected(false);
+            frame.getjRadioButton10().setSelected(false);
+            frame.getjRadioButton11().setSelected(false);
+            frame.getjRadioButton12().setSelected(false);
+            frame.getjRadioButton13().setSelected(false);
+            frame.getjRadioButton14().setSelected(false);
+            frame.getjRadioButton15().setSelected(false);
+            frame.getjRadioButton16().setSelected(false);
+            frame.getjRadioButton9().setSelected(false);
+            frame.getjRadioButton8().setSelected(false);
+            frame.getjRadioButton7().setSelected(false);
+            frame.getjRadioButton6().setSelected(false);
+            frame.getjRadioButton5().setSelected(false);
+            frame.getjRadioButton4().setSelected(false);
+            frame.getjRadioButton3().setSelected(false);
+            frame.getjRadioButton2().setSelected(false);
         }
     }
 
     @Override
     public void mousePressed(MouseEvent me) {
-      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseReleased(MouseEvent me) {
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         if (calle != null) {
             calle.setX(e.getX());
             calle.setY(e.getY());
             repaint();
         }
-    
+
     }
 
     @Override
     public void mouseExited(MouseEvent me) {
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void keyTyped(KeyEvent ke) {
-      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void keyPressed(KeyEvent ke) {
-     //   throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //   throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void keyReleased(KeyEvent ke) {
-      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public int [] retornarPosicionCuadriculaSeleccionada(int x, int y){
-        
-        boolean encontroX=false;
-        boolean encontroY=false;
-        int i=0;
-        int j=0;
-        int [] datosXY=new int[2];
+    public int[] retornarPosicionCuadriculaSeleccionada(int x, int y) {
+
+        boolean encontroX = false;
+        boolean encontroY = false;
+        int i = 0;
+        int j = 0;
+        int[] datosXY = new int[2];
 
         //para encontrar limites en x 
-        while (i<20&&encontroX==false) {    
-            if (matrizPuntosLimitesCuadriculaMapa[i][j].getX1()<=x&&matrizPuntosLimitesCuadriculaMapa[i][j].getX2()>=x) {
-                    encontroX=true;
-                    datosXY[0]=i;
-                }
+        while (i < 20 && encontroX == false) {
+            if (matrizPuntosLimitesCuadriculaMapa[i][j].getX1() <= x && matrizPuntosLimitesCuadriculaMapa[i][j].getX2() >= x) {
+                encontroX = true;
+                datosXY[0] = i;
+            }
             i++;
         }
-        
+
         //para encontrar limites en y despues de haber encontrado x
-        if (encontroX==true) {
-            while (j<10&&encontroY==false) {                
-                if (matrizPuntosLimitesCuadriculaMapa[datosXY[0]][j].getY1()<=y&&matrizPuntosLimitesCuadriculaMapa[datosXY[0]][j].getY2()>=y) {
-                    encontroY=true;
-                    datosXY[1]=j;
+        if (encontroX == true) {
+            while (j < 10 && encontroY == false) {
+                if (matrizPuntosLimitesCuadriculaMapa[datosXY[0]][j].getY1() <= y && matrizPuntosLimitesCuadriculaMapa[datosXY[0]][j].getY2() >= y) {
+                    encontroY = true;
+                    datosXY[1] = j;
                 }
-                j++;  
+                j++;
             }
-        }
-        else{
+        } else {
             System.out.println("verifique posiciones seleccionadas");
         }
-        if (encontroY==true) {
-            return datosXY;  
+        if (encontroY == true) {
+            return datosXY;
         }
-          return null;
+        return null;
     }
-    
-    
-    
-    
-    public void recibirDatosFormularioYmodificarCalle(int x, int y,String tipo, String sentido){
-        calle.setSentido(sentido);
-        calle.setTipo(tipo); 
-        calle.setX((int)matrizPuntosLimitesCuadriculaMapa[x][y].getX1());
-        calle.setY((int)matrizPuntosLimitesCuadriculaMapa[x][y].getY1());
-        
-        if(!calle.getSentido().equals("")||!calle.getTipo().equals("")) { 
 
-            if (esPrimeraCalle==true) {
+    public void recibirDatosFormularioYmodificarCalle(int x, int y, String tipo, String sentido) {
+        calle.setSentido(sentido);
+        calle.setTipo(tipo);
+        calle.setX((int) matrizPuntosLimitesCuadriculaMapa[x][y].getX1());
+        calle.setY((int) matrizPuntosLimitesCuadriculaMapa[x][y].getY1());
+
+        if (!calle.getSentido().equals("") || !calle.getTipo().equals("")) {
+
+            if (esPrimeraCalle == true) {
                 if (this.orientacion == "horizontal") {
                     if ("Urbana".equals(calle.getTipo())) {
                         calle.setVelocidad(60);
@@ -674,25 +659,25 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                     if ("Carretera".equals(calle.getTipo())) {
                         calle.setVelocidad(100);
                         if ("Derecha".equals(calle.getSentido())) {
-                           calle.setId(contadorDeCalles);
-                           matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XURR";
-                           matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                           frame.agregarCalleALaLista(calle);
-                           contadorDeCalles++;
+                            calle.setId(contadorDeCalles);
+                            matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XURR";
+                            matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                            frame.agregarCalleALaLista(calle);
+                            contadorDeCalles++;
                         }
                         if ("Izquierda".equals(calle.getSentido())) {
-                           calle.setId(contadorDeCalles);
-                           matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XURL";
-                           matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                           frame.agregarCalleALaLista(calle);
-                           contadorDeCalles++;
+                            calle.setId(contadorDeCalles);
+                            matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XURL";
+                            matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                            frame.agregarCalleALaLista(calle);
+                            contadorDeCalles++;
                         }
                         if ("Doble sentido".equals(calle.getSentido())) {
-                           calle.setId(contadorDeCalles);
-                           matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XUR";
-                           matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                           frame.agregarCalleALaLista(calle);
-                           contadorDeCalles++;
+                            calle.setId(contadorDeCalles);
+                            matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XUR";
+                            matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                            frame.agregarCalleALaLista(calle);
+                            contadorDeCalles++;
                         }
                     }
                 }
@@ -724,76 +709,76 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                     if ("Carretera".equals(calle.getTipo())) {
                         calle.setVelocidad(100);
                         if ("Derecha".equals(calle.getSentido())) {
-                           calle.setId(contadorDeCalles);
-                           matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XDRR";
-                           matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                           frame.agregarCalleALaLista(calle);
-                           contadorDeCalles++;
+                            calle.setId(contadorDeCalles);
+                            matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XDRR";
+                            matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                            frame.agregarCalleALaLista(calle);
+                            contadorDeCalles++;
                         }
                         if ("Izquierda".equals(calle.getSentido())) {
-                           calle.setId(contadorDeCalles);
-                           matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XDRL";
-                           matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                           frame.agregarCalleALaLista(calle);
-                           contadorDeCalles++;
+                            calle.setId(contadorDeCalles);
+                            matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XDRL";
+                            matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                            frame.agregarCalleALaLista(calle);
+                            contadorDeCalles++;
                         }
-                         if ("Doble sentido".equals(calle.getSentido())) {
-                           calle.setId(contadorDeCalles);
-                           matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XDR";
-                           matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                           frame.agregarCalleALaLista(calle);
-                           contadorDeCalles++;
+                        if ("Doble sentido".equals(calle.getSentido())) {
+                            calle.setId(contadorDeCalles);
+                            matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XDR";
+                            matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                            frame.agregarCalleALaLista(calle);
+                            contadorDeCalles++;
                         }
                     }
                 }
                 if (this.orientacion == "interseccionArribaIzquierda") {
                     if ("Urbana".equals(calle.getTipo())) {
-                       calle.setVelocidad(60);
-                       if ("Derecha".equals(calle.getSentido())) {
+                        calle.setVelocidad(60);
+                        if ("Derecha".equals(calle.getSentido())) {
                             calle.setId(contadorDeCalles);
                             matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xULR";
                             matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
                             frame.agregarCalleALaLista(calle);
                             contadorDeCalles++;
-                       }
-                       if ("Izquierda".equals(calle.getSentido())) {
+                        }
+                        if ("Izquierda".equals(calle.getSentido())) {
                             calle.setId(contadorDeCalles);
                             matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xULL";
                             matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
                             frame.agregarCalleALaLista(calle);
                             contadorDeCalles++;
-                       }
-                       if ("Doble sentido".equals(calle.getSentido())) {
+                        }
+                        if ("Doble sentido".equals(calle.getSentido())) {
                             calle.setId(contadorDeCalles);
                             matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xUL";
                             matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
                             frame.agregarCalleALaLista(calle);
                             contadorDeCalles++;
-                       }
+                        }
                     }
                     if ("Carretera".equals(calle.getTipo())) {
-                        calle.setVelocidad(100);    
+                        calle.setVelocidad(100);
                         if ("Derecha".equals(calle.getSentido())) {
                             calle.setId(contadorDeCalles);
                             matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XULR";
                             matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
                             frame.agregarCalleALaLista(calle);
                             contadorDeCalles++;
-                       }
+                        }
                         if ("Izquierda".equals(calle.getSentido())) {
                             calle.setId(contadorDeCalles);
                             matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XULL";
                             matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
                             frame.agregarCalleALaLista(calle);
                             contadorDeCalles++;
-                       }
+                        }
                         if ("Doble sentido".equals(calle.getSentido())) {
                             calle.setId(contadorDeCalles);
                             matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XUL";
                             matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
                             frame.agregarCalleALaLista(calle);
                             contadorDeCalles++;
-                       }
+                        }
                     }
                 }
                 if (this.orientacion == "interseccionAbajoIzquierda") {
@@ -864,716 +849,713 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                         contadorDeCalles++;
                     }
                 }
-                
-                esPrimeraCalle=false;
-            }
-            else{
-                if (matrizLetrasElementosInternosCuadriculaMapa[x][y-1]==null) {
-                    
+
+                esPrimeraCalle = false;
+            } else {
+                if ((y - 1) < 0) {//arriba
+                    System.out.println("if 1");
                 }
-                if (matrizLetrasElementosInternosCuadriculaMapa[x][y+1]==null) {
-                    
+                if ((y + 1) > 9) {//abajo
+                    System.out.println("if 2");
                 }
-                if (matrizLetrasElementosInternosCuadriculaMapa[x-1][y]==null) {
-                    
+                if ((x - 1)<0) {//izquierda
+                    System.out.println("if 3");
                 }
-                if (matrizLetrasElementosInternosCuadriculaMapa[x+1][y]==null) {
-                    
+                if ((x + 1)>19) {//derecha
+                    System.out.println("if 4");
                 }
-                
-                
-                ////hacer validaciones con el condicional del txt almacenado en los documentos.. tener en cuenta las direcciones
-                if (this.orientacion == "horizontal") {
-                    if ("Urbana".equals(calle.getTipo())) {
-                        calle.setVelocidad(60);
-                        if ("Derecha".equals(calle.getSentido())) {
-                            if (matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="R"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="r"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xULR"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xDLR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XULR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XDLR"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="R"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="r"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xURR"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xDRR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XURR"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XDRR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XX") {
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "r";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
+                if (y  < 9 && y  > 0 && x  < 19 && x  > 0) {
+                    ////hacer validaciones con el condicional del txt almacenado en los documentos.. tener en cuenta las direcciones
+                    if (this.orientacion == "horizontal") {
+                        if ("Urbana".equals(calle.getTipo())) {
+                            calle.setVelocidad(60);
+                            if ("Derecha".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "R" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "r"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xULR" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xDLR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XULR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XDLR" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "R" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "r"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xURR" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xDRR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XURR" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XDRR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XX") {
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "r";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+
+                                }
 
                             }
-                           
-                        }
-                        if ("Izquierda".equals(calle.getSentido())) {
-                            if (matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="L"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="l"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xULL"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xDLL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XULL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XDLL"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="L"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="l"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xURL"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xDRL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XURL"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XDRL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XX") {
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "l";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
+                            if ("Izquierda".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "L" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "l"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xULL" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xDLL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XULL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XDLL" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "L" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "l"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xURL" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xDRL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XURL" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XDRL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XX") {
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "l";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
+                            }
+                            if ("Doble sentido".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "H" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "h"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xUL" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xDL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XUL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XDL" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "H" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "h"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xUR" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xDR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XUR" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XDR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XX") {
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "h";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
                             }
                         }
-                        if ("Doble sentido".equals(calle.getSentido())) {
-                            if (matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="H"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="h"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xUL"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xDL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XUL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XDL"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="H"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="h"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xUR"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xDR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XUR"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XDR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XX") {
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "h";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
-                            } 
+
+                        if ("Carretera".equals(calle.getTipo())) {
+                            calle.setVelocidad(100);
+                            if ("Derecha".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "R" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "r"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xULR" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xDLR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XULR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XDLR" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "R" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "r"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xURR" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xDRR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XURR" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XDRR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XX") {
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "R";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
+                            }
+                            if ("Izquierda".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "L" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "l"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xULL" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xDLL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XULL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XDLL" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "L" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "l"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xURL" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xDRL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XURL" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XDRL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XX") {
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "L";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
+                            }
+                            if ("Doble sentido".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "H" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "h"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xUL" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xDL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XUL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XDL" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "H" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "h"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xUR" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xDR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XUR" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XDR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XX") {
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "H";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
+                            }
                         }
+
                     }
 
-                    if ("Carretera".equals(calle.getTipo())) {
-                        calle.setVelocidad(100);
-                        if ("Derecha".equals(calle.getSentido())) {
-                            if (matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="R"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="r"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xULR"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xDLR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XULR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XDLR"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="R"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="r"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xURR"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xDRR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XURR"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XDRR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XX") {
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "R";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
+                    if (this.orientacion == "vertical") {
+                        if ("Urbana".equals(calle.getTipo())) {
+                            calle.setVelocidad(60);
+                            if ("Arriba".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "t" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "T"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xURL" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xULR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XURL" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XULR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "t" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "T"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDRR" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDLL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDRR" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDLL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XX") {
+
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "t";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
+
+                            }
+                            if ("Abajo".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "d" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "D"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xURR" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xULL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XURR" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XULL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "d" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "D"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDRL" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDLR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDRL" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDLR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XX") {
+
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "d";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
+                            }
+                            if ("Doble sentido".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "v" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "V"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xUR" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xUL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XUR" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XUL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "v" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "V"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDR" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDR" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XX") {
+
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "v";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
                             }
                         }
-                        if ("Izquierda".equals(calle.getSentido())) {
-                            if (matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="L"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="l"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xULL"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xDLL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XULL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XDLL"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="L"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="l"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xURL"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xDRL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XURL"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XDRL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XX") {
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "L";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
+
+                        if ("Carretera".equals(calle.getTipo())) {
+                            calle.setVelocidad(100);
+                            if ("Arriba".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "t" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "T"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xURL" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xULR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XURL" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XULR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "t" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "T"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDRR" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDLL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDRR" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDLL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XX") {
+
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "T";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
+
+                            }
+                            if ("Abajo".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "d" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "D"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xURR" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xULL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XURR" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XULL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "d" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "D"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDRL" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDLR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDRL" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDLR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XX") {
+
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "D";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
+                            }
+                            if ("Doble sentido".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "v" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "V"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xUR" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xUL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XUR" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XUL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "v" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "V"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDR" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDR" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XX") {
+
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "V";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
                             }
                         }
-                        if ("Doble sentido".equals(calle.getSentido())) {
-                            if (matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="H"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="h"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xUL"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xDL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XUL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XDL"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="H"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="h"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xUR"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xDR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XUR"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XDR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XX") {
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "H";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
+
+                    }
+                    if (this.orientacion == "interseccionArribaDerecha") {
+                        if ("Urbana".equals(calle.getTipo())) {
+                            calle.setVelocidad(60);
+                            if ("Derecha".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "r" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "R"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xULR" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XULR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xDLR" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XDLR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "d" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "D"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDLR" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDLR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDRL" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDRL") {
+
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xURR";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
                             }
+                            if ("Izquierda".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "l" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "L"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xULL" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XULL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xDLL" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XDLL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "t" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "T"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDLR" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDLR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDRL" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDRL") {
+
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xURL";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
+                            }
+                            if ("Doble sentido".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "h" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "H"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xUL" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XUL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xDL" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XDL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "v" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "V"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDL" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDR" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDR") {
+
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xUR";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
+                            }
+                        }
+                        if ("Carretera".equals(calle.getTipo())) {
+                            calle.setVelocidad(100);
+                            if ("Derecha".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "r" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "R"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xULR" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XULR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xDLR" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XDLR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "d" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "D"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDLR" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDLR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDRL" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDRL") {
+
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XURR";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
+                            }
+                            if ("Izquierda".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "l" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "L"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xULL" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XULL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xDLL" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XDLL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "t" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "T"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDLR" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDLR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDRL" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDRL") {
+
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XURL";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
+                            }
+                            if ("Doble sentido".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "h" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "H"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xUL" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XUL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xDL" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XDL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "v" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "V"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDL" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDR" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDR") {
+
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XUR";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
+                            }
+                        }
+                    }
+                    if (this.orientacion == "interseccionAbajoDerecha") {
+                        if ("Urbana".equals(calle.getTipo())) {
+                            calle.setVelocidad(60);
+                            if ("Derecha".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "r" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "R"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xULR" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XULR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xDLR" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XDLR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "t" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "T"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xULR" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XULR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xURL" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XURL") {
+
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xDRR";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
+                            }
+                            if ("Izquierda".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "l" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "L"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xULL" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XULL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xDLL" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XDLL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "t" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "T"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xULL" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XULL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xURR" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XURR") {
+
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xDRL";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
+                            }
+                            if ("Doble sentido".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "h" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "H"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xUL" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XUL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xDL" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XDL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "v" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "V"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xUL" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XUL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xUR" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XUR") {
+
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xDR";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
+                            }
+                        }
+                        if ("Carretera".equals(calle.getTipo())) {
+                            calle.setVelocidad(100);
+                            if ("Derecha".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "r" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "R"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xULR" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XULR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xDLR" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XDLR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "t" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "T"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xULR" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XULR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xURL" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XURL") {
+
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XDRR";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
+                            }
+                            if ("Izquierda".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "l" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "L"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xULL" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XULL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xDLL" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XDLL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "t" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "T"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xULL" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XULL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xURR" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XURR") {
+
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XDRL";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
+                            }
+                            if ("Doble sentido".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "h" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "H"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xUL" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XUL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "xDL" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XDL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "v" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "V"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xUL" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XUL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xUR" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XUR") {
+
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XDR";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
+                            }
+                        }
+                    }
+                    if (this.orientacion == "interseccionArribaIzquierda") {
+                        if ("Urbana".equals(calle.getTipo())) {
+                            calle.setVelocidad(60);
+                            if ("Derecha".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "r" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "R"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xURR" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XURR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xDRR" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XDRR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "t" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "T"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDLL" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDLL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDRR" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDRR") {
+
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xULR";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
+                            }
+                            if ("Izquierda".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "l" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "L"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xURL" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XURL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xDRL" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XDRL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "d" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "D"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDLR" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDLR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDRL" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDRL") {
+
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xULL";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
+                            }
+                            if ("Doble sentido".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "h" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "H"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xUR" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XUR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xDR" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XDR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "v" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "V"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDL" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDR" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDR") {
+
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xUL";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
+                            }
+                        }
+                        if ("Carretera".equals(calle.getTipo())) {
+                            calle.setVelocidad(100);
+                            if ("Derecha".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "r" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "R"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xURR" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XURR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xDRR" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XDRR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "t" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "T"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDLL" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDLL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDRR" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDRR") {
+
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XULR";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
+                            }
+                            if ("Izquierda".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "l" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "L"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xURL" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XURL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xDRL" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XDRL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "d" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "D"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDLR" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDLR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDRL" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDRL") {
+
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XULL";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
+                            }
+                            if ("Doble sentido".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "h" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "H"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xUR" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XUR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xDR" || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "XDR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "v" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "V"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDL" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "xDR" || matrizLetrasElementosInternosCuadriculaMapa[x][y - 1] == "XDR") {
+
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XUL";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
+                            }
+                        }
+                    }
+                    if (this.orientacion == "interseccionAbajoIzquierda") {
+                        if ("Urbana".equals(calle.getTipo())) {
+                            calle.setVelocidad(60);
+                            if ("Derecha".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "r" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "R"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xURR" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XURR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xDRR" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XDRR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "d" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "D"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xULL" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XULR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xURR" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XURL") {
+
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xDLR";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
+                            }
+                            if ("Izquierda".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "l" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "L"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xURL" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XURL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xDRL" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XDRL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "t" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "T"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xULR" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XULR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xURL" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XURL") {
+
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xDLL";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
+                            }
+                            if ("Doble sentido".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "h" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "H"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xUR" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XUR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xDR" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XDR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "v" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "V"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xUL" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XUL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xUR" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XUR") {
+
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xDL";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
+                            }
+                        }
+                        if ("Carretera".equals(calle.getTipo())) {
+                            calle.setVelocidad(100);
+                            if ("Derecha".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "r" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "R"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xURR" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XURR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xDRR" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XDRR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "d" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "D"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xULL" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XULR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xURR" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XURL") {
+
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XDLR";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
+                            }
+                            if ("Izquierda".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "l" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "L"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xURL" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XURL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xDRL" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XDRL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "t" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "T"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xULR" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XULR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xURL" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XURL") {
+
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XDLL";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
+                            }
+                            if ("Doble sentido".equals(calle.getSentido())) {
+                                if (matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "h" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "H"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xUR" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XUR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x - 1][y] == "xDR" || matrizLetrasElementosInternosCuadriculaMapa[x + 1][y] == "XDR"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "v" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "V"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xx" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XX"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xUL" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XUL"
+                                        || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "xUR" || matrizLetrasElementosInternosCuadriculaMapa[x][y + 1] == "XUR") {
+
+                                    calle.setId(contadorDeCalles);
+                                    matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XDL";
+                                    matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                                    frame.agregarCalleALaLista(calle);
+                                    contadorDeCalles++;
+                                }
+                            }
+                        }
+                    }
+                    if (this.orientacion == "interseccionCruzada") {
+                        if ("Urbana".equals(calle.getTipo())) {
+                            calle.setVelocidad(60);
+                            calle.setId(contadorDeCalles);
+                            matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xx";
+                            matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                            frame.agregarCalleALaLista(calle);
+                            contadorDeCalles++;
+                        }
+                        if ("Carretera".equals(calle.getTipo())) {
+                            calle.setVelocidad(100);
+                            calle.setId(contadorDeCalles);
+                            matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XX";
+                            matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
+                            frame.agregarCalleALaLista(calle);
+                            contadorDeCalles++;
                         }
                     }
 
                 }
 
-                if (this.orientacion == "vertical") {
-                    if ("Urbana".equals(calle.getTipo())) {
-                        calle.setVelocidad(60);
-                        if ("Arriba".equals(calle.getSentido())) {
-                            if (matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="t"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="T"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xURL"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xULR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XURL"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XULR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xx"|| matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="t"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="T"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDRR"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDLL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDRR"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDLL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XX") {
-                                
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "t";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
-                            }
-                            
-                        }
-                        if ("Abajo".equals(calle.getSentido())) {
-                            if (matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="d"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="D"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xURR"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xULL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XURR"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XULL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xx"|| matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="d"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="D"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDRL"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDLR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDRL"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDLR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XX") {
-                                
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "d";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
-                             }
-                        }
-                        if ("Doble sentido".equals(calle.getSentido())) {
-                            if (matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="v"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="V"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xUR"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xUL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XUR"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XUL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xx"|| matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="v"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="V"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDR"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDR"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XX") {
-                                
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "v";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
-                            }
-                        }
-                    }
-
-                    if ("Carretera".equals(calle.getTipo())) {
-                        calle.setVelocidad(100);
-                        if ("Arriba".equals(calle.getSentido())) {
-                            if (matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="t"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="T"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xURL"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xULR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XURL"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XULR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xx"|| matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="t"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="T"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDRR"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDLL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDRR"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDLL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XX") {
-                                
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "T";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
-                            }
-                           
-                        }
-                        if ("Abajo".equals(calle.getSentido())) {
-                            if (matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="d"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="D"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xURR"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xULL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XURR"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XULL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xx"|| matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="d"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="D"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDRL"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDLR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDRL"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDLR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XX") {
-                                
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "D";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
-                            }
-                        }
-                        if ("Doble sentido".equals(calle.getSentido())) {
-                            if (matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="v"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="V"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xUR"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xUL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XUR"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XUL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xx"|| matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="v"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="V"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDR"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDR"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XX") {
-                                
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "V";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
-                            }
-                        }
-                    }
-
-                }
-                if (this.orientacion == "interseccionArribaDerecha") {
-                    if ("Urbana".equals(calle.getTipo())) {
-                        calle.setVelocidad(60);
-                        if ("Derecha".equals(calle.getSentido())) {
-                            if (matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="r"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="R"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xULR"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XULR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xDLR"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XDLR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="d"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="D"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDLR"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDLR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDRL"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDRL") {
-                                
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xURR";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
-                            }
-                        }
-                        if ("Izquierda".equals(calle.getSentido())) {
-                            if (matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="l"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="L"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xULL"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XULL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xDLL"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XDLL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="t"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="T"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDLR"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDLR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDRL"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDRL") {
-                                
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xURL";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
-                            }
-                        }
-                        if ("Doble sentido".equals(calle.getSentido())) {
-                            if (matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="h"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="H"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xUL"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XUL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xDL"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XDL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="v"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="V"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDL"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDR"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDR") {
-                            
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xUR";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
-                            }   
-                        }
-                    }
-                    if ("Carretera".equals(calle.getTipo())) {
-                        calle.setVelocidad(100);
-                        if ("Derecha".equals(calle.getSentido())) {
-                            if (matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="r"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="R"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xULR"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XULR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xDLR"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XDLR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="d"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="D"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDLR"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDLR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDRL"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDRL") {
-                               
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XURR";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
-                            }
-                        }
-                        if ("Izquierda".equals(calle.getSentido())) {
-                            if (matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="l"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="L"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xULL"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XULL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xDLL"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XDLL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="t"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="T"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDLR"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDLR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDRL"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDRL") {
-                                
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XURL";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
-                            }
-                        }
-                        if ("Doble sentido".equals(calle.getSentido())) {
-                            if (matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="h"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="H"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xUL"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XUL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xDL"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XDL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="v"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="V"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDL"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDR"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDR") {
-                            
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XUR";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
-                            }
-                        }
-                    }
-                }
-                if (this.orientacion == "interseccionAbajoDerecha") {
-                    if ("Urbana".equals(calle.getTipo())) {
-                        calle.setVelocidad(60);
-                        if ("Derecha".equals(calle.getSentido())) {
-                            if (matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="r"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="R"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xULR"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XULR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xDLR"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XDLR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="t"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="T"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xULR"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XULR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xURL"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XURL") {
-                            
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xDRR";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
-                            }
-                        }
-                        if ("Izquierda".equals(calle.getSentido())) {
-                            if (matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="l"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="L"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xULL"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XULL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xDLL"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XDLL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="t"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="T"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xULL"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XULL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xURR"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XURR") {
-                            
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xDRL";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
-                            }
-                        }
-                        if ("Doble sentido".equals(calle.getSentido())) {
-                            if (matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="h"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="H"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xUL"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XUL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xDL"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XDL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="v"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="V"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xUL"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XUL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xUR"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XUR") {
-                            
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xDR";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
-                            }
-                        }
-                    }
-                    if ("Carretera".equals(calle.getTipo())) {
-                        calle.setVelocidad(100);
-                        if ("Derecha".equals(calle.getSentido())) {
-                            if (matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="r"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="R"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xULR"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XULR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xDLR"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XDLR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="t"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="T"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xULR"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XULR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xURL"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XURL") {
-                            
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XDRR";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
-                            }
-                        }
-                        if ("Izquierda".equals(calle.getSentido())) {
-                            if (matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="l"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="L"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xULL"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XULL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xDLL"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XDLL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="t"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="T"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xULL"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XULL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xURR"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XURR") {
-                            
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XDRL";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
-                            }
-                        }
-                         if ("Doble sentido".equals(calle.getSentido())) {
-                            if (matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="h"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="H"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xUL"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XUL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="xDL"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XDL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="v"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="V"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xUL"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XUL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xUR"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XUR") {
-
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XDR";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
-                            }
-                        }
-                    }
-                }
-                if (this.orientacion == "interseccionArribaIzquierda") {
-                    if ("Urbana".equals(calle.getTipo())) {
-                       calle.setVelocidad(60);
-                       if ("Derecha".equals(calle.getSentido())) {
-                           if (matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="r"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="R"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xURR"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XURR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xDRR"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XDRR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="t"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="T"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDLL"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDLL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDRR"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDRR") {
-                                
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xULR";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
-                           }
-                       }
-                       if ("Izquierda".equals(calle.getSentido())) {
-                           if (matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="l"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="L"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xURL"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XURL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xDRL"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XDRL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="d"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="D"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDLR"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDLR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDRL"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDRL") {
-                                
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xULL";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
-                           }
-                       }
-                       if ("Doble sentido".equals(calle.getSentido())) {
-                           if (matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="h"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="H"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xUR"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XUR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xDR"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XDR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="v"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="V"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDL"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDR"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDR") {
-                                
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xUL";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
-                           }
-                       }
-                    }
-                    if ("Carretera".equals(calle.getTipo())) {
-                        calle.setVelocidad(100);    
-                        if ("Derecha".equals(calle.getSentido())) {
-                            if (matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="r"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="R"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xURR"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XURR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xDRR"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XDRR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="t"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="T"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDLL"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDLL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDRR"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDRR") {
-
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XULR";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
-                            }
-                       }
-                        if ("Izquierda".equals(calle.getSentido())) {
-                            if (matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="l"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="L"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xURL"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XURL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xDRL"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XDRL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="d"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="D"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDLR"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDLR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDRL"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDRL") {
-                             
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XULL";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
-                            }
-                       }
-                        if ("Doble sentido".equals(calle.getSentido())) {
-                            if (matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="h"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="H"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xUR"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XUR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xDR"||matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="XDR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="v"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="V"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDL"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="xDR"||matrizLetrasElementosInternosCuadriculaMapa[x][y-1]=="XDR") {
-                               
-                            
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XUL";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
-                            }
-                       }
-                    }
-                }
-                if (this.orientacion == "interseccionAbajoIzquierda") {
-                    if ("Urbana".equals(calle.getTipo())) {
-                        calle.setVelocidad(60);
-                        if ("Derecha".equals(calle.getSentido())) {
-                            if (matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="r"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="R"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xURR"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XURR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xDRR"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XDRR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="d"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="D"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xULL"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XULR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xURR"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XURL") {
-                            
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xDLR";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
-                            }
-                        }
-                        if ("Izquierda".equals(calle.getSentido())) {
-                            if (matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="l"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="L"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xURL"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XURL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xDRL"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XDRL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="t"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="T"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xULR"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XULR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xURL"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XURL") {
-                            
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xDLL";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
-                            }
-                        }
-                        if ("Doble sentido".equals(calle.getSentido())) {
-                             if (matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="h"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="H"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xUR"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XUR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xDR"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XDR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="v"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="V"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xUL"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XUL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xUR"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XUR") {
-                            
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xDL";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
-                             }
-                        }
-                    }
-                    if ("Carretera".equals(calle.getTipo())) {
-                        calle.setVelocidad(100);
-                        if ("Derecha".equals(calle.getSentido())) {
-                            if (matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="r"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="R"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xURR"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XURR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xDRR"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XDRR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="d"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="D"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xULL"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XULR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xURR"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XURL") {
-                            
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XDLR";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
-                            }
-                        }
-                        if ("Izquierda".equals(calle.getSentido())) {
-                            if (matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="l"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="L"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xURL"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XURL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xDRL"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XDRL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="t"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="T"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xULR"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XULR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xURL"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XURL") {
-                            
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XDLL";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
-                            }
-                        }
-                        if ("Doble sentido".equals(calle.getSentido())) {
-                            if (matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="h"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="H"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xUR"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XUR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x-1][y]=="xDR"||matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="XDR"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="v"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="V"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xx"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XX"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xUL"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XUL"||
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="xUR"||matrizLetrasElementosInternosCuadriculaMapa[x][y+1]=="XUR") {
-                            
-                                calle.setId(contadorDeCalles);
-                                matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XDL";
-                                matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                                frame.agregarCalleALaLista(calle);
-                                contadorDeCalles++;
-                            }
-                        }
-                    }
-                }
-                if (this.orientacion == "interseccionCruzada") {
-                    if ("Urbana".equals(calle.getTipo())) {
-                        calle.setVelocidad(60);
-                        calle.setId(contadorDeCalles);
-                        matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xx";
-                        matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                        frame.agregarCalleALaLista(calle);
-                        contadorDeCalles++;
-                    }
-                    if ("Carretera".equals(calle.getTipo())) {
-                        calle.setVelocidad(100);
-                        calle.setId(contadorDeCalles);
-                        matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XX";
-                        matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
-                        frame.agregarCalleALaLista(calle);
-                        contadorDeCalles++;
-                    }
-                }
             }
         }
 
-        calle=null;
+        calle = null;
     }
-    
-    
-    
-    
+
     public int getX() {
         return x;
     }
@@ -1594,9 +1576,9 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
         this.y = y;
     }
 
-    public void setCalle(Calle calle,String orientacion) {
+    public void setCalle(Calle calle, String orientacion) {
         this.calle = calle;
-        this.orientacion=orientacion;
+        this.orientacion = orientacion;
     }
 
     public Arbol getArbol() {
@@ -1614,11 +1596,8 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
     public Edificio getEdificio() {
         return edificio;
     }
-    
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
-
-   
 }
