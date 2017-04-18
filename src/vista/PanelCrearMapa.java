@@ -748,9 +748,6 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
 
                 esPrimeraCalle = false;
             } else {
-                //para y-1
-               
-
                 ////hacer validaciones con el condicional del txt almacenado en los documentos.. tener en cuenta las direcciones
                 if (this.orientacion == "horizontal") {
                     if ("Urbana".equals(calle.getTipo())) {
