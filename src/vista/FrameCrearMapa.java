@@ -385,9 +385,14 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         jScrollPane3.setViewportView(jPanel1);
 
         getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(1170, 10, 150, 670);
+        jScrollPane3.setBounds(1170, 10, 150, 450);
 
         jButton2.setText("Cargar Nuevo Mapa");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2);
         jButton2.setBounds(1170, 520, 140, 23);
 
@@ -637,6 +642,10 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         this.panelCrearMapa1.setEdificio(new Edificio(0, "oficina", -50, -50, listaImagenesParaSeleccionar[24].getIconWidth(), listaImagenesParaSeleccionar[24].getIconHeight(), listaImagenesParaSeleccionar[24]));
     }//GEN-LAST:event_jRadioButton25ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     public void agregarCalleALaLista(Calle calle) {
         calles.add(calle);
