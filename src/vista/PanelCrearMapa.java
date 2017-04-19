@@ -12,10 +12,13 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import modelo.Arbol;
+import modelo.AristaGrafoMapa;
 import modelo.Calle;
 import modelo.Edificio;
+import modelo.NodoGrafoMapa;
 import modelo.PuntosLimiteCuadricula;
 
 /**
@@ -41,6 +44,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
     int contadorDeArboles = 0;
     String orientacion = "";
     boolean esPrimeraCalle = true;
+    
 
     /**
      * Creates new form PanelCrearMapa
@@ -158,6 +162,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
 
     }
 
+     
     public void recibirFrameCrearMapa(FrameCrearMapa frameRecibido) {
         this.frame = frameRecibido;
     }
