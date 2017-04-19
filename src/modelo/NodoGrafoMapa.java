@@ -15,6 +15,7 @@ public class NodoGrafoMapa {
     
     
     private int id;
+    private int idCalle;
     private int x;
     private int y;
     private int ancho;
@@ -23,7 +24,7 @@ public class NodoGrafoMapa {
     private boolean activo;
     private String sentido;
 
-    public NodoGrafoMapa(int id, int x, int y, int ancho, int alto, boolean activo,String sentido) {
+    public NodoGrafoMapa(int id,int idCalle, int x, int y, int ancho, int alto, boolean activo,String sentido) {
         this.id = id;
         this.x = x;
         this.y = y;
@@ -32,6 +33,14 @@ public class NodoGrafoMapa {
         this.activo = activo;
         this.sentido=sentido;
         this.area=new Rectangle(x, y, ancho, alto);
+    }
+
+    public int getIdCalle() {
+        return idCalle;
+    }
+
+    public void setIdCalle(int idCalle) {
+        this.idCalle = idCalle;
     }
 
     public String getSentido() {

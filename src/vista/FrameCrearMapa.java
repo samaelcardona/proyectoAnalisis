@@ -9,8 +9,10 @@ import java.util.LinkedList;
 import javax.swing.ImageIcon;
 import javax.swing.JRadioButton;
 import modelo.Arbol;
+import modelo.AristaGrafoMapa;
 import modelo.Calle;
 import modelo.Edificio;
+import modelo.NodoGrafoMapa;
 
 
 /**
@@ -25,6 +27,8 @@ public class FrameCrearMapa extends javax.swing.JFrame {
     LinkedList<Arbol> arboles;
     LinkedList<Edificio> edificios;
     ImageIcon [] listaImagenesParaSeleccionar;
+    LinkedList<NodoGrafoMapa> listaNodosMapa;
+    LinkedList<AristaGrafoMapa> aristasGrafoMapa;
     /**
      * Creates new form FrameCrearMapa
      */
@@ -34,6 +38,8 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         calles = new LinkedList();
         arboles=new LinkedList<>();
         edificios=new LinkedList<>();
+        listaNodosMapa=new LinkedList<>();
+        aristasGrafoMapa=new LinkedList<>();
         
         this.botones.add(jRadioButton1);
         this.botones.add(jRadioButton2);
@@ -656,7 +662,21 @@ public class FrameCrearMapa extends javax.swing.JFrame {
      public void agregarEdificioALaLista(Edificio edificio) { 
         edificios.add(edificio);
     }
+     
+    public void agregarNodoALista(NodoGrafoMapa nodo){
+        listaNodosMapa.add(nodo);
+        
+    }
 
+    public LinkedList<NodoGrafoMapa> getListaNodosMapa() {
+        return listaNodosMapa;
+    }
+
+    
+    public LinkedList<AristaGrafoMapa> getAristasGrafoMapa() {
+        return aristasGrafoMapa;
+    }
+ 
     public LinkedList<Calle> getCalles() {
         return calles;
     }
