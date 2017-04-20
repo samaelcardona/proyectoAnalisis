@@ -15,24 +15,35 @@ public class Ciudad {
 
 
     private int id;
-    private int tamano;
     private LinkedList<Automovil> listaAutomoviles;
     private LinkedList<Peaton> listaPeatones;
     private LinkedList<Calle> listaCalles;
+    private LinkedList<Arbol> arboles;
     private LinkedList<Edificio> listaEdificos;
-    private String [][] matrizPosicionObjetosCiudad;
+    private String [][] matrizPuntosLimitesCuadriculaMapa;
+    private String [][] matrizLetrasElementosInternosCuadriculaMapa;
+    private String [][] matrizCuadriculaMapaIdCalles;
+    private String [][] matrizCuadriculaMapaIdArboles;
+    private String [][] matrizCuadriculaMapaIdEdificios;
+    private LinkedList<NodoGrafoMapa> listaNodosMapa;
     private LinkedList<AristaGrafoMapa> listaDeTransicionesAristas;
 
-    public Ciudad(int id, int tamano) {
+
+    public Ciudad(int id, int tamano, LinkedList<Calle> listaCalles, LinkedList<Arbol> arboles, LinkedList<Edificio> listaEdificos, String[][] matrizPuntosLimitesCuadriculaMapa, String[][] matrizLetrasElementosInternosCuadriculaMapa, String[][] matrizCuadriculaMapaIdCalles, String[][] matrizCuadriculaMapaIdArboles, String[][] matrizCuadriculaMapaIdEdificios, LinkedList<NodoGrafoMapa> listaNodosMapa, LinkedList<AristaGrafoMapa> listaDeTransicionesAristas) {
         this.id = id;
-        this.tamano = tamano;
-        this.listaAutomoviles = new LinkedList<>();
-        this.listaPeatones = new LinkedList<>();
-        this.listaCalles = new LinkedList<>();
-        this.listaEdificos = new LinkedList<>();
-        this.matrizPosicionObjetosCiudad =new String[tamano][tamano];
-        this.listaDeTransicionesAristas=new LinkedList<>();
+        this.listaCalles = listaCalles;
+        this.arboles = arboles;
+        this.listaEdificos = listaEdificos;
+        this.matrizPuntosLimitesCuadriculaMapa = matrizPuntosLimitesCuadriculaMapa;
+        this.matrizLetrasElementosInternosCuadriculaMapa = matrizLetrasElementosInternosCuadriculaMapa;
+        this.matrizCuadriculaMapaIdCalles = matrizCuadriculaMapaIdCalles;
+        this.matrizCuadriculaMapaIdArboles = matrizCuadriculaMapaIdArboles;
+        this.matrizCuadriculaMapaIdEdificios = matrizCuadriculaMapaIdEdificios;
+        this.listaNodosMapa = listaNodosMapa;
+        this.listaDeTransicionesAristas = listaDeTransicionesAristas;
     }
+
+     
 
     public LinkedList<AristaGrafoMapa> getListaDeTransicionesAristas() {
         return listaDeTransicionesAristas;
@@ -46,9 +57,6 @@ public class Ciudad {
         return id;
     }
 
-    public int getTamano() {
-        return tamano;
-    }
 
     public LinkedList<Automovil> getListaAutomoviles() {
         return listaAutomoviles;
@@ -66,17 +74,13 @@ public class Ciudad {
         return listaEdificos;
     }
 
-    public String[][] getMatrizPosicionObjetosCiudad() {
-        return matrizPosicionObjetosCiudad;
-    }
+
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public void setTamano(int tamano) {
-        this.tamano = tamano;
-    }
+
 
     public void setListaAutomoviles(LinkedList<Automovil> listaAutomoviles) {
         this.listaAutomoviles = listaAutomoviles;
@@ -94,10 +98,62 @@ public class Ciudad {
         this.listaEdificos = listaEdificos;
     }
 
-    public void setMatrizPosicionObjetosCiudad(String[][] matrizPosicionObjetosCiudad) {
-        this.matrizPosicionObjetosCiudad = matrizPosicionObjetosCiudad;
+    public LinkedList<Arbol> getArboles() {
+        return arboles;
     }
- 
+
+    public String[][] getMatrizPuntosLimitesCuadriculaMapa() {
+        return matrizPuntosLimitesCuadriculaMapa;
+    }
+
+    public String[][] getMatrizLetrasElementosInternosCuadriculaMapa() {
+        return matrizLetrasElementosInternosCuadriculaMapa;
+    }
+
+    public String[][] getMatrizCuadriculaMapaIdCalles() {
+        return matrizCuadriculaMapaIdCalles;
+    }
+
+    public String[][] getMatrizCuadriculaMapaIdArboles() {
+        return matrizCuadriculaMapaIdArboles;
+    }
+
+    public String[][] getMatrizCuadriculaMapaIdEdificios() {
+        return matrizCuadriculaMapaIdEdificios;
+    }
+
+    public LinkedList<NodoGrafoMapa> getListaNodosMapa() {
+        return listaNodosMapa;
+    }
+
+    public void setArboles(LinkedList<Arbol> arboles) {
+        this.arboles = arboles;
+    }
+
+    public void setMatrizPuntosLimitesCuadriculaMapa(String[][] matrizPuntosLimitesCuadriculaMapa) {
+        this.matrizPuntosLimitesCuadriculaMapa = matrizPuntosLimitesCuadriculaMapa;
+    }
+
+    public void setMatrizLetrasElementosInternosCuadriculaMapa(String[][] matrizLetrasElementosInternosCuadriculaMapa) {
+        this.matrizLetrasElementosInternosCuadriculaMapa = matrizLetrasElementosInternosCuadriculaMapa;
+    }
+
+    public void setMatrizCuadriculaMapaIdCalles(String[][] matrizCuadriculaMapaIdCalles) {
+        this.matrizCuadriculaMapaIdCalles = matrizCuadriculaMapaIdCalles;
+    }
+
+    public void setMatrizCuadriculaMapaIdArboles(String[][] matrizCuadriculaMapaIdArboles) {
+        this.matrizCuadriculaMapaIdArboles = matrizCuadriculaMapaIdArboles;
+    }
+
+    public void setMatrizCuadriculaMapaIdEdificios(String[][] matrizCuadriculaMapaIdEdificios) {
+        this.matrizCuadriculaMapaIdEdificios = matrizCuadriculaMapaIdEdificios;
+    }
+
+    public void setListaNodosMapa(LinkedList<NodoGrafoMapa> listaNodosMapa) {
+        this.listaNodosMapa = listaNodosMapa;
+    }
+
     
     
     
