@@ -133,7 +133,8 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jScrollPane3.setPreferredSize(new java.awt.Dimension(428, 569));
-        jScrollPane3.setWheelScrollingEnabled(false);
+
+        jPanel1.setPreferredSize(new java.awt.Dimension(76, 1500));
 
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -330,7 +331,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jRadioButton20)))
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -375,7 +376,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                 .addComponent(jRadioButton19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jRadioButton20)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 321, Short.MAX_VALUE)
                 .addComponent(jRadioButton21)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jRadioButton22)
@@ -385,13 +386,13 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                 .addComponent(jRadioButton24)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jRadioButton25)
-                .addContainerGap(290, Short.MAX_VALUE))
+                .addContainerGap(605, Short.MAX_VALUE))
         );
 
         jScrollPane3.setViewportView(jPanel1);
 
         getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(1170, 10, 150, 450);
+        jScrollPane3.setBounds(1210, 10, 100, 450);
 
         jButton2.setText("Cargar Nuevo Mapa");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -400,7 +401,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(1170, 520, 140, 23);
+        jButton2.setBounds(1190, 520, 140, 23);
 
         jButton1.setText("Guardar Nuevo Mapa");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -409,7 +410,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(1170, 490, 140, 23);
+        jButton1.setBounds(1190, 490, 140, 23);
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Documentos/cerrarIcon.png"))); // NOI18N
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -434,7 +435,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         getContentPane().add(panelCrearMapa1);
         panelCrearMapa1.setBounds(20, 10, 1120, 560);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Documentos/FondoPaginaInicial.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Documentos/FondoPaginaInicial2.png"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 1400, 700);
 
