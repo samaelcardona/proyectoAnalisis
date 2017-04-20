@@ -612,11 +612,16 @@ public class FrameCrearMapa extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         panelCrearMapa1.mostrarMatricezEnConsola();
+        this.agregarNodosAlistaDeCalle();
         for (int i = 0; i < this.listaNodosMapa.size(); i++) {
             System.out.println("calle"+this.listaNodosMapa.get(i).getIdCalle()+ "nodo"+ this.listaNodosMapa.get(i).getId());
         }
         for (int i = 0; i < calles.size(); i++) {
-            System.out.println("calle"+calles.get(i).getId());
+            String cadena="";
+            for (int j = 0; j < calles.get(i).getListaDeNodosEnCalle().size(); j++) {
+                cadena=cadena+" , "+calles.get(i).getListaDeNodosEnCalle().get(j).getId();
+            }
+                System.out.println("calle-> "+calles.get(i).getId()+" -- "+cadena);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -673,6 +678,16 @@ public class FrameCrearMapa extends javax.swing.JFrame {
     public void agregarNodoALista(NodoGrafoMapa nodo){
         listaNodosMapa.add(nodo);
         
+    }
+    
+    public void agregarNodosAlistaDeCalle(){
+        for (int i = 0; i < calles.size(); i++) {
+                for (int j = 0; j < listaNodosMapa.size(); j++) {
+                     if (listaNodosMapa.get(j).getIdCalle()==calles.get(i).getId()) {
+                         calles.get(i).getListaDeNodosEnCalle().add(listaNodosMapa.get(j));
+                }
+            }
+        }
     }
 
     public LinkedList<NodoGrafoMapa> getListaNodosMapa() {

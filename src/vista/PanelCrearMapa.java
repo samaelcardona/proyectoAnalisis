@@ -1841,6 +1841,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
         calle = null;
     }
 
+    
     public void crearArbol(int x, int y) {
         if (y > 0 && y < 9 && x > 0 && x < 19) {
 
@@ -3989,4 +3990,20 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
+
+    public PuntosLimiteCuadricula[][] getMatrizPuntosLimitesCuadriculaMapa() {
+        return matrizPuntosLimitesCuadriculaMapa;
+    }
+
+    public String[][] getMatrizLetrasElementosInternosCuadriculaMapa() {
+        return matrizLetrasElementosInternosCuadriculaMapa;
+    }
+
+    public int[][] getMatrizCuadriculaMapaIdCalles() {
+        return matrizCuadriculaMapaIdCalles;
+    }
+
+    public int[][] getMatrizCuadriculaMapaIdEdificios() {
+        return matrizCuadriculaMapaIdEdificios;
+    }
 }

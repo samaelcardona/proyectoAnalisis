@@ -39,6 +39,7 @@ public class Calle {
     private boolean movimiento;
     //lista de sucesos accidente, obreros, 
     private LinkedList<String> listaSucesos;
+    private LinkedList<NodoGrafoMapa> listaDeNodosEnCalle;
 
     public Calle(int id, int x, int y, int ancho, int alto, ImageIcon imagen, String tipo, String sentido, int velocidad, boolean movimiento) {
         this.id = id;
@@ -53,6 +54,7 @@ public class Calle {
         this.velocidad = velocidad;
         this.movimiento = movimiento;
         this.listaSucesos = new LinkedList<>();
+        this.listaDeNodosEnCalle= new LinkedList<>();
     }
 
     public int getId() {
@@ -149,6 +151,10 @@ public class Calle {
 
     public void setListaSucesos(LinkedList<String> listaSucesos) {
         this.listaSucesos = listaSucesos;
+    }
+
+    public LinkedList<NodoGrafoMapa> getListaDeNodosEnCalle() {
+        return listaDeNodosEnCalle;
     }
     
     
