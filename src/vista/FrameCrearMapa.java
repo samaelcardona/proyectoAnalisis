@@ -612,6 +612,12 @@ public class FrameCrearMapa extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         panelCrearMapa1.mostrarMatricezEnConsola();
+        for (int i = 0; i < this.listaNodosMapa.size(); i++) {
+            System.out.println("calle"+this.listaNodosMapa.get(i).getIdCalle()+ "nodo"+ this.listaNodosMapa.get(i).getId());
+        }
+        for (int i = 0; i < calles.size(); i++) {
+            System.out.println("calle"+calles.get(i).getId());
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jRadioButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton23ActionPerformed

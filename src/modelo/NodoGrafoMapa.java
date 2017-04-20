@@ -26,6 +26,7 @@ public class NodoGrafoMapa {
 
     public NodoGrafoMapa(int id,int idCalle, int x, int y, int ancho, int alto, boolean activo,String sentido) {
         this.id = id;
+        this.idCalle=idCalle;
         this.x = x;
         this.y = y;
         this.ancho = ancho;
