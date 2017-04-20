@@ -3535,9 +3535,22 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
             matrizLetrasElementosInternosCuadriculaMapa[x][y] = "";
             contadorDeArboles--;
         }
+        
         if (matrizCuadriculaMapaIdCalles[x][y] != -1) {
             
             frame.getCalles().remove(frame.getCalles().get(matrizCuadriculaMapaIdCalles[x][y]));
+            
+            for (int i = 0; i < frame.getListaNodosMapa().size(); i++) {
+                if (frame.getListaNodosMapa().get(i).getIdCalle()==matrizCuadriculaMapaIdCalles[x][y]) {
+                    frame.getListaNodosMapa().remove(i);
+                    contadorDeNodos--;
+                }
+            }
+            for (int i = 0; i < frame.getListaNodosMapa().size(); i++) {
+                frame.getListaNodosMapa().get(i).setId(i);
+            }
+            
+            
             for (int i = 0; i < 10; i++) {
                 for (int j = 0; j < 20; j++) {
                     if (matrizCuadriculaMapaIdCalles[x][y]<matrizCuadriculaMapaIdCalles[j][i]) {
@@ -3548,10 +3561,12 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
             for (int i = 0; i < frame.getArboles().size(); i++) {
                 frame.getArboles().get(i).setId(i);
             }
+           
             matrizCuadriculaMapaIdCalles[x][y] = -1;
             matrizLetrasElementosInternosCuadriculaMapa[x][y] = "";
             contadorDeCalles--;
         }
+        
         if (matrizCuadriculaMapaIdEdificios[x][y] != -1) {
             frame.getEdificios().remove(matrizCuadriculaMapaIdEdificios[x][y]);
             for (int i = 0; i < 10; i++) {
