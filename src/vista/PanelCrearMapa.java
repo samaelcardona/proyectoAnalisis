@@ -209,7 +209,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
             if (calle == null && edificio == null && arbol == null && matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]] != "") {
                 ///menu para mover o eliminar elemento seleccionado 
                 FormularioParaCorregirElementosEnElPanel formulario = new FormularioParaCorregirElementosEnElPanel();
-                formulario.recibirPanel(this, cuadroSeleccionado[0], cuadroSeleccionado[1]);
+                formulario.recibirPanel(this, cuadroSeleccionado[0], cuadroSeleccionado[1],this.frame.getCalles().get(matrizCuadriculaMapaIdCalles[cuadroSeleccionado[0]][cuadroSeleccionado[1]]).getSentido());
                 formulario.setVisible(true);
             }
 
