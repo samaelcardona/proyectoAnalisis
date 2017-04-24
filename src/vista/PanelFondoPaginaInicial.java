@@ -7,7 +7,7 @@ package vista;
 
 import java.awt.Graphics;
 import javax.swing.ImageIcon;
-import sun.awt.image.URLImageSource;
+
 
 /**
  *
