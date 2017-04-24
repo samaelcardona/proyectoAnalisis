@@ -6,12 +6,13 @@
 package modelo;
 
 import java.awt.Rectangle;
+import java.io.Serializable;
 
 /**
  *
  * @author SAMAEL
  */
-public class NodoGrafoMapa {
+public class NodoGrafoMapa implements Serializable{
     
     
     private int id;

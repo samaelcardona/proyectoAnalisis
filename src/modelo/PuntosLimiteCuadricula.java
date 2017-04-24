@@ -5,11 +5,13 @@
  */
 package modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author SAMAEL
  */
-public class PuntosLimiteCuadricula {
+public class PuntosLimiteCuadricula implements Serializable{
     
     double x1;
     double y1;

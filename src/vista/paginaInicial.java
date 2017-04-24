@@ -50,6 +50,11 @@ public class paginaInicial extends javax.swing.JFrame {
         jButton2.setMaximumSize(new java.awt.Dimension(51, 176));
         jButton2.setMinimumSize(new java.awt.Dimension(51, 176));
         jButton2.setPreferredSize(new java.awt.Dimension(51, 176));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jButton1.setText("<html><p>Crear O Modificar</p><p ALIGN=center>Mapa</p></html>"); // NOI18N
@@ -112,6 +117,12 @@ public class paginaInicial extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        FrameAnimacionMapa mapaFrame=new FrameAnimacionMapa();
+        mapaFrame.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -5,11 +5,13 @@
  */
 package modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author SAMAEL
  */
-public class AristaGrafoMapa {
+public class AristaGrafoMapa implements Serializable {
     
     private NodoGrafoMapa nodoA;
     private Calle arista;

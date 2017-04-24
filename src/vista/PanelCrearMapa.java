@@ -4006,4 +4006,91 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
     public int[][] getMatrizCuadriculaMapaIdEdificios() {
         return matrizCuadriculaMapaIdEdificios;
     }
+
+    public int[][] getMatrizCuadriculaMapaIdArboles() {
+        return matrizCuadriculaMapaIdArboles;
+    }
+
+    public FrameCrearMapa getFrame() {
+        return frame;
+    }
+
+    public int getContadorDeCalles() {
+        return contadorDeCalles;
+    }
+
+    public int getContadorDeEdificios() {
+        return contadorDeEdificios;
+    }
+
+    public int getContadorDeArboles() {
+        return contadorDeArboles;
+    }
+
+    public int getContadorDeNodos() {
+        return contadorDeNodos;
+    }
+
+    public String getOrientacion() {
+        return orientacion;
+    }
+
+    public boolean isEsPrimeraCalle() {
+        return esPrimeraCalle;
+    }
+
+    public void setCalle(Calle calle) {
+        this.calle = calle;
+    }
+
+    public void setMatrizPuntosLimitesCuadriculaMapa(PuntosLimiteCuadricula[][] matrizPuntosLimitesCuadriculaMapa) {
+        this.matrizPuntosLimitesCuadriculaMapa = matrizPuntosLimitesCuadriculaMapa;
+    }
+
+    public void setMatrizLetrasElementosInternosCuadriculaMapa(String[][] matrizLetrasElementosInternosCuadriculaMapa) {
+        this.matrizLetrasElementosInternosCuadriculaMapa = matrizLetrasElementosInternosCuadriculaMapa;
+    }
+
+    public void setMatrizCuadriculaMapaIdCalles(int[][] matrizCuadriculaMapaIdCalles) {
+        this.matrizCuadriculaMapaIdCalles = matrizCuadriculaMapaIdCalles;
+    }
+
+    public void setMatrizCuadriculaMapaIdArboles(int[][] matrizCuadriculaMapaIdArboles) {
+        this.matrizCuadriculaMapaIdArboles = matrizCuadriculaMapaIdArboles;
+    }
+
+    public void setMatrizCuadriculaMapaIdEdificios(int[][] matrizCuadriculaMapaIdEdificios) {
+        this.matrizCuadriculaMapaIdEdificios = matrizCuadriculaMapaIdEdificios;
+    }
+
+    public void setFrame(FrameCrearMapa frame) {
+        this.frame = frame;
+    }
+
+    public void setContadorDeCalles(int contadorDeCalles) {
+        this.contadorDeCalles = contadorDeCalles;
+    }
+
+    public void setContadorDeEdificios(int contadorDeEdificios) {
+        this.contadorDeEdificios = contadorDeEdificios;
+    }
+
+    public void setContadorDeArboles(int contadorDeArboles) {
+        this.contadorDeArboles = contadorDeArboles;
+    }
+
+    public void setContadorDeNodos(int contadorDeNodos) {
+        this.contadorDeNodos = contadorDeNodos;
+    }
+
+    public void setOrientacion(String orientacion) {
+        this.orientacion = orientacion;
+    }
+
+    public void setEsPrimeraCalle(boolean esPrimeraCalle) {
+        this.esPrimeraCalle = esPrimeraCalle;
+    }
+    
+    
+    
 }

@@ -5,12 +5,25 @@
  */
 package vista;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
 import java.util.LinkedList;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import modelo.Arbol;
 import modelo.AristaGrafoMapa;
 import modelo.Calle;
+import modelo.Ciudad;
 import modelo.Edificio;
 import modelo.NodoGrafoMapa;
 
@@ -22,6 +35,7 @@ import modelo.NodoGrafoMapa;
 public class FrameCrearMapa extends javax.swing.JFrame {
 
     static FrameCrearMapa frameMapa;
+    
     LinkedList<JRadioButton> botones; 
     LinkedList<Calle> calles;
     LinkedList<Arbol> arboles;
@@ -614,12 +628,28 @@ public class FrameCrearMapa extends javax.swing.JFrame {
        // panelCrearMapa1.mostrarMatricezEnConsola();
         this.agregarNodosAlistaDeCalle();
        
-        for (int i = 0; i < calles.size(); i++) {
-            String cadena="";
-            for (int j = 0; j < calles.get(i).getListaDeNodosEnCalle().size(); j++) {
-                cadena=cadena+calles.get(i).getListaDeNodosEnCalle().get(j).getId()+" , ";
-            }
-                System.out.println("calle-> "+calles.get(i).getId()+" -- "+cadena);
+//        for (int i = 0; i < calles.size(); i++) {
+//            String cadena="";
+//            for (int j = 0; j < calles.get(i).getListaDeNodosEnCalle().size(); j++) {
+//                cadena=cadena+calles.get(i).getListaDeNodosEnCalle().get(j).getId()+" , ";
+//            }
+//                System.out.println("calle-> "+calles.get(i).getId()+" -- "+cadena);
+//        }
+
+///realizar las transiciones para generar grafo del movimiento
+        
+        Ciudad cNueva=new Ciudad(Integer.parseInt(JOptionPane.showInputDialog("ingrese numero para ciudad")),calles, arboles, edificios, panelCrearMapa1.getMatrizPuntosLimitesCuadriculaMapa(), panelCrearMapa1.getMatrizLetrasElementosInternosCuadriculaMapa(), panelCrearMapa1.getMatrizCuadriculaMapaIdCalles(), panelCrearMapa1.getMatrizCuadriculaMapaIdArboles(), panelCrearMapa1.getMatrizCuadriculaMapaIdEdificios(), listaNodosMapa, aristasGrafoMapa);
+        File fileParaGuardarCiudad=new File("ciudad-"+cNueva.getId());
+        ObjectOutputStream objetoDeSalida;
+        
+        
+        
+        try {
+            objetoDeSalida=new ObjectOutputStream(new FileOutputStream(fileParaGuardarCiudad));
+            objetoDeSalida.writeObject(cNueva);
+            objetoDeSalida.close();
+            
+        } catch (IOException e) {
         }
         
         
@@ -662,7 +692,43 @@ public class FrameCrearMapa extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton25ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        Ciudad ciudad=new Ciudad();//esta ciudad es para la carga de una ciudad ya elaborada
+        ObjectInputStream objetoDeEntrada;
+        String file = null;
+        JFileChooser ventanaDialogo=new JFileChooser();
+        int option=ventanaDialogo.showOpenDialog(this);
+        if (option==JFileChooser.APPROVE_OPTION) {
+            file=ventanaDialogo.getSelectedFile().getPath();
+            
+            try {
+            objetoDeEntrada=new ObjectInputStream(new FileInputStream(file));
+            ciudad=(Ciudad)objetoDeEntrada.readObject();
+            objetoDeEntrada.close();
+            
+            
+        }catch(IOException e){ 
+            System.out.println("problema"+e.getMessage());
+        } catch (ClassNotFoundException ex) {
+            System.out.println("problema"+ex.getMessage());
+            Logger.getLogger(FrameAnimacionMapa.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        panelCrearMapa1.setMatrizLetrasElementosInternosCuadriculaMapa(ciudad.getMatrizLetrasElementosInternosCuadriculaMapa());
+        panelCrearMapa1.setMatrizCuadriculaMapaIdArboles(ciudad.getMatrizCuadriculaMapaIdArboles());
+        panelCrearMapa1.setMatrizCuadriculaMapaIdCalles(ciudad.getMatrizCuadriculaMapaIdCalles());
+        panelCrearMapa1.setMatrizCuadriculaMapaIdEdificios(ciudad.getMatrizCuadriculaMapaIdEdificios());
+        panelCrearMapa1.setMatrizPuntosLimitesCuadriculaMapa(ciudad.getMatrizPuntosLimitesCuadriculaMapa());
+        panelCrearMapa1.setFrame(this);
+        
+        this.calles=ciudad.getListaCalles();
+        this.arboles=ciudad.getArboles();
+        this.edificios=ciudad.getListaEdificos();
+        this.listaNodosMapa=ciudad.getListaNodosMapa();
+        this.aristasGrafoMapa=ciudad.getListaDeTransicionesAristas();
+        }
+       
+        
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     public void agregarCalleALaLista(Calle calle) {

@@ -6,6 +6,7 @@
 package modelo;
 
 import java.awt.Rectangle;
+import java.io.Serializable;
 import java.util.LinkedList;
 import javax.swing.ImageIcon;
 
@@ -13,7 +14,7 @@ import javax.swing.ImageIcon;
  *
  * @author SAMAEL
  */
-public class Calle {
+public class Calle implements Serializable{
    //identificador de calle 
     //clavi aca no se para que es este id
     private int id;

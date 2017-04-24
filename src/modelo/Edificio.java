@@ -6,13 +6,14 @@
 package modelo;
 
 import java.awt.Rectangle;
+import java.io.Serializable;
 import javax.swing.ImageIcon;
 
 /**
  *
  * @author SAMAEL
  */
-public class Edificio {
+public class Edificio implements Serializable {
     
     
     private int id;
