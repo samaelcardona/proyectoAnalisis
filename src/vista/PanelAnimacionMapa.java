@@ -109,7 +109,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
             for (int j = 0; j < 20; j++) {
                 //System.out.println("posx "+j+" posy "+i+" elemento "+matrizLetrasElementosInternosCuadriculaMapa[j][i]);
                 //System.out.println("matriz " + matrizLetrasElementosInternosCuadriculaMapa[j][i] +" calle id "+matrizCuadriculaMapaIdCalles[j][i]);
-                if (matrizLetrasElementosInternosCuadriculaMapa[j][i] != "") {
+                if (!"".equals(matrizLetrasElementosInternosCuadriculaMapa[j][i])) {
                     if (matrizCuadriculaMapaIdCalles[j][i] != -1) {
                         //System.out.println("calle"+frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getId());
                         g.drawImage(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getImagen().getImage(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getX(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getY(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getAncho(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getAlto(), this);
@@ -188,7 +188,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
     public boolean hayAlgunElemento() {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 20; j++) {
-                if (matrizLetrasElementosInternosCuadriculaMapa[j][i] != "") {
+                if (!"".equals(matrizLetrasElementosInternosCuadriculaMapa[j][i])) {
                     return true;
                 } else {
                     return false;

@@ -408,7 +408,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         getContentPane().add(jScrollPane3);
         jScrollPane3.setBounds(1210, 10, 100, 450);
 
-        jButton2.setText("Cargar Nuevo Mapa");
+        jButton2.setText("Cargar Mapa Creado");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -628,6 +628,8 @@ public class FrameCrearMapa extends javax.swing.JFrame {
        // panelCrearMapa1.mostrarMatricezEnConsola();
         this.agregarNodosAlistaDeCalle();
        
+        
+        
 //        for (int i = 0; i < calles.size(); i++) {
 //            String cadena="";
 //            for (int j = 0; j < calles.get(i).getListaDeNodosEnCalle().size(); j++) {
@@ -637,6 +639,8 @@ public class FrameCrearMapa extends javax.swing.JFrame {
 //        }
 
 ///realizar las transiciones para generar grafo del movimiento
+        this.crearTransicionesGrafoMapa();
+
         
         Ciudad cNueva=new Ciudad(Integer.parseInt(JOptionPane.showInputDialog("ingrese numero para ciudad")),calles, arboles, edificios, panelCrearMapa1.getMatrizPuntosLimitesCuadriculaMapa(), panelCrearMapa1.getMatrizLetrasElementosInternosCuadriculaMapa(), panelCrearMapa1.getMatrizCuadriculaMapaIdCalles(), panelCrearMapa1.getMatrizCuadriculaMapaIdArboles(), panelCrearMapa1.getMatrizCuadriculaMapaIdEdificios(), listaNodosMapa, aristasGrafoMapa);
         File fileParaGuardarCiudad=new File("ciudad-"+cNueva.getId());
@@ -692,9 +696,10 @@ public class FrameCrearMapa extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton25ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       
         Ciudad ciudad=new Ciudad();//esta ciudad es para la carga de una ciudad ya elaborada
         ObjectInputStream objetoDeEntrada;
-        String file = null;
+        String file ;
         JFileChooser ventanaDialogo=new JFileChooser();
         int option=ventanaDialogo.showOpenDialog(this);
         if (option==JFileChooser.APPROVE_OPTION) {
@@ -706,25 +711,24 @@ public class FrameCrearMapa extends javax.swing.JFrame {
             objetoDeEntrada.close();
             
             
-        }catch(IOException e){ 
-            System.out.println("problema"+e.getMessage());
-        } catch (ClassNotFoundException ex) {
-            System.out.println("problema"+ex.getMessage());
-            Logger.getLogger(FrameAnimacionMapa.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            }catch(IOException e){ 
+                System.out.println("problema"+e.getMessage());
+            } catch (ClassNotFoundException ex) {
+                System.out.println("problema"+ex.getMessage());
+                Logger.getLogger(FrameAnimacionMapa.class.getName()).log(Level.SEVERE, null, ex);
+            }
         
-        panelCrearMapa1.setMatrizLetrasElementosInternosCuadriculaMapa(ciudad.getMatrizLetrasElementosInternosCuadriculaMapa());
-        panelCrearMapa1.setMatrizCuadriculaMapaIdArboles(ciudad.getMatrizCuadriculaMapaIdArboles());
-        panelCrearMapa1.setMatrizCuadriculaMapaIdCalles(ciudad.getMatrizCuadriculaMapaIdCalles());
-        panelCrearMapa1.setMatrizCuadriculaMapaIdEdificios(ciudad.getMatrizCuadriculaMapaIdEdificios());
-        panelCrearMapa1.setMatrizPuntosLimitesCuadriculaMapa(ciudad.getMatrizPuntosLimitesCuadriculaMapa());
-        panelCrearMapa1.setFrame(this);
-        
-        this.calles=ciudad.getListaCalles();
-        this.arboles=ciudad.getArboles();
-        this.edificios=ciudad.getListaEdificos();
-        this.listaNodosMapa=ciudad.getListaNodosMapa();
-        this.aristasGrafoMapa=ciudad.getListaDeTransicionesAristas();
+            panelCrearMapa1.recibirTodasLasMatricezYdemasCuandoCarga(ciudad.getMatrizLetrasElementosInternosCuadriculaMapa(),ciudad.getMatrizCuadriculaMapaIdCalles(),ciudad.getMatrizCuadriculaMapaIdArboles(),ciudad.getMatrizCuadriculaMapaIdEdificios(),ciudad.getListaCalles().size(),ciudad.getListaEdificos().size(),ciudad.getArboles().size(),ciudad.getListaNodosMapa().size());
+
+            this.calles=ciudad.getListaCalles();
+            this.arboles=ciudad.getArboles();
+            this.edificios=ciudad.getListaEdificos();
+            this.listaNodosMapa=ciudad.getListaNodosMapa();
+            this.aristasGrafoMapa=ciudad.getListaDeTransicionesAristas();
+            
+            panelCrearMapa1.recibirFrameCrearMapa(this);
+
+            
         }
        
         
@@ -755,7 +759,11 @@ public class FrameCrearMapa extends javax.swing.JFrame {
             }
         }
     }
-
+ 
+     private void crearTransicionesGrafoMapa() {
+        //recorrer para hacer las transiciones que
+    }
+     
     public LinkedList<NodoGrafoMapa> getListaNodosMapa() {
         return listaNodosMapa;
     }
@@ -939,6 +947,8 @@ public class FrameCrearMapa extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private vista.PanelCrearMapa panelCrearMapa1;
     // End of variables declaration//GEN-END:variables
+
+   
 
    
     
