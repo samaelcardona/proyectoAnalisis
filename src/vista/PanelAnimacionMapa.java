@@ -113,6 +113,10 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                     if (matrizCuadriculaMapaIdCalles[j][i] != -1) {
                         //System.out.println("calle"+frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getId());
                         g.drawImage(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getImagen().getImage(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getX(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getY(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getAncho(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getAlto(), this);
+                        for (int k = 0; k < frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().size(); k++) {
+                             g.drawOval(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getX(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getY(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getAncho(),frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getAlto());
+                        }
+                       
                     }
                     if (matrizCuadriculaMapaIdArboles[j][i] != -1) {
                         g.drawImage(frame.getArboles().get(matrizCuadriculaMapaIdArboles[j][i]).getImagen().getImage(), frame.getArboles().get(matrizCuadriculaMapaIdArboles[j][i]).getX(), frame.getArboles().get(matrizCuadriculaMapaIdArboles[j][i]).getY(), frame.getArboles().get(matrizCuadriculaMapaIdArboles[j][i]).getAncho(), frame.getArboles().get(matrizCuadriculaMapaIdArboles[j][i]).getAlto(), this);
