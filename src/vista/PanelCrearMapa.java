@@ -1746,7 +1746,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                 }
             }
         }
-        frame.agregarNodosAlistaDeCalle();
+        frame.agregarNodosAlistaDeCalle(calle.getId());
         calle = null;
     }
 
@@ -3753,8 +3753,8 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                     }
                 }
             }
-            for (int i = 0; i < frame.getArboles().size(); i++) {
-                frame.getArboles().get(i).setId(i);
+            for (int i = 0; i < frame.getCalles().size(); i++) {
+                frame.getCalles().get(i).setId(i);
             }
            
             matrizCuadriculaMapaIdCalles[x][y] = -1;
