@@ -820,7 +820,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                         aristasGrafoMapa.add(arista);
                         int idNodoA2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(1).getId();
                         int idNodoB2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]).getListaDeNodosEnCalle().get(1).getId();
-                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA2), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB2));
                         aristasGrafoMapa.add(arista2);
                     }
                     if (matrizCopia[j + 1][i].equals("XUL") || matrizCopia[j + 1][i].equals("xUL")) {
@@ -830,7 +830,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                         aristasGrafoMapa.add(arista);
                         int idNodoA2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(1).getId();
                         int idNodoB2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]).getListaDeNodosEnCalle().get(1).getId();
-                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA2), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB2));
                         aristasGrafoMapa.add(arista2);
                     }
                     if (matrizCopia[j + 1][i].equals("XDL") || matrizCopia[j + 1][i].equals("xDL")) {
@@ -840,7 +840,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                         aristasGrafoMapa.add(arista);
                         int idNodoA2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(1).getId();
                         int idNodoB2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]).getListaDeNodosEnCalle().get(1).getId();
-                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA2), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB2));
                         aristasGrafoMapa.add(arista2);
                     }
                     if (matrizCopia[j + 1][i].equals("XX") || matrizCopia[j + 1][i].equals("xx")) {
@@ -850,10 +850,11 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                         aristasGrafoMapa.add(arista);
                         int idNodoA2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(1).getId();
                         int idNodoB2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]).getListaDeNodosEnCalle().get(2).getId();
-                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA2), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB2));
                         aristasGrafoMapa.add(arista2);
                     }
                 }
+                //verificado
                 if (matrizCopia[j][i].equals("T") || matrizCopia[j][i].equals("t")) {
                     if (matrizCopia[j][i + 1].equals("T") || matrizCopia[j][i + 1].equals("t")) {
                         int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
@@ -880,6 +881,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                         aristasGrafoMapa.add(arista);
                     }
                 }
+                //verificado
                 if (matrizCopia[j][i].equals("D") || matrizCopia[j][i].equals("d")) {
                     if (matrizCopia[j][i + 1].equals("D") || matrizCopia[j][i + 1].equals("d")) {
                         int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
@@ -906,48 +908,50 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                         aristasGrafoMapa.add(arista);
                     }
                 }
+                //verificado
                 if (matrizCopia[j][i].equals("V") || matrizCopia[j][i].equals("v")) {
                     if (matrizCopia[j][i + 1].equals("V") || matrizCopia[j][i + 1].equals("v")) {
                         int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
                         int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]).getListaDeNodosEnCalle().get(0).getId();
-                        AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]), listaNodosMapa.get(idNodoB));
                         aristasGrafoMapa.add(arista);
                         int idNodoA2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(1).getId();
                         int idNodoB2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]).getListaDeNodosEnCalle().get(1).getId();
-                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA2), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]), listaNodosMapa.get(idNodoB2));
                         aristasGrafoMapa.add(arista2);
                     }
                     if (matrizCopia[j][i + 1].equals("XUL") || matrizCopia[j][i + 1].equals("xUL")) {
                         int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
-                        int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]).getListaDeNodosEnCalle().get(0).getId();
-                        AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]).getListaDeNodosEnCalle().get(1).getId();
+                        AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]), listaNodosMapa.get(idNodoB));
                         aristasGrafoMapa.add(arista);
                         int idNodoA2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(1).getId();
-                        int idNodoB2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]).getListaDeNodosEnCalle().get(1).getId();
-                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        int idNodoB2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]).getListaDeNodosEnCalle().get(0).getId();
+                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA2), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]), listaNodosMapa.get(idNodoB2));
                         aristasGrafoMapa.add(arista2);
                     }
-                    if (matrizCopia[j][i + 1].equals("XDL") || matrizCopia[j][i + 1].equals("xDL")) {
+                    if (matrizCopia[j][i + 1].equals("XUR") || matrizCopia[j][i + 1].equals("xUR")) {
                         int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
                         int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]).getListaDeNodosEnCalle().get(0).getId();
-                        AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]), listaNodosMapa.get(idNodoB));
                         aristasGrafoMapa.add(arista);
                         int idNodoA2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(1).getId();
                         int idNodoB2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]).getListaDeNodosEnCalle().get(1).getId();
-                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA2), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]), listaNodosMapa.get(idNodoB2));
                         aristasGrafoMapa.add(arista2);
                     }
                     if (matrizCopia[j][i + 1].equals("XX") || matrizCopia[j][i + 1].equals("xx")) {
                         int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
                         int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]).getListaDeNodosEnCalle().get(1).getId();
-                        AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]), listaNodosMapa.get(idNodoB));
                         aristasGrafoMapa.add(arista);
                         int idNodoA2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(1).getId();
                         int idNodoB2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]).getListaDeNodosEnCalle().get(0).getId();
-                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA2), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB2));
                         aristasGrafoMapa.add(arista2);
                     }
                 }
+                //verificado
                 if (matrizCopia[j][i].equals("XUR") || matrizCopia[j][i].equals("xUR")) {
                     if (matrizCopia[j + 1][i].equals("H") || matrizCopia[j + 1][i].equals("h")) {
                         int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
@@ -956,7 +960,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                         aristasGrafoMapa.add(arista);
                         int idNodoA2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(1).getId();
                         int idNodoB2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]).getListaDeNodosEnCalle().get(0).getId();
-                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA2), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB2));
                         aristasGrafoMapa.add(arista2);
                     }
                     if (matrizCopia[j + 1][i].equals("XUL") || matrizCopia[j + 1][i].equals("xUL")) {
@@ -966,7 +970,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                         aristasGrafoMapa.add(arista);
                         int idNodoA2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(1).getId();
                         int idNodoB2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]).getListaDeNodosEnCalle().get(1).getId();
-                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA2), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB2));
                         aristasGrafoMapa.add(arista2);
                     }
                     if (matrizCopia[j + 1][i].equals("XDL") || matrizCopia[j + 1][i].equals("xDL")) {
@@ -976,7 +980,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                         aristasGrafoMapa.add(arista);
                         int idNodoA2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(1).getId();
                         int idNodoB2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]).getListaDeNodosEnCalle().get(1).getId();
-                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA2), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB2));
                         aristasGrafoMapa.add(arista2);
                     }
                     if (matrizCopia[j + 1][i].equals("XX") || matrizCopia[j + 1][i].equals("xx")) {
@@ -986,10 +990,11 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                         aristasGrafoMapa.add(arista);
                         int idNodoA2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(1).getId();
                         int idNodoB2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]).getListaDeNodosEnCalle().get(2).getId();
-                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA2), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB2));
                         aristasGrafoMapa.add(arista2);
                     }
                 }
+                //verificado
                 if (matrizCopia[j][i].equals("XURR") || matrizCopia[j][i].equals("xURR")) {
                     if (matrizCopia[j + 1][i].equals("R") || matrizCopia[j + 1][i].equals("r")) {
                         int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
@@ -1017,6 +1022,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                     }
 
                 }
+                //verificado
                 if (matrizCopia[j][i].equals("XURL") || matrizCopia[j][i].equals("xURL")) {
                     if (matrizCopia[j + 1][i].equals("L") || matrizCopia[j + 1][i].equals("l")) {
                         int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
@@ -1053,7 +1059,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                         aristasGrafoMapa.add(arista);
                         int idNodoA2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(1).getId();
                         int idNodoB2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]).getListaDeNodosEnCalle().get(1).getId();
-                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA2), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB2));
                         aristasGrafoMapa.add(arista2);
                     }
                     if (matrizCopia[j][i + 1].equals("XUL") || matrizCopia[j][i + 1].equals("xUL")) {
@@ -1063,7 +1069,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                         aristasGrafoMapa.add(arista);
                         int idNodoA2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(1).getId();
                         int idNodoB2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]).getListaDeNodosEnCalle().get(0).getId();
-                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA2), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB2));
                         aristasGrafoMapa.add(arista2);
                     }
                     if (matrizCopia[j][i + 1].equals("XUR") || matrizCopia[j][i + 1].equals("xUR")) {
@@ -1073,7 +1079,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                         aristasGrafoMapa.add(arista);
                         int idNodoA2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(1).getId();
                         int idNodoB2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]).getListaDeNodosEnCalle().get(1).getId();
-                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA2), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB2));
                         aristasGrafoMapa.add(arista2);
                     }
                     if (matrizCopia[j][i + 1].equals("XX") || matrizCopia[j][i + 1].equals("xx")) {
@@ -1083,7 +1089,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                         aristasGrafoMapa.add(arista);
                         int idNodoA2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(1).getId();
                         int idNodoB2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]).getListaDeNodosEnCalle().get(0).getId();
-                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA2), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB2));
                         aristasGrafoMapa.add(arista2);
                     }
                 }
@@ -1094,13 +1100,195 @@ public class FrameCrearMapa extends javax.swing.JFrame {
 
                 }
                 if (matrizCopia[j][i].equals("XDR") || matrizCopia[j][i].equals("xDR")) {
+                    if (matrizCopia[j][i + 1].equals("V") || matrizCopia[j][i + 1].equals("v")) {
+                        int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(1).getId();
+                        int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]).getListaDeNodosEnCalle().get(0).getId();
+                        AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        aristasGrafoMapa.add(arista);
+                        int idNodoA2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
+                        int idNodoB2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]).getListaDeNodosEnCalle().get(1).getId();
+                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA2), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB2));
+                        aristasGrafoMapa.add(arista2);
+                    }
+                    if (matrizCopia[j][i + 1].equals("XUL") || matrizCopia[j][i + 1].equals("xUL")) {
+                        int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(1).getId();
+                        int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]).getListaDeNodosEnCalle().get(1).getId();
+                        AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        aristasGrafoMapa.add(arista);
+                        int idNodoA2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
+                        int idNodoB2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]).getListaDeNodosEnCalle().get(0).getId();
+                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA2), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB2));
+                        aristasGrafoMapa.add(arista2);
+
+                    }
+                    if (matrizCopia[j][i + 1].equals("XUR") || matrizCopia[j][i + 1].equals("xUR")) {
+                        int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(1).getId();
+                        int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]).getListaDeNodosEnCalle().get(0).getId();
+                        AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        aristasGrafoMapa.add(arista);
+                        int idNodoA2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
+                        int idNodoB2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]).getListaDeNodosEnCalle().get(1).getId();
+                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA2), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB2));
+                        aristasGrafoMapa.add(arista2);
+                    }
+                    if (matrizCopia[j][i + 1].equals("XX") || matrizCopia[j][i + 1].equals("xx")) {
+                        int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(1).getId();
+                        int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]).getListaDeNodosEnCalle().get(1).getId();
+                        AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        aristasGrafoMapa.add(arista);
+                        int idNodoA2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
+                        int idNodoB2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]).getListaDeNodosEnCalle().get(0).getId();
+                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA2), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB2));
+                        aristasGrafoMapa.add(arista2);
+                    }
+                    if (matrizCopia[j + 1][i].equals("H") || matrizCopia[j + 1][i].equals("h")) {
+                        int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
+                        int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]).getListaDeNodosEnCalle().get(0).getId();
+                        AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        aristasGrafoMapa.add(arista);
+                        int idNodoA2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(1).getId();
+                        int idNodoB2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]).getListaDeNodosEnCalle().get(1).getId();
+                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA2), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB2));
+                        aristasGrafoMapa.add(arista2);
+
+                    }
+                    if (matrizCopia[j + 1][i].equals("XUL") || matrizCopia[j + 1][i].equals("xUL")) {
+                        int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
+                        int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]).getListaDeNodosEnCalle().get(0).getId();
+                        AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        aristasGrafoMapa.add(arista);
+                        int idNodoA2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(1).getId();
+                        int idNodoB2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]).getListaDeNodosEnCalle().get(1).getId();
+                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA2), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB2));
+                        aristasGrafoMapa.add(arista2);
+
+
+                    }
+                    if (matrizCopia[j + 1][i].equals("XDL") || matrizCopia[j + 1][i].equals("xDL")) {
+                        int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
+                        int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]).getListaDeNodosEnCalle().get(0).getId();
+                        AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        aristasGrafoMapa.add(arista);
+                        int idNodoA2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(1).getId();
+                        int idNodoB2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]).getListaDeNodosEnCalle().get(1).getId();
+                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA2), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB2));
+                        aristasGrafoMapa.add(arista2);
+                    }
+                    if (matrizCopia[j + 1][i].equals("XX") || matrizCopia[j + 1][i].equals("xx")) {
+                        int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
+                        int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]).getListaDeNodosEnCalle().get(0).getId();
+                        AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        aristasGrafoMapa.add(arista);
+                        int idNodoA2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(1).getId();
+                        int idNodoB2 = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]).getListaDeNodosEnCalle().get(2).getId();
+                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA2), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB2));
+                        aristasGrafoMapa.add(arista2);
+                    }
 
                 }
                 if (matrizCopia[j][i].equals("XDRR") || matrizCopia[j][i].equals("xDRR")) {
+                    if (matrizCopia[j][i + 1].equals("T") || matrizCopia[j][i + 1].equals("t")) {
+                        int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
+                        int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]).getListaDeNodosEnCalle().get(0).getId();
+                        AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        aristasGrafoMapa.add(arista);
+                    }
+                    if (matrizCopia[j][i + 1].equals("XULR") || matrizCopia[j][i + 1].equals("xULR")) {
+                        int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
+                        int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]).getListaDeNodosEnCalle().get(0).getId();
+                        AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        aristasGrafoMapa.add(arista);
+                    }
+                    if (matrizCopia[j][i + 1].equals("XURR") || matrizCopia[j][i + 1].equals("xURR")) {
+                        int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
+                        int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]).getListaDeNodosEnCalle().get(0).getId();
+                        AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        aristasGrafoMapa.add(arista);       
+                    }
+                    if (matrizCopia[j][i + 1].equals("XX") || matrizCopia[j][i + 1].equals("xx")) {
+                        int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
+                        int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]).getListaDeNodosEnCalle().get(1).getId();
+                        AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        aristasGrafoMapa.add(arista);
+                    }
+                    if (matrizCopia[j + 1][i].equals("R") || matrizCopia[j + 1][i].equals("r")) {
+                        int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
+                        int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]).getListaDeNodosEnCalle().get(0).getId();
+                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        aristasGrafoMapa.add(arista2);
 
+                    }
+                    if (matrizCopia[j + 1][i].equals("XULR") || matrizCopia[j + 1][i].equals("xULR")) {
+                        int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
+                        int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]).getListaDeNodosEnCalle().get(0).getId();
+                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        aristasGrafoMapa.add(arista2);
+
+
+                    }
+                    if (matrizCopia[j + 1][i].equals("XDLR") || matrizCopia[j + 1][i].equals("xDLR")) {
+                        int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
+                        int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]).getListaDeNodosEnCalle().get(0).getId();
+                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        aristasGrafoMapa.add(arista2);
+                    }
+                    if (matrizCopia[j + 1][i].equals("XX") || matrizCopia[j + 1][i].equals("xx")) {
+                        int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
+                        int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]).getListaDeNodosEnCalle().get(2).getId();
+                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        aristasGrafoMapa.add(arista2);
+                    }
                 }
                 if (matrizCopia[j][i].equals("XDRL") || matrizCopia[j][i].equals("xDRL")) {
+                    if (matrizCopia[j][i + 1].equals("D") || matrizCopia[j][i + 1].equals("d")) {
+                        int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
+                        int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]).getListaDeNodosEnCalle().get(0).getId();
+                        AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        aristasGrafoMapa.add(arista);
+                    }
+                    if (matrizCopia[j][i + 1].equals("XULL") || matrizCopia[j][i + 1].equals("xULL")) {
+                        int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
+                        int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]).getListaDeNodosEnCalle().get(0).getId();
+                        AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        aristasGrafoMapa.add(arista);
+                    }
+                    if (matrizCopia[j][i + 1].equals("XURL") || matrizCopia[j][i + 1].equals("xURL")) {
+                        int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
+                        int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]).getListaDeNodosEnCalle().get(0).getId();
+                        AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        aristasGrafoMapa.add(arista);       
+                    }
+                    if (matrizCopia[j][i + 1].equals("XX") || matrizCopia[j][i + 1].equals("xx")) {
+                        int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
+                        int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i + 1]).getListaDeNodosEnCalle().get(0).getId();
+                        AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        aristasGrafoMapa.add(arista);
+                    }
+                    if (matrizCopia[j + 1][i].equals("R") || matrizCopia[j + 1][i].equals("r")) {
+                        int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
+                        int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]).getListaDeNodosEnCalle().get(0).getId();
+                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        aristasGrafoMapa.add(arista2);
 
+                    }
+                    if (matrizCopia[j + 1][i].equals("XULR") || matrizCopia[j + 1][i].equals("xULR")) {
+                        int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
+                        int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]).getListaDeNodosEnCalle().get(0).getId();
+                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        aristasGrafoMapa.add(arista2);
+                    }
+                    if (matrizCopia[j + 1][i].equals("XDLR") || matrizCopia[j + 1][i].equals("xDLR")) {
+                        int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
+                        int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]).getListaDeNodosEnCalle().get(0).getId();
+                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        aristasGrafoMapa.add(arista2);
+                    }
+                    if (matrizCopia[j + 1][i].equals("XX") || matrizCopia[j + 1][i].equals("xx")) {
+                        int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
+                        int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]).getListaDeNodosEnCalle().get(0).getId();
+                        AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]), listaNodosMapa.get(idNodoB));
+                        aristasGrafoMapa.add(arista2);
+                    }
                 }
                 if (matrizCopia[j][i].equals("XX") || matrizCopia[j][i].equals("xx")) {
 
