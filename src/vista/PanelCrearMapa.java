@@ -148,6 +148,9 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                         for (int k = 0; k < frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().size(); k++) {
                              g.drawOval(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getX(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getY(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getAncho(),frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getAlto());
                         }
+                        for (int k = 0; k < frame.getAristasGrafoMapa().size(); k++) {
+                            g.drawLine(frame.getAristasGrafoMapa().get(k).getNodoA().getX(), frame.getAristasGrafoMapa().get(k).getNodoA().getY(), frame.getAristasGrafoMapa().get(k).getNodoB().getX(), frame.getAristasGrafoMapa().get(k).getNodoB().getY());
+                        }
                     }
                     if (matrizCuadriculaMapaIdArboles[j][i] != -1) {
                         g.drawImage(frame.getArboles().get(matrizCuadriculaMapaIdArboles[j][i]).getImagen().getImage(), frame.getArboles().get(matrizCuadriculaMapaIdArboles[j][i]).getX(), frame.getArboles().get(matrizCuadriculaMapaIdArboles[j][i]).getY(), frame.getArboles().get(matrizCuadriculaMapaIdArboles[j][i]).getAncho(), frame.getArboles().get(matrizCuadriculaMapaIdArboles[j][i]).getAlto(), this);
