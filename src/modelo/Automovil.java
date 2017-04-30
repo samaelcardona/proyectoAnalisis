@@ -35,7 +35,8 @@ public class Automovil implements Serializable{
         this.mover = mover;
         this.area = new Rectangle(x, y, ancho, alto);
     }
-
+    
+    
 
     public int getId() {
         return id;
