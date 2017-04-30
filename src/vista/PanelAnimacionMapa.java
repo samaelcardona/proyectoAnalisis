@@ -13,6 +13,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.LinkedList;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import modelo.Arbol;
 import modelo.AristaGrafoMapa;
@@ -20,6 +21,7 @@ import modelo.Calle;
 import modelo.Edificio;
 import modelo.NodoGrafoMapa;
 import modelo.PuntosLimiteCuadricula;
+import modelo.Automovil;
 
 /**
  *
@@ -35,8 +37,9 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
     int[][] matrizCuadriculaMapaIdCalles = new int[20][10];
     int[][] matrizCuadriculaMapaIdArboles = new int[20][10];
     int[][] matrizCuadriculaMapaIdEdificios = new int[20][10];
-    private FrameAnimacionMapa frame;
+    LinkedList<Automovil> listaDeCarros;
 
+    private FrameAnimacionMapa frame;
 
     /**
      * Creates new form PanelCrearMapa
@@ -49,6 +52,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         setFocusTraversalKeysEnabled(false);
         addMouseListener(this);
         addMouseMotionListener(this);
+        listaDeCarros = new LinkedList<>();
 
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 10; j++) {
@@ -102,7 +106,6 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 //        }
 //        g.drawLine(0, 559, 1120, 559);
 
-
         /// solo para las calles pero luego se modifica para los edificios tomando la matriz de elementos (String) 
         //y graficando toca que crear una matriz de edificios y los arboles si normal 
         for (int i = 0; i < 10; i++) {
@@ -114,9 +117,9 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                         //System.out.println("calle"+frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getId());
                         g.drawImage(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getImagen().getImage(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getX(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getY(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getAncho(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getAlto(), this);
                         for (int k = 0; k < frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().size(); k++) {
-                             g.drawOval(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getX(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getY(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getAncho(),frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getAlto());
+                            g.drawOval(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getX(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getY(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getAncho(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getAlto());
                         }
-                       
+
                     }
                     if (matrizCuadriculaMapaIdArboles[j][i] != -1) {
                         g.drawImage(frame.getArboles().get(matrizCuadriculaMapaIdArboles[j][i]).getImagen().getImage(), frame.getArboles().get(matrizCuadriculaMapaIdArboles[j][i]).getX(), frame.getArboles().get(matrizCuadriculaMapaIdArboles[j][i]).getY(), frame.getArboles().get(matrizCuadriculaMapaIdArboles[j][i]).getAncho(), frame.getArboles().get(matrizCuadriculaMapaIdArboles[j][i]).getAlto(), this);
@@ -128,6 +131,38 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
                 }
             }
+        }
+
+        ///espacio para pintar carros
+        for (int i = 0; i < listaDeCarros.size(); i++) {
+            int[] cuadroSeleccionado = new int[2];
+            cuadroSeleccionado = retornarPosicionCuadriculaSeleccionada(listaDeCarros.get(i).getX(), listaDeCarros.get(i).getY());
+
+            int idCalle = matrizCuadriculaMapaIdCalles[cuadroSeleccionado[0]][cuadroSeleccionado[1]];
+            if (idCalle != -1) {
+                if (listaDeCarros.get(i).isMover() == false) {
+
+                    if ("Derecha".equals(frame.getCalles().get(idCalle).getSentido())) {
+                        g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX(), listaDeCarros.get(i).getY(), listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
+                    }
+                    if ("Izquierda".equals(frame.getCalles().get(idCalle).getSentido())) {
+                        g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX(), listaDeCarros.get(i).getY(), listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
+                    }
+                    if ("Arriba".equals(frame.getCalles().get(idCalle).getSentido())) {
+                        g.drawImage(listaDeCarros.get(i).getImagen().get(0).getImage(), listaDeCarros.get(i).getX(), listaDeCarros.get(i).getY(), listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
+                    }
+                    if ("Abajo".equals(frame.getCalles().get(idCalle).getSentido())) {
+                        g.drawImage(listaDeCarros.get(i).getImagen().get(1).getImage(), listaDeCarros.get(i).getX(), listaDeCarros.get(i).getY(), listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
+                    }
+                    if ("Doble sentido".equals(frame.getCalles().get(idCalle).getSentido())) {
+
+                    }
+                    listaDeCarros.get(i).setMover(true);
+                } else {
+
+                }
+            }
+
         }
 
         repaint();
@@ -152,8 +187,29 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
     @Override
     public void mouseClicked(MouseEvent e) {
-     FormularioParaAnimacionCarro formulario = new FormularioParaAnimacionCarro();
-     
+        FormularioParaAnimacionCarro formulario = new FormularioParaAnimacionCarro();
+
+        int x = (int) e.getPoint().getX();
+        int y = (int) e.getPoint().getY();
+
+        int[] cuadroSeleccionado = new int[2];
+        cuadroSeleccionado = retornarPosicionCuadriculaSeleccionada(x, y);
+
+        //formulario.recibirPanel(this, cuadroSeleccionado[0],cuadroSeleccionado[1]);
+        formulario.setVisible(true);
+
+    }
+
+    public void crearCarro(LinkedList<ImageIcon> lista, int x, int y) {
+        int iCalle = matrizCuadriculaMapaIdCalles[x][y];
+        if (iCalle != -1) {
+            int xNodo = frame.getCalles().get(iCalle).getListaDeNodosEnCalle().get(0).getX();
+            int yNodo = frame.getCalles().get(iCalle).getListaDeNodosEnCalle().get(0).getY();
+
+            Automovil auto = new Automovil(listaDeCarros.size() - 1, xNodo, yNodo, 12, 12, false);
+            auto.setImagen(lista);
+            listaDeCarros.add(auto);
+        }
     }
 
     @Override
@@ -231,7 +287,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
             }
             System.out.println(cadena1);
         }
-         /*
+        /*
          //ciclo para mostrar las matrices de limites
          String cadena;
     
@@ -248,7 +304,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
          System.out.println("pos x " + e.getX());
          System.out.println("pos y " + e.getY());
          */
-        /*
+ /*
          //ciclo para mostrar las matrices de elementos 
          String cadena;
     
@@ -263,7 +319,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
          System.out.println(cadena);
          }
          */
-        /*
+ /*
          //ciclo para mostrar las matrices de id 
          String cadena;
     
@@ -279,41 +335,47 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
          }
            
          */
-        
+
     }
 
-    public int buscarIdEnlistaDeCalles(int id) {
-        for (int i = 0; i < frame.getCalles().size(); i++) {
-            if (frame.getCalles().get(i).getId() == id) {
-                return i;
+    public int[] retornarPosicionCuadriculaSeleccionada(int x, int y) {
+
+        boolean encontroX = false;
+        boolean encontroY = false;
+        int i = 0;
+        int j = 0;
+        int[] datosXY = new int[2];
+
+        //para encontrar limites en x 
+        while (i < 20 && encontroX == false) {
+            if (matrizPuntosLimitesCuadriculaMapa[i][j].getX1() <= x && matrizPuntosLimitesCuadriculaMapa[i][j].getX2() >= x) {
+                encontroX = true;
+                datosXY[0] = i;
             }
+            i++;
         }
-        return 0;
-    }
 
-    public int buscarIdEnlistaDeArboles(int id) {
-        for (int i = 0; i < frame.getArboles().size(); i++) {
-            if (frame.getArboles().get(i).getId() == id) {
-                return i;
+        //para encontrar limites en y despues de haber encontrado x
+        if (encontroX == true) {
+            while (j < 10 && encontroY == false) {
+                if (matrizPuntosLimitesCuadriculaMapa[datosXY[0]][j].getY1() <= y && matrizPuntosLimitesCuadriculaMapa[datosXY[0]][j].getY2() >= y) {
+                    encontroY = true;
+                    datosXY[1] = j;
+                }
+                j++;
             }
+        } else {
+            System.out.println("verifique posiciones seleccionadas");
         }
-        return 0;
+        if (encontroY == true) {
+            return datosXY;
+        }
+        return null;
     }
 
-    public int buscarIdEnlistaDeEdificios(int id) {
-        for (int i = 0; i < frame.getEdificios().size(); i++) {
-            if (frame.getEdificios().get(i).getId() == id) {
-                return i;
-            }
-        }
-        return 0;
-    }
-
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
-
     public PuntosLimiteCuadricula[][] getMatrizPuntosLimitesCuadriculaMapa() {
         return matrizPuntosLimitesCuadriculaMapa;
     }
@@ -361,9 +423,5 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
     public void setFrame(FrameAnimacionMapa frame) {
         this.frame = frame;
     }
-    
-    
-    
-    
-    
+
 }
