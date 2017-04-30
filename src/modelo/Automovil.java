@@ -7,6 +7,7 @@ package modelo;
 
 import java.awt.Rectangle;
 import java.io.Serializable;
+import java.util.LinkedList;
 import javax.swing.ImageIcon;
 
 /**
@@ -20,17 +21,17 @@ public class Automovil implements Serializable{
     private int y;
     private int ancho;
     private int alto;
-    private ImageIcon imagen;
+    private LinkedList <ImageIcon> imagen;
     private boolean mover;
     private Rectangle area;
 
-    public Automovil(int id, int x, int y, int ancho, int alto, ImageIcon imagen, boolean mover) {
+    public Automovil(int id, int x, int y, int ancho, int alto, boolean mover) {
         this.id = id;
         this.x = x;
         this.y = y;
         this.ancho = ancho;
         this.alto = alto;
-        this.imagen = imagen;
+        this.imagen = new LinkedList<>();
         this.mover = mover;
         this.area = new Rectangle(x, y, ancho, alto);
     }
@@ -56,7 +57,7 @@ public class Automovil implements Serializable{
         return alto;
     }
 
-    public ImageIcon getImagen() {
+    public LinkedList<ImageIcon> getImagen() {
         return imagen;
     }
 
@@ -91,7 +92,7 @@ public class Automovil implements Serializable{
         this.alto = alto;
     }
 
-    public void setImagen(ImageIcon imagen) {
+    public void setImagen(LinkedList<ImageIcon> imagen) {
         this.imagen = imagen;
     }
 
