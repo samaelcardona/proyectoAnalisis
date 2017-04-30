@@ -134,6 +134,34 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
         ///espacio para pintar carros
         for (int i = 0; i < listaDeCarros.size(); i++) {
+            int[] cuadroSeleccionado = new int[2];
+            cuadroSeleccionado = retornarPosicionCuadriculaSeleccionada(listaDeCarros.get(i).getX(), listaDeCarros.get(i).getY());
+
+            int idCalle = matrizCuadriculaMapaIdCalles[cuadroSeleccionado[0]][cuadroSeleccionado[1]];
+            if (idCalle != -1) {
+                if (listaDeCarros.get(i).isMover() == false) {
+
+                    if ("Derecha".equals(frame.getCalles().get(idCalle).getSentido())) {
+               //         g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX(),listaDeCarros.get(i).getY(),listaDeCarros.get(i).getAncho(),listaDeCarros.get(i).getAlto(), this);     
+                    }
+                    if ("Izquierda".equals(frame.getCalles().get(idCalle).getSentido())) {
+               //         g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX(),listaDeCarros.get(i).getY(),listaDeCarros.get(i).getAncho(),listaDeCarros.get(i).getAlto(), this);
+                    }
+                    if ("Arriba".equals(frame.getCalles().get(idCalle).getSentido())) {
+               //         g.drawImage(listaDeCarros.get(i).getImagen().get(0).getImage(), listaDeCarros.get(i).getX(),listaDeCarros.get(i).getY(),listaDeCarros.get(i).getAncho(),listaDeCarros.get(i).getAlto(), this);
+                    }
+                    if ("Abajo".equals(frame.getCalles().get(idCalle).getSentido())) {
+                //        g.drawImage(listaDeCarros.get(i).getImagen().get(1).getImage(), listaDeCarros.get(i).getX(),listaDeCarros.get(i).getY(),listaDeCarros.get(i).getAncho(),listaDeCarros.get(i).getAlto(), this);
+                    }
+                    if ("Doble sentido".equals(frame.getCalles().get(idCalle).getSentido())) {
+                        
+                    }
+                    listaDeCarros.get(i).setMover(true);
+                } else {
+                    
+
+                }
+            }
 
         }
 
@@ -165,12 +193,11 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         int[] cuadroSeleccionado = new int[2];
         cuadroSeleccionado = retornarPosicionCuadriculaSeleccionada(x, y);
 
-        retornarPosicionCuadriculaSeleccionada(e.getX(), e.getY());
-        int iCalle=buscarIdEnlistaDeCalles(x, y);
+        int iCalle = matrizCuadriculaMapaIdCalles[cuadroSeleccionado[0]][cuadroSeleccionado[1]];
         if (iCalle != -1) {
             int xNodo = frame.getCalles().get(iCalle).getListaDeNodosEnCalle().get(0).getX();
             int yNodo = frame.getCalles().get(iCalle).getListaDeNodosEnCalle().get(0).getY();
-            
+
             //Automovil auto=new Automovil(listaDeCarros.size()-1, xNodo,yNodo, 12, 12, true);
             //listaDeCarros.add(auto);
         }
@@ -303,15 +330,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
     }
 
-    public int buscarIdEnlistaDeCalles(int x, int y) {
-        for (int i = 0; i < frame.getCalles().size(); i++) {
-            if (frame.getCalles().get(i).getX() == x && frame.getCalles().get(i).getY() == y) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
+   
     public int[] retornarPosicionCuadriculaSeleccionada(int x, int y) {
 
         boolean encontroX = false;
