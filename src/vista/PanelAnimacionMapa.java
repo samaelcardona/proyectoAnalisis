@@ -143,23 +143,22 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                 if (listaDeCarros.get(i).isMover() == false) {
 
                     if ("Derecha".equals(frame.getCalles().get(idCalle).getSentido())) {
-               //         g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX(),listaDeCarros.get(i).getY(),listaDeCarros.get(i).getAncho(),listaDeCarros.get(i).getAlto(), this);     
+                        g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX(), listaDeCarros.get(i).getY(), listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
                     }
                     if ("Izquierda".equals(frame.getCalles().get(idCalle).getSentido())) {
-               //         g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX(),listaDeCarros.get(i).getY(),listaDeCarros.get(i).getAncho(),listaDeCarros.get(i).getAlto(), this);
+                        g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX(), listaDeCarros.get(i).getY(), listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
                     }
                     if ("Arriba".equals(frame.getCalles().get(idCalle).getSentido())) {
-               //         g.drawImage(listaDeCarros.get(i).getImagen().get(0).getImage(), listaDeCarros.get(i).getX(),listaDeCarros.get(i).getY(),listaDeCarros.get(i).getAncho(),listaDeCarros.get(i).getAlto(), this);
+                        g.drawImage(listaDeCarros.get(i).getImagen().get(0).getImage(), listaDeCarros.get(i).getX(), listaDeCarros.get(i).getY(), listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
                     }
                     if ("Abajo".equals(frame.getCalles().get(idCalle).getSentido())) {
-                //        g.drawImage(listaDeCarros.get(i).getImagen().get(1).getImage(), listaDeCarros.get(i).getX(),listaDeCarros.get(i).getY(),listaDeCarros.get(i).getAncho(),listaDeCarros.get(i).getAlto(), this);
+                        g.drawImage(listaDeCarros.get(i).getImagen().get(1).getImage(), listaDeCarros.get(i).getX(), listaDeCarros.get(i).getY(), listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
                     }
                     if ("Doble sentido".equals(frame.getCalles().get(idCalle).getSentido())) {
-                        
+
                     }
                     listaDeCarros.get(i).setMover(true);
                 } else {
-                    
 
                 }
             }
@@ -188,29 +187,26 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
     @Override
     public void mouseClicked(MouseEvent e) {
-     FormularioParaAnimacionCarro formulario = new FormularioParaAnimacionCarro();
-     
-     
-     
+        FormularioParaAnimacionCarro formulario = new FormularioParaAnimacionCarro();
+
         int x = (int) e.getPoint().getX();
         int y = (int) e.getPoint().getY();
 
         int[] cuadroSeleccionado = new int[2];
         cuadroSeleccionado = retornarPosicionCuadriculaSeleccionada(x, y);
-        
+
         //formulario.recibirPanel(this, cuadroSeleccionado[0],cuadroSeleccionado[1]);
         formulario.setVisible(true);
-        
 
     }
-    
-    public void crearCarro(LinkedList<ImageIcon> lista,int x, int y){
+
+    public void crearCarro(LinkedList<ImageIcon> lista, int x, int y) {
         int iCalle = matrizCuadriculaMapaIdCalles[x][y];
         if (iCalle != -1) {
             int xNodo = frame.getCalles().get(iCalle).getListaDeNodosEnCalle().get(0).getX();
             int yNodo = frame.getCalles().get(iCalle).getListaDeNodosEnCalle().get(0).getY();
 
-            Automovil auto=new Automovil(listaDeCarros.size()-1, xNodo,yNodo, 12, 12, false);
+            Automovil auto = new Automovil(listaDeCarros.size() - 1, xNodo, yNodo, 12, 12, false);
             auto.setImagen(lista);
             listaDeCarros.add(auto);
         }
@@ -342,7 +338,6 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
     }
 
-   
     public int[] retornarPosicionCuadriculaSeleccionada(int x, int y) {
 
         boolean encontroX = false;
