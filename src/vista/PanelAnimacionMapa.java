@@ -13,6 +13,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.LinkedList;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import modelo.Arbol;
 import modelo.AristaGrafoMapa;
@@ -189,21 +190,30 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
     public void mouseClicked(MouseEvent e) {
      FormularioParaAnimacionCarro formulario = new FormularioParaAnimacionCarro();
      
+     
+     
         int x = (int) e.getPoint().getX();
         int y = (int) e.getPoint().getY();
 
         int[] cuadroSeleccionado = new int[2];
         cuadroSeleccionado = retornarPosicionCuadriculaSeleccionada(x, y);
+        
+        //formulario.recibirPanel(this, x, y);
+        formulario.setVisible(true);
+        
 
-        int iCalle = matrizCuadriculaMapaIdCalles[cuadroSeleccionado[0]][cuadroSeleccionado[1]];
+    }
+    
+    public void crearCarro(LinkedList<ImageIcon> lista,int x, int y){
+        int iCalle = matrizCuadriculaMapaIdCalles[x][y];
         if (iCalle != -1) {
             int xNodo = frame.getCalles().get(iCalle).getListaDeNodosEnCalle().get(0).getX();
             int yNodo = frame.getCalles().get(iCalle).getListaDeNodosEnCalle().get(0).getY();
 
             Automovil auto=new Automovil(listaDeCarros.size()-1, xNodo,yNodo, 12, 12, false);
+            auto.setImagen(lista);
             listaDeCarros.add(auto);
         }
-
     }
 
     @Override
