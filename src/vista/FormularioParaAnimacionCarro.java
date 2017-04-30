@@ -7,7 +7,6 @@ package vista;
 
 import java.util.LinkedList;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 
 /**
  *
@@ -17,8 +16,7 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
 
     PanelAnimacionMapa panel;
     LinkedList<ImageIcon> imagenes;
-   
-    
+
     public FormularioParaAnimacionCarro() {
         initComponents();
     }
@@ -233,15 +231,34 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
 
     }
 
-    public void imagenes() {
+    public void rutas(int seleccion) {
+        LinkedList<LinkedList> imagenesCarros = new LinkedList<>();
+
         for (int i = 0; i < 8; i++) {
-            
+            LinkedList<ImageIcon> direccionesCarros = new LinkedList<>();
+            for (int j = 0; j < 4; j++) {
+                if (j == 0) {
+                    direccionesCarros.add(new ImageIcon("/imagenes/carros/"+"C" + (i + 1)));
+                }
+                if (j == 1) {
+                    direccionesCarros.add(new ImageIcon("/imagenes/carros/"+"C" + (i + 1) + "D"));
+                }
+                if (j == 2) {
+                    direccionesCarros.add(new ImageIcon("/imagenes/carros/"+"C" + (i + 1) + "R"));
+                }
+                if (j == 3) {
+                    direccionesCarros.add(new ImageIcon("/imagenes/carros/"+"C" + (i + 1) + "L"));
+                }
+            }
+            imagenesCarros.add(direccionesCarros);
         }
+        
+        //panel.imagenesCarros.get(seleccion);
     }
-    
-     public void recibirPanel(PanelAnimacionMapa panel,int x,int y, String sentido){
-        this.panel=panel;
-        this.imagenes=imagenes;
+
+    public void recibirPanel(PanelAnimacionMapa panel, int x, int y, String sentido) {
+        this.panel = panel;
+        this.imagenes = imagenes;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
