@@ -187,6 +187,8 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
     @Override
     public void mouseClicked(MouseEvent e) {
+     FormularioParaAnimacionCarro formulario = new FormularioParaAnimacionCarro();
+     
         int x = (int) e.getPoint().getX();
         int y = (int) e.getPoint().getY();
 
@@ -198,8 +200,8 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
             int xNodo = frame.getCalles().get(iCalle).getListaDeNodosEnCalle().get(0).getX();
             int yNodo = frame.getCalles().get(iCalle).getListaDeNodosEnCalle().get(0).getY();
 
-            //Automovil auto=new Automovil(listaDeCarros.size()-1, xNodo,yNodo, 12, 12, true);
-            //listaDeCarros.add(auto);
+            Automovil auto=new Automovil(listaDeCarros.size()-1, xNodo,yNodo, 12, 12, false);
+            listaDeCarros.add(auto);
         }
 
     }
