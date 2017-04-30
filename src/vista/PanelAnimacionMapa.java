@@ -198,7 +198,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         int[] cuadroSeleccionado = new int[2];
         cuadroSeleccionado = retornarPosicionCuadriculaSeleccionada(x, y);
         
-        //formulario.recibirPanel(this, x, y);
+        //formulario.recibirPanel(this, cuadroSeleccionado[0],cuadroSeleccionado[1]);
         formulario.setVisible(true);
         
 
