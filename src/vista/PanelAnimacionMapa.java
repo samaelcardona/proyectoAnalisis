@@ -195,21 +195,24 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         int[] cuadroSeleccionado = new int[2];
         cuadroSeleccionado = retornarPosicionCuadriculaSeleccionada(x, y);
 
-        //formulario.recibirPanel(this, cuadroSeleccionado[0],cuadroSeleccionado[1]);
+        formulario.recibirPanel(this, cuadroSeleccionado[0],cuadroSeleccionado[1]);
         formulario.setVisible(true);
 
     }
 
     public void crearCarro(LinkedList<ImageIcon> lista, int x, int y) {
-        int iCalle = matrizCuadriculaMapaIdCalles[x][y];
-        if (iCalle != -1) {
-            int xNodo = frame.getCalles().get(iCalle).getListaDeNodosEnCalle().get(0).getX();
-            int yNodo = frame.getCalles().get(iCalle).getListaDeNodosEnCalle().get(0).getY();
-
-            Automovil auto = new Automovil(listaDeCarros.size() - 1, xNodo, yNodo, 12, 12, false);
-            auto.setImagen(lista);
-            listaDeCarros.add(auto);
-        }
+        System.out.println("x: "+x+"   y: "+y);
+//        int iCalle = matrizCuadriculaMapaIdCalles[x][y];
+//        
+//        if (iCalle != -1) {
+//            int xNodo = frame.getCalles().get(iCalle).getListaDeNodosEnCalle().get(0).getX();
+//            int yNodo = frame.getCalles().get(iCalle).getListaDeNodosEnCalle().get(0).getY();
+//
+//            Automovil auto = new Automovil(listaDeCarros.size() - 1, xNodo, yNodo, 12, 12, false);
+//            //auto.setImagen(lista);//aqui recibe un tipo imageicon
+//            
+//            listaDeCarros.add(auto);
+//        }
     }
 
     @Override

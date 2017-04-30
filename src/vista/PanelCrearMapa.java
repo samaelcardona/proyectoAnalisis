@@ -220,7 +220,8 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
 
         int[] cuadroSeleccionado = new int[2];
         cuadroSeleccionado = retornarPosicionCuadriculaSeleccionada(x, y);
-
+        System.out.println("cuadro seleccionado: "+cuadroSeleccionado[0]);
+        System.out.println("cuadro seleccionado: "+cuadroSeleccionado[1]);
         if (cuadroSeleccionado != null) {
 
             //caundo dan click encima de una imagen, verifica si lo quiere eliminar

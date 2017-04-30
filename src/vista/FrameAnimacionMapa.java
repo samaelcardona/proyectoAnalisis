@@ -127,7 +127,7 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-            
+        
         ObjectInputStream objetoDeEntrada;
         String file = null;
         JFileChooser ventanaDialogo=new JFileChooser();

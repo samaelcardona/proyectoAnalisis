@@ -7,6 +7,7 @@ package vista;
 
 import java.util.LinkedList;
 import javax.swing.ImageIcon;
+import javax.swing.JRadioButton;
 
 /**
  *
@@ -14,13 +15,54 @@ import javax.swing.ImageIcon;
  */
 public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
 
-    PanelAnimacionMapa panel;
+    PanelAnimacionMapa panelAnimacion;
     LinkedList<ImageIcon> imagenes;
+    int x;
+    int y;
+    LinkedList<JRadioButton> botones;
 
     public FormularioParaAnimacionCarro() {
         initComponents();
+        botones = new LinkedList<>();
+
+        this.botones.add(jRadioButton1);
+        this.botones.add(jRadioButton2);
+        this.botones.add(jRadioButton3);
+        this.botones.add(jRadioButton4);
+        this.botones.add(jRadioButton5);
+        this.botones.add(jRadioButton6);
+        this.botones.add(jRadioButton7);
+        this.botones.add(jRadioButton8);
+
+        for (int i = 0; i < botones.size(); i++) {
+            this.buttonGroup1.add(botones.get(i));
+            ImageIcon imagen = new ImageIcon("src\\imagenes\\carros\\c" + (i + 1) + ".png");
+            this.botones.get(i).setIcon(imagen);
+
+        }
+
     }
 
+    public void recibirPanel(PanelAnimacionMapa panelAnimacion, int x, int y) {
+        this.panelAnimacion = panelAnimacion;
+        this.x = x;
+        this.y = y;
+    }
+
+    public void rutas(int seleccion) {
+        System.out.println("selecciono: " + seleccion);
+
+        LinkedList<ImageIcon> direccionesCarros = new LinkedList<>();
+
+        direccionesCarros.add(new ImageIcon("/imagenes/carros/" + "C" + (seleccion)));
+        direccionesCarros.add(new ImageIcon("/imagenes/carros/" + "C" + (seleccion) + "D"));
+        direccionesCarros.add(new ImageIcon("/imagenes/carros/" + "C" + (seleccion) + "L"));
+        direccionesCarros.add(new ImageIcon("/imagenes/carros/" + "C" + (seleccion) + "R"));
+        
+        panelAnimacion.crearCarro(direccionesCarros, x, y);
+    }
+
+        //imagenesCarros.add(direccionesCarros);
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,7 +72,8 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane3 = new javax.swing.JScrollPane();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        jScrollPane33 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
@@ -43,7 +86,7 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jScrollPane3.setPreferredSize(new java.awt.Dimension(428, 569));
+        jScrollPane33.setPreferredSize(new java.awt.Dimension(428, 569));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(76, 1500));
 
@@ -110,7 +153,7 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
                     .addComponent(jRadioButton6)
                     .addComponent(jRadioButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jRadioButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(512, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,7 +177,7 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
                 .addContainerGap(1310, Short.MAX_VALUE))
         );
 
-        jScrollPane3.setViewportView(jPanel1);
+        jScrollPane33.setViewportView(jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -143,9 +186,9 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
             .addGap(0, 679, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(289, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(290, Short.MAX_VALUE)))
+                    .addContainerGap(52, Short.MAX_VALUE)
+                    .addComponent(jScrollPane33, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(72, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,46 +196,59 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(235, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane33, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(128, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-
-
+        if (jRadioButton1.isSelected()) {
+            rutas(1);
+        }
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-
+        if (jRadioButton2.isSelected()) {
+            rutas(2);
+        }
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
-
+        if (jRadioButton3.isSelected()) {
+            rutas(3);
+        }
     }//GEN-LAST:event_jRadioButton3ActionPerformed
 
     private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
-
+        if (jRadioButton4.isSelected()) {
+            rutas(4);
+        }
     }//GEN-LAST:event_jRadioButton4ActionPerformed
 
     private void jRadioButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton5ActionPerformed
-
-
+        if (jRadioButton5.isSelected()) {
+            rutas(5);
+        }
     }//GEN-LAST:event_jRadioButton5ActionPerformed
 
     private void jRadioButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton6ActionPerformed
-
-
+        if (jRadioButton6.isSelected()) {
+            rutas(6);
+        }
     }//GEN-LAST:event_jRadioButton6ActionPerformed
 
     private void jRadioButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton7ActionPerformed
-
+        if (jRadioButton7.isSelected()) {
+            rutas(7);
+        }
     }//GEN-LAST:event_jRadioButton7ActionPerformed
 
     private void jRadioButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton8ActionPerformed
-
+        if (jRadioButton8.isSelected()) {
+            rutas(8);
+        }
     }//GEN-LAST:event_jRadioButton8ActionPerformed
 
     /**
@@ -209,16 +265,21 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormularioParaAnimacionCarro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormularioParaAnimacionCarro.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormularioParaAnimacionCarro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormularioParaAnimacionCarro.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormularioParaAnimacionCarro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormularioParaAnimacionCarro.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormularioParaAnimacionCarro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormularioParaAnimacionCarro.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -231,36 +292,9 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
 
     }
 
-    public void rutas(int seleccion) {
-        LinkedList<LinkedList> imagenesCarros = new LinkedList<>();
 
-        for (int i = 0; i < 8; i++) {
-            LinkedList<ImageIcon> direccionesCarros = new LinkedList<>();
-            for (int j = 0; j < 4; j++) {
-                if (j == 0) {
-                    direccionesCarros.add(new ImageIcon("/imagenes/carros/"+"C" + (i + 1)));
-                }
-                if (j == 1) {
-                    direccionesCarros.add(new ImageIcon("/imagenes/carros/"+"C" + (i + 1) + "D"));
-                }
-                if (j == 2) {
-                    direccionesCarros.add(new ImageIcon("/imagenes/carros/"+"C" + (i + 1) + "R"));
-                }
-                if (j == 3) {
-                    direccionesCarros.add(new ImageIcon("/imagenes/carros/"+"C" + (i + 1) + "L"));
-                }
-            }
-            imagenesCarros.add(direccionesCarros);
-        }
-        
-        //panel.imagenesCarros.get(seleccion);
-    }
-
-    public void recibirPanel(PanelAnimacionMapa panel, int x, int y, String sentido) {
-        this.panel = panel;
-        this.imagenes = imagenes;
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
@@ -270,6 +304,6 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton6;
     private javax.swing.JRadioButton jRadioButton7;
     private javax.swing.JRadioButton jRadioButton8;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane33;
     // End of variables declaration//GEN-END:variables
 }
