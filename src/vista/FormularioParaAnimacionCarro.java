@@ -50,8 +50,7 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
     }
 
     public void rutas(int seleccion) {
-        System.out.println("selecciono: " + seleccion);
-
+ 
         LinkedList<ImageIcon> direccionesCarros = new LinkedList<>();
 
         direccionesCarros.add(new ImageIcon("src\\imagenes\\carros\\" + "C" + (seleccion)+".png"));
@@ -59,7 +58,7 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
         direccionesCarros.add(new ImageIcon("src\\imagenes\\carros\\" + "C" + (seleccion) + "L.png"));
         direccionesCarros.add(new ImageIcon("src\\imagenes\\carros\\" + "C" + (seleccion) + "R.png"));
         
-        panelAnimacion.crearCarro(direccionesCarros, x, y);
+        this.panelAnimacion.crearCarro(direccionesCarros, this.x, this.y);
     }
 
         
@@ -191,7 +190,7 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 22, Short.MAX_VALUE)
+                .addGap(0, 18, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))

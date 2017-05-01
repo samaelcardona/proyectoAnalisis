@@ -24,6 +24,10 @@ public class Automovil implements Serializable{
     private LinkedList <ImageIcon> imagen;
     private boolean mover;
     private Rectangle area;
+    private boolean imgAnterior0;
+    private boolean imgAnterior1;
+    private boolean imgAnterior2;
+    private boolean imgAnterior3;
 
     public Automovil(int id, int x, int y, int ancho, int alto, boolean mover) {
         this.id = id;
@@ -34,6 +38,42 @@ public class Automovil implements Serializable{
         this.imagen = new LinkedList<>();
         this.mover = mover;
         this.area = new Rectangle(x, y, ancho, alto);
+        this.imgAnterior0=false;
+        this.imgAnterior1=false;
+        this.imgAnterior2=false;
+        this.imgAnterior3=false;
+    }
+
+    public boolean isImgAnterior0() {
+        return imgAnterior0;
+    }
+
+    public boolean isImgAnterior1() {
+        return imgAnterior1;
+    }
+
+    public boolean isImgAnterior2() {
+        return imgAnterior2;
+    }
+
+    public boolean isImgAnterior3() {
+        return imgAnterior3;
+    }
+
+    public void setImgAnterior0(boolean imgAnterior0) {
+        this.imgAnterior0 = imgAnterior0;
+    }
+
+    public void setImgAnterior1(boolean imgAnterior1) {
+        this.imgAnterior1 = imgAnterior1;
+    }
+
+    public void setImgAnterior2(boolean imgAnterior2) {
+        this.imgAnterior2 = imgAnterior2;
+    }
+
+    public void setImgAnterior3(boolean imgAnterior3) {
+        this.imgAnterior3 = imgAnterior3;
     }
     
     
