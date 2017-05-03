@@ -42,6 +42,8 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
     LinkedList<Edificio> edificios;
     LinkedList<NodoGrafoMapa> listaNodosMapa;
     LinkedList<AristaGrafoMapa> aristasGrafoMapa;
+    Thread hilo;
+    
     /**
      * Creates new form FrameCrearMapa
      */
@@ -55,7 +57,9 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
         aristasGrafoMapa=new LinkedList<>();
         ciudad=new Ciudad();
         
+        this.hilo = new Thread(this.panelAnimacionMapa1);
         
+    
         
       
        // addKeyListener(crearMapaPanel1);
@@ -75,6 +79,7 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
 
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         panelAnimacionMapa1 = new vista.PanelAnimacionMapa();
         jLabel1 = new javax.swing.JLabel();
 
@@ -100,6 +105,15 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
         });
         getContentPane().add(jButton3);
         jButton3.setBounds(1180, 0, 20, 20);
+
+        jButton2.setText("mover carro 1");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(260, 590, 140, 23);
 
         javax.swing.GroupLayout panelAnimacionMapa1Layout = new javax.swing.GroupLayout(panelAnimacionMapa1);
         panelAnimacionMapa1.setLayout(panelAnimacionMapa1Layout);
@@ -164,6 +178,11 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
         this.aristasGrafoMapa=ciudad.getListaDeTransicionesAristas();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        panelAnimacionMapa1.moverCarrosUnaTransicion();
+        this.hilo.start();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     public void agregarCalleALaLista(Calle calle) {
         calles.add(calle);
@@ -256,6 +275,7 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private vista.PanelAnimacionMapa panelAnimacionMapa1;

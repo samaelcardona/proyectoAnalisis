@@ -28,6 +28,7 @@ public class Automovil implements Serializable{
     private boolean imgAnterior1;
     private boolean imgAnterior2;
     private boolean imgAnterior3;
+    LinkedList<Integer> rutaIdNodos;
 
     public Automovil(int id, int x, int y, int ancho, int alto, boolean mover) {
         this.id = id;
@@ -42,6 +43,15 @@ public class Automovil implements Serializable{
         this.imgAnterior1=false;
         this.imgAnterior2=false;
         this.imgAnterior3=false;
+        this.rutaIdNodos=new LinkedList<>();
+    }
+
+    public LinkedList<Integer> getRutaIdNodos() {
+        return rutaIdNodos;
+    }
+
+    public void setRutaIdNodos(LinkedList<Integer> rutaIdNodos) {
+        this.rutaIdNodos = rutaIdNodos;
     }
 
     public boolean isImgAnterior0() {

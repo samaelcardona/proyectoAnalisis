@@ -19,6 +19,8 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
     LinkedList<ImageIcon> imagenes;
     int x;
     int y;
+    int xNodoPosClick;
+    int yNodoPosClick;
     LinkedList<JRadioButton> botones;
 
     public FormularioParaAnimacionCarro() {
@@ -43,10 +45,12 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
 
     }
 
-    public void recibirPanel(PanelAnimacionMapa panelAnimacion, int x, int y) {
+    public void recibirPanel(PanelAnimacionMapa panelAnimacion, int x, int y, int xNodoPosClick, int yNodoPosClick) {
         this.panelAnimacion = panelAnimacion;
         this.x = x;
         this.y = y;
+        this.xNodoPosClick=xNodoPosClick;
+        this.yNodoPosClick=yNodoPosClick;
     }
 
     public void rutas(int seleccion) {
@@ -58,7 +62,7 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
         direccionesCarros.add(new ImageIcon("src\\imagenes\\carros\\" + "C" + (seleccion) + "L.png"));
         direccionesCarros.add(new ImageIcon("src\\imagenes\\carros\\" + "C" + (seleccion) + "R.png"));
         
-        this.panelAnimacion.crearCarro(direccionesCarros, this.x, this.y);
+        this.panelAnimacion.crearCarro(direccionesCarros, this.x, this.y,this.xNodoPosClick, this.yNodoPosClick);
     }
 
         

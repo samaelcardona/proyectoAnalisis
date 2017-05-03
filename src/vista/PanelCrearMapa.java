@@ -114,9 +114,9 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
         for (int i = 1; i <= x; i++) {
             for (int j = 1; j <= y; j++) {
                 matrizPuntosLimitesCuadriculaMapa[i - 1][j - 1].setX1(((i - 1) * 56));
-                matrizPuntosLimitesCuadriculaMapa[i - 1][j - 1].setX2((i * 56) - 3);
+                matrizPuntosLimitesCuadriculaMapa[i - 1][j - 1].setX2((i * 56));
                 matrizPuntosLimitesCuadriculaMapa[i - 1][j - 1].setY1(((j - 1) * 56));
-                matrizPuntosLimitesCuadriculaMapa[i - 1][j - 1].setY2((j * 56) - 3);
+                matrizPuntosLimitesCuadriculaMapa[i - 1][j - 1].setY2((j * 56));
             }
         }
 
