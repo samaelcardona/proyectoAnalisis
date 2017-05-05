@@ -54,7 +54,7 @@ public class FormularioParaLaTomaDeDatosSegunSamaelCardonaClavijo extends javax.
         jLabel1.setText("Sentido de la via");
 
         comboSentido.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 12)); // NOI18N
-        comboSentido.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Derecha", "Izquierda", "Doble sentido" }));
+        comboSentido.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Doble sentido", "Derecha", "Izquierda" }));
         comboSentido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboSentidoActionPerformed(evt);

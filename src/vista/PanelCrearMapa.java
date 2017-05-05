@@ -243,9 +243,9 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                 if ("vertical".equals(this.orientacion)) {
 
                     formularioTomaDeDatos.getComboSentido().removeAllItems();
-                    formularioTomaDeDatos.getComboSentido().addItem("Arriba");
-                    formularioTomaDeDatos.getComboSentido().addItem("Abajo");
                     formularioTomaDeDatos.getComboSentido().addItem("Doble sentido");
+                    formularioTomaDeDatos.getComboSentido().addItem("Abajo");
+                    formularioTomaDeDatos.getComboSentido().addItem("Arriba");
 
                     formularioTomaDeDatos.recibirPanel(this, cuadroSeleccionado[0], cuadroSeleccionado[1]);
                     formularioTomaDeDatos.setVisible(true);
@@ -3771,6 +3771,8 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
 
     public void recibirDatosFormularioCorregirElementos(int x, int y) {
 
+        
+        ///verificar que en la posicion si haya algun elemento
         if (matrizCuadriculaMapaIdArboles[x][y] != -1) {
             frame.getArboles().remove(matrizCuadriculaMapaIdArboles[x][y]);
             for (int i = 0; i < 10; i++) {
