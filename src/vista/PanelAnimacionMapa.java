@@ -125,12 +125,11 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
             int[] cuadroSeleccionado = new int[2];
             cuadroSeleccionado = retornarPosicionCuadriculaSeleccionada(listaDeCarros.get(i).getX(), listaDeCarros.get(i).getY());
 
-            System.out.println("posX " + cuadroSeleccionado[0] + " posY " + cuadroSeleccionado[1]);
             int idCalle = matrizCuadriculaMapaIdCalles[cuadroSeleccionado[0]][cuadroSeleccionado[1]];
             if (idCalle != -1) {
 
                 if ("Derecha".equals(frame.getCalles().get(idCalle).getSentido())) {
-                    System.out.println("Sentido del nodo en calle" + frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido());
+
                     if ("XULR".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
                             || "xULR".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
                             || "XDRR".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
@@ -202,7 +201,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
                 }
                 if ("Izquierda".equals(frame.getCalles().get(idCalle).getSentido())) {
-                    System.out.println("Sentido del nodo en calle" + frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido());
+
                     if ("XULL".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
                             || "xULL".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
                             || "XDRL".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
@@ -837,109 +836,125 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
     public void run() {
         //aca se mueven los carros aleatoriamente 
         while (moverCarrosAleatoriamente == true) {
+
             for (int i = 0; i < listaDeCarros.size(); i++) {
                 //Se verifica si el carro se puede mover aleatoriamente 
                 if (listaDeCarros.get(i).isMover() == true) {
 
-                    NodoGrafoMapa nodoA = this.retornarNodoEnElqueSeEstaParadoParaElCarro(listaDeCarros.get(i));
-                    NodoGrafoMapa nodoB = this.retornarAleatoriamenteUnNodoB(nodoA);
+                    if (listaDeCarros.get(i).getNodoA() == null && listaDeCarros.get(i).getNodoB() == null) {
+                        NodoGrafoMapa nodoA = this.retornarNodoEnElqueSeEstaParadoParaElCarro(listaDeCarros.get(i));
+                        NodoGrafoMapa nodoB = this.retornarAleatoriamenteUnNodoB(nodoA);
 
-                    if (saberSiHayTransicionDeNodoAaNodoB(nodoA, nodoB) == true) {
+                        System.out.println("ingreso a asignar nodo");
+                        System.out.println("nodoA" + listaDeCarros.get(i).getNodoA());
+                        System.out.println("nodoB" + listaDeCarros.get(i).getNodoB());
 
-                        if (nodoA.getX() < nodoB.getX() && nodoA.getY() == nodoB.getY()) {
-                            // System.out.println("nodoa menor a nodo b con y igual");
-                            while (listaDeCarros.get(i).getX() < nodoB.getX()) {
-                                try {
-                                    listaDeCarros.get(listaDeCarros.get(i).getId()).setX(listaDeCarros.get(i).getX() + 1);
-                                    Thread.sleep(30);
-                                } catch (Exception e) {
-                                }
+                        listaDeCarros.get(i).setNodoA(nodoA);
+                        listaDeCarros.get(i).setNodoB(nodoB);
+
+                        System.out.println("ingreso a asignar nodo");
+                        System.out.println("nodoA" + listaDeCarros.get(i).getNodoA().getId());
+                        System.out.println("nodoB" + listaDeCarros.get(i).getNodoB().getId());
+
+                    }
+
+                    if (saberSiHayTransicionDeNodoAaNodoB(listaDeCarros.get(i).getNodoA(), listaDeCarros.get(i).getNodoB()) == true) {
+                        System.out.println("tiene transicion");
+
+                        if (listaDeCarros.get(i).getX() != listaDeCarros.get(i).getNodoB().getX()
+                                || listaDeCarros.get(i).getY() != listaDeCarros.get(i).getNodoB().getY()) {
+                            System.out.println("es diferente");
+                            if (listaDeCarros.get(i).getNodoA().getX() < listaDeCarros.get(i).getNodoB().getX()
+                                    && listaDeCarros.get(i).getNodoA().getY() == listaDeCarros.get(i).getNodoB().getY()) {
+                                // System.out.println("nodoa menor a nodo b con y igual");
+                                listaDeCarros.get(listaDeCarros.get(i).getId()).setX(listaDeCarros.get(i).getX() + 1);
+                            }
+                            if (listaDeCarros.get(i).getNodoA().getX() > listaDeCarros.get(i).getNodoB().getX()
+                                    && listaDeCarros.get(i).getNodoA().getY() == listaDeCarros.get(i).getNodoB().getY()) {
+                                ///  System.out.println("nodoa mayor a nodo b con y igual");
+                                listaDeCarros.get(listaDeCarros.get(i).getId()).setX(listaDeCarros.get(i).getX() - 1);
 
                             }
-                        }
-                        if (nodoA.getX() > nodoB.getX() && nodoA.getY() == nodoB.getY()) {
-                            ///  System.out.println("nodoa mayor a nodo b con y igual");
-                            while (listaDeCarros.get(i).getX() > nodoB.getX()) {
-                                try {
-                                    listaDeCarros.get(listaDeCarros.get(i).getId()).setX(listaDeCarros.get(i).getX() - 1);
-                                    Thread.sleep(30);
-                                } catch (Exception e) {
-                                }
+                            if (listaDeCarros.get(i).getNodoA().getY() < listaDeCarros.get(i).getNodoB().getY() && listaDeCarros.get(i).getNodoA().getX() == listaDeCarros.get(i).getNodoB().getX()) {
+                                //  System.out.println("nodoa menor a nodo b con X igual");
+                                listaDeCarros.get(listaDeCarros.get(i).getId()).setY(listaDeCarros.get(i).getY() + 1);
+
+                            }
+                            if (listaDeCarros.get(i).getNodoA().getY() > listaDeCarros.get(i).getNodoB().getY() && listaDeCarros.get(i).getNodoA().getX() == listaDeCarros.get(i).getNodoB().getX()) {
+                                //  System.out.println("nodoa menor a nodo b con X igual");
+                                listaDeCarros.get(listaDeCarros.get(i).getId()).setY(listaDeCarros.get(i).getY() - 1);
                             }
                         }
-                        if (nodoA.getY() < nodoB.getY() && nodoA.getX() == nodoB.getX()) {
-                            //  System.out.println("nodoa menor a nodo b con X igual");
-                            while (listaDeCarros.get(i).getY() < nodoB.getY()) {
-                                try {
-                                    listaDeCarros.get(listaDeCarros.get(i).getId()).setY(listaDeCarros.get(i).getY() + 1);
-                                    Thread.sleep(30);
-                                } catch (Exception e) {
-                                }
-                            }
+                        if (listaDeCarros.get(i).getX() == listaDeCarros.get(i).getNodoB().getX()
+                                && listaDeCarros.get(i).getY() == listaDeCarros.get(i).getNodoB().getY()) {
+                            listaDeCarros.get(i).setNodoA(null);
+                            listaDeCarros.get(i).setNodoB(null);
                         }
-                        if (nodoA.getY() > nodoB.getY() && nodoA.getX() == nodoB.getX()) {
-                            //  System.out.println("nodoa menor a nodo b con X igual");
-                            while (listaDeCarros.get(i).getY() > nodoB.getY()) {
-                                try {
-                                    listaDeCarros.get(listaDeCarros.get(i).getId()).setY(listaDeCarros.get(i).getY() - 1);
-                                    Thread.sleep(30);
-                                } catch (Exception e) {
-                                }
-                            }
-                        }
+
                     }
                 } else {
-                    for (int j = 0; j < listaDeCarros.get(i).getRutaIdNodos().size(); j++) {
-                        NodoGrafoMapa nodoA = frame.getListaNodosMapa().get(listaDeCarros.get(i).getRutaIdNodos().get(j));
-                        NodoGrafoMapa nodoB = frame.getListaNodosMapa().get(listaDeCarros.get(i).getRutaIdNodos().get(j + 1));
-                        if (saberSiHayTransicionDeNodoAaNodoB(nodoA, nodoB) == true) {
 
-                            if (nodoA.getX() < nodoB.getX() && nodoA.getY() == nodoB.getY()) {
-                                // System.out.println("nodoa menor a nodo b con y igual");
-                                while (listaDeCarros.get(i).getX() < nodoB.getX()) {
-                                    try {
-                                        listaDeCarros.get(listaDeCarros.get(i).getId()).setX(listaDeCarros.get(i).getX() + 1);
-                                        Thread.sleep(30);
-                                    } catch (Exception e) {
-                                    }
+                    if (listaDeCarros.get(i).getRutaIdNodos().size() >= 0) {
+                        ///tendria el mismo problema se moveria primero este en su ruta y los otros no 
+                        if (listaDeCarros.get(i).getNodoA() == null && listaDeCarros.get(i).getNodoB() == null) {
+                            NodoGrafoMapa nodoA = frame.getListaNodosMapa().get(listaDeCarros.get(i).getRutaIdNodos().get(listaDeCarros.get(i).getContarNodoRuta()));
+                            NodoGrafoMapa nodoB = frame.getListaNodosMapa().get(listaDeCarros.get(i).getRutaIdNodos().get(listaDeCarros.get(i).getContarNodoRuta() + 1));
+
+                            listaDeCarros.get(i).setNodoA(nodoA);
+                            listaDeCarros.get(i).setNodoB(nodoB);
+                            listaDeCarros.get(i).setContarNodoRuta(listaDeCarros.get(i).getContarNodoRuta() + 1);
+                        }
+
+                        if (saberSiHayTransicionDeNodoAaNodoB(listaDeCarros.get(i).getNodoA(), listaDeCarros.get(i).getNodoB()) == true) {
+                            if (listaDeCarros.get(i).getX() != listaDeCarros.get(i).getNodoB().getX()
+                                    || listaDeCarros.get(i).getY() != listaDeCarros.get(i).getNodoB().getY()) {
+
+                                if (listaDeCarros.get(i).getNodoA().getX() < listaDeCarros.get(i).getNodoB().getX()
+                                        && listaDeCarros.get(i).getNodoA().getY() == listaDeCarros.get(i).getNodoB().getY()) {
+                                    // System.out.println("nodoa menor a nodo b con y igual");
+                                    listaDeCarros.get(listaDeCarros.get(i).getId()).setX(listaDeCarros.get(i).getX() + 1);
+                                }
+                                if (listaDeCarros.get(i).getNodoA().getX() > listaDeCarros.get(i).getNodoB().getX()
+                                        && listaDeCarros.get(i).getNodoA().getY() == listaDeCarros.get(i).getNodoB().getY()) {
+                                    ///  System.out.println("nodoa mayor a nodo b con y igual");
+                                    listaDeCarros.get(listaDeCarros.get(i).getId()).setX(listaDeCarros.get(i).getX() - 1);
 
                                 }
-                            }
-                            if (nodoA.getX() > nodoB.getX() && nodoA.getY() == nodoB.getY()) {
-                                ///  System.out.println("nodoa mayor a nodo b con y igual");
-                                while (listaDeCarros.get(i).getX() > nodoB.getX()) {
-                                    try {
-                                        listaDeCarros.get(listaDeCarros.get(i).getId()).setX(listaDeCarros.get(i).getX() - 1);
-                                        Thread.sleep(30);
-                                    } catch (Exception e) {
-                                    }
+                                if (listaDeCarros.get(i).getNodoA().getY() < listaDeCarros.get(i).getNodoB().getY() && listaDeCarros.get(i).getNodoA().getX() == listaDeCarros.get(i).getNodoB().getX()) {
+                                    //  System.out.println("nodoa menor a nodo b con X igual");
+                                    listaDeCarros.get(listaDeCarros.get(i).getId()).setY(listaDeCarros.get(i).getY() + 1);
+
+                                }
+                                if (listaDeCarros.get(i).getNodoA().getY() > listaDeCarros.get(i).getNodoB().getY() && listaDeCarros.get(i).getNodoA().getX() == listaDeCarros.get(i).getNodoB().getX()) {
+                                    //  System.out.println("nodoa menor a nodo b con X igual");
+                                    listaDeCarros.get(listaDeCarros.get(i).getId()).setY(listaDeCarros.get(i).getY() - 1);
                                 }
                             }
-                            if (nodoA.getY() < nodoB.getY() && nodoA.getX() == nodoB.getX()) {
-                                //  System.out.println("nodoa menor a nodo b con X igual");
-                                while (listaDeCarros.get(i).getY() < nodoB.getY()) {
-                                    try {
-                                        listaDeCarros.get(listaDeCarros.get(i).getId()).setY(listaDeCarros.get(i).getY() + 1);
-                                        Thread.sleep(30);
-                                    } catch (Exception e) {
-                                    }
-                                }
-                            }
-                            if (nodoA.getY() > nodoB.getY() && nodoA.getX() == nodoB.getX()) {
-                                //  System.out.println("nodoa menor a nodo b con X igual");
-                                while (listaDeCarros.get(i).getY() > nodoB.getY()) {
-                                    try {
-                                        listaDeCarros.get(listaDeCarros.get(i).getId()).setY(listaDeCarros.get(i).getY() - 1);
-                                        Thread.sleep(30);
-                                    } catch (Exception e) {
-                                    }
-                                }
+                            if (listaDeCarros.get(i).getX() == listaDeCarros.get(i).getNodoB().getX()
+                                    && listaDeCarros.get(i).getY() == listaDeCarros.get(i).getNodoB().getY()) {
+                                listaDeCarros.get(i).setNodoA(null);
+                                listaDeCarros.get(i).setNodoB(null);
                             }
                         }
+
+                        //esta es por si llega al nodo final de la ruta entonces reinicia la lista y el contador
+                        if (listaDeCarros.get(i).getX() == frame.getListaNodosMapa().get(listaDeCarros.get(i).getRutaIdNodos().getLast()).getX()
+                                && listaDeCarros.get(i).getY() == frame.getListaNodosMapa().get(listaDeCarros.get(i).getRutaIdNodos().getLast()).getY()) {
+
+                            listaDeCarros.get(i).getRutaIdNodos().clear();
+                            listaDeCarros.get(i).setContarNodoRuta(0);
+
+                        }
                     }
-                    listaDeCarros.get(i).getRutaIdNodos().clear();
+
                 }
+
             }
+            try {
+                Thread.sleep(30);
+            } catch (Exception e) {
+            }
+
         }
 
     }

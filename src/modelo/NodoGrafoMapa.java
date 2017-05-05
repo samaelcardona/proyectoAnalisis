@@ -25,6 +25,8 @@ public class NodoGrafoMapa implements Serializable{
     private boolean activo;
     private String sentido;
 
+
+    
     public NodoGrafoMapa(int id,int idCalle, int x, int y, int ancho, int alto, boolean activo,String sentido) {
         this.id = id;
         this.idCalle=idCalle;

@@ -14,14 +14,14 @@ import javax.swing.ImageIcon;
  *
  * @author SAMAEL
  */
-public class Automovil implements Serializable{
-    
+public class Automovil implements Serializable {
+
     private int id;
     private int x;
     private int y;
     private int ancho;
     private int alto;
-    private LinkedList <ImageIcon> imagen;
+    private LinkedList<ImageIcon> imagen;
     private boolean mover;
     private Rectangle area;
     private boolean imgAnterior0;
@@ -29,6 +29,9 @@ public class Automovil implements Serializable{
     private boolean imgAnterior2;
     private boolean imgAnterior3;
     LinkedList<Integer> rutaIdNodos;
+    NodoGrafoMapa nodoA;
+    NodoGrafoMapa nodoB;
+    int contarNodoRuta;
 
     public Automovil(int id, int x, int y, int ancho, int alto, boolean mover) {
         this.id = id;
@@ -39,13 +42,42 @@ public class Automovil implements Serializable{
         this.imagen = new LinkedList<>();
         this.mover = mover;
         this.area = new Rectangle(x, y, ancho, alto);
-        this.imgAnterior0=false;
-        this.imgAnterior1=false;
-        this.imgAnterior2=false;
-        this.imgAnterior3=false;
-        this.rutaIdNodos=new LinkedList<>();
+        this.imgAnterior0 = false;
+        this.imgAnterior1 = false;
+        this.imgAnterior2 = false;
+        this.imgAnterior3 = false;
+        this.rutaIdNodos = new LinkedList<>();
+        this.nodoA = null;
+        this.nodoB = null;
+        this.contarNodoRuta=0;
     }
 
+    public int getContarNodoRuta() {
+        return contarNodoRuta;
+    }
+
+    public void setContarNodoRuta(int contarNodoRuta) {
+        this.contarNodoRuta = contarNodoRuta;
+    }
+
+    
+    public NodoGrafoMapa getNodoA() {
+        return nodoA;
+    }
+
+    public NodoGrafoMapa getNodoB() {
+        return nodoB;
+    }
+
+    public void setNodoA(NodoGrafoMapa nodoA) {
+        this.nodoA = nodoA;
+    }
+
+    public void setNodoB(NodoGrafoMapa nodoB) {
+        this.nodoB = nodoB;
+    }
+
+    
     public LinkedList<Integer> getRutaIdNodos() {
         return rutaIdNodos;
     }
@@ -85,8 +117,6 @@ public class Automovil implements Serializable{
     public void setImgAnterior3(boolean imgAnterior3) {
         this.imgAnterior3 = imgAnterior3;
     }
-    
-    
 
     public int getId() {
         return id;
@@ -120,9 +150,6 @@ public class Automovil implements Serializable{
         return area;
     }
 
-    
-    
-    
     public void setId(int id) {
         this.id = id;
     }
@@ -154,11 +181,5 @@ public class Automovil implements Serializable{
     public void setArea(Rectangle area) {
         this.area = area;
     }
-    
-    
-    
-    
-    
-    
-    
+
 }
