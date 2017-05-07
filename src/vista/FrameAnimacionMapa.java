@@ -43,6 +43,7 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
     LinkedList<NodoGrafoMapa> listaNodosMapa;
     LinkedList<AristaGrafoMapa> aristasGrafoMapa;
     Thread hilo;
+    boolean iniciarHilo;
     
     /**
      * Creates new form FrameCrearMapa
@@ -58,6 +59,11 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
         ciudad=new Ciudad();
         
         this.hilo = new Thread(this.panelAnimacionMapa1);
+        
+        
+        this.iniciarHilo=false;
+        
+         
         
     
         
@@ -80,6 +86,7 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         panelAnimacionMapa1 = new vista.PanelAnimacionMapa();
         jLabel1 = new javax.swing.JLabel();
 
@@ -95,7 +102,7 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(30, 590, 140, 23);
+        jButton1.setBounds(30, 590, 110, 23);
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Documentos/cerrarIcon.png"))); // NOI18N
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -106,14 +113,23 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
         getContentPane().add(jButton3);
         jButton3.setBounds(1180, 0, 20, 20);
 
-        jButton2.setText("mover carro 1");
+        jButton2.setText("Mover Carros");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(260, 590, 140, 23);
+        jButton2.setBounds(150, 590, 100, 23);
+
+        jButton4.setText("Detener Carros");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4);
+        jButton4.setBounds(260, 590, 110, 23);
 
         javax.swing.GroupLayout panelAnimacionMapa1Layout = new javax.swing.GroupLayout(panelAnimacionMapa1);
         panelAnimacionMapa1.setLayout(panelAnimacionMapa1Layout);
@@ -137,6 +153,7 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        System.exit(0);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -180,9 +197,17 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        panelAnimacionMapa1.moverCarrosUnaTransicion();
-        this.hilo.start();
+        panelAnimacionMapa1.moverCarros();
+        if (this.iniciarHilo==false) {
+            this.hilo.start();
+        }
+        this.iniciarHilo=true;
+
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        panelAnimacionMapa1.detenerCarros();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     public void agregarCalleALaLista(Calle calle) {
         calles.add(calle);
@@ -277,6 +302,7 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private vista.PanelAnimacionMapa panelAnimacionMapa1;
     // End of variables declaration//GEN-END:variables

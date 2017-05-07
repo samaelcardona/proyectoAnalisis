@@ -591,16 +591,29 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        FormularioParaAnimacionCarro formulario = new FormularioParaAnimacionCarro();
+        if (this.clickEnUnCarro(e.getX(), e.getY(), listaDeCarros) == false) {
+            ///toca que sacar un primer formulario para identificar que desea hacer 
+            ///o en el mismo formulario se identifica carros o pues ruta 
 
-        int x = (int) e.getPoint().getX();
-        int y = (int) e.getPoint().getY();
+            FormularioParaAnimacionCarro formulario = new FormularioParaAnimacionCarro();
 
-        int[] cuadroSeleccionado = new int[2];
-        cuadroSeleccionado = retornarPosicionCuadriculaSeleccionada(x, y);
+            int x = (int) e.getPoint().getX();
+            int y = (int) e.getPoint().getY();
 
-        formulario.recibirPanel(this, cuadroSeleccionado[0], cuadroSeleccionado[1], x, y);
-        formulario.setVisible(true);
+            int[] cuadroSeleccionado = new int[2];
+            cuadroSeleccionado = retornarPosicionCuadriculaSeleccionada(x, y);
+
+            formulario.recibirPanel(this, cuadroSeleccionado[0], cuadroSeleccionado[1], x, y);
+            formulario.setVisible(true);
+        }
+        if (this.clickEnUnCarro(e.getX(), e.getY(), listaDeCarros) == true) {
+            int idCarro = this.retornarCarroCLikeado(e.getX(), e.getY(), listaDeCarros);
+            if (idCarro != -1) {
+                listaDeCarros.get(idCarro).setMover(false);
+            } else {
+
+            }
+        }
 
     }
 
@@ -734,7 +747,6 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         String cadena2;
 
         //System.out.println("");
-
         //System.out.println("        00       01       02       03       04       05       06       07       08       09       10       11       12       13       14       15       16       17       18       19       20 ");
         for (int i = 0; i < 10; i++) {
             cadena2 = i + " ";
@@ -747,7 +759,6 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         String cadena1;
 
         //System.out.println("");
-
         //System.out.println("        00       01       02       03       04       05       06       07       08       09       10       11       12       13       14       15       16       17       18       19       20 ");
         for (int i = 0; i < 10; i++) {
             cadena1 = i + " ";
@@ -795,8 +806,12 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         return null;
     }
 
-    public void moverCarrosUnaTransicion() {
-        moverCarrosAleatoriamente = true;
+    public void moverCarros() {
+        this.moverCarrosAleatoriamente = true;
+    }
+
+    public void detenerCarros() {
+        this.moverCarrosAleatoriamente = false;
     }
 
     public NodoGrafoMapa retornarAleatoriamenteUnNodoB(NodoGrafoMapa nodoA) {
@@ -808,8 +823,10 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                 listaPosiblesB.add(frame.getAristasGrafoMapa().get(i).getNodoB());
             }
         }
-
+        if (listaPosiblesB.size() > 0) {
             return listaPosiblesB.get((int) Math.floor(Math.random() * listaPosiblesB.size()));
+        }
+        return null;
 
     }
 
@@ -837,124 +854,167 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
     @Override
     public void run() {
         //aca se mueven los carros aleatoriamente 
-        while (moverCarrosAleatoriamente == true) {
+        while (true) {
 
-            for (int i = 0; i < listaDeCarros.size(); i++) {
-                //Se verifica si el carro se puede mover aleatoriamente 
-                if (listaDeCarros.get(i).isMover() == true) {
+            System.out.println("Estado "+this.moverCarrosAleatoriamente);
+            if (this.moverCarrosAleatoriamente == true) {
 
-                    if (listaDeCarros.get(i).getNodoA() == null && listaDeCarros.get(i).getNodoB() == null) {
-                        NodoGrafoMapa nodoA = this.retornarNodoEnElqueSeEstaParadoParaElCarro(listaDeCarros.get(i));
-                        NodoGrafoMapa nodoB = this.retornarAleatoriamenteUnNodoB(nodoA);
+                for (int i = 0; i < listaDeCarros.size(); i++) {
+                    //Se verifica si el carro se puede mover aleatoriamente 
 
-                        //System.out.println("ingreso a asignar nodo");
-                        //System.out.println("nodoA" + listaDeCarros.get(i).getNodoA());
-                        //System.out.println("nodoB" + listaDeCarros.get(i).getNodoB());
+                    //para mover carro con una ruta 
+                    if (listaDeCarros.get(i).isMover() == false && this.retornarNodoEnElqueSeEstaParadoParaElCarro(listaDeCarros.get(i)) != null) {
 
-                        listaDeCarros.get(i).setNodoA(nodoA);
-                        listaDeCarros.get(i).setNodoB(nodoB);
+                        if (listaDeCarros.get(i).getRutaIdNodos().size() > 0) {
+                            ///tendria el mismo problema se moveria primero este en su ruta y los otros no 
+                            if (listaDeCarros.get(i).getNodoA() == null && listaDeCarros.get(i).getNodoB() == null) {
+                                NodoGrafoMapa nodoA = frame.getListaNodosMapa().get(listaDeCarros.get(i).getRutaIdNodos().get(listaDeCarros.get(i).getContarNodoRuta()));
+                                NodoGrafoMapa nodoB = frame.getListaNodosMapa().get(listaDeCarros.get(i).getRutaIdNodos().get(listaDeCarros.get(i).getContarNodoRuta() + 1));
 
-                        //System.out.println("ingreso a asignar nodo");
-                        //System.out.println("nodoA" + listaDeCarros.get(i).getNodoA().getId());
-                        //System.out.println("nodoB" + listaDeCarros.get(i).getNodoB().getId());
-
-                    }
-
-                    if (saberSiHayTransicionDeNodoAaNodoB(listaDeCarros.get(i).getNodoA(), listaDeCarros.get(i).getNodoB()) == true) {
-                        //System.out.println("tiene transicion");
-
-                        if (listaDeCarros.get(i).getX() != listaDeCarros.get(i).getNodoB().getX()
-                                || listaDeCarros.get(i).getY() != listaDeCarros.get(i).getNodoB().getY()) {
-                            //System.out.println("es diferente");
-                            if (listaDeCarros.get(i).getNodoA().getX() < listaDeCarros.get(i).getNodoB().getX()
-                                    && listaDeCarros.get(i).getNodoA().getY() == listaDeCarros.get(i).getNodoB().getY()) {
-                                // //System.out.println("nodoa menor a nodo b con y igual");
-                                listaDeCarros.get(listaDeCarros.get(i).getId()).setX(listaDeCarros.get(i).getX() + 1);
+                                listaDeCarros.get(i).setNodoA(nodoA);
+                                listaDeCarros.get(i).setNodoB(nodoB);
+                                listaDeCarros.get(i).setContarNodoRuta(listaDeCarros.get(i).getContarNodoRuta() + 1);
                             }
-                            if (listaDeCarros.get(i).getNodoA().getX() > listaDeCarros.get(i).getNodoB().getX()
-                                    && listaDeCarros.get(i).getNodoA().getY() == listaDeCarros.get(i).getNodoB().getY()) {
-                                ///  //System.out.println("nodoa mayor a nodo b con y igual");
-                                listaDeCarros.get(listaDeCarros.get(i).getId()).setX(listaDeCarros.get(i).getX() - 1);
 
-                            }
-                            if (listaDeCarros.get(i).getNodoA().getY() < listaDeCarros.get(i).getNodoB().getY() && listaDeCarros.get(i).getNodoA().getX() == listaDeCarros.get(i).getNodoB().getX()) {
-                                //  //System.out.println("nodoa menor a nodo b con X igual");
-                                listaDeCarros.get(listaDeCarros.get(i).getId()).setY(listaDeCarros.get(i).getY() + 1);
+                            if (listaDeCarros.get(i).getNodoB() != null) {
+                                if (saberSiHayTransicionDeNodoAaNodoB(listaDeCarros.get(i).getNodoA(), listaDeCarros.get(i).getNodoB()) == true) {
+                                    //System.out.println("tiene transicion");
 
+                                    if (listaDeCarros.get(i).getX() != listaDeCarros.get(i).getNodoB().getX()
+                                            || listaDeCarros.get(i).getY() != listaDeCarros.get(i).getNodoB().getY()) {
+                                        //System.out.println("es diferente");
+                                        if (listaDeCarros.get(i).getNodoA().getX() < listaDeCarros.get(i).getNodoB().getX()
+                                                && listaDeCarros.get(i).getNodoA().getY() == listaDeCarros.get(i).getNodoB().getY()) {
+                                            if (this.hayAlgunCarroAdelanteEnXmasUno(listaDeCarros.get(i)) == false) {
+                                                // //System.out.println("nodoa menor a nodo b con y igual");
+                                                listaDeCarros.get(i).setX(listaDeCarros.get(i).getX() + 1);
+                                            }
+
+                                        }
+                                        if (listaDeCarros.get(i).getNodoA().getX() > listaDeCarros.get(i).getNodoB().getX()
+                                                && listaDeCarros.get(i).getNodoA().getY() == listaDeCarros.get(i).getNodoB().getY()) {
+                                            if (this.hayAlgunCarroAdelanteEnXmenosUno(listaDeCarros.get(i)) == false) {
+                                                ///  //System.out.println("nodoa mayor a nodo b con y igual");
+                                                listaDeCarros.get(i).setX(listaDeCarros.get(i).getX() - 1);
+                                            }
+
+                                        }
+                                        if (listaDeCarros.get(i).getNodoA().getY() < listaDeCarros.get(i).getNodoB().getY()
+                                                && listaDeCarros.get(i).getNodoA().getX() == listaDeCarros.get(i).getNodoB().getX()) {
+                                            if (this.hayAlgunCarroAdelanteEnYmasUno(listaDeCarros.get(i)) == false) {
+                                                //  //System.out.println("nodoa menor a nodo b con X igual");
+                                                listaDeCarros.get(i).setY(listaDeCarros.get(i).getY() + 1);
+
+                                            }
+
+                                        }
+                                        if (listaDeCarros.get(i).getNodoA().getY() > listaDeCarros.get(i).getNodoB().getY()
+                                                && listaDeCarros.get(i).getNodoA().getX() == listaDeCarros.get(i).getNodoB().getX()) {
+                                            if (this.hayAlgunCarroAdelanteEnYmenosUno(listaDeCarros.get(i)) == false) {
+                                                //  //System.out.println("nodoa menor a nodo b con X igual");
+                                                listaDeCarros.get(i).setY(listaDeCarros.get(i).getY() - 1);
+                                            }
+
+                                        }
+                                    }
+                                    if (listaDeCarros.get(i).getX() == listaDeCarros.get(i).getNodoB().getX()
+                                            && listaDeCarros.get(i).getY() == listaDeCarros.get(i).getNodoB().getY()) {
+                                        listaDeCarros.get(i).setNodoA(null);
+                                        listaDeCarros.get(i).setNodoB(null);
+                                    }
+
+                                }
                             }
-                            if (listaDeCarros.get(i).getNodoA().getY() > listaDeCarros.get(i).getNodoB().getY() && listaDeCarros.get(i).getNodoA().getX() == listaDeCarros.get(i).getNodoB().getX()) {
-                                //  //System.out.println("nodoa menor a nodo b con X igual");
-                                listaDeCarros.get(listaDeCarros.get(i).getId()).setY(listaDeCarros.get(i).getY() - 1);
+                            if (listaDeCarros.get(i).getNodoB() == null) {
+                                listaDeCarros.get(i).setNodoA(null);
+                                listaDeCarros.get(i).setNodoB(null);
+                            }
+
+                            //esta es por si llega al nodo final de la ruta entonces reinicia la lista y el contador
+                            if (listaDeCarros.get(i).getX() == frame.getListaNodosMapa().get(listaDeCarros.get(i).getRutaIdNodos().getLast()).getX()
+                                    && listaDeCarros.get(i).getY() == frame.getListaNodosMapa().get(listaDeCarros.get(i).getRutaIdNodos().getLast()).getY()) {
+
+                                listaDeCarros.get(i).getRutaIdNodos().clear();
+                                listaDeCarros.get(i).setContarNodoRuta(0);
+
                             }
                         }
-                        if (listaDeCarros.get(i).getX() == listaDeCarros.get(i).getNodoB().getX()
-                                && listaDeCarros.get(i).getY() == listaDeCarros.get(i).getNodoB().getY()) {
+                    }
+
+                    ///para mover carros aleatoriamente
+                    if ((listaDeCarros.get(i).isMover() == true && this.retornarNodoEnElqueSeEstaParadoParaElCarro(listaDeCarros.get(i)) == null)
+                            || (listaDeCarros.get(i).isMover() == true && this.retornarNodoEnElqueSeEstaParadoParaElCarro(listaDeCarros.get(i)) != null)
+                            || (listaDeCarros.get(i).isMover() == false && this.retornarNodoEnElqueSeEstaParadoParaElCarro(listaDeCarros.get(i)) == null)) {
+
+                        if (listaDeCarros.get(i).getNodoA() == null && listaDeCarros.get(i).getNodoB() == null) {
+                            NodoGrafoMapa nodoA = this.retornarNodoEnElqueSeEstaParadoParaElCarro(listaDeCarros.get(i));
+                            NodoGrafoMapa nodoB = this.retornarAleatoriamenteUnNodoB(nodoA);
+
+                            listaDeCarros.get(i).setNodoA(nodoA);
+                            listaDeCarros.get(i).setNodoB(nodoB);
+                        }
+
+                        if (listaDeCarros.get(i).getNodoB() != null) {
+                            if (saberSiHayTransicionDeNodoAaNodoB(listaDeCarros.get(i).getNodoA(), listaDeCarros.get(i).getNodoB()) == true) {
+                                //System.out.println("tiene transicion");
+
+                                if (listaDeCarros.get(i).getX() != listaDeCarros.get(i).getNodoB().getX()
+                                        || listaDeCarros.get(i).getY() != listaDeCarros.get(i).getNodoB().getY()) {
+                                    //System.out.println("es diferente");
+                                    if (listaDeCarros.get(i).getNodoA().getX() < listaDeCarros.get(i).getNodoB().getX()
+                                            && listaDeCarros.get(i).getNodoA().getY() == listaDeCarros.get(i).getNodoB().getY()) {
+                                        if (this.hayAlgunCarroAdelanteEnXmasUno(listaDeCarros.get(i)) == false) {
+                                            // //System.out.println("nodoa menor a nodo b con y igual");
+                                            listaDeCarros.get(i).setX(listaDeCarros.get(i).getX() + 1);
+                                        }
+
+                                    }
+                                    if (listaDeCarros.get(i).getNodoA().getX() > listaDeCarros.get(i).getNodoB().getX()
+                                            && listaDeCarros.get(i).getNodoA().getY() == listaDeCarros.get(i).getNodoB().getY()) {
+                                        if (this.hayAlgunCarroAdelanteEnXmenosUno(listaDeCarros.get(i)) == false) {
+                                            ///  //System.out.println("nodoa mayor a nodo b con y igual");
+                                            listaDeCarros.get(i).setX(listaDeCarros.get(i).getX() - 1);
+                                        }
+
+                                    }
+                                    if (listaDeCarros.get(i).getNodoA().getY() < listaDeCarros.get(i).getNodoB().getY()
+                                            && listaDeCarros.get(i).getNodoA().getX() == listaDeCarros.get(i).getNodoB().getX()) {
+                                        if (this.hayAlgunCarroAdelanteEnYmasUno(listaDeCarros.get(i)) == false) {
+                                            //  //System.out.println("nodoa menor a nodo b con X igual");
+                                            listaDeCarros.get(i).setY(listaDeCarros.get(i).getY() + 1);
+
+                                        }
+
+                                    }
+                                    if (listaDeCarros.get(i).getNodoA().getY() > listaDeCarros.get(i).getNodoB().getY()
+                                            && listaDeCarros.get(i).getNodoA().getX() == listaDeCarros.get(i).getNodoB().getX()) {
+                                        if (this.hayAlgunCarroAdelanteEnYmenosUno(listaDeCarros.get(i)) == false) {
+                                            //  //System.out.println("nodoa menor a nodo b con X igual");
+                                            listaDeCarros.get(i).setY(listaDeCarros.get(i).getY() - 1);
+                                        }
+
+                                    }
+                                }
+                                if (listaDeCarros.get(i).getX() == listaDeCarros.get(i).getNodoB().getX()
+                                        && listaDeCarros.get(i).getY() == listaDeCarros.get(i).getNodoB().getY()) {
+                                    listaDeCarros.get(i).setNodoA(null);
+                                    listaDeCarros.get(i).setNodoB(null);
+                                }
+
+                            }
+                        } else {
                             listaDeCarros.get(i).setNodoA(null);
                             listaDeCarros.get(i).setNodoB(null);
                         }
 
                     }
-                } else {
 
-                    if (listaDeCarros.get(i).getRutaIdNodos().size() >= 0) {
-                        ///tendria el mismo problema se moveria primero este en su ruta y los otros no 
-                        if (listaDeCarros.get(i).getNodoA() == null && listaDeCarros.get(i).getNodoB() == null) {
-                            NodoGrafoMapa nodoA = frame.getListaNodosMapa().get(listaDeCarros.get(i).getRutaIdNodos().get(listaDeCarros.get(i).getContarNodoRuta()));
-                            NodoGrafoMapa nodoB = frame.getListaNodosMapa().get(listaDeCarros.get(i).getRutaIdNodos().get(listaDeCarros.get(i).getContarNodoRuta() + 1));
-
-                            listaDeCarros.get(i).setNodoA(nodoA);
-                            listaDeCarros.get(i).setNodoB(nodoB);
-                            listaDeCarros.get(i).setContarNodoRuta(listaDeCarros.get(i).getContarNodoRuta() + 1);
-                        }
-
-                        if (saberSiHayTransicionDeNodoAaNodoB(listaDeCarros.get(i).getNodoA(), listaDeCarros.get(i).getNodoB()) == true) {
-                            if (listaDeCarros.get(i).getX() != listaDeCarros.get(i).getNodoB().getX()
-                                    || listaDeCarros.get(i).getY() != listaDeCarros.get(i).getNodoB().getY()) {
-
-                                if (listaDeCarros.get(i).getNodoA().getX() < listaDeCarros.get(i).getNodoB().getX()
-                                        && listaDeCarros.get(i).getNodoA().getY() == listaDeCarros.get(i).getNodoB().getY()) {
-                                    // //System.out.println("nodoa menor a nodo b con y igual");
-                                    listaDeCarros.get(listaDeCarros.get(i).getId()).setX(listaDeCarros.get(i).getX() + 1);
-                                }
-                                if (listaDeCarros.get(i).getNodoA().getX() > listaDeCarros.get(i).getNodoB().getX()
-                                        && listaDeCarros.get(i).getNodoA().getY() == listaDeCarros.get(i).getNodoB().getY()) {
-                                    ///  //System.out.println("nodoa mayor a nodo b con y igual");
-                                    listaDeCarros.get(listaDeCarros.get(i).getId()).setX(listaDeCarros.get(i).getX() - 1);
-
-                                }
-                                if (listaDeCarros.get(i).getNodoA().getY() < listaDeCarros.get(i).getNodoB().getY() && listaDeCarros.get(i).getNodoA().getX() == listaDeCarros.get(i).getNodoB().getX()) {
-                                    //  //System.out.println("nodoa menor a nodo b con X igual");
-                                    listaDeCarros.get(listaDeCarros.get(i).getId()).setY(listaDeCarros.get(i).getY() + 1);
-
-                                }
-                                if (listaDeCarros.get(i).getNodoA().getY() > listaDeCarros.get(i).getNodoB().getY() && listaDeCarros.get(i).getNodoA().getX() == listaDeCarros.get(i).getNodoB().getX()) {
-                                    //  //System.out.println("nodoa menor a nodo b con X igual");
-                                    listaDeCarros.get(listaDeCarros.get(i).getId()).setY(listaDeCarros.get(i).getY() - 1);
-                                }
-                            }
-                            if (listaDeCarros.get(i).getX() == listaDeCarros.get(i).getNodoB().getX()
-                                    && listaDeCarros.get(i).getY() == listaDeCarros.get(i).getNodoB().getY()) {
-                                listaDeCarros.get(i).setNodoA(null);
-                                listaDeCarros.get(i).setNodoB(null);
-                            }
-                        }
-
-                        //esta es por si llega al nodo final de la ruta entonces reinicia la lista y el contador
-                        if (listaDeCarros.get(i).getX() == frame.getListaNodosMapa().get(listaDeCarros.get(i).getRutaIdNodos().getLast()).getX()
-                                && listaDeCarros.get(i).getY() == frame.getListaNodosMapa().get(listaDeCarros.get(i).getRutaIdNodos().getLast()).getY()) {
-
-                            listaDeCarros.get(i).getRutaIdNodos().clear();
-                            listaDeCarros.get(i).setContarNodoRuta(0);
-
-                        }
-                    }
+                }
+                try {
+                    Thread.sleep(30);
+                } catch (Exception e) {
                 }
             }
-            try {
-                Thread.sleep(30);
-            } catch (Exception e) {
-            }
-
         }
 
     }
@@ -1055,4 +1115,70 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
     }
 
+    private boolean hayAlgunCarroAdelanteEnXmasUno(Automovil carroV) {
+        for (int i = 0; i < listaDeCarros.size(); i++) {
+            if ((carroV.getX() < listaDeCarros.get(i).getX() && carroV.getX() + 35 > listaDeCarros.get(i).getX())
+                    && (carroV.getY() - 10 < listaDeCarros.get(i).getY() && carroV.getY() + 20 > listaDeCarros.get(i).getY())
+                    && carroV.getId() != listaDeCarros.get(i).getId()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean hayAlgunCarroAdelanteEnXmenosUno(Automovil carroV) {
+        for (int i = 0; i < listaDeCarros.size(); i++) {
+            if ((listaDeCarros.get(i).getX() < carroV.getX() && listaDeCarros.get(i).getX() + 35 > carroV.getX())
+                    && (carroV.getY() - 10 < listaDeCarros.get(i).getY() && carroV.getY() + 20 > listaDeCarros.get(i).getY())
+                    && carroV.getId() != listaDeCarros.get(i).getId()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean hayAlgunCarroAdelanteEnYmasUno(Automovil carroV) {
+        for (int i = 0; i < listaDeCarros.size(); i++) {
+            if (carroV.getY() < listaDeCarros.get(i).getY() && carroV.getY() + 35 > listaDeCarros.get(i).getY()
+                    && (carroV.getX() - 10 < listaDeCarros.get(i).getX() && carroV.getX() + 20 > listaDeCarros.get(i).getX())
+                    && carroV.getId() != listaDeCarros.get(i).getId()) {
+                return true;
+            }
+        }
+        return false;
+
+    }
+
+    private boolean hayAlgunCarroAdelanteEnYmenosUno(Automovil carroV) {
+
+        for (int i = 0; i < listaDeCarros.size(); i++) {
+            if (listaDeCarros.get(i).getY() < carroV.getY() && listaDeCarros.get(i).getY() + 35 > carroV.getY()
+                    && (carroV.getX() - 10 < listaDeCarros.get(i).getX() && carroV.getX() + 20 > listaDeCarros.get(i).getX())
+                    && carroV.getId() != listaDeCarros.get(i).getId()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean clickEnUnCarro(int x, int y, LinkedList<Automovil> listaDeCarros) {
+
+        for (int i = 0; i < listaDeCarros.size(); i++) {
+            if (listaDeCarros.get(i).getX() < x && listaDeCarros.get(i).getX() + 15 > x
+                    && listaDeCarros.get(i).getY() < y && listaDeCarros.get(i).getY() + 15 > y) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private int retornarCarroCLikeado(int x, int y, LinkedList<Automovil> listaDeCarros) {
+        for (int i = 0; i < listaDeCarros.size(); i++) {
+            if (listaDeCarros.get(i).getX() < x && listaDeCarros.get(i).getX() + 15 > x
+                    && listaDeCarros.get(i).getY() < y && listaDeCarros.get(i).getY() + 15 > y) {
+                return i;
+            }
+        }
+        return -1;
+    }
 }
