@@ -22,6 +22,7 @@ import modelo.Edificio;
 import modelo.NodoGrafoMapa;
 import modelo.PuntosLimiteCuadricula;
 import modelo.Automovil;
+import modelo.Suceso;
 
 /**
  *
@@ -39,6 +40,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
     int[][] matrizCuadriculaMapaIdEdificios = new int[20][10];
     LinkedList<Automovil> listaDeCarros;
     boolean moverCarrosAleatoriamente = false;
+     LinkedList<AristaGrafoMapa> aristasAEliminar;
 
     private FrameAnimacionMapa frame;
 
@@ -54,6 +56,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         addMouseListener(this);
         addMouseMotionListener(this);
         listaDeCarros = new LinkedList<>();
+        aristasAEliminar=new LinkedList<>();
 
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 10; j++) {
@@ -108,6 +111,9 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                         g.drawImage(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getImagen().getImage(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getX(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getY(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getAncho(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getAlto(), this);
                         for (int k = 0; k < frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().size(); k++) {
                             g.drawOval(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getX(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getY(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getAncho(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getAlto());
+                        }
+                        if (frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso()!=null) {
+                            g.drawImage(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso().getImagen().getImage(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso().getX(),frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso().getY(),frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso().getAncho(),frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso().getAlto(),this);
                         }
                     }
                     if (matrizCuadriculaMapaIdArboles[j][i] != -1) {
@@ -856,7 +862,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         //aca se mueven los carros aleatoriamente 
         while (true) {
 
-            System.out.println("Estado "+this.moverCarrosAleatoriamente);
+            System.out.println("Estado " + this.moverCarrosAleatoriamente);
             if (this.moverCarrosAleatoriamente == true) {
 
                 for (int i = 0; i < listaDeCarros.size(); i++) {
@@ -1181,4 +1187,22 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         }
         return -1;
     }
+
+    void crearSuceso(ImageIcon imageIcon, int x, int y,String suceso) {
+       
+        if (matrizCuadriculaMapaIdCalles[x][y]!=-1) {
+             frame.getCalles().get(matrizCuadriculaMapaIdCalles[x][y]).setSuceso(new Suceso(suceso, frame.getCalles().get(matrizCuadriculaMapaIdCalles[x][y]).getX(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[x][y]).getY(), 56,56, imageIcon));
+            
+            for (int i = 0; i < frame.getAristasGrafoMapa().size(); i++) {
+                if (matrizCuadriculaMapaIdCalles[x][y]==frame.getAristasGrafoMapa().get(i).getArista().getId()) {
+                    this.aristasAEliminar.add(frame.getAristasGrafoMapa().get(i));
+                    frame.getAristasGrafoMapa().remove(i);
+                }
+            }
+        }
+    }
+     public void eliminarSuceso(){
+         
+     }
+    
 }

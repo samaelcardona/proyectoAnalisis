@@ -39,7 +39,7 @@ public class Calle implements Serializable{
     //movimiento se refiere a si hay movimiento o la via esta cerrada o restringida 
     private boolean movimiento;
     //lista de sucesos accidente, obreros, 
-    private LinkedList<String> listaSucesos;
+    private Suceso suceso;
     private LinkedList<NodoGrafoMapa> listaDeNodosEnCalle;
 
     public Calle(int id, int x, int y, int ancho, int alto, ImageIcon imagen, String tipo, String sentido, int velocidad, boolean movimiento) {
@@ -54,7 +54,7 @@ public class Calle implements Serializable{
         this.sentido = sentido;
         this.velocidad = velocidad;
         this.movimiento = movimiento;
-        this.listaSucesos = new LinkedList<>();
+        this.suceso = null;
         this.listaDeNodosEnCalle= new LinkedList<>();
     }
 
@@ -102,8 +102,8 @@ public class Calle implements Serializable{
         return movimiento;
     }
 
-    public LinkedList<String> getListaSucesos() {
-        return listaSucesos;
+    public Suceso getSuceso() {
+        return suceso;
     }
 
     public void setId(int id) {
@@ -150,8 +150,12 @@ public class Calle implements Serializable{
         this.movimiento = movimiento;
     }
 
-    public void setListaSucesos(LinkedList<String> listaSucesos) {
-        this.listaSucesos = listaSucesos;
+    public void setSuceso(Suceso suceso) {
+        this.suceso = suceso;
+    }
+
+    public void setListaDeNodosEnCalle(LinkedList<NodoGrafoMapa> listaDeNodosEnCalle) {
+        this.listaDeNodosEnCalle = listaDeNodosEnCalle;
     }
 
     public LinkedList<NodoGrafoMapa> getListaDeNodosEnCalle() {
