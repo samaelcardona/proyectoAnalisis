@@ -624,6 +624,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                 listaDeCarros.get(idCarro).setMover(false);
 
                 configuararRutaCarro.recibirPanel(this, idCarro);
+
                 configuararRutaCarro.enviarIDNodo(this.retornarNodoClickeado(listaDeCarros.get(idCarro).getX(), listaDeCarros.get(idCarro).getY()));
                 configuararRutaCarro.setVisible(true);
             }
@@ -1282,12 +1283,12 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
     }
 
     private int retornarNodoClickeado(int x, int y) {
-        for (int j = 0; j < frame.getCalles().size(); j++) {
-            System.out.println("entra X " + x + "     compara     " + frame.getCalles().get(j).getX() + "  entra Y" + y + "    compara " + frame.getListaNodosMapa().get(j).getY());
-            if (x <= frame.getListaNodosMapa().get(j).getX() && x > frame.getListaNodosMapa().get(j).getX() + 10
-                    && y <= frame.getListaNodosMapa().get(j).getY() && x > frame.getListaNodosMapa().get(j).getY() + 10) {
-                System.out.println("------------------------------------------------------------------victor     " + frame.getListaNodosMapa().get(j).getX());
-                return j;
+        
+        
+        for (int j = 0; j < frame.getListaNodosMapa().size(); j++) {   
+            if (x+1 >= frame.getListaNodosMapa().get(j).getX() && x < frame.getListaNodosMapa().get(j).getX() + 10
+                    && y+1 >= frame.getListaNodosMapa().get(j).getY() && y < frame.getListaNodosMapa().get(j).getY() + 10) {
+                    return j;
             }
         }
         return -1;
@@ -1304,7 +1305,6 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
     private boolean carroEstaEnUnNodo(Automovil carro) {
         for (int i = 0; i < frame.getListaNodosMapa().size(); i++) {
             if (carro.getX() == frame.getListaNodosMapa().get(i).getX() && carro.getY() == frame.getListaNodosMapa().get(i).getY()) {
-
                 return true;
             }
         }
