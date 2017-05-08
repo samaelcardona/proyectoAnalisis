@@ -41,7 +41,6 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
             this.buttonGroup1.add(botones.get(i));
             ImageIcon imagen = new ImageIcon("src\\imagenes\\carros\\c" + (i + 1) + ".png");
             this.botones.get(i).setIcon(imagen);
-
         }
 
     }
@@ -364,7 +363,7 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton18ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        this.panelAnimacion.eliminarSuceso(this.x, this.y);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
