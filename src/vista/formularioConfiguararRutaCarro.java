@@ -164,11 +164,16 @@ public class formularioConfiguararRutaCarro extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     // End of variables declaration//GEN-END:variables
 
+    public LinkedList<Integer> getListaDeIdNodosAvisitar() {
+        return listaDeIdNodosAvisitar;
+    }
+
+    public void setListaDeIdNodosAvisitar(LinkedList<Integer> listaDeIdNodosAvisitar) {
+        this.listaDeIdNodosAvisitar = listaDeIdNodosAvisitar;
+    }
+
    
 
-    void enviarIDNodo(int retornarNodoClickeado) {
-        this.listaDeIdNodosAvisitar.add(retornarNodoClickeado);
-        System.out.println("nodo clic"+retornarNodoClickeado+"-------------------------------------------------------------->");
-    }
+    
 }
  
