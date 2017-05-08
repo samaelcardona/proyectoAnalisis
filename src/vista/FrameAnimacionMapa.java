@@ -88,6 +88,7 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         panelAnimacionMapa1 = new vista.PanelAnimacionMapa();
+        jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -144,6 +145,15 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
 
         getContentPane().add(panelAnimacionMapa1);
         panelAnimacionMapa1.setBounds(30, 10, 1120, 560);
+
+        jButton5.setText("Regresar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton5);
+        jButton5.setBounds(380, 590, 130, 23);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Documentos/FondoPaginaInicial2.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -208,6 +218,12 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         panelAnimacionMapa1.detenerCarros();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        paginaInicial inicio=new paginaInicial();
+        inicio.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     public void agregarCalleALaLista(Calle calle) {
         calles.add(calle);
@@ -303,6 +319,7 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private vista.PanelAnimacionMapa panelAnimacionMapa1;
     // End of variables declaration//GEN-END:variables

@@ -32,6 +32,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
 //    int x = 20;
 //    int y = 10;
+    boolean validarClic;
     PuntosLimiteCuadricula[][] matrizPuntosLimitesCuadriculaMapa = new PuntosLimiteCuadricula[20][10];
     String[][] matrizLetrasElementosInternosCuadriculaMapa = new String[20][10];
     //Matriz para agregar los Id de cada calle de la cuadricula
@@ -40,7 +41,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
     int[][] matrizCuadriculaMapaIdEdificios = new int[20][10];
     LinkedList<Automovil> listaDeCarros;
     boolean moverCarrosAleatoriamente = false;
-     LinkedList<AristaGrafoMapa> aristasAEliminar;
+    LinkedList<AristaGrafoMapa> aristasAEliminar;
 
     private FrameAnimacionMapa frame;
 
@@ -49,14 +50,14 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
      */
     public PanelAnimacionMapa() {
         initComponents();
-
+        validarClic = false;
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
         addMouseListener(this);
         addMouseMotionListener(this);
         listaDeCarros = new LinkedList<>();
-        aristasAEliminar=new LinkedList<>();
+        aristasAEliminar = new LinkedList<>();
 
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 10; j++) {
@@ -112,8 +113,8 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                         for (int k = 0; k < frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().size(); k++) {
                             g.drawOval(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getX(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getY(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getAncho(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getAlto());
                         }
-                        if (frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso()!=null) {
-                            g.drawImage(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso().getImagen().getImage(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso().getX(),frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso().getY(),frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso().getAncho(),frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso().getAlto(),this);
+                        if (frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso() != null) {
+                            g.drawImage(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso().getImagen().getImage(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso().getX(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso().getY(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso().getAncho(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso().getAlto(), this);
                         }
                     }
                     if (matrizCuadriculaMapaIdArboles[j][i] != -1) {
@@ -597,7 +598,8 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if (this.clickEnUnCarro(e.getX(), e.getY(), listaDeCarros) == false) {
+        formularioConfiguararRutaCarro configuararRutaCarro = new formularioConfiguararRutaCarro();
+        if (this.clickEnUnCarro(e.getX(), e.getY(), listaDeCarros) == false && validarClic == false) {
             ///toca que sacar un primer formulario para identificar que desea hacer 
             ///o en el mismo formulario se identifica carros o pues ruta 
 
@@ -612,15 +614,24 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
             formulario.recibirPanel(this, cuadroSeleccionado[0], cuadroSeleccionado[1], x, y);
             formulario.setVisible(true);
         }
-        if (this.clickEnUnCarro(e.getX(), e.getY(), listaDeCarros) == true) {
+        if (this.clickEnUnCarro(e.getX(), e.getY(), listaDeCarros) == true && validarClic == false) {
             int idCarro = this.retornarCarroCLikeado(e.getX(), e.getY(), listaDeCarros);
             if (idCarro != -1) {
+//                while (this.carroEstaEnUnNodo(listaDeCarros.get(idCarro))==false) {                    
+                    System.out.println("Esperando A llegar Al Nodo");
+//                    System.out.println("eX"+e.getX()+" eY "+e.getY());
+//                }
                 listaDeCarros.get(idCarro).setMover(false);
-            } else {
-
+                
+                configuararRutaCarro.recibirPanel(this, idCarro);
+                configuararRutaCarro.enviarIDNodo(this.retornarNodoClickeado(listaDeCarros.get(idCarro).getX(),listaDeCarros.get(idCarro).getY() ));
+                configuararRutaCarro.setVisible(true);
             }
         }
 
+        if (validarClic == true) {
+            configuararRutaCarro.enviarIDNodo(this.retornarNodoClickeado((int) e.getPoint().getX(), (int) e.getPoint().getY()));
+        }
     }
 
     //recibe el frameAnimacionMapa para tener los atributos de este.
@@ -1031,6 +1042,14 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         return matrizPuntosLimitesCuadriculaMapa;
     }
 
+    public boolean isValidarClic() {
+        return validarClic;
+    }
+
+    public void setValidarClic(boolean validarClic) {
+        this.validarClic = validarClic;
+    }
+
     public String[][] getMatrizLetrasElementosInternosCuadriculaMapa() {
         return matrizLetrasElementosInternosCuadriculaMapa;
     }
@@ -1188,21 +1207,59 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         return -1;
     }
 
-    void crearSuceso(ImageIcon imageIcon, int x, int y,String suceso) {
-       
-        if (matrizCuadriculaMapaIdCalles[x][y]!=-1) {
-             frame.getCalles().get(matrizCuadriculaMapaIdCalles[x][y]).setSuceso(new Suceso(suceso, frame.getCalles().get(matrizCuadriculaMapaIdCalles[x][y]).getX(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[x][y]).getY(), 56,56, imageIcon));
-            
+    void crearSuceso(ImageIcon imageIcon, int x, int y, String suceso) {
+
+        if (matrizCuadriculaMapaIdCalles[x][y] != -1) {
+            frame.getCalles().get(matrizCuadriculaMapaIdCalles[x][y]).setSuceso(new Suceso(suceso, frame.getCalles().get(matrizCuadriculaMapaIdCalles[x][y]).getX(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[x][y]).getY(), 56, 56, imageIcon));
+
             for (int i = 0; i < frame.getAristasGrafoMapa().size(); i++) {
-                if (matrizCuadriculaMapaIdCalles[x][y]==frame.getAristasGrafoMapa().get(i).getArista().getId()) {
+                if (matrizCuadriculaMapaIdCalles[x][y] == frame.getAristasGrafoMapa().get(i).getArista().getId()) {
                     this.aristasAEliminar.add(frame.getAristasGrafoMapa().get(i));
                     frame.getAristasGrafoMapa().remove(i);
                 }
             }
         }
     }
-     public void eliminarSuceso(){
-         
-     }
-    
+
+    public void eliminarSuceso() {
+
+    }
+
+    void eliminarCarro(int idCarro) {
+        for (int i = 0; i < listaDeCarros.size(); i++) {
+            if (listaDeCarros.get(i).getId() == idCarro) {
+                listaDeCarros.remove(listaDeCarros.get(i));
+            }
+        }
+    }
+
+    private int retornarNodoClickeado(int x, int y) {
+        for (int j = 0; j < frame.getCalles().size(); j++) {
+            System.out.println("entra X "+x+"     compara     "+frame.getCalles().get(j).getX()+"  entra Y"+ y +"    compara "+frame.getListaNodosMapa().get(j).getY());
+            if (x<= frame.getListaNodosMapa().get(j).getX() && x > frame.getListaNodosMapa().get(j).getX() + 10
+                    && y <= frame.getListaNodosMapa().get(j).getY() && x > frame.getListaNodosMapa().get(j).getY() + 10) {
+                System.out.println("------------------------------------------------------------------victor     "+frame.getListaNodosMapa().get(j).getX());
+                return j;
+            }
+        }
+        return -1;
+    }
+
+    void recibirListaDeNodosAVisitarPorCarro(int idCarro, LinkedList<Integer> listaDeIdNodosAvisitar) {
+        for (int i = 0; i < listaDeIdNodosAvisitar.size(); i++) {
+            System.out.println(" ---  "+listaDeIdNodosAvisitar.get(i));
+        }
+        //se hace el dijkstra
+        //listaDeCarros.get(WIDTH)
+    }
+
+    private boolean carroEstaEnUnNodo(Automovil carro) {
+        for (int i = 0; i < frame.getListaNodosMapa().size(); i++) {
+            if (carro.getX()==frame.getListaNodosMapa().get(i).getX()&&carro.getY()==frame.getListaNodosMapa().get(i).getY()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
