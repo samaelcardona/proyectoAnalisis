@@ -364,6 +364,7 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.panelAnimacion.eliminarSuceso(this.x, this.y);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

@@ -108,7 +108,7 @@ public class formularioConfiguararRutaCarro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.panelAnimacion.setValidarClic(true);
+        this.panelAnimacion.setValidarClic(true,listaDeIdNodosAvisitar);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -116,7 +116,8 @@ public class formularioConfiguararRutaCarro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        panelAnimacion.recibirListaDeNodosAVisitarPorCarro(idCarro,listaDeIdNodosAvisitar);
+        this.panelAnimacion.enviarListaEnElMismo(this.idCarro);
+        this.panelAnimacion.setValidarClic(false);
         this.dispose();
         
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -164,14 +165,10 @@ public class formularioConfiguararRutaCarro extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     // End of variables declaration//GEN-END:variables
 
-    public LinkedList<Integer> getListaDeIdNodosAvisitar() {
-        return listaDeIdNodosAvisitar;
-    }
-
-    public void setListaDeIdNodosAvisitar(LinkedList<Integer> listaDeIdNodosAvisitar) {
-        this.listaDeIdNodosAvisitar = listaDeIdNodosAvisitar;
-    }
-
+    
+public void ingresarPrimerNodoAlalista(int nodo){
+    listaDeIdNodosAvisitar.add(nodo);
+}
    
 
     
