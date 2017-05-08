@@ -42,6 +42,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
     LinkedList<Automovil> listaDeCarros;
     boolean moverCarrosAleatoriamente = false;
     LinkedList<AristaGrafoMapa> aristasAEliminar;
+     
 
     private FrameAnimacionMapa frame;
 
@@ -598,7 +599,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        formularioConfiguararRutaCarro configuararRutaCarro = new formularioConfiguararRutaCarro();
+         formularioConfiguararRutaCarro configuararRutaCarro = new formularioConfiguararRutaCarro();
         if (this.clickEnUnCarro(e.getX(), e.getY(), listaDeCarros) == false && validarClic == false) {
             ///toca que sacar un primer formulario para identificar que desea hacer 
             ///o en el mismo formulario se identifica carros o pues ruta 
@@ -617,21 +618,19 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         if (this.clickEnUnCarro(e.getX(), e.getY(), listaDeCarros) == true && validarClic == false) {
             int idCarro = this.retornarCarroCLikeado(e.getX(), e.getY(), listaDeCarros);
             if (idCarro != -1) {
-//                while (this.carroEstaEnUnNodo(listaDeCarros.get(idCarro))==false) {                    
-                System.out.println("Esperando A llegar Al Nodo");
-//                    System.out.println("eX"+e.getX()+" eY "+e.getY());
-//                }
+                while (this.carroEstaEnUnNodo(listaDeCarros.get(idCarro)) == false) {
+                    System.out.println("Esperando A llegar Al Nodo");
+                }
                 listaDeCarros.get(idCarro).setMover(false);
 
                 configuararRutaCarro.recibirPanel(this, idCarro);
-
-                configuararRutaCarro.enviarIDNodo(this.retornarNodoClickeado(listaDeCarros.get(idCarro).getX(), listaDeCarros.get(idCarro).getY()));
+                configuararRutaCarro.getListaDeIdNodosAvisitar().add(this.retornarNodoClickeado(listaDeCarros.get(idCarro).getX(), listaDeCarros.get(idCarro).getY()));
                 configuararRutaCarro.setVisible(true);
             }
         }
 
         if (validarClic == true) {
-            configuararRutaCarro.enviarIDNodo(this.retornarNodoClickeado((int) e.getPoint().getX(), (int) e.getPoint().getY()));
+            configuararRutaCarro.getListaDeIdNodosAvisitar().add(this.retornarNodoClickeado((int) e.getPoint().getX(), (int) e.getPoint().getY()));
         }
     }
 
@@ -1093,7 +1092,11 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
     public void setFrame(FrameAnimacionMapa frame) {
         this.frame = frame;
+        
+        
     }
+
+
 
     @Override
     public void mousePressed(MouseEvent me) {
@@ -1282,13 +1285,13 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         }
     }
 
+  
     private int retornarNodoClickeado(int x, int y) {
-        
-        
-        for (int j = 0; j < frame.getListaNodosMapa().size(); j++) {   
-            if (x+1 >= frame.getListaNodosMapa().get(j).getX() && x < frame.getListaNodosMapa().get(j).getX() + 10
-                    && y+1 >= frame.getListaNodosMapa().get(j).getY() && y < frame.getListaNodosMapa().get(j).getY() + 10) {
-                    return j;
+        for (int j = 0; j < frame.getListaNodosMapa().size(); j++) {
+            if (x >= frame.getListaNodosMapa().get(j).getX() && x < frame.getListaNodosMapa().get(j).getX() + 10
+                    && y >= frame.getListaNodosMapa().get(j).getY() && y < frame.getListaNodosMapa().get(j).getY() + 10) {
+
+                return j;
             }
         }
         return -1;
@@ -1296,7 +1299,6 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
     void recibirListaDeNodosAVisitarPorCarro(int idCarro, LinkedList<Integer> listaDeIdNodosAvisitar) {
         for (int i = 0; i < listaDeIdNodosAvisitar.size(); i++) {
-            System.out.println(" ---  " + listaDeIdNodosAvisitar.get(i));
         }
         //se hace el dijkstra
         //listaDeCarros.get(WIDTH)
@@ -1305,6 +1307,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
     private boolean carroEstaEnUnNodo(Automovil carro) {
         for (int i = 0; i < frame.getListaNodosMapa().size(); i++) {
             if (carro.getX() == frame.getListaNodosMapa().get(i).getX() && carro.getY() == frame.getListaNodosMapa().get(i).getY()) {
+           
                 return true;
             }
         }
@@ -1312,3 +1315,4 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
     }
 
 }
+
