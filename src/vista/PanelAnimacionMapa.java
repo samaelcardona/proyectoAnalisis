@@ -902,7 +902,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                                         //System.out.println("es diferente");
                                         if (listaDeCarros.get(i).getNodoA().getX() < listaDeCarros.get(i).getNodoB().getX()
                                                 && listaDeCarros.get(i).getNodoA().getY() == listaDeCarros.get(i).getNodoB().getY()) {
-                                            if (this.hayAlgunCarroAdelanteEnXmasUno(listaDeCarros.get(i)) == false) {
+                                            if (this.hayAlgunCarroAdelanteEnXmasUno(listaDeCarros.get(i)) == false && this.hayAlgunSucesoAdelanteEnXmasUno(listaDeCarros.get(i)) == false) {
                                                 // //System.out.println("nodoa menor a nodo b con y igual");
                                                 listaDeCarros.get(i).setX(listaDeCarros.get(i).getX() + 1);
                                             }
@@ -910,7 +910,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                                         }
                                         if (listaDeCarros.get(i).getNodoA().getX() > listaDeCarros.get(i).getNodoB().getX()
                                                 && listaDeCarros.get(i).getNodoA().getY() == listaDeCarros.get(i).getNodoB().getY()) {
-                                            if (this.hayAlgunCarroAdelanteEnXmenosUno(listaDeCarros.get(i)) == false) {
+                                            if (this.hayAlgunCarroAdelanteEnXmenosUno(listaDeCarros.get(i)) == false && this.hayAlgunSucesoAdelanteEnXmenosUno(listaDeCarros.get(i)) == false) {
                                                 ///  //System.out.println("nodoa mayor a nodo b con y igual");
                                                 listaDeCarros.get(i).setX(listaDeCarros.get(i).getX() - 1);
                                             }
@@ -918,7 +918,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                                         }
                                         if (listaDeCarros.get(i).getNodoA().getY() < listaDeCarros.get(i).getNodoB().getY()
                                                 && listaDeCarros.get(i).getNodoA().getX() == listaDeCarros.get(i).getNodoB().getX()) {
-                                            if (this.hayAlgunCarroAdelanteEnYmasUno(listaDeCarros.get(i)) == false) {
+                                            if (this.hayAlgunCarroAdelanteEnYmasUno(listaDeCarros.get(i)) == false && this.hayAlgunSucesoAdelanteEnYmasUno(listaDeCarros.get(i)) == false) {
                                                 //  //System.out.println("nodoa menor a nodo b con X igual");
                                                 listaDeCarros.get(i).setY(listaDeCarros.get(i).getY() + 1);
 
@@ -927,7 +927,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                                         }
                                         if (listaDeCarros.get(i).getNodoA().getY() > listaDeCarros.get(i).getNodoB().getY()
                                                 && listaDeCarros.get(i).getNodoA().getX() == listaDeCarros.get(i).getNodoB().getX()) {
-                                            if (this.hayAlgunCarroAdelanteEnYmenosUno(listaDeCarros.get(i)) == false) {
+                                            if (this.hayAlgunCarroAdelanteEnYmenosUno(listaDeCarros.get(i)) == false && this.hayAlgunSucesoAdelanteEnYmenosUno(listaDeCarros.get(i)) == false) {
                                                 //  //System.out.println("nodoa menor a nodo b con X igual");
                                                 listaDeCarros.get(i).setY(listaDeCarros.get(i).getY() - 1);
                                             }
@@ -980,7 +980,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                                     //System.out.println("es diferente");
                                     if (listaDeCarros.get(i).getNodoA().getX() < listaDeCarros.get(i).getNodoB().getX()
                                             && listaDeCarros.get(i).getNodoA().getY() == listaDeCarros.get(i).getNodoB().getY()) {
-                                        if (this.hayAlgunCarroAdelanteEnXmasUno(listaDeCarros.get(i)) == false) {
+                                        if (this.hayAlgunCarroAdelanteEnXmasUno(listaDeCarros.get(i)) == false && this.hayAlgunSucesoAdelanteEnXmasUno(listaDeCarros.get(i)) == false) {
                                             // //System.out.println("nodoa menor a nodo b con y igual");
                                             listaDeCarros.get(i).setX(listaDeCarros.get(i).getX() + 1);
                                         }
@@ -988,7 +988,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                                     }
                                     if (listaDeCarros.get(i).getNodoA().getX() > listaDeCarros.get(i).getNodoB().getX()
                                             && listaDeCarros.get(i).getNodoA().getY() == listaDeCarros.get(i).getNodoB().getY()) {
-                                        if (this.hayAlgunCarroAdelanteEnXmenosUno(listaDeCarros.get(i)) == false) {
+                                        if (this.hayAlgunCarroAdelanteEnXmenosUno(listaDeCarros.get(i)) == false && this.hayAlgunSucesoAdelanteEnXmenosUno(listaDeCarros.get(i)) == false) {
                                             ///  //System.out.println("nodoa mayor a nodo b con y igual");
                                             listaDeCarros.get(i).setX(listaDeCarros.get(i).getX() - 1);
                                         }
@@ -996,7 +996,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                                     }
                                     if (listaDeCarros.get(i).getNodoA().getY() < listaDeCarros.get(i).getNodoB().getY()
                                             && listaDeCarros.get(i).getNodoA().getX() == listaDeCarros.get(i).getNodoB().getX()) {
-                                        if (this.hayAlgunCarroAdelanteEnYmasUno(listaDeCarros.get(i)) == false) {
+                                        if (this.hayAlgunCarroAdelanteEnYmasUno(listaDeCarros.get(i)) == false && this.hayAlgunSucesoAdelanteEnYmasUno(listaDeCarros.get(i)) == false) {
                                             //  //System.out.println("nodoa menor a nodo b con X igual");
                                             listaDeCarros.get(i).setY(listaDeCarros.get(i).getY() + 1);
 
@@ -1005,7 +1005,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                                     }
                                     if (listaDeCarros.get(i).getNodoA().getY() > listaDeCarros.get(i).getNodoB().getY()
                                             && listaDeCarros.get(i).getNodoA().getX() == listaDeCarros.get(i).getNodoB().getX()) {
-                                        if (this.hayAlgunCarroAdelanteEnYmenosUno(listaDeCarros.get(i)) == false) {
+                                        if (this.hayAlgunCarroAdelanteEnYmenosUno(listaDeCarros.get(i)) == false && this.hayAlgunSucesoAdelanteEnYmenosUno(listaDeCarros.get(i)) == false) {
                                             //  //System.out.println("nodoa menor a nodo b con X igual");
                                             listaDeCarros.get(i).setY(listaDeCarros.get(i).getY() - 1);
                                         }
@@ -1225,11 +1225,59 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         }
     }
 
-    public void eliminarSuceso() {
+    public void eliminarSuceso(int x, int y) {
+
+        if (matrizCuadriculaMapaIdCalles[x][y] != -1) {
+            frame.getCalles().get(matrizCuadriculaMapaIdCalles[x][y]).setSuceso(null);
+        }
+    }
+
+    private boolean hayAlgunSucesoAdelanteEnXmasUno(Automovil carroV) {
+        for (int i = 0; i < frame.getCalles().size(); i++) {
+            if (frame.getCalles().get(i).getSuceso() != null) {
+                if ((carroV.getX() < frame.getCalles().get(i).getX() && carroV.getX() + 10 > frame.getCalles().get(i).getX())
+                        && (carroV.getY() - 56 < frame.getCalles().get(i).getY() && carroV.getY() + 30 > frame.getCalles().get(i).getY())) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean hayAlgunSucesoAdelanteEnXmenosUno(Automovil carroV) {
+        for (int i = 0; i < frame.getCalles().size(); i++) {
+            if ((frame.getCalles().get(i).getX() < carroV.getX() && frame.getCalles().get(i).getX() + 35 > carroV.getX())
+                    && (carroV.getY() - 10 < frame.getCalles().get(i).getY() && carroV.getY() + 20 > frame.getCalles().get(i).getY())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean hayAlgunSucesoAdelanteEnYmasUno(Automovil carroV) {
+        for (int i = 0; i < frame.getCalles().size(); i++) {
+            if (carroV.getY() < frame.getCalles().get(i).getY() && carroV.getY() + 35 > frame.getCalles().get(i).getY()
+                    && (carroV.getX() - 10 < frame.getCalles().get(i).getX() && carroV.getX() + 20 > frame.getCalles().get(i).getX())) {
+                return true;
+            }
+        }
+        return false;
 
     }
 
-    void eliminarCarro(int idCarro) {
+    private boolean hayAlgunSucesoAdelanteEnYmenosUno(Automovil carroV) {
+
+        for (int i = 0; i < frame.getCalles().size(); i++) {
+            if (frame.getCalles().get(i).getY() < carroV.getY() && frame.getCalles().get(i).getY() + 35 > carroV.getY()
+                    && (carroV.getX() - 10 < frame.getCalles().get(i).getX() && carroV.getX() + 20 > frame.getCalles().get(i).getX())) {
+
+            }
+        }
+        return false;
+    }
+
+    void eliminarCarro(int idCarro
+    ) {
         for (int i = 0; i < listaDeCarros.size(); i++) {
             if (listaDeCarros.get(i).getId() == idCarro) {
                 listaDeCarros.remove(listaDeCarros.get(i));
@@ -1251,7 +1299,6 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
     void recibirListaDeNodosAVisitarPorCarro(int idCarro, LinkedList<Integer> listaDeIdNodosAvisitar) {
         for (int i = 0; i < listaDeIdNodosAvisitar.size(); i++) {
-            System.out.println(" ---  " + listaDeIdNodosAvisitar.get(i)+"-------------------------------------------------------------");
         }
         //se hace el dijkstra
         //listaDeCarros.get(WIDTH)
@@ -1260,6 +1307,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
     private boolean carroEstaEnUnNodo(Automovil carro) {
         for (int i = 0; i < frame.getListaNodosMapa().size(); i++) {
             if (carro.getX() == frame.getListaNodosMapa().get(i).getX() && carro.getY() == frame.getListaNodosMapa().get(i).getY()) {
+            System.out.println(" ---  " + listaDeIdNodosAvisitar.get(i)+"-------------------------------------------------------------");
                 return true;
             }
         }
@@ -1267,3 +1315,4 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
     }
 
 }
+
