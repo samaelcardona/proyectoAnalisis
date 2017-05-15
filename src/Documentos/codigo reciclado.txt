@@ -50,3 +50,57 @@ if (matrizLetrasElementosInternosCuadriculaMapa[x+1][y]=="r"||matrizLetrasElemen
 
 
 }
+
+
+
+
+//coregido
+//    private boolean hayAlgunSucesoAdelanteEnXmasUno(Automovil carroV) {
+//        for (int i = 0; i < frame.getCalles().size(); i++) {
+//            if (frame.getCalles().get(i).getSuceso() != null) {
+//                if ((carroV.getX() < frame.getCalles().get(i).getSuceso().getX() && carroV.getX() + 10 > frame.getCalles().get(i).getSuceso().getX())
+//                        && (carroV.getY() - 40 < frame.getCalles().get(i).getSuceso().getY() && carroV.getY() > frame.getCalles().get(i).getSuceso().getY())) {
+//                    return true;
+//                }
+//            }
+//        }
+//        return false;
+//    }
+//corregido
+//    private boolean hayAlgunSucesoAdelanteEnXmenosUno(Automovil carroV) {
+//        for (int i = 0; i < frame.getCalles().size(); i++) {
+//            if (frame.getCalles().get(i).getSuceso() != null) {
+//                if (carroV.getX() > frame.getCalles().get(i).getSuceso().getX() && carroV.getX() - 50 < frame.getCalles().get(i).getSuceso().getX()
+//                        && carroV.getY() - 20 < frame.getCalles().get(i).getSuceso().getY() && carroV.getY() > frame.getCalles().get(i).getSuceso().getY()) {
+//                    return true;
+//                }
+//            }
+//        }
+//        return false;
+//    }
+//coregido
+//    private boolean hayAlgunSucesoAdelanteEnYmasUno(Automovil carroV) {
+//        for (int i = 0; i < frame.getCalles().size(); i++) {
+//            if (frame.getCalles().get(i).getSuceso() != null) {
+//                if (carroV.getY() < frame.getCalles().get(i).getSuceso().getY() && carroV.getY() + 20 > frame.getCalles().get(i).getSuceso().getY()
+//                        && (carroV.getX() - 20 < frame.getCalles().get(i).getSuceso().getX() && carroV.getX() > frame.getCalles().get(i).getSuceso().getX())) {
+//                    return true;
+//                }
+//            }
+//        }
+//        return false;
+//
+//    }
+//corregido
+//    private boolean hayAlgunSucesoAdelanteEnYmenosUno(Automovil carroV) {
+//
+//        for (int i = 0; i < frame.getCalles().size(); i++) {
+//            if (frame.getCalles().get(i).getSuceso() != null) {
+//                if (carroV.getY() > frame.getCalles().get(i).getSuceso().getY() && carroV.getY() - 56 < frame.getCalles().get(i).getSuceso().getY()
+//                        && (carroV.getX() - 50 < frame.getCalles().get(i).getSuceso().getX() && carroV.getX() > frame.getCalles().get(i).getSuceso().getX())) {
+//                    return true;
+//                }
+//            }
+//        }
+//        return false;
+//    }

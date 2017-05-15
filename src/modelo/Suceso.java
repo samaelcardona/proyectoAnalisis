@@ -6,6 +6,7 @@
 package modelo;
 
 import java.awt.Rectangle;
+import java.util.LinkedList;
 import javax.swing.ImageIcon;
 
 /**
@@ -13,20 +14,24 @@ import javax.swing.ImageIcon;
  * @author SAMAEL
  */
 public class Suceso {
-    
+
     private String nombre;
     private int x;
     private int y;
     private int ancho;
     private int alto;
     private ImageIcon imagen;
+     LinkedList<AristaGrafoMapa> aristasAEliminar;
+    LinkedList<AristaGrafoMapa> aristasNuevasAEliminar;
 
-    public Suceso(String nombre,int x, int y, int ancho, int alto, ImageIcon imagen) {
+    public Suceso(String nombre, int x, int y, int ancho, int alto, ImageIcon imagen) {
         this.x = x;
         this.y = y;
         this.ancho = ancho;
         this.alto = alto;
         this.imagen = imagen;
+        this.aristasAEliminar = new LinkedList<>();
+        this.aristasNuevasAEliminar = new LinkedList<>();
     }
 
     public String getNombre() {
@@ -76,8 +81,22 @@ public class Suceso {
     public void setImagen(ImageIcon imagen) {
         this.imagen = imagen;
     }
-  
+
+    public LinkedList<AristaGrafoMapa> getAristasAEliminar() {
+        return aristasAEliminar;
+    }
+
+    public LinkedList<AristaGrafoMapa> getAristasNuevasAEliminar() {
+        return aristasNuevasAEliminar;
+    }
+
+    public void setAristasAEliminar(LinkedList<AristaGrafoMapa> aristasAEliminar) {
+        this.aristasAEliminar = aristasAEliminar;
+    }
+
+    public void setAristasNuevasAEliminar(LinkedList<AristaGrafoMapa> aristasNuevasAEliminar) {
+        this.aristasNuevasAEliminar = aristasNuevasAEliminar;
+    }
     
-    
-    
+
 }
