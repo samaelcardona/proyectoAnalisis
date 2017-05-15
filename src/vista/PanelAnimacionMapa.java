@@ -1252,7 +1252,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
             if (!frame.getCalles().get(matrizCuadriculaMapaIdCalles[x][y]).getListaDeNodosEnCalle().get(0).getSentido().startsWith("x") && !frame.getCalles().get(matrizCuadriculaMapaIdCalles[x][y]).getListaDeNodosEnCalle().get(0).getSentido().startsWith("X")) {
 
-                frame.getCalles().get(matrizCuadriculaMapaIdCalles[x][y]).setSuceso(new Suceso(suceso, frame.getCalles().get(matrizCuadriculaMapaIdCalles[x][y]).getX()+20, frame.getCalles().get(matrizCuadriculaMapaIdCalles[x][y]).getY()+20, 16, 16, imageIcon));
+                frame.getCalles().get(matrizCuadriculaMapaIdCalles[x][y]).setSuceso(new Suceso(suceso, frame.getCalles().get(matrizCuadriculaMapaIdCalles[x][y]).getX()+14, frame.getCalles().get(matrizCuadriculaMapaIdCalles[x][y]).getY()+14, 28, 28, imageIcon));
 
                 for (int i = 0; i < frame.getAristasGrafoMapa().size(); i++) {
                     if (matrizCuadriculaMapaIdCalles[x][y] == frame.getAristasGrafoMapa().get(i).getArista().getId()) {
