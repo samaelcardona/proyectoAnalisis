@@ -663,7 +663,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
         if (validarClic == true) {
             int nodo = this.retornarNodoClickeado((int) e.getPoint().getX(), (int) e.getPoint().getY());
-            
+
             if (nodo != -1) {
                 listaAuxiliarParaTomarRutaDeCarros.add(nodo);
             } else {
@@ -1252,7 +1252,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
             if (!frame.getCalles().get(matrizCuadriculaMapaIdCalles[x][y]).getListaDeNodosEnCalle().get(0).getSentido().startsWith("x") && !frame.getCalles().get(matrizCuadriculaMapaIdCalles[x][y]).getListaDeNodosEnCalle().get(0).getSentido().startsWith("X")) {
 
-                frame.getCalles().get(matrizCuadriculaMapaIdCalles[x][y]).setSuceso(new Suceso(suceso, frame.getCalles().get(matrizCuadriculaMapaIdCalles[x][y]).getX() + 14, frame.getCalles().get(matrizCuadriculaMapaIdCalles[x][y]).getY() + 14, 30, 30, imageIcon));
+                frame.getCalles().get(matrizCuadriculaMapaIdCalles[x][y]).setSuceso(new Suceso(suceso, frame.getCalles().get(matrizCuadriculaMapaIdCalles[x][y]).getX()+20, frame.getCalles().get(matrizCuadriculaMapaIdCalles[x][y]).getY()+20, 16, 16, imageIcon));
 
                 for (int i = 0; i < frame.getAristasGrafoMapa().size(); i++) {
                     if (matrizCuadriculaMapaIdCalles[x][y] == frame.getAristasGrafoMapa().get(i).getArista().getId()) {
@@ -1360,12 +1360,11 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
             }
         }
         listaDeCarros.get(id).setRutaIdNodos(listaDeIdNodosAvisitar);
-        
+
         for (int i = 0; i < listaDeCarros.get(id).getRutaIdNodos().size(); i++) {
             System.out.println("lista de nodos " + listaDeCarros.get(id).getRutaIdNodos().get(i) + " --------------------------------------");
         }
         //se hace el dijkstra
-        
 
     }
 
