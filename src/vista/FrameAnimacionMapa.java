@@ -196,13 +196,15 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
         panelAnimacionMapa1.setMatrizCuadriculaMapaIdCalles(ciudad.getMatrizCuadriculaMapaIdCalles());
         panelAnimacionMapa1.setMatrizCuadriculaMapaIdEdificios(ciudad.getMatrizCuadriculaMapaIdEdificios());
         panelAnimacionMapa1.setMatrizPuntosLimitesCuadriculaMapa(ciudad.getMatrizPuntosLimitesCuadriculaMapa());
-        panelAnimacionMapa1.setFrame(this);
+       
         
         this.calles=ciudad.getListaCalles();
         this.arboles=ciudad.getArboles();
         this.edificios=ciudad.getListaEdificos();
         this.listaNodosMapa=ciudad.getListaNodosMapa();
         this.aristasGrafoMapa=ciudad.getListaDeTransicionesAristas();
+        
+         panelAnimacionMapa1.setFrame(this);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

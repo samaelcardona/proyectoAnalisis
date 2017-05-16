@@ -29,9 +29,7 @@ public class Automovil implements Serializable {
     private boolean imgAnterior2;
     private boolean imgAnterior3;
     LinkedList<Integer> rutaIdNodos;
-    LinkedList<Integer> rutaMasCorta;
-    LinkedList<Integer> rutaMasRapida;
-    LinkedList<Integer> rutaConMenosTrafico;
+    LinkedList<Integer> ruta;
     NodoGrafoMapa nodoA;
     NodoGrafoMapa nodoB;
     int contarNodoRuta;
@@ -49,13 +47,12 @@ public class Automovil implements Serializable {
         this.imgAnterior1 = false;
         this.imgAnterior2 = false;
         this.imgAnterior3 = false;
-        this.rutaIdNodos = new LinkedList<>();
+        this.rutaIdNodos = new LinkedList<>(); //ruta de nodos seleccionados inicialmente
         this.nodoA = null;
         this.nodoB = null;
         this.contarNodoRuta = 0;
-        this.rutaMasCorta= new LinkedList<>();
-        this.rutaMasRapida= new LinkedList<>();
-        this.rutaConMenosTrafico= new LinkedList<>();
+        this.ruta= new LinkedList<>();//ruta final para recorrer 
+       
     }
 
     public int getContarNodoRuta() {
@@ -186,29 +183,12 @@ public class Automovil implements Serializable {
         this.area = area;
     }
 
-    public LinkedList<Integer> getRutaMasCorta() {
-        return rutaMasCorta;
+    public LinkedList<Integer> getRuta() {
+        return ruta;
     }
 
-    public void setRutaMasCorta(LinkedList<Integer> rutaMasCorta) {
-        this.rutaMasCorta = rutaMasCorta;
+    public void setRuta(LinkedList<Integer> ruta) {
+        this.ruta = ruta;
     }
 
-    public LinkedList<Integer> getRutaMasRapida() {
-        return rutaMasRapida;
-    }
-
-    public void setRutaMasRapida(LinkedList<Integer> rutaMasRapida) {
-        this.rutaMasRapida = rutaMasRapida;
-    }
-
-    public LinkedList<Integer> getRutaConMenosTrafico() {
-        return rutaConMenosTrafico;
-    }
-
-    public void setRutaConMenosTrafico(LinkedList<Integer> rutaConMenosTrafico) {
-        this.rutaConMenosTrafico = rutaConMenosTrafico;
-    }
-    
-    
 }
