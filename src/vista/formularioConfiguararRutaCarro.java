@@ -86,6 +86,11 @@ public class formularioConfiguararRutaCarro extends javax.swing.JFrame {
         });
 
         jButton6.setText("Ruta Con Menos Trafico");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setText("Mover Aleatorimente");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -166,6 +171,12 @@ public class formularioConfiguararRutaCarro extends javax.swing.JFrame {
         this.panelAnimacion.setValidarClic(false);
         this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        this.panelAnimacion.enviarListaEnElMismo(this.idCarro, "Ruta Menos Trafico");
+        this.panelAnimacion.setValidarClic(false);
+        this.dispose();
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments

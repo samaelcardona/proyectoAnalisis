@@ -840,10 +840,10 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
         System.out.println("" + cadena4);
         String cadena3 = "";
-        for (int i = 0; i < matrizGrafoMapaAdyacenciaRutaMasVeloz.length; i++) {
+        for (int i = 0; i < matrizGrafoMapaAdyacenciaRutaMenosTrafico.length; i++) {
             cadena3 = frame.getListaNodosMapa().get(i).getId() + " ";
-            for (int j = 0; j < matrizGrafoMapaAdyacenciaRutaMasVeloz.length; j++) {
-                cadena3 = cadena3 + matrizGrafoMapaAdyacenciaRutaMasVeloz[i][j] + " ";
+            for (int j = 0; j < matrizGrafoMapaAdyacenciaRutaMenosTrafico.length; j++) {
+                cadena3 = cadena3 + matrizGrafoMapaAdyacenciaRutaMenosTrafico[i][j] + " ";
             }
             System.out.println("" + cadena3);
         }
@@ -937,7 +937,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         //aca se mueven los carros aleatoriamente 
         while (true) {
 
-            System.out.println("Estado " + this.moverCarrosAleatoriamente);
+           
             if (this.moverCarrosAleatoriamente == true) {
 
                 for (int i = 0; i < listaDeCarros.size(); i++) {
@@ -949,7 +949,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                         if (listaDeCarros.get(i).getRuta().size() > 0) {
                             ///tendria el mismo problema se moveria primero este en su ruta y los otros no 
                             if (listaDeCarros.get(i).getNodoA() == null && listaDeCarros.get(i).getNodoB() == null) {
-                                if (listaDeCarros.get(i).getRuta().size()>listaDeCarros.get(i).getContarNodoRuta()+1) {
+                                if (listaDeCarros.get(i).getRuta().size() > listaDeCarros.get(i).getContarNodoRuta() + 1) {
 
                                     NodoGrafoMapa nodoA = frame.getListaNodosMapa().get(listaDeCarros.get(i).getRuta().get(listaDeCarros.get(i).getContarNodoRuta()));
                                     NodoGrafoMapa nodoB = frame.getListaNodosMapa().get(listaDeCarros.get(i).getRuta().get(listaDeCarros.get(i).getContarNodoRuta() + 1));
@@ -957,6 +957,10 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                                     listaDeCarros.get(i).setNodoA(nodoA);
                                     listaDeCarros.get(i).setNodoB(nodoB);
                                     listaDeCarros.get(i).setContarNodoRuta(listaDeCarros.get(i).getContarNodoRuta() + 1);
+                                    if (listaDeCarros.get(i).getRuta().get(listaDeCarros.get(i).getContarNodoRuta()).equals(listaDeCarros.get(i).getRutaIdNodos().getFirst())) {
+                                        listaDeCarros.get(i).getRutaIdNodos().removeFirst();
+                                    }
+              
                                 }
                             }
 
@@ -1171,13 +1175,13 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
             for (int j = 0; j < matrizGrafoMapaAdyacenciaRutaMasCorta.length; j++) {
                 matrizGrafoMapaAdyacenciaRutaMasCorta[j][i] = -1;
                 matrizGrafoMapaAdyacenciaRutaMasVeloz[j][i] = -1;
-                matrizGrafoMapaAdyacenciaRutaMenosTrafico[j][i] = -1;
+                matrizGrafoMapaAdyacenciaRutaMenosTrafico[j][i] = 0;
             }
         }
 
         this.llenarMatrizDeRutaMasCorta();
         this.llenarMatrizDeRutaMasVeloz();
-        this.llenarMatrizDeRutaMenosTrafico();
+
     }
 
     @Override
@@ -1334,6 +1338,16 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
             }
 
             //para las que son intersecciones se hacen con los nodos de la calle
+            
+            
+            ///recalculo las rutas para los carros que tienen  rutas.
+            
+//            for (int i = 0; i < listaDeCarros.size(); i++) {
+//                if (carro) {
+//                    
+//                }
+//            }
+            
         }
 
     }
@@ -1418,6 +1432,9 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
         //aca a este carro le agrego los nodos seleccionados
         listaDeCarros.get(id).setRutaIdNodos(listaDeIdNodosAvisitar);
+        this.llenarMatrizDeRutaMenosTrafico(frame.getAristasGrafoMapa(), this.listaDeCarros);
+
+        this.mostrarMatricezEnConsola();
 
         ///si la ruta es el camino mas corto
         if (tipoDeRuta.equals("Ruta Mas Corta")) {
@@ -1443,11 +1460,35 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                 }
             }
         }
-        
+
         if (tipoDeRuta.equals("Ruta Mas Veloz")) {
             //se hace el dijkstra
             for (int i = 0; i < listaDeCarros.get(id).getRutaIdNodos().size() - 1; i++) {
                 listaDeDijkstraPorCadaNodoFuente.add(this.dijkstra(matrizGrafoMapaAdyacenciaRutaMasVeloz, listaDeCarros.get(id).getRutaIdNodos().get(i)));
+            }
+
+            //se saca la lista de las rutas
+            for (int i = 1; i < listaDeCarros.get(id).getRutaIdNodos().size(); i++) {
+                listaDeRutas.add(this.rutaParaMoverCarro(listaDeDijkstraPorCadaNodoFuente.get(i - 1), listaDeCarros.get(id).getRutaIdNodos().get(i - 1), listaDeCarros.get(id).getRutaIdNodos().get(i)));
+            }
+
+            // se eliminan los ultimos de la lista de la ruta para evitar repetidos
+            for (int i = 0; i < listaDeRutas.size() - 1; i++) {
+                listaDeRutas.get(i).removeLast();
+            }
+
+            //genera la ruta en secuencia.
+            for (int i = 0; i < listaDeRutas.size(); i++) {
+                for (int j = 0; j < listaDeRutas.get(i).size(); j++) {
+                    ruta.add(listaDeRutas.get(i).get(j));
+                }
+            }
+        }
+
+        if (tipoDeRuta.equals("Ruta Menos Trafico")) {
+            //se hace el dijkstra
+            for (int i = 0; i < listaDeCarros.get(id).getRutaIdNodos().size() - 1; i++) {
+                listaDeDijkstraPorCadaNodoFuente.add(this.dijkstra(matrizGrafoMapaAdyacenciaRutaMenosTrafico, listaDeCarros.get(id).getRutaIdNodos().get(i)));
             }
 
             //se saca la lista de las rutas
@@ -1613,13 +1654,45 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         }
     }
 
-    private void llenarMatrizDeRutaMenosTrafico() {
+    private void llenarMatrizDeRutaMenosTrafico(LinkedList<AristaGrafoMapa> aristasMapa, LinkedList<Automovil> automovilesLista) {
+        LinkedList<AristaGrafoMapa> aristas = new LinkedList<>();
+        LinkedList<Automovil> automoviles = new LinkedList<>();
+
+        aristas = aristasMapa;
+        automoviles = automovilesLista;
+
+        for (int j = 0; j < automoviles.size(); j++) {
+            int[] posicionXYdeLaCalleDelCarro = new int[2];
+            posicionXYdeLaCalleDelCarro = this.retornarPosicionCuadriculaSeleccionada(automoviles.get(j).getX(), automoviles.get(j).getY());
+            for (int i = 0; i < aristas.size(); i++) {
+                int[] posicionXYdeLaCalle = new int[2];
+                posicionXYdeLaCalle = this.retornarPosicionCuadriculaSeleccionada(aristas.get(i).getArista().getX() + 2, aristas.get(i).getArista().getY() + 2);
+                System.out.println("xCalle " + posicionXYdeLaCalle[0] + " yCalle " + posicionXYdeLaCalle[1] + " xCarro " + posicionXYdeLaCalleDelCarro[0] + " yCarro " + posicionXYdeLaCalleDelCarro[1]);
+                if (posicionXYdeLaCalleDelCarro[0] == posicionXYdeLaCalle[0] && posicionXYdeLaCalleDelCarro[1] == posicionXYdeLaCalle[1]) {
+                    if ("h".equals(aristas.get(i).getNodoA().getSentido())||"H".equals(aristas.get(i).getNodoA().getSentido())) {
+                        if (automoviles.get(j).getX()==aristas.get(i).getNodoA().getX()) {
+                            matrizGrafoMapaAdyacenciaRutaMenosTrafico[aristas.get(i).getNodoA().getId()][aristas.get(i).getNodoB().getId()]++;
+                        }
+   
+                    }
+                    if ("v".equals(aristas.get(i).getNodoA().getSentido())||"V".equals(aristas.get(i).getNodoA().getSentido())) {
+                         if (automoviles.get(j).getY()==aristas.get(i).getNodoA().getY()) {
+                            matrizGrafoMapaAdyacenciaRutaMenosTrafico[aristas.get(i).getNodoA().getId()][aristas.get(i).getNodoB().getId()]++;
+                        }
+                    }
+                    if (!"h".equals(aristas.get(i).getNodoA().getSentido())&&!"H".equals(aristas.get(i).getNodoA().getSentido())&&!"v".equals(aristas.get(i).getNodoA().getSentido())&&!"V".equals(aristas.get(i).getNodoA().getSentido())) {
+                         matrizGrafoMapaAdyacenciaRutaMenosTrafico[aristas.get(i).getNodoA().getId()][aristas.get(i).getNodoB().getId()]++;
+                    }
+                }
+            }
+
+        }
 
     }
 
     void moverCarroAleatoriamente(int idCarro) {
         for (int i = 0; i < listaDeCarros.size(); i++) {
-            if (listaDeCarros.get(i).getId()==idCarro) {
+            if (listaDeCarros.get(i).getId() == idCarro) {
                 listaDeCarros.get(i).setMover(true);
             }
         }
