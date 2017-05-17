@@ -12,22 +12,25 @@ import java.util.LinkedList;
  * @author Victor
  */
 public class formularioConfiguararRutaCarro extends javax.swing.JFrame {
+
     PanelAnimacionMapa panelAnimacion = new PanelAnimacionMapa();
-    int idCarro=0;
+    int idCarro = 0;
     LinkedList<Integer> listaDeIdNodosAvisitar = new LinkedList<>();
+
     /**
      * Creates new form configuararRutaCarro
      */
-    
-    
+
     public formularioConfiguararRutaCarro() {
         initComponents();
     }
-    public void recibirPanel(PanelAnimacionMapa panel,int idCarroo){
-        this.panelAnimacion=panel;
-        this.idCarro=idCarroo;
-        
+
+    public void recibirPanel(PanelAnimacionMapa panel, int idCarroo) {
+        this.panelAnimacion = panel;
+        this.idCarro = idCarroo;
+
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -76,6 +79,11 @@ public class formularioConfiguararRutaCarro extends javax.swing.JFrame {
         });
 
         jButton5.setText("Ruta Mas Rapida");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("Ruta Con Menos Trafico");
 
@@ -134,7 +142,7 @@ public class formularioConfiguararRutaCarro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.panelAnimacion.setValidarClic(true,listaDeIdNodosAvisitar);
+        this.panelAnimacion.setValidarClic(true, listaDeIdNodosAvisitar);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -142,16 +150,22 @@ public class formularioConfiguararRutaCarro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        this.panelAnimacion.enviarListaEnElMismo(this.idCarro,"Ruta Mas Corta");
+        this.panelAnimacion.enviarListaEnElMismo(this.idCarro, "Ruta Mas Corta");
         this.panelAnimacion.setValidarClic(false);
         this.dispose();
-        
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-       this.panelAnimacion.moverCarroAleatoriamente(this.idCarro);
-       this.dispose();
+        this.panelAnimacion.moverCarroAleatoriamente(this.idCarro);
+        this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        this.panelAnimacion.enviarListaEnElMismo(this.idCarro, "Ruta Mas Veloz");
+        this.panelAnimacion.setValidarClic(false);
+        this.dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,12 +213,8 @@ public class formularioConfiguararRutaCarro extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     // End of variables declaration//GEN-END:variables
 
-    
-public void ingresarPrimerNodoAlalista(int nodo){
-    listaDeIdNodosAvisitar.add(nodo);
-}
-   
+    public void ingresarPrimerNodoAlalista(int nodo) {
+        listaDeIdNodosAvisitar.add(nodo);
+    }
 
-    
 }
- 

@@ -840,10 +840,10 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
         System.out.println("" + cadena4);
         String cadena3 = "";
-        for (int i = 0; i < matrizGrafoMapaAdyacenciaRutaMasCorta.length; i++) {
+        for (int i = 0; i < matrizGrafoMapaAdyacenciaRutaMasVeloz.length; i++) {
             cadena3 = frame.getListaNodosMapa().get(i).getId() + " ";
-            for (int j = 0; j < matrizGrafoMapaAdyacenciaRutaMasCorta.length; j++) {
-                cadena3 = cadena3 + matrizGrafoMapaAdyacenciaRutaMasCorta[i][j] + " ";
+            for (int j = 0; j < matrizGrafoMapaAdyacenciaRutaMasVeloz.length; j++) {
+                cadena3 = cadena3 + matrizGrafoMapaAdyacenciaRutaMasVeloz[i][j] + " ";
             }
             System.out.println("" + cadena3);
         }
@@ -1424,6 +1424,30 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
             //se hace el dijkstra
             for (int i = 0; i < listaDeCarros.get(id).getRutaIdNodos().size() - 1; i++) {
                 listaDeDijkstraPorCadaNodoFuente.add(this.dijkstra(matrizGrafoMapaAdyacenciaRutaMasCorta, listaDeCarros.get(id).getRutaIdNodos().get(i)));
+            }
+
+            //se saca la lista de las rutas
+            for (int i = 1; i < listaDeCarros.get(id).getRutaIdNodos().size(); i++) {
+                listaDeRutas.add(this.rutaParaMoverCarro(listaDeDijkstraPorCadaNodoFuente.get(i - 1), listaDeCarros.get(id).getRutaIdNodos().get(i - 1), listaDeCarros.get(id).getRutaIdNodos().get(i)));
+            }
+
+            // se eliminan los ultimos de la lista de la ruta para evitar repetidos
+            for (int i = 0; i < listaDeRutas.size() - 1; i++) {
+                listaDeRutas.get(i).removeLast();
+            }
+
+            //genera la ruta en secuencia.
+            for (int i = 0; i < listaDeRutas.size(); i++) {
+                for (int j = 0; j < listaDeRutas.get(i).size(); j++) {
+                    ruta.add(listaDeRutas.get(i).get(j));
+                }
+            }
+        }
+        
+        if (tipoDeRuta.equals("Ruta Mas Veloz")) {
+            //se hace el dijkstra
+            for (int i = 0; i < listaDeCarros.get(id).getRutaIdNodos().size() - 1; i++) {
+                listaDeDijkstraPorCadaNodoFuente.add(this.dijkstra(matrizGrafoMapaAdyacenciaRutaMasVeloz, listaDeCarros.get(id).getRutaIdNodos().get(i)));
             }
 
             //se saca la lista de las rutas

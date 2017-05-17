@@ -66,6 +66,11 @@ public class FormularioParaLaTomaDeDatosSegunSamaelCardonaClavijo extends javax.
 
         comboTipo.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 12)); // NOI18N
         comboTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Urbana", "Carretera" }));
+        comboTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboTipoActionPerformed(evt);
+            }
+        });
 
         jButton1.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 12)); // NOI18N
         jButton1.setText("ACEPTAR");
@@ -139,6 +144,10 @@ public class FormularioParaLaTomaDeDatosSegunSamaelCardonaClavijo extends javax.
         this.panel.recibirDatosFormularioYmodificarCalle(this.xPosicionDelEvento,this.yPosicionDelEvento,this.tipo,this.sentido);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void comboTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboTipoActionPerformed
 
     public JComboBox getComboSentido() {
         return comboSentido;

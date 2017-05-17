@@ -396,7 +396,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
             if (esPrimeraCalle == true) {
                 if ("horizontal".equals(this.orientacion)) {
                     if ("Urbana".equals(calle.getTipo())) {
-                        calle.setVelocidad(60);
+                        calle.setVelocidad(100);
                         if ("Derecha".equals(calle.getSentido())) {
                             calle.setId(contadorDeCalles);
                             matrizLetrasElementosInternosCuadriculaMapa[x][y] = "r";
@@ -436,7 +436,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                     }
 
                     if ("Carretera".equals(calle.getTipo())) {
-                        calle.setVelocidad(100);
+                        calle.setVelocidad(60);
                         if ("Derecha".equals(calle.getSentido())) {
                             calle.setId(contadorDeCalles);
                             matrizLetrasElementosInternosCuadriculaMapa[x][y] = "R";
@@ -476,7 +476,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
 
                 if ("vertical".equals(this.orientacion)) {
                     if ("Urbana".equals(calle.getTipo())) {
-                        calle.setVelocidad(60);
+                        calle.setVelocidad(100);
                         if ("Arriba".equals(calle.getSentido())) {
                             calle.setId(contadorDeCalles);
                             matrizLetrasElementosInternosCuadriculaMapa[x][y] = "t";
@@ -513,7 +513,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                     }
 
                     if ("Carretera".equals(calle.getTipo())) {
-                        calle.setVelocidad(100);
+                        calle.setVelocidad(60);
                         if ("Arriba".equals(calle.getSentido())) {
                             calle.setId(contadorDeCalles);
                             matrizLetrasElementosInternosCuadriculaMapa[x][y] = "T";
@@ -552,7 +552,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                 }
                 if ("interseccionArribaDerecha".equals(this.orientacion)) {
                     if ("Urbana".equals(calle.getTipo())) {
-                        calle.setVelocidad(60);
+                        calle.setVelocidad(100);
                         if ("Derecha".equals(calle.getSentido())) {
                             calle.setId(contadorDeCalles);
                             matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xURR";
@@ -588,7 +588,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                         }
                     }
                     if ("Carretera".equals(calle.getTipo())) {
-                        calle.setVelocidad(100);
+                        calle.setVelocidad(60);
                         if ("Derecha".equals(calle.getSentido())) {
                             calle.setId(contadorDeCalles);
                             matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XURR";
@@ -626,7 +626,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                 }
                 if ("interseccionAbajoDerecha".equals(this.orientacion)) {
                     if ("Urbana".equals(calle.getTipo())) {
-                        calle.setVelocidad(60);
+                        calle.setVelocidad(100);
                         if ("Derecha".equals(calle.getSentido())) {
                             calle.setId(contadorDeCalles);
                             matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xDRR";
@@ -662,7 +662,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                         }
                     }
                     if ("Carretera".equals(calle.getTipo())) {
-                        calle.setVelocidad(100);
+                        calle.setVelocidad(60);
                         if ("Derecha".equals(calle.getSentido())) {
                             calle.setId(contadorDeCalles);
                             matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XDRR";
@@ -700,7 +700,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                 }
                 if ("interseccionArribaIzquierda".equals(this.orientacion)) {
                     if ("Urbana".equals(calle.getTipo())) {
-                        calle.setVelocidad(60);
+                        calle.setVelocidad(100);
                         if ("Derecha".equals(calle.getSentido())) {
                             calle.setId(contadorDeCalles);
                             matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xULR";
@@ -737,7 +737,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                         }
                     }
                     if ("Carretera".equals(calle.getTipo())) {
-                        calle.setVelocidad(100);
+                        calle.setVelocidad(60);
                         if ("Derecha".equals(calle.getSentido())) {
                             calle.setId(contadorDeCalles);
                             matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XULR";
@@ -775,7 +775,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                 }
                 if ("interseccionAbajoIzquierda".equals(this.orientacion)) {
                     if ("Urbana".equals(calle.getTipo())) {
-                        calle.setVelocidad(60);
+                        calle.setVelocidad(100);
                         if ("Derecha".equals(calle.getSentido())) {
                             calle.setId(contadorDeCalles);
                             matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xDLR";
@@ -811,7 +811,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                         }
                     }
                     if ("Carretera".equals(calle.getTipo())) {
-                        calle.setVelocidad(100);
+                        calle.setVelocidad(60);
                         if ("Derecha".equals(calle.getSentido())) {
                             calle.setId(contadorDeCalles);
                             matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XDLR";
@@ -849,7 +849,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                 }
                 if ("interseccionCruzada".equals(this.orientacion)) {
                     if ("Urbana".equals(calle.getTipo())) {
-                        calle.setVelocidad(60);
+                        calle.setVelocidad(100);
                         calle.setId(contadorDeCalles);
                         matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xx";
                         matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
@@ -871,7 +871,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
 
                     }
                     if ("Carretera".equals(calle.getTipo())) {
-                        calle.setVelocidad(100);
+                        calle.setVelocidad(60);
                         calle.setId(contadorDeCalles);
                         matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XX";
                         matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
@@ -898,7 +898,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                 ////hacer validaciones con el condicional del txt almacenado en los documentos.. tener en cuenta las direcciones
                 if ("horizontal".equals(this.orientacion)) {
                     if ("Urbana".equals(calle.getTipo())) {
-                        calle.setVelocidad(60);
+                        calle.setVelocidad(100);
                         if ("Derecha".equals(calle.getSentido())) {
                             if ("R".equals(matrizLetrasElementosInternosCuadriculaMapa[x + 1][y]) || "r".equals(matrizLetrasElementosInternosCuadriculaMapa[x + 1][y])
                                     || "xULR".equals(matrizLetrasElementosInternosCuadriculaMapa[x + 1][y]) || "xDLR".equals(matrizLetrasElementosInternosCuadriculaMapa[x + 1][y])
@@ -963,7 +963,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                     }
 
                     if ("Carretera".equals(calle.getTipo())) {
-                        calle.setVelocidad(100);
+                        calle.setVelocidad(60);
                         if ("Derecha".equals(calle.getSentido())) {
                             if ("R".equals(matrizLetrasElementosInternosCuadriculaMapa[x + 1][y]) || "r".equals(matrizLetrasElementosInternosCuadriculaMapa[x + 1][y])
                                     || "xULR".equals(matrizLetrasElementosInternosCuadriculaMapa[x + 1][y]) || "xDLR".equals(matrizLetrasElementosInternosCuadriculaMapa[x + 1][y])
@@ -1030,7 +1030,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
 
                 if ("vertical".equals(this.orientacion)) {
                     if ("Urbana".equals(calle.getTipo())) {
-                        calle.setVelocidad(60);
+                        calle.setVelocidad(100);
                         if ("Arriba".equals(calle.getSentido())) {
                             if ("t".equals(matrizLetrasElementosInternosCuadriculaMapa[x][y + 1]) || "T".equals(matrizLetrasElementosInternosCuadriculaMapa[x][y + 1])
                                     || "xURL".equals(matrizLetrasElementosInternosCuadriculaMapa[x][y + 1]) || "xULR".equals(matrizLetrasElementosInternosCuadriculaMapa[x][y + 1])
@@ -1098,7 +1098,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                     }
 
                     if ("Carretera".equals(calle.getTipo())) {
-                        calle.setVelocidad(100);
+                        calle.setVelocidad(60);
                         if ("Arriba".equals(calle.getSentido())) {
                             if ("t".equals(matrizLetrasElementosInternosCuadriculaMapa[x][y + 1]) || "T".equals(matrizLetrasElementosInternosCuadriculaMapa[x][y + 1])
                                     || "xURL".equals(matrizLetrasElementosInternosCuadriculaMapa[x][y + 1]) || "xULR".equals(matrizLetrasElementosInternosCuadriculaMapa[x][y + 1])
@@ -1167,7 +1167,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                 }
                 if ("interseccionArribaDerecha".equals(this.orientacion)) {
                     if ("Urbana".equals(calle.getTipo())) {
-                        calle.setVelocidad(60);
+                        calle.setVelocidad(100);
                         if ("Derecha".equals(calle.getSentido())) {
                             if ("r".equals(matrizLetrasElementosInternosCuadriculaMapa[x + 1][y]) || "R".equals(matrizLetrasElementosInternosCuadriculaMapa[x + 1][y])
                                     || "xx".equals(matrizLetrasElementosInternosCuadriculaMapa[x + 1][y]) || "XX".equals(matrizLetrasElementosInternosCuadriculaMapa[x + 1][y])
@@ -1235,7 +1235,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                         }
                     }
                     if ("Carretera".equals(calle.getTipo())) {
-                        calle.setVelocidad(100);
+                        calle.setVelocidad(60);
                         if ("Derecha".equals(calle.getSentido())) {
                             if ("r".equals(matrizLetrasElementosInternosCuadriculaMapa[x + 1][y]) || "R".equals(matrizLetrasElementosInternosCuadriculaMapa[x + 1][y])
                                     || "xx".equals(matrizLetrasElementosInternosCuadriculaMapa[x + 1][y]) || "XX".equals(matrizLetrasElementosInternosCuadriculaMapa[x + 1][y])
@@ -1305,7 +1305,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                 }
                 if ("interseccionAbajoDerecha".equals(this.orientacion)) {
                     if ("Urbana".equals(calle.getTipo())) {
-                        calle.setVelocidad(60);
+                        calle.setVelocidad(100);
                         if ("Derecha".equals(calle.getSentido())) {
                             if ("r".equals(matrizLetrasElementosInternosCuadriculaMapa[x + 1][y]) || "R".equals(matrizLetrasElementosInternosCuadriculaMapa[x + 1][y])
                                     || "xx".equals(matrizLetrasElementosInternosCuadriculaMapa[x + 1][y]) || "XX".equals(matrizLetrasElementosInternosCuadriculaMapa[x + 1][y])
@@ -1371,7 +1371,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                         }
                     }
                     if ("Carretera".equals(calle.getTipo())) {
-                        calle.setVelocidad(100);
+                        calle.setVelocidad(60);
                         if ("Derecha".equals(calle.getSentido())) {
                             if ("r".equals(matrizLetrasElementosInternosCuadriculaMapa[x + 1][y]) || "R".equals(matrizLetrasElementosInternosCuadriculaMapa[x + 1][y])
                                     || "xx".equals(matrizLetrasElementosInternosCuadriculaMapa[x + 1][y]) || "XX".equals(matrizLetrasElementosInternosCuadriculaMapa[x + 1][y])
@@ -1439,7 +1439,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                 }
                 if ("interseccionArribaIzquierda".equals(this.orientacion)) {
                     if ("Urbana".equals(calle.getTipo())) {
-                        calle.setVelocidad(60);
+                        calle.setVelocidad(100);
                         if ("Derecha".equals(calle.getSentido())) {
                             if ("r".equals(matrizLetrasElementosInternosCuadriculaMapa[x - 1][y]) || "R".equals(matrizLetrasElementosInternosCuadriculaMapa[x - 1][y])
                                     || "xx".equals(matrizLetrasElementosInternosCuadriculaMapa[x - 1][y]) || "XX".equals(matrizLetrasElementosInternosCuadriculaMapa[x - 1][y])
@@ -1505,7 +1505,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                         }
                     }
                     if ("Carretera".equals(calle.getTipo())) {
-                        calle.setVelocidad(100);
+                        calle.setVelocidad(60);
                         if ("Derecha".equals(calle.getSentido())) {
                             if ("r".equals(matrizLetrasElementosInternosCuadriculaMapa[x - 1][y]) || "R".equals(matrizLetrasElementosInternosCuadriculaMapa[x - 1][y])
                                     || "xx".equals(matrizLetrasElementosInternosCuadriculaMapa[x - 1][y]) || "XX".equals(matrizLetrasElementosInternosCuadriculaMapa[x - 1][y])
@@ -1573,7 +1573,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                 }
                 if ("interseccionAbajoIzquierda".equals(this.orientacion)) {
                     if ("Urbana".equals(calle.getTipo())) {
-                        calle.setVelocidad(60);
+                        calle.setVelocidad(100);
                         if ("Derecha".equals(calle.getSentido())) {
                             if ("r".equals(matrizLetrasElementosInternosCuadriculaMapa[x - 1][y]) || "R".equals(matrizLetrasElementosInternosCuadriculaMapa[x + 1][y])
                                     || "xx".equals(matrizLetrasElementosInternosCuadriculaMapa[x - 1][y]) || "XX".equals(matrizLetrasElementosInternosCuadriculaMapa[x + 1][y])
@@ -1639,7 +1639,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                         }
                     }
                     if ("Carretera".equals(calle.getTipo())) {
-                        calle.setVelocidad(100);
+                        calle.setVelocidad(60);
                         if ("Derecha".equals(calle.getSentido())) {
                             if ("r".equals(matrizLetrasElementosInternosCuadriculaMapa[x - 1][y]) || "R".equals(matrizLetrasElementosInternosCuadriculaMapa[x + 1][y])
                                     || "xx".equals(matrizLetrasElementosInternosCuadriculaMapa[x - 1][y]) || "XX".equals(matrizLetrasElementosInternosCuadriculaMapa[x + 1][y])
@@ -1707,7 +1707,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                 }
                 if ("interseccionCruzada".equals(this.orientacion)) {
                     if ("Urbana".equals(calle.getTipo())) {
-                        calle.setVelocidad(60);
+                        calle.setVelocidad(100);
                         calle.setId(contadorDeCalles);
                         matrizLetrasElementosInternosCuadriculaMapa[x][y] = "xx";
                         matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
@@ -1727,7 +1727,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                         contadorDeCalles++;
                     }
                     if ("Carretera".equals(calle.getTipo())) {
-                        calle.setVelocidad(100);
+                        calle.setVelocidad(60);
                         calle.setId(contadorDeCalles);
                         matrizLetrasElementosInternosCuadriculaMapa[x][y] = "XX";
                         matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
