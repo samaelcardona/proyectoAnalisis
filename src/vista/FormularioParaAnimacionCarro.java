@@ -207,14 +207,14 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
 
         jPanel3.setPreferredSize(new java.awt.Dimension(76, 1500));
 
-        jRadioButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/AccionesEnCalle/Accidente.png"))); // NOI18N
+        jRadioButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/AccionesEnCalle/Accidente2.png"))); // NOI18N
         jRadioButton17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton17ActionPerformed(evt);
             }
         });
 
-        jRadioButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/AccionesEnCalle/ConstruccionPequeño.png"))); // NOI18N
+        jRadioButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/AccionesEnCalle/Construccion2.png"))); // NOI18N
         jRadioButton18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton18ActionPerformed(evt);
@@ -230,7 +230,7 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
                 .addComponent(jRadioButton17)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jRadioButton18)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,7 +239,7 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jRadioButton17)
                     .addComponent(jRadioButton18))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         jButton2.setText("ELIMINAR SUCESO");
