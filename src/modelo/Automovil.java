@@ -33,6 +33,7 @@ public class Automovil implements Serializable {
     NodoGrafoMapa nodoA;
     NodoGrafoMapa nodoB;
     int contarNodoRuta;
+    String tipoDeRutaActual;
 
     public Automovil(int id, int x, int y, int ancho, int alto, boolean mover) {
         this.id = id;
@@ -52,7 +53,16 @@ public class Automovil implements Serializable {
         this.nodoB = null;
         this.contarNodoRuta = 0;
         this.ruta= new LinkedList<>();//ruta final para recorrer 
+        this.tipoDeRutaActual="";
        
+    }
+
+    public String getTipoDeRutaActual() {
+        return tipoDeRutaActual;
+    }
+
+    public void setTipoDeRutaActual(String tipoDeRutaActual) {
+        this.tipoDeRutaActual = tipoDeRutaActual;
     }
 
     public int getContarNodoRuta() {

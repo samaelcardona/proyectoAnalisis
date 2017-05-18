@@ -171,7 +171,7 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
         
         ObjectInputStream objetoDeEntrada;
         String file = null;
-        JFileChooser ventanaDialogo=new JFileChooser();
+        JFileChooser ventanaDialogo=new JFileChooser("C:\\Users\\SAMAEL\\Documents\\NetBeansProjects\\proyectoAnalisis");
         int option=ventanaDialogo.showOpenDialog(this);
         if (option==JFileChooser.APPROVE_OPTION) {
             file=ventanaDialogo.getSelectedFile().getPath();
