@@ -796,8 +796,8 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                         aristasGrafoMapa.add(arista);
                     }
                     if (matrizCopia[j + 1][i].equals("XX") || matrizCopia[j + 1][i].equals("xx")) {
-                        int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(3).getId();
-                        int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]).getListaDeNodosEnCalle().get(3).getId();
+                        int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
+                        int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]).getListaDeNodosEnCalle().get(2).getId();
                         AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]), listaNodosMapa.get(idNodoB));
                         aristasGrafoMapa.add(arista);
                     }
