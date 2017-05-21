@@ -5,6 +5,7 @@
  */
 package modelo;
 
+import java.awt.Color;
 import java.awt.Rectangle;
 import java.io.Serializable;
 
@@ -24,6 +25,7 @@ public class NodoGrafoMapa implements Serializable{
     private Rectangle area;
     private boolean activo;
     private String sentido;
+    private Color color;
 
 
     
@@ -37,7 +39,17 @@ public class NodoGrafoMapa implements Serializable{
         this.activo = activo;
         this.sentido=sentido;
         this.area=new Rectangle(x, y, ancho, alto);
+        this.color=Color.BLACK;
     }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+    
 
     public int getIdCalle() {
         return idCalle;
