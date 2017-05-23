@@ -44,7 +44,7 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
         }
 
     }
-
+    // 
     public void recibirPanel(PanelAnimacionMapa panelAnimacion, int x, int y, int xNodoPosClick, int yNodoPosClick) {
         this.panelAnimacion = panelAnimacion;
         this.x = x;
