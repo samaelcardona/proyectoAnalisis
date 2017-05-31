@@ -43,6 +43,15 @@ public class NodoGrafoMapa implements Serializable{
         this.color=color.BLACK;
     }
 
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+    
+
     public int getIdCalle() {
         return idCalle;
     }

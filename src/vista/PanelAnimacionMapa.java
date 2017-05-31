@@ -124,6 +124,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                             g.drawOval(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getX(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getY(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getAncho(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getAlto());
                             //  g.drawString(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getId() + "", frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getX(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getY());
                         }
+
                         if (frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso() != null) {
                             g.drawImage(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso().getImagen().getImage(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso().getX() + 10, frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso().getY() + 10, frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso().getAncho(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso().getAlto(), this);
                         }
@@ -983,6 +984,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
                                     listaDeCarros.get(i).setNodoA(nodoA);
                                     listaDeCarros.get(i).setNodoB(nodoB);
+                                    frame.getListaNodosMapa().get(listaDeCarros.get(i).getRuta().get(listaDeCarros.get(i).getContarNodoRuta())).setColor(Color.BLACK);
                                     listaDeCarros.get(i).setContarNodoRuta(listaDeCarros.get(i).getContarNodoRuta() + 1);
 
                                 }
@@ -1741,6 +1743,10 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
             if (listaDeCarros.get(i).getId() == idCarro) {
                 System.out.println("lista id nodos" + listaDeCarros.get(i).getRutaIdNodos().size());
                 listaDeCarros.get(i).setMover(true);
+                for (int j = 0; j < frame.getListaNodosMapa().size(); j++) {
+                     frame.getListaNodosMapa().get(j).setColor(Color.BLACK);
+                }
+                
             }
         }
     }
