@@ -23,7 +23,8 @@ public class FormularioParaLaTomaDeDatosSegunSamaelCardonaClavijo extends javax.
         initComponents();
         this.setLocationRelativeTo(null);
     }
-    
+    //Recibe el panel donde se esta creando el mapa y de este se obtienen 
+    //las posiciones x ^ y donde se hizo clic para ubicar un objeto seleccionado
     public void recibirPanel(PanelCrearMapa panelA,int x,int y){
         this.panel=panelA;
         this.xPosicionDelEvento=x;
@@ -140,7 +141,6 @@ public class FormularioParaLaTomaDeDatosSegunSamaelCardonaClavijo extends javax.
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         sentido=(String)comboSentido.getSelectedItem();
         tipo=(String)comboTipo.getSelectedItem();
-        
         this.panel.recibirDatosFormularioYmodificarCalle(this.xPosicionDelEvento,this.yPosicionDelEvento,this.tipo,this.sentido);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -41,6 +41,8 @@ public class Calle implements Serializable{
     //lista de sucesos accidente, obreros, 
     private Suceso suceso;
     private LinkedList<NodoGrafoMapa> listaDeNodosEnCalle;
+    private LinkedList<NodoGrafoMapa> listaDeNodosPeaton;
+    boolean cebra;
 
     public Calle(int id, int x, int y, int ancho, int alto, ImageIcon imagen, String tipo, String sentido, int velocidad, boolean movimiento) {
         this.id = id;
@@ -56,6 +58,16 @@ public class Calle implements Serializable{
         this.movimiento = movimiento;
         this.suceso = null;
         this.listaDeNodosEnCalle= new LinkedList<>();
+        this.listaDeNodosPeaton= new LinkedList<>();
+        this.cebra=false;
+    }
+
+    public boolean isCebra() {
+        return cebra;
+    }
+
+    public void setCebra(boolean cebra) {
+        this.cebra = cebra;
     }
 
     public int getId() {
@@ -160,6 +172,14 @@ public class Calle implements Serializable{
 
     public LinkedList<NodoGrafoMapa> getListaDeNodosEnCalle() {
         return listaDeNodosEnCalle;
+    }
+
+    public LinkedList<NodoGrafoMapa> getListaDeNodosPeaton() {
+        return listaDeNodosPeaton;
+    }
+
+    public void setListaDeNodosPeaton(LinkedList<NodoGrafoMapa> listaDeNodosPeaton) {
+        this.listaDeNodosPeaton = listaDeNodosPeaton;
     }
     
     

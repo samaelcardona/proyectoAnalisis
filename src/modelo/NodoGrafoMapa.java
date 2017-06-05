@@ -124,14 +124,4 @@ public class NodoGrafoMapa implements Serializable{
         this.alto = alto;
     }
 
-    public Color getColor() {
-        return color;
-    }
-
-    public void setColor(Color color) {
-        this.color = color;
-    }
-    
-    
-    
 }

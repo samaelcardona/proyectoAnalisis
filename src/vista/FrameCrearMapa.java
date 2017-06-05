@@ -34,14 +34,15 @@ import modelo.NodoGrafoMapa;
 public class FrameCrearMapa extends javax.swing.JFrame {
 
     static FrameCrearMapa frameMapa;
-
     LinkedList<JRadioButton> botones;
     LinkedList<Calle> calles;
     LinkedList<Arbol> arboles;
     LinkedList<Edificio> edificios;
     ImageIcon[] listaImagenesParaSeleccionar;
     LinkedList<NodoGrafoMapa> listaNodosMapa;
+    LinkedList<NodoGrafoMapa> listaNodosPeaton;
     LinkedList<AristaGrafoMapa> aristasGrafoMapa;
+    LinkedList<AristaGrafoMapa> aristasGrafoPeaton;
 
     /**
      * Creates new form FrameCrearMapa
@@ -53,7 +54,9 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         arboles = new LinkedList<>();
         edificios = new LinkedList<>();
         listaNodosMapa = new LinkedList<>();
+        listaNodosPeaton = new LinkedList<>();
         aristasGrafoMapa = new LinkedList<>();
+        aristasGrafoPeaton = new LinkedList<>();
 
         this.botones.add(jRadioButton1);
         this.botones.add(jRadioButton2);
@@ -470,7 +473,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.ocultarBordes();
         this.jRadioButton1.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
-        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[0].getIconWidth(), listaImagenesParaSeleccionar[0].getIconHeight(), listaImagenesParaSeleccionar[0], "", "", 0, true), "horizontal");
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[0].getIconWidth(), listaImagenesParaSeleccionar[0].getIconHeight(), listaImagenesParaSeleccionar[0], "", "", 0, true), "horizontal",false);
 
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
@@ -478,7 +481,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.ocultarBordes();
         this.jRadioButton2.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
-        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[1].getIconWidth(), listaImagenesParaSeleccionar[1].getIconHeight(), listaImagenesParaSeleccionar[1], "", "", 0, true), "vertical");
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[1].getIconWidth(), listaImagenesParaSeleccionar[1].getIconHeight(), listaImagenesParaSeleccionar[1], "", "", 0, true), "vertical",false);
 
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
@@ -486,7 +489,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.ocultarBordes();
         this.jRadioButton3.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
-        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[2].getIconWidth(), listaImagenesParaSeleccionar[2].getIconHeight(), listaImagenesParaSeleccionar[2], "", "", 0, true), "horizontal");
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[2].getIconWidth(), listaImagenesParaSeleccionar[2].getIconHeight(), listaImagenesParaSeleccionar[2], "", "", 0, true), "horizontal",true);
     }//GEN-LAST:event_jRadioButton3ActionPerformed
 
     private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
@@ -494,7 +497,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.ocultarBordes();
         this.jRadioButton4.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
-        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[3].getIconWidth(), listaImagenesParaSeleccionar[3].getIconHeight(), listaImagenesParaSeleccionar[3], "", "", 0, true), "interseccionCruzada");
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[3].getIconWidth(), listaImagenesParaSeleccionar[3].getIconHeight(), listaImagenesParaSeleccionar[3], "", "", 0, true), "interseccionCruzada",false);
     }//GEN-LAST:event_jRadioButton4ActionPerformed
 
     private void jRadioButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton5ActionPerformed
@@ -502,7 +505,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.ocultarBordes();
         this.jRadioButton5.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
-        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[4].getIconWidth(), listaImagenesParaSeleccionar[4].getIconHeight(), listaImagenesParaSeleccionar[4], "", "", 0, true), "horizontal");
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[4].getIconWidth(), listaImagenesParaSeleccionar[4].getIconHeight(), listaImagenesParaSeleccionar[4], "", "", 0, true), "horizontal",false);
     }//GEN-LAST:event_jRadioButton5ActionPerformed
 
     private void jRadioButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton6ActionPerformed
@@ -510,14 +513,14 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.ocultarBordes();
         this.jRadioButton6.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
-        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[5].getIconWidth(), listaImagenesParaSeleccionar[5].getIconHeight(), listaImagenesParaSeleccionar[5], "", "", 0, true), "vertical");
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[5].getIconWidth(), listaImagenesParaSeleccionar[5].getIconHeight(), listaImagenesParaSeleccionar[5], "", "", 0, true), "vertical",false);
     }//GEN-LAST:event_jRadioButton6ActionPerformed
 
     private void jRadioButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton7ActionPerformed
         this.ocultarBordes();
         this.jRadioButton7.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
-        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[6].getIconWidth(), listaImagenesParaSeleccionar[6].getIconHeight(), listaImagenesParaSeleccionar[6], "", "", 0, true), "vertical");
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[6].getIconWidth(), listaImagenesParaSeleccionar[6].getIconHeight(), listaImagenesParaSeleccionar[6], "", "", 0, true), "vertical",false);
     }//GEN-LAST:event_jRadioButton7ActionPerformed
 
     private void jRadioButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton8ActionPerformed
@@ -525,7 +528,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.jRadioButton8.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         ///interseccion
-        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[7].getIconWidth(), listaImagenesParaSeleccionar[7].getIconHeight(), listaImagenesParaSeleccionar[7], "", "", 0, true), "interseccionArribaDerecha");
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[7].getIconWidth(), listaImagenesParaSeleccionar[7].getIconHeight(), listaImagenesParaSeleccionar[7], "", "", 0, true), "interseccionArribaDerecha",false);
     }//GEN-LAST:event_jRadioButton8ActionPerformed
 
     private void jRadioButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton9ActionPerformed
@@ -533,7 +536,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.jRadioButton9.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //interseccion
-        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[8].getIconWidth(), listaImagenesParaSeleccionar[8].getIconHeight(), listaImagenesParaSeleccionar[8], "", "", 0, true), "interseccionArribaIzquierda");
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[8].getIconWidth(), listaImagenesParaSeleccionar[8].getIconHeight(), listaImagenesParaSeleccionar[8], "", "", 0, true), "interseccionArribaIzquierda",false);
 
     }//GEN-LAST:event_jRadioButton9ActionPerformed
 
@@ -542,7 +545,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.jRadioButton10.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //interseccion
-        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[9].getIconWidth(), listaImagenesParaSeleccionar[9].getIconHeight(), listaImagenesParaSeleccionar[9], "", "", 0, true), "interseccionAbajoDerecha");
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[9].getIconWidth(), listaImagenesParaSeleccionar[9].getIconHeight(), listaImagenesParaSeleccionar[9], "", "", 0, true), "interseccionAbajoDerecha",false);
 
     }//GEN-LAST:event_jRadioButton10ActionPerformed
 
@@ -551,7 +554,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.jRadioButton11.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //interseccion
-        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[10].getIconWidth(), listaImagenesParaSeleccionar[10].getIconHeight(), listaImagenesParaSeleccionar[10], "", "", 0, true), "interseccionAbajoIzquierda");
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[10].getIconWidth(), listaImagenesParaSeleccionar[10].getIconHeight(), listaImagenesParaSeleccionar[10], "", "", 0, true), "interseccionAbajoIzquierda",false);
     }//GEN-LAST:event_jRadioButton11ActionPerformed
 
     private void jRadioButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton12ActionPerformed
@@ -559,7 +562,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.jRadioButton12.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //interseccion
-        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[11].getIconWidth(), listaImagenesParaSeleccionar[11].getIconHeight(), listaImagenesParaSeleccionar[11], "", "", 0, true), "vertical");
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[11].getIconWidth(), listaImagenesParaSeleccionar[11].getIconHeight(), listaImagenesParaSeleccionar[11], "", "", 0, true), "vertical",false);
 
     }//GEN-LAST:event_jRadioButton12ActionPerformed
 
@@ -568,7 +571,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.jRadioButton13.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //interseccion
-        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[12].getIconWidth(), listaImagenesParaSeleccionar[12].getIconHeight(), listaImagenesParaSeleccionar[12], "", "", 0, true), "interseccionCruzada");
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[12].getIconWidth(), listaImagenesParaSeleccionar[12].getIconHeight(), listaImagenesParaSeleccionar[12], "", "", 0, true), "interseccionCruzada",false);
     }//GEN-LAST:event_jRadioButton13ActionPerformed
 
     private void jRadioButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton14ActionPerformed
@@ -577,7 +580,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.jRadioButton14.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //interseccion
-        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[13].getIconWidth(), listaImagenesParaSeleccionar[13].getIconHeight(), listaImagenesParaSeleccionar[13], "", "", 0, true), "interseccionCruzada");
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[13].getIconWidth(), listaImagenesParaSeleccionar[13].getIconHeight(), listaImagenesParaSeleccionar[13], "", "", 0, true), "interseccionCruzada",false);
     }//GEN-LAST:event_jRadioButton14ActionPerformed
 
     private void jRadioButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton15ActionPerformed
@@ -585,7 +588,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.jRadioButton15.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //interseccion
-        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[14].getIconWidth(), listaImagenesParaSeleccionar[14].getIconHeight(), listaImagenesParaSeleccionar[14], "", "", 0, true), "interseccionCruzada");
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[14].getIconWidth(), listaImagenesParaSeleccionar[14].getIconHeight(), listaImagenesParaSeleccionar[14], "", "", 0, true), "interseccionCruzada",false);
     }//GEN-LAST:event_jRadioButton15ActionPerformed
 
     private void jRadioButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton16ActionPerformed
@@ -594,7 +597,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.jRadioButton16.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //interseccion
-        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[15].getIconWidth(), listaImagenesParaSeleccionar[15].getIconHeight(), listaImagenesParaSeleccionar[15], "", "", 0, true), "interseccionCruzada");
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[15].getIconWidth(), listaImagenesParaSeleccionar[15].getIconHeight(), listaImagenesParaSeleccionar[15], "", "", 0, true), "interseccionCruzada",false);
 
     }//GEN-LAST:event_jRadioButton16ActionPerformed
 
@@ -756,32 +759,39 @@ public class FrameCrearMapa extends javax.swing.JFrame {
 
     public void agregarNodoALista(NodoGrafoMapa nodo) {
         listaNodosMapa.add(nodo);
-
+    }
+    public void agregarNodoAListaPeatones(NodoGrafoMapa nodo) {
+        listaNodosPeaton.add(nodo);
     }
 
     public void agregarNodosAlistaDeCalle(int i) {
-
         for (int j = 0; j < listaNodosMapa.size(); j++) {
             if (listaNodosMapa.get(j).getIdCalle() == calles.get(i).getId()) {
                 calles.get(i).getListaDeNodosEnCalle().add(listaNodosMapa.get(j));
             }
-
+        }
+    }
+    public void agregarNodosAndenAlistaDeCalle(int i) {
+        for (int j = 0; j < listaNodosPeaton.size(); j++) {
+            if (listaNodosPeaton.get(j).getIdCalle() == calles.get(i).getId()) {
+                calles.get(i).getListaDeNodosPeaton().add(listaNodosPeaton.get(j));
+            }
         }
     }
 
+    //Crear las transiciones entre los nodos de las calles verificando el sentido y tipo de via 
+    //con la cual se quiere gnerar la transicion
     private void crearTransicionesGrafoMapa() {
-        //recorrer para hacer las transiciones que
         String[][] matrizCopia = panelCrearMapa1.getMatrizLetrasElementosInternosCuadriculaMapa();
-
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 20; j++) {
-
                 if (matrizCopia[j][i].equals("R") || matrizCopia[j][i].equals("r")) {
                     if (matrizCopia[j + 1][i].equals("R") || matrizCopia[j + 1][i].equals("r")) {
                         int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
                         int idNodoB = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j + 1][i]).getListaDeNodosEnCalle().get(0).getId();
                         AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]), listaNodosMapa.get(idNodoB));
                         aristasGrafoMapa.add(arista);
+                        
                     }
                     if (matrizCopia[j + 1][i].equals("XULR") || matrizCopia[j + 1][i].equals("xULR")) {
                         int idNodoA = calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]).getListaDeNodosEnCalle().get(0).getId();
@@ -801,7 +811,6 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                         AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]), listaNodosMapa.get(idNodoB));
                         aristasGrafoMapa.add(arista);
                     }
-
                 }
                 if (matrizCopia[j][i].equals("L") || matrizCopia[j][i].equals("l")) {
                     if (matrizCopia[j + 1][i].equals("L") || matrizCopia[j + 1][i].equals("l")) {

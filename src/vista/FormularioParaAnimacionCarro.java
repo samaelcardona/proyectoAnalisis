@@ -14,7 +14,7 @@ import javax.swing.JRadioButton;
  * @author Victor
  */
 public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
-
+    
     PanelAnimacionMapa panelAnimacion;
     LinkedList<ImageIcon> imagenes;
     int x;
@@ -44,7 +44,7 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
         }
 
     }
-    // 
+    // Recibe el panel de la animacion del mapa para posicionar los carros en el mapa
     public void recibirPanel(PanelAnimacionMapa panelAnimacion, int x, int y, int xNodoPosClick, int yNodoPosClick) {
         this.panelAnimacion = panelAnimacion;
         this.x = x;
@@ -52,19 +52,16 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
         this.xNodoPosClick=xNodoPosClick;
         this.yNodoPosClick=yNodoPosClick;
     }
-
+    //carga las rutas de las imagenes de los carros para mostrar en el panel
     public void rutas(int seleccion) {
- 
         LinkedList<ImageIcon> direccionesCarros = new LinkedList<>();
-
         direccionesCarros.add(new ImageIcon("src\\imagenes\\carros\\" + "C" + (seleccion)+".png"));
         direccionesCarros.add(new ImageIcon("src\\imagenes\\carros\\" + "C" + (seleccion) + "D.png"));
         direccionesCarros.add(new ImageIcon("src\\imagenes\\carros\\" + "C" + (seleccion) + "L.png"));
         direccionesCarros.add(new ImageIcon("src\\imagenes\\carros\\" + "C" + (seleccion) + "R.png"));
-        
         this.panelAnimacion.crearCarro(direccionesCarros, this.x, this.y,this.xNodoPosClick, this.yNodoPosClick);
     }
-    
+    // Posiciona los imprevistos en la via
     public void accidente(int seleccion){
         if (seleccion==0) {
             this.panelAnimacion.crearSuceso(new ImageIcon("src\\imagenes\\AccionesEnCalle\\Accidente.png"),this.x,this.y,"Accidente");

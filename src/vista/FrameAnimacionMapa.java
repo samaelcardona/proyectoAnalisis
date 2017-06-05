@@ -169,6 +169,7 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
+        //cargar el archivo de la ciudad
         ObjectInputStream objetoDeEntrada;
         String file = null;
         JFileChooser ventanaDialogo=new JFileChooser("C:\\Users\\SAMAEL\\Documents\\NetBeansProjects\\proyectoAnalisis");
@@ -241,7 +242,7 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
         listaNodosMapa.add(nodo);
         
     }
-    
+    //agrega los nodos a la lista de nodos de la calle
     public void agregarNodosAlistaDeCalle(){
         for (int i = 0; i < calles.size(); i++) {
                 for (int j = 0; j < listaNodosMapa.size(); j++) {
