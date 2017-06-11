@@ -650,6 +650,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
 //        }
 //        panelCrearMapa1.mostrarMatricezEnConsola();
 ///realizar las transiciones para generar grafo del movimiento
+        this.borrarTransicionesCreadas();
         this.crearTransicionesGrafoMapa();
         Ciudad cNueva = new Ciudad(Integer.parseInt(JOptionPane.showInputDialog("ingrese numero para ciudad")), calles, arboles, edificios, panelCrearMapa1.getMatrizPuntosLimitesCuadriculaMapa(), panelCrearMapa1.getMatrizLetrasElementosInternosCuadriculaMapa(), panelCrearMapa1.getMatrizCuadriculaMapaIdCalles(), panelCrearMapa1.getMatrizCuadriculaMapaIdArboles(), panelCrearMapa1.getMatrizCuadriculaMapaIdEdificios(), listaNodosMapa, aristasGrafoMapa);
         File fileParaGuardarCiudad = new File("ciudad-" + cNueva.getId());
@@ -724,7 +725,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                 Logger.getLogger(FrameAnimacionMapa.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            panelCrearMapa1.recibirTodasLasMatricezYdemasCuandoCarga(ciudad.getMatrizLetrasElementosInternosCuadriculaMapa(), ciudad.getMatrizCuadriculaMapaIdCalles(), ciudad.getMatrizCuadriculaMapaIdArboles(), ciudad.getMatrizCuadriculaMapaIdEdificios(), ciudad.getListaCalles().size(), ciudad.getListaEdificos().size(), ciudad.getArboles().size(), ciudad.getListaNodosMapa().size());
+            panelCrearMapa1.recibirTodasLasMatricezYdemasCuandoCarga(ciudad.getMatrizLetrasElementosInternosCuadriculaMapa(), ciudad.getMatrizCuadriculaMapaIdCalles(), ciudad.getMatrizCuadriculaMapaIdArboles(), ciudad.getMatrizCuadriculaMapaIdEdificios(), ciudad.getListaCalles().getLast().getId()+1, ciudad.getListaEdificos().size(), ciudad.getArboles().size(), ciudad.getListaNodosMapa().getLast().getId()+1);
 
             this.calles = ciudad.getListaCalles();
             this.arboles = ciudad.getArboles();
@@ -1768,6 +1769,11 @@ public class FrameCrearMapa extends javax.swing.JFrame {
             }
         }
         return -1;
+    }
+
+    private void borrarTransicionesCreadas() {
+        this.aristasGrafoMapa=new LinkedList<>();
+        this.aristasGrafoPeaton=new LinkedList<>();
     }
 
 }
