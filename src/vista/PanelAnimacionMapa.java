@@ -1084,9 +1084,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         while (true) {
             System.out.println("corriendo");
             if (this.moverCarrosAleatoriamente == true) {
-//                for (int i = 0; i < frame.getAristasGrafoMapa().size(); i++) {
-//                    System.out.println("A-- "+frame.getAristasGrafoMapa().get(i).getNodoA().getId()+" B--  "+frame.getAristasGrafoMapa().get(i).getNodoB().getId());
-//                }
+
                 for (int i = 0; i < listaDeCarros.size(); i++) {
                     //Se verifica si el carro se puede mover aleatoriamente 
 
@@ -1886,7 +1884,6 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
     void moverCarroAleatoriamente(int idCarro) {
         for (int i = 0; i < listaDeCarros.size(); i++) {
             if (listaDeCarros.get(i).getId() == idCarro) {
-                System.out.println("lista id nodos" + listaDeCarros.get(i).getRutaIdNodos().size());
                 listaDeCarros.get(i).setMover(true);
                 for (int j = 0; j < frame.getListaNodosMapa().size(); j++) {
                     frame.getListaNodosMapa().get(j).setColor(Color.BLACK);
