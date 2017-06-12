@@ -116,22 +116,22 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                 if (!"".equals(matrizLetrasElementosInternosCuadriculaMapa[j][i])) {
                     if (matrizCuadriculaMapaIdCalles[j][i] != -1) {
                         //////System.out.println("calle"+frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getId());
-                        g.drawImage(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getImagen().getImage(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getX(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getY(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getAncho(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getAlto(), this);
-                        for (int k = 0; k < frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().size(); k++) {
+                        g.drawImage(frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getImagen().getImage(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getX(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getY(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getAncho(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getAlto(), this);
+                        for (int k = 0; k < frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosEnCalle().size(); k++) {
                             //g.setColor(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getColor());
                             g.setColor(Color.red);
-                            g.drawOval(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getX(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getY(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getAncho(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getAlto());
-                            //  g.drawString(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getId() + "", frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getX(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getY());
+                            g.drawOval(frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosEnCalle().get(k).getX(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosEnCalle().get(k).getY(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosEnCalle().get(k).getAncho(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosEnCalle().get(k).getAlto());
+                            g.drawString(frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosEnCalle().get(k).getId() + "", frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosEnCalle().get(k).getX(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosEnCalle().get(k).getY());
                         }
-                        for (int k = 0; k < frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosPeaton().size(); k++) {
+                        for (int k = 0; k < frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosPeaton().size(); k++) {
                             //g.setColor(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosPeaton().get(k).getColor());
                             g.setColor(Color.red);
-                            g.drawOval(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosPeaton().get(k).getX(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosPeaton().get(k).getY(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosPeaton().get(k).getAncho(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosPeaton().get(k).getAlto());
-                            //  g.drawString(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getId() + "", frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getX(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getY());
+                            g.drawOval(frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosPeaton().get(k).getX(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosPeaton().get(k).getY(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosPeaton().get(k).getAncho(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosPeaton().get(k).getAlto());
+                            g.drawString(frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosEnCalle().get(k).getId() + "", frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosEnCalle().get(k).getX(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosEnCalle().get(k).getY());
                         }
 
-                        if (frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso() != null) {
-                            g.drawImage(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso().getImagen().getImage(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso().getX() + 10, frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso().getY() + 10, frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso().getAncho(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso().getAlto(), this);
+                        if (frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getSuceso() != null) {
+                            g.drawImage(frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getSuceso().getImagen().getImage(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getSuceso().getX() + 10, frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getSuceso().getY() + 10, frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getSuceso().getAncho(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getSuceso().getAlto(), this);
                         }
                     }
                     if (matrizCuadriculaMapaIdArboles[j][i] != -1) {
@@ -149,7 +149,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
             int[] cuadroSeleccionado = new int[2];
             cuadroSeleccionado = retornarPosicionCuadriculaSeleccionada(listaDeCarros.get(i).getX(), listaDeCarros.get(i).getY());
 
-            int idCalle = matrizCuadriculaMapaIdCalles[cuadroSeleccionado[0]][cuadroSeleccionado[1]];
+            int idCalle = this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[cuadroSeleccionado[0]][cuadroSeleccionado[1]]);
             if (idCalle != -1) {
 
                 if ("Derecha".equals(frame.getCalles().get(idCalle).getSentido())) {
@@ -666,7 +666,6 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
             //para llamar el formulario de los peatones            
             //FormularioParaAnimacionPeaton formulario = new FormularioParaAnimacionPeaton();
-
             int x = (int) e.getPoint().getX();
             int y = (int) e.getPoint().getY();
 
@@ -712,7 +711,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
     //este metodo crea un carro de tipo Automovil y lo agrega a la lista de coches.
     public void crearCarro(LinkedList<ImageIcon> lista, int x, int y, int xNodoPosClick, int yNodoPosClick) {
         //recibe x y y de la matriz para saber en que posicion lo creo.
-        int iCalle = matrizCuadriculaMapaIdCalles[x][y];
+        int iCalle = this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[x][y]);
 
         if (iCalle != -1) {
             if (frame.getCalles().get(iCalle).getSentido().equals("Derecha")
@@ -1011,11 +1010,17 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
     public NodoGrafoMapa retornarAleatoriamenteUnNodoB(NodoGrafoMapa nodoA) {
         LinkedList<NodoGrafoMapa> listaPosiblesB = new LinkedList<>();
         for (int i = 0; i < frame.getAristasGrafoMapa().size(); i++) {
+            System.out.println("entro--" + frame.getAristasGrafoMapa().get(i).getNodoA().getId() + " nodoB " + frame.getAristasGrafoMapa().get(i).getNodoB().getId());
+            System.out.println("condicion"+frame.getAristasGrafoMapa().get(i).getNodoA().getId()+"var entrante"+nodoA.getId());
             if (frame.getAristasGrafoMapa().get(i).getNodoA().getId() == nodoA.getId()) {
+                System.out.println("entro " + frame.getAristasGrafoMapa().get(i).getNodoA().getId() + " nodoB " + frame.getAristasGrafoMapa().get(i).getNodoB().getId());
                 listaPosiblesB.add(frame.getAristasGrafoMapa().get(i).getNodoB());
             }
         }
         if (listaPosiblesB.size() > 0) {
+            for (int i = 0; i < listaPosiblesB.size(); i++) {
+                System.out.println("lista de posibles" + listaPosiblesB.get(i).getId());
+            }
             return listaPosiblesB.get((int) Math.floor(Math.random() * listaPosiblesB.size()));
         }
         return null;
@@ -1024,7 +1029,11 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
     //Retorna el nodo actual en el cual se encuentra el carro 
     public NodoGrafoMapa retornarNodoEnElqueSeEstaParadoParaElCarro(Automovil carro) {
-
+        for (int i = 0; i < frame.getListaNodosMapa().size(); i++) {
+            System.out.println("listanodos"+frame.getListaNodosMapa().get(i).getId());
+        }
+        
+        
         for (int i = 0; i < frame.getListaNodosMapa().size(); i++) {
             if (frame.getListaNodosMapa().get(i).getX() == carro.getX() && frame.getListaNodosMapa().get(i).getY() == carro.getY()) {
                 return frame.getListaNodosMapa().get(i);
@@ -1075,7 +1084,9 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         while (true) {
             System.out.println("corriendo");
             if (this.moverCarrosAleatoriamente == true) {
-
+//                for (int i = 0; i < frame.getAristasGrafoMapa().size(); i++) {
+//                    System.out.println("A-- "+frame.getAristasGrafoMapa().get(i).getNodoA().getId()+" B--  "+frame.getAristasGrafoMapa().get(i).getNodoB().getId());
+//                }
                 for (int i = 0; i < listaDeCarros.size(); i++) {
                     //Se verifica si el carro se puede mover aleatoriamente 
 
@@ -1802,15 +1813,35 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         return false;
     }
 
+    /*este metodo busca un id en la lista de calles y retorna el contador que corresponde
+     al id de este*/
+    public int buscarIdEnlistaDeCalles(int id) {
+        for (int i = 0; i < frame.getCalles().size(); i++) {
+            if (frame.getCalles().get(i).getId() == id) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int buscarIdEnlistaDeNodos(int id) {
+        for (int i = 0; i < frame.getListaNodosMapa().size(); i++) {
+            if (frame.getListaNodosMapa().get(i).getId() == id) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     private void llenarMatrizDeRutaMasCorta() {
         for (int i = 0; i < frame.getAristasGrafoMapa().size(); i++) {
-            matrizGrafoMapaAdyacenciaRutaMasCorta[frame.getAristasGrafoMapa().get(i).getNodoA().getId()][frame.getAristasGrafoMapa().get(i).getNodoB().getId()] = 10;
+            matrizGrafoMapaAdyacenciaRutaMasCorta[this.buscarIdEnlistaDeNodos(frame.getAristasGrafoMapa().get(i).getNodoA().getId())][this.buscarIdEnlistaDeNodos(frame.getAristasGrafoMapa().get(i).getNodoB().getId())] = 10;
         }
     }
 
     private void llenarMatrizDeRutaMasVeloz() {
         for (int i = 0; i < frame.getAristasGrafoMapa().size(); i++) {
-            matrizGrafoMapaAdyacenciaRutaMasVeloz[frame.getAristasGrafoMapa().get(i).getNodoA().getId()][frame.getAristasGrafoMapa().get(i).getNodoB().getId()] = frame.getAristasGrafoMapa().get(i).getArista().getVelocidad();
+            matrizGrafoMapaAdyacenciaRutaMasVeloz[this.buscarIdEnlistaDeNodos(frame.getAristasGrafoMapa().get(i).getNodoA().getId())][this.buscarIdEnlistaDeNodos(frame.getAristasGrafoMapa().get(i).getNodoB().getId())] = frame.getAristasGrafoMapa().get(i).getArista().getVelocidad();
         }
     }
 
@@ -1832,17 +1863,17 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                 if (posicionXYdeLaCalleDelCarro[0] == posicionXYdeLaCalle[0] && posicionXYdeLaCalleDelCarro[1] == posicionXYdeLaCalle[1]) {
                     if ("h".equals(aristas.get(i).getNodoA().getSentido()) || "H".equals(aristas.get(i).getNodoA().getSentido())) {
                         if (automoviles.get(j).getX() == aristas.get(i).getNodoA().getX()) {
-                            matrizGrafoMapaAdyacenciaRutaMenosTrafico[aristas.get(i).getNodoA().getId()][aristas.get(i).getNodoB().getId()]++;
+                            matrizGrafoMapaAdyacenciaRutaMenosTrafico[this.buscarIdEnlistaDeNodos(aristas.get(i).getNodoA().getId())][this.buscarIdEnlistaDeNodos(aristas.get(i).getNodoB().getId())]++;
                         }
 
                     }
                     if ("v".equals(aristas.get(i).getNodoA().getSentido()) || "V".equals(aristas.get(i).getNodoA().getSentido())) {
                         if (automoviles.get(j).getY() == aristas.get(i).getNodoA().getY()) {
-                            matrizGrafoMapaAdyacenciaRutaMenosTrafico[aristas.get(i).getNodoA().getId()][aristas.get(i).getNodoB().getId()]++;
+                            matrizGrafoMapaAdyacenciaRutaMenosTrafico[this.buscarIdEnlistaDeNodos(aristas.get(i).getNodoA().getId())][this.buscarIdEnlistaDeNodos(aristas.get(i).getNodoB().getId())]++;
                         }
                     }
                     if (!"h".equals(aristas.get(i).getNodoA().getSentido()) && !"H".equals(aristas.get(i).getNodoA().getSentido()) && !"v".equals(aristas.get(i).getNodoA().getSentido()) && !"V".equals(aristas.get(i).getNodoA().getSentido())) {
-                        matrizGrafoMapaAdyacenciaRutaMenosTrafico[aristas.get(i).getNodoA().getId()][aristas.get(i).getNodoB().getId()]++;
+                        matrizGrafoMapaAdyacenciaRutaMenosTrafico[this.buscarIdEnlistaDeNodos(aristas.get(i).getNodoA().getId())][this.buscarIdEnlistaDeNodos(aristas.get(i).getNodoB().getId())]++;
                     }
                 }
             }

@@ -181,8 +181,6 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
 
     }
 
-   
-
     public void recibirFrameCrearMapa(FrameCrearMapa frameRecibido) {
         this.frame = frameRecibido;
     }
@@ -241,7 +239,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
             if (calle == null && edificio == null && arbol == null && !"".equals(matrizLetrasElementosInternosCuadriculaMapa[cuadroSeleccionado[0]][cuadroSeleccionado[1]])) {
                 ///menu para mover o eliminar elemento seleccionado 
                 FormularioParaCorregirElementosEnElPanel formulario = new FormularioParaCorregirElementosEnElPanel();
-                int posicionCalle=this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[cuadroSeleccionado[0]][cuadroSeleccionado[1]]);
+                int posicionCalle = this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[cuadroSeleccionado[0]][cuadroSeleccionado[1]]);
                 formulario.recibirPanel(this, cuadroSeleccionado[0], cuadroSeleccionado[1], this.frame.getCalles().get(posicionCalle).getSentido());
                 formulario.setVisible(true);
             }
@@ -416,7 +414,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
      VERTICAL-> v
      */
 
- /*metodo para la modificacion de la calle segun los datos recolectados en el formulario de la toma de datos
+    /*metodo para la modificacion de la calle segun los datos recolectados en el formulario de la toma de datos
      y agrega los nodos en la calle*/
     public void recibirDatosFormularioYmodificarCalle(int x, int y, String tipo, String sentido) {
         calle.setSentido(sentido);
@@ -2346,7 +2344,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                 }
             }
         }
-        int posicionCalle=this.buscarIdEnlistaDeCalles(calle.getId());
+        int posicionCalle = this.buscarIdEnlistaDeCalles(calle.getId());
         frame.agregarNodosAlistaDeCalle(posicionCalle);
         frame.agregarNodosAndenAlistaDeCalle(posicionCalle);
         calle = null;
@@ -4398,14 +4396,12 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
 
         if (matrizCuadriculaMapaIdCalles[x][y] != -1) {
 
-            int posicionCalle=this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[x][y]);
-            frame.getCalles().remove(frame.getCalles().get(posicionCalle));
-
-            for (int i = 0; i < frame.getListaNodosMapa().size(); i++) {
-                if (frame.getListaNodosMapa().get(i).getIdCalle() == matrizCuadriculaMapaIdCalles[x][y]) {
-                    frame.getListaNodosMapa().remove(i);
-                }
+            for (int i = 0; i < frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[x][y])).getListaDeNodosEnCalle().size(); i++) {
+                frame.getListaNodosMapa().remove(frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[x][y])).getListaDeNodosEnCalle().get(i));
             }
+
+            int posicionCalle = this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[x][y]);
+            frame.getCalles().remove(frame.getCalles().get(posicionCalle));
 
             matrizCuadriculaMapaIdCalles[x][y] = -1;
             matrizLetrasElementosInternosCuadriculaMapa[x][y] = "";
@@ -4509,7 +4505,6 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
         return -1;
     }
 
-    
     /*este metodo busca un id en la lista de arboles y retorna el contador que corresponde
      al id de este*/
     public int buscarIdEnlistaDeArboles(int id) {
