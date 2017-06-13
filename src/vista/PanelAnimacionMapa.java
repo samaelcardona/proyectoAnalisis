@@ -679,8 +679,10 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
             int idCarro = this.retornarCarroCLikeado(e.getX(), e.getY(), listaDeCarros);
             if (idCarro != -1) {
                 while (this.carroEstaEnUnNodo(listaDeCarros.get(idCarro)) == false) {
-                    //System.out.println("Esperando A llegar Al Nodo");
+                    System.out.println("Esperando A llegar Al Nodo");
                 }
+                System.out.println("id caroo"+idCarro);
+                System.out.println("carro esta en el nodo "+this.retornarNodoClickeado(listaDeCarros.get(idCarro).getX(), listaDeCarros.get(idCarro).getY()));
                 listaDeCarros.get(idCarro).setMover(false);
 
                 configuararRutaCarro.recibirPanel(this, idCarro);
@@ -1011,7 +1013,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         LinkedList<NodoGrafoMapa> listaPosiblesB = new LinkedList<>();
         for (int i = 0; i < frame.getAristasGrafoMapa().size(); i++) {
             System.out.println("entro--" + frame.getAristasGrafoMapa().get(i).getNodoA().getId() + " nodoB " + frame.getAristasGrafoMapa().get(i).getNodoB().getId());
-            System.out.println("condicion"+frame.getAristasGrafoMapa().get(i).getNodoA().getId()+"var entrante"+nodoA.getId());
+            System.out.println("condicion" + frame.getAristasGrafoMapa().get(i).getNodoA().getId() + "var entrante" + nodoA.getId());
             if (frame.getAristasGrafoMapa().get(i).getNodoA().getId() == nodoA.getId()) {
                 System.out.println("entro " + frame.getAristasGrafoMapa().get(i).getNodoA().getId() + " nodoB " + frame.getAristasGrafoMapa().get(i).getNodoB().getId());
                 listaPosiblesB.add(frame.getAristasGrafoMapa().get(i).getNodoB());
@@ -1029,11 +1031,6 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
     //Retorna el nodo actual en el cual se encuentra el carro 
     public NodoGrafoMapa retornarNodoEnElqueSeEstaParadoParaElCarro(Automovil carro) {
-        for (int i = 0; i < frame.getListaNodosMapa().size(); i++) {
-            System.out.println("listanodos"+frame.getListaNodosMapa().get(i).getId());
-        }
-        
-        
         for (int i = 0; i < frame.getListaNodosMapa().size(); i++) {
             if (frame.getListaNodosMapa().get(i).getX() == carro.getX() && frame.getListaNodosMapa().get(i).getY() == carro.getY()) {
                 return frame.getListaNodosMapa().get(i);
@@ -1574,7 +1571,9 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
     //Retorna el id de tipo entero que identifica a un nodo
     //que es buscado por una posicion x ^ y entradas por parametro
     private int retornarNodoClickeado(int x, int y) {
+        
         for (int j = 0; j < frame.getListaNodosMapa().size(); j++) {
+            
             if (x >= frame.getListaNodosMapa().get(j).getX() && x < frame.getListaNodosMapa().get(j).getX() + 10
                     && y >= frame.getListaNodosMapa().get(j).getY() && y < frame.getListaNodosMapa().get(j).getY() + 10) {
                 return j;
@@ -1622,7 +1621,11 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         ///si la ruta es el camino mas corto
         if (tipoDeRuta.equals("Ruta Mas Corta")) {
             //se hace el dijkstra
+
+            //aca se hace la validacion y se cambia la lista de la ruta del carro para escoger el mejor camino 
             for (int i = 0; i < listaDeCarros.get(id).getRutaIdNodos().size() - 1; i++) {
+                ///aca modificamos los metodos para encontrar la mejor ruta posible tomando diferentes puntos
+              //  System.out.println("---nodo fuente"+listaDeCarros.get(id).getRutaIdNodos().get(i)+" o " +listaDeCarros.get(id).getRutaIdNodos().get(i) );
                 listaDeDijkstraPorCadaNodoFuente.add(this.dijkstra(matrizGrafoMapaAdyacenciaRutaMasCorta, listaDeCarros.get(id).getRutaIdNodos().get(i)));
             }
 
@@ -1722,6 +1725,8 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         int padre[] = new int[matrizGrafoMapaAdyacenciaRutaMasCorta.length];
         boolean visto[] = new boolean[matrizGrafoMapaAdyacenciaRutaMasCorta.length];
         LinkedList<ValorCola> cola = new LinkedList<>();
+        
+       
 
         for (int i = 0; i < matrizGrafoMapaAdyacenciaRutaMasCorta.length; i++) {
             distancias[i] = Integer.MAX_VALUE;
@@ -1731,16 +1736,12 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
         distancias[nodoFuente] = 0;
 
-        for (int i = 0; i < distancias.length; i++) {
-            //System.out.println("distancias " + i + " " + distancias[i]);
-        }
-
         cola.add(new ValorCola(nodoFuente, nodoFuente, distancias[nodoFuente]));
 
         while (this.estanTodosVistos(visto) == false) {
 
             int nodoCostoMin = this.buscarEnColaElValorMin(cola, visto);
-            //System.out.println("cola min" + nodoCostoMin);
+
             if (nodoCostoMin != -1) {
                 visto[nodoCostoMin] = true;
 
@@ -1793,8 +1794,8 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         LinkedList<Integer> adyacentes = new LinkedList<>();
 
         for (int i = 0; i < frame.getAristasGrafoMapa().size(); i++) {
-            if (frame.getAristasGrafoMapa().get(i).getNodoA().getId() == nodoCostoMin) {
-                adyacentes.add(frame.getAristasGrafoMapa().get(i).getNodoB().getId());
+            if (this.buscarIdEnlistaDeNodos(frame.getAristasGrafoMapa().get(i).getNodoA().getId()) == nodoCostoMin) {
+                adyacentes.add(this.buscarIdEnlistaDeNodos(frame.getAristasGrafoMapa().get(i).getNodoB().getId()));
             }
         }
 
@@ -1803,8 +1804,12 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
     private boolean carroEstaEnUnNodo(Automovil carro) {
         for (int i = 0; i < frame.getListaNodosMapa().size(); i++) {
+            
             if (carro.getX() == frame.getListaNodosMapa().get(i).getX() && carro.getY() == frame.getListaNodosMapa().get(i).getY()) {
-
+                System.out.println("x carro "+carro.getX()+" nodo x "+frame.getListaNodosMapa().get(i).getX()
+                        +"\n y carro "+carro.getY()+" nodo y "+frame.getListaNodosMapa().get(i).getY());
+                
+                System.out.println("nodo id "+frame.getListaNodosMapa().get(i).getId()+"nodo posicion en lista"+this.buscarIdEnlistaDeNodos(frame.getListaNodosMapa().get(i).getId()));
                 return true;
             }
         }
