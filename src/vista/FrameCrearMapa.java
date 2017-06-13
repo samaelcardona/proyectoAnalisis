@@ -489,7 +489,8 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.ocultarBordes();
         this.jRadioButton3.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
-        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[2].getIconWidth(), listaImagenesParaSeleccionar[2].getIconHeight(), listaImagenesParaSeleccionar[2], "", "", 0, true), "horizontal", true);
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[2].getIconWidth(), listaImagenesParaSeleccionar[2].getIconHeight(), listaImagenesParaSeleccionar[2], "", "", 0, true), "horizontal",true);
+        System.out.println("cebra horizontal");
     }//GEN-LAST:event_jRadioButton3ActionPerformed
 
     private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
@@ -509,11 +510,13 @@ public class FrameCrearMapa extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton5ActionPerformed
 
     private void jRadioButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton6ActionPerformed
-
-        this.ocultarBordes();
-        this.jRadioButton6.setBorderPainted(true);
-        this.panelCrearMapa1.recibirFrameCrearMapa(this);
-        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[5].getIconWidth(), listaImagenesParaSeleccionar[5].getIconHeight(), listaImagenesParaSeleccionar[5], "", "", 0, true), "vertical", false);
+        
+//        this.ocultarBordes();
+//        this.jRadioButton6.setBorderPainted(true);
+//        this.panelCrearMapa1.recibirFrameCrearMapa(this);
+//        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[5].getIconWidth(), listaImagenesParaSeleccionar[5].getIconHeight(), listaImagenesParaSeleccionar[5], "", "", 0, true), "vertical",false);
+//        System.out.println("6");
+        
     }//GEN-LAST:event_jRadioButton6ActionPerformed
 
     private void jRadioButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton7ActionPerformed
@@ -571,7 +574,8 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.jRadioButton13.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //interseccion
-        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[12].getIconWidth(), listaImagenesParaSeleccionar[12].getIconHeight(), listaImagenesParaSeleccionar[12], "", "", 0, true), "interseccionCruzada", false);
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[12].getIconWidth(), listaImagenesParaSeleccionar[12].getIconHeight(), listaImagenesParaSeleccionar[12], "", "", 0, true), "interseccionCruzada",false);
+        System.out.println("13");
     }//GEN-LAST:event_jRadioButton13ActionPerformed
 
     private void jRadioButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton14ActionPerformed
@@ -580,7 +584,8 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.jRadioButton14.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //interseccion
-        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[13].getIconWidth(), listaImagenesParaSeleccionar[13].getIconHeight(), listaImagenesParaSeleccionar[13], "", "", 0, true), "interseccionCruzada", false);
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[13].getIconWidth(), listaImagenesParaSeleccionar[13].getIconHeight(), listaImagenesParaSeleccionar[13], "", "", 0, true), "interseccionCruzada",false);
+        System.out.println("14");
     }//GEN-LAST:event_jRadioButton14ActionPerformed
 
     private void jRadioButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton15ActionPerformed
@@ -588,7 +593,8 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.jRadioButton15.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //interseccion
-        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[14].getIconWidth(), listaImagenesParaSeleccionar[14].getIconHeight(), listaImagenesParaSeleccionar[14], "", "", 0, true), "interseccionCruzada", false);
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[14].getIconWidth(), listaImagenesParaSeleccionar[14].getIconHeight(), listaImagenesParaSeleccionar[14], "", "", 0, true), "interseccionCruzada",false);
+        System.out.println("15");
     }//GEN-LAST:event_jRadioButton15ActionPerformed
 
     private void jRadioButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton16ActionPerformed
@@ -597,7 +603,8 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.jRadioButton16.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //interseccion
-        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[15].getIconWidth(), listaImagenesParaSeleccionar[15].getIconHeight(), listaImagenesParaSeleccionar[15], "", "", 0, true), "interseccionCruzada", false);
+        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[15].getIconWidth(), listaImagenesParaSeleccionar[15].getIconHeight(), listaImagenesParaSeleccionar[15], "", "", 0, true), "interseccionCruzada",false);
+        System.out.println("16");
 
     }//GEN-LAST:event_jRadioButton16ActionPerformed
 
@@ -611,6 +618,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //arbol
         this.panelCrearMapa1.setArbol(new Arbol(0, -50, -50, listaImagenesParaSeleccionar[16].getIconWidth(), listaImagenesParaSeleccionar[16].getIconHeight(), listaImagenesParaSeleccionar[16]));
+        System.out.println("17");
     }//GEN-LAST:event_jRadioButton17ActionPerformed
 
     private void jRadioButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton18ActionPerformed
@@ -619,6 +627,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //arbol
         this.panelCrearMapa1.setArbol(new Arbol(0, -50, -50, listaImagenesParaSeleccionar[17].getIconWidth(), listaImagenesParaSeleccionar[17].getIconHeight(), listaImagenesParaSeleccionar[17]));
+        System.out.println("18");
     }//GEN-LAST:event_jRadioButton18ActionPerformed
 
     private void jRadioButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton19ActionPerformed
@@ -627,6 +636,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //arbol
         this.panelCrearMapa1.setArbol(new Arbol(0, -50, -50, listaImagenesParaSeleccionar[18].getIconWidth(), listaImagenesParaSeleccionar[18].getIconHeight(), listaImagenesParaSeleccionar[18]));
+        System.out.println("19");
     }//GEN-LAST:event_jRadioButton19ActionPerformed
 
     private void jRadioButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton20ActionPerformed
@@ -635,6 +645,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //edificio
         this.panelCrearMapa1.setEdificio(new Edificio(0, "casa", -50, -50, listaImagenesParaSeleccionar[19].getIconWidth(), listaImagenesParaSeleccionar[19].getIconHeight(), listaImagenesParaSeleccionar[19]));
+        System.out.println("20");
     }//GEN-LAST:event_jRadioButton20ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -725,7 +736,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                 Logger.getLogger(FrameAnimacionMapa.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            panelCrearMapa1.recibirTodasLasMatricezYdemasCuandoCarga(ciudad.getMatrizLetrasElementosInternosCuadriculaMapa(), ciudad.getMatrizCuadriculaMapaIdCalles(), ciudad.getMatrizCuadriculaMapaIdArboles(), ciudad.getMatrizCuadriculaMapaIdEdificios(), ciudad.getListaCalles().getLast().getId() + 1, ciudad.getListaEdificos().size(), ciudad.getArboles().size(), ciudad.getListaNodosMapa().getLast().getId() + 1);
+            panelCrearMapa1.recibirTodasLasMatricezYdemasCuandoCarga(ciudad.getMatrizLetrasElementosInternosCuadriculaMapa(), ciudad.getMatrizCuadriculaMapaIdCalles(), ciudad.getMatrizCuadriculaMapaIdArboles(), ciudad.getMatrizCuadriculaMapaIdEdificios(), ciudad.getListaCalles().getLast().getId()+1, ciudad.getListaEdificos().size(), ciudad.getArboles().size(), ciudad.getListaNodosMapa().getLast().getId()+1);
 
             this.calles = ciudad.getListaCalles();
             this.arboles = ciudad.getArboles();
@@ -805,72 +816,25 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                         int idNodoB = this.buscarPosicionDeNodoConID(calles.get(posicionCalleDere).getListaDeNodosEnCalle().get(0).getId());
                         AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(posicionCalle), listaNodosMapa.get(idNodoB));
                         aristasGrafoMapa.add(arista);
-                        int idNodoAPeaton = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalle).getListaDeNodosPeaton().get(0).getId());
-                        int idNodoBPeaton = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalleDere).getListaDeNodosPeaton().get(0).getId());
-                        AristaGrafoMapa aristaPeaton1 = new AristaGrafoMapa(listaNodosMapa.get(idNodoAPeaton), calles.get(posicionCalle), listaNodosMapa.get(idNodoBPeaton));
-                        AristaGrafoMapa aristaPeaton2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoBPeaton), calles.get(posicionCalle), listaNodosMapa.get(idNodoAPeaton));
-                        aristasGrafoPeaton.add(aristaPeaton1);
-                        aristasGrafoPeaton.add(aristaPeaton2);
-                        int idNodoAPeaton2 = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalle).getListaDeNodosPeaton().get(1).getId());
-                        int idNodoBPeaton2 = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalleDere).getListaDeNodosPeaton().get(1).getId());
-                        AristaGrafoMapa aristaPeaton12 = new AristaGrafoMapa(listaNodosMapa.get(idNodoAPeaton2), calles.get(posicionCalle), listaNodosMapa.get(idNodoBPeaton2));
-                        AristaGrafoMapa aristaPeaton22 = new AristaGrafoMapa(listaNodosMapa.get(idNodoBPeaton2), calles.get(posicionCalle), listaNodosMapa.get(idNodoAPeaton2));
-                        aristasGrafoPeaton.add(aristaPeaton12);
-                        aristasGrafoPeaton.add(aristaPeaton22);
+
                     }
                     if (matrizCopia[j + 1][i].equals("XULR") || matrizCopia[j + 1][i].equals("xULR")) {
                         int idNodoA = this.buscarPosicionDeNodoConID(calles.get(posicionCalle).getListaDeNodosEnCalle().get(0).getId());
                         int idNodoB = this.buscarPosicionDeNodoConID(calles.get(posicionCalleDere).getListaDeNodosEnCalle().get(0).getId());
                         AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(posicionCalle), listaNodosMapa.get(idNodoB));
                         aristasGrafoMapa.add(arista);
-                        int idNodoAPeaton = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalle).getListaDeNodosPeaton().get(0).getId());
-                        int idNodoBPeaton = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalleDere).getListaDeNodosPeaton().get(0).getId());
-                        AristaGrafoMapa aristaPeaton1 = new AristaGrafoMapa(listaNodosMapa.get(idNodoAPeaton), calles.get(posicionCalle), listaNodosMapa.get(idNodoBPeaton));
-                        AristaGrafoMapa aristaPeaton2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoBPeaton), calles.get(posicionCalle), listaNodosMapa.get(idNodoAPeaton));
-                        aristasGrafoPeaton.add(aristaPeaton1);
-                        aristasGrafoPeaton.add(aristaPeaton2);
-                        int idNodoAPeaton2 = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalle).getListaDeNodosPeaton().get(1).getId());
-                        int idNodoBPeaton2 = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalleDere).getListaDeNodosPeaton().get(1).getId());
-                        AristaGrafoMapa aristaPeaton12 = new AristaGrafoMapa(listaNodosMapa.get(idNodoAPeaton2), calles.get(posicionCalle), listaNodosMapa.get(idNodoBPeaton2));
-                        AristaGrafoMapa aristaPeaton22 = new AristaGrafoMapa(listaNodosMapa.get(idNodoBPeaton2), calles.get(posicionCalle), listaNodosMapa.get(idNodoAPeaton2));
-                        aristasGrafoPeaton.add(aristaPeaton12);
-                        aristasGrafoPeaton.add(aristaPeaton22);
                     }
                     if (matrizCopia[j + 1][i].equals("XDLR") || matrizCopia[j + 1][i].equals("xDLR")) {
                         int idNodoA = this.buscarPosicionDeNodoConID(calles.get(posicionCalle).getListaDeNodosEnCalle().get(0).getId());
                         int idNodoB = this.buscarPosicionDeNodoConID(calles.get(posicionCalleDere).getListaDeNodosEnCalle().get(0).getId());
                         AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(posicionCalle), listaNodosMapa.get(idNodoB));
                         aristasGrafoMapa.add(arista);
-                        int idNodoAPeaton = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalle).getListaDeNodosPeaton().get(0).getId());
-                        int idNodoBPeaton = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalleDere).getListaDeNodosPeaton().get(0).getId());
-                        AristaGrafoMapa aristaPeaton1 = new AristaGrafoMapa(listaNodosMapa.get(idNodoAPeaton), calles.get(posicionCalle), listaNodosMapa.get(idNodoBPeaton));
-                        AristaGrafoMapa aristaPeaton2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoBPeaton), calles.get(posicionCalle), listaNodosMapa.get(idNodoAPeaton));
-                        aristasGrafoPeaton.add(aristaPeaton1);
-                        aristasGrafoPeaton.add(aristaPeaton2);
-                        int idNodoAPeaton2 = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalle).getListaDeNodosPeaton().get(1).getId());
-                        int idNodoBPeaton2 = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalleDere).getListaDeNodosPeaton().get(1).getId());
-                        AristaGrafoMapa aristaPeaton12 = new AristaGrafoMapa(listaNodosMapa.get(idNodoAPeaton2), calles.get(posicionCalle), listaNodosMapa.get(idNodoBPeaton2));
-                        AristaGrafoMapa aristaPeaton22 = new AristaGrafoMapa(listaNodosMapa.get(idNodoBPeaton2), calles.get(posicionCalle), listaNodosMapa.get(idNodoAPeaton2));
-                        aristasGrafoPeaton.add(aristaPeaton12);
-                        aristasGrafoPeaton.add(aristaPeaton22);
                     }
                     if (matrizCopia[j + 1][i].equals("XX") || matrizCopia[j + 1][i].equals("xx")) {
                         int idNodoA = this.buscarPosicionDeNodoConID(calles.get(posicionCalle).getListaDeNodosEnCalle().get(0).getId());
                         int idNodoB = this.buscarPosicionDeNodoConID(calles.get(posicionCalleDere).getListaDeNodosEnCalle().get(2).getId());
                         AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(posicionCalle), listaNodosMapa.get(idNodoB));
                         aristasGrafoMapa.add(arista);
-                        int idNodoAPeaton = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalle).getListaDeNodosPeaton().get(0).getId());
-                        int idNodoBPeaton = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalleDere).getListaDeNodosPeaton().get(0).getId());
-                        AristaGrafoMapa aristaPeaton1 = new AristaGrafoMapa(listaNodosMapa.get(idNodoAPeaton), calles.get(posicionCalle), listaNodosMapa.get(idNodoBPeaton));
-                        AristaGrafoMapa aristaPeaton2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoBPeaton), calles.get(posicionCalle), listaNodosMapa.get(idNodoAPeaton));
-                        aristasGrafoPeaton.add(aristaPeaton1);
-                        aristasGrafoPeaton.add(aristaPeaton2);
-                        int idNodoAPeaton2 = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalle).getListaDeNodosPeaton().get(1).getId());
-                        int idNodoBPeaton2 = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalleDere).getListaDeNodosPeaton().get(2).getId());
-                        AristaGrafoMapa aristaPeaton12 = new AristaGrafoMapa(listaNodosMapa.get(idNodoAPeaton2), calles.get(posicionCalle), listaNodosMapa.get(idNodoBPeaton2));
-                        AristaGrafoMapa aristaPeaton22 = new AristaGrafoMapa(listaNodosMapa.get(idNodoBPeaton2), calles.get(posicionCalle), listaNodosMapa.get(idNodoAPeaton2));
-                        aristasGrafoPeaton.add(aristaPeaton12);
-                        aristasGrafoPeaton.add(aristaPeaton22);
                     }
                 }
                 if (matrizCopia[j][i].equals("L") || matrizCopia[j][i].equals("l")) {
@@ -878,77 +842,24 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                         int idNodoB = this.buscarPosicionDeNodoConID(calles.get(posicionCalle).getListaDeNodosEnCalle().get(0).getId());
                         int idNodoA = this.buscarPosicionDeNodoConID(calles.get(posicionCalleDere).getListaDeNodosEnCalle().get(0).getId());
                         AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(posicionCalle), listaNodosMapa.get(idNodoB));
-                        aristasGrafoMapa.add(arista);
-                        int idNodoAPeaton = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalle).getListaDeNodosPeaton().get(0).getId());
-                        int idNodoBPeaton = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalleDere).getListaDeNodosPeaton().get(0).getId());
-                        AristaGrafoMapa aristaPeaton1 = new AristaGrafoMapa(listaNodosMapa.get(idNodoAPeaton), calles.get(posicionCalle), listaNodosMapa.get(idNodoBPeaton));
-                        AristaGrafoMapa aristaPeaton2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoBPeaton), calles.get(posicionCalle), listaNodosMapa.get(idNodoAPeaton));
-                        aristasGrafoPeaton.add(aristaPeaton1);
-                        aristasGrafoPeaton.add(aristaPeaton2);
-                        int idNodoAPeaton2 = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalle).getListaDeNodosPeaton().get(1).getId());
-                        int idNodoBPeaton2 = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalleDere).getListaDeNodosPeaton().get(1).getId());
-                        AristaGrafoMapa aristaPeaton12 = new AristaGrafoMapa(listaNodosMapa.get(idNodoAPeaton2), calles.get(posicionCalle), listaNodosMapa.get(idNodoBPeaton2));
-                        AristaGrafoMapa aristaPeaton22 = new AristaGrafoMapa(listaNodosMapa.get(idNodoBPeaton2), calles.get(posicionCalle), listaNodosMapa.get(idNodoAPeaton2));
-                        aristasGrafoPeaton.add(aristaPeaton12);
-                        aristasGrafoPeaton.add(aristaPeaton22);
-                    
                     }
                     if (matrizCopia[j + 1][i].equals("XULL") || matrizCopia[j + 1][i].equals("xULL")) {
                         int idNodoB = this.buscarPosicionDeNodoConID(calles.get(posicionCalle).getListaDeNodosEnCalle().get(0).getId());
                         int idNodoA = this.buscarPosicionDeNodoConID(calles.get(posicionCalleDere).getListaDeNodosEnCalle().get(0).getId());
                         AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(posicionCalle), listaNodosMapa.get(idNodoB));
                         aristasGrafoMapa.add(arista);
-                        int idNodoAPeaton = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalle).getListaDeNodosPeaton().get(0).getId());
-                        int idNodoBPeaton = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalleDere).getListaDeNodosPeaton().get(0).getId());
-                        AristaGrafoMapa aristaPeaton1 = new AristaGrafoMapa(listaNodosMapa.get(idNodoAPeaton), calles.get(posicionCalle), listaNodosMapa.get(idNodoBPeaton));
-                        AristaGrafoMapa aristaPeaton2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoBPeaton), calles.get(posicionCalle), listaNodosMapa.get(idNodoAPeaton));
-                        aristasGrafoPeaton.add(aristaPeaton1);
-                        aristasGrafoPeaton.add(aristaPeaton2);
-                        int idNodoAPeaton2 = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalle).getListaDeNodosPeaton().get(1).getId());
-                        int idNodoBPeaton2 = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalleDere).getListaDeNodosPeaton().get(1).getId());
-                        AristaGrafoMapa aristaPeaton12 = new AristaGrafoMapa(listaNodosMapa.get(idNodoAPeaton2), calles.get(posicionCalle), listaNodosMapa.get(idNodoBPeaton2));
-                        AristaGrafoMapa aristaPeaton22 = new AristaGrafoMapa(listaNodosMapa.get(idNodoBPeaton2), calles.get(posicionCalle), listaNodosMapa.get(idNodoAPeaton2));
-                        aristasGrafoPeaton.add(aristaPeaton12);
-                        aristasGrafoPeaton.add(aristaPeaton22);
-                    
                     }
                     if (matrizCopia[j + 1][i].equals("XDLL") || matrizCopia[j + 1][i].equals("xDLL")) {
                         int idNodoB = this.buscarPosicionDeNodoConID(calles.get(posicionCalle).getListaDeNodosEnCalle().get(0).getId());
                         int idNodoA = this.buscarPosicionDeNodoConID(calles.get(posicionCalleDere).getListaDeNodosEnCalle().get(0).getId());
                         AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(posicionCalle), listaNodosMapa.get(idNodoB));
                         aristasGrafoMapa.add(arista);
-                        int idNodoAPeaton = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalle).getListaDeNodosPeaton().get(0).getId());
-                        int idNodoBPeaton = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalleDere).getListaDeNodosPeaton().get(0).getId());
-                        AristaGrafoMapa aristaPeaton1 = new AristaGrafoMapa(listaNodosMapa.get(idNodoAPeaton), calles.get(posicionCalle), listaNodosMapa.get(idNodoBPeaton));
-                        AristaGrafoMapa aristaPeaton2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoBPeaton), calles.get(posicionCalle), listaNodosMapa.get(idNodoAPeaton));
-                        aristasGrafoPeaton.add(aristaPeaton1);
-                        aristasGrafoPeaton.add(aristaPeaton2);
-                        int idNodoAPeaton2 = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalle).getListaDeNodosPeaton().get(1).getId());
-                        int idNodoBPeaton2 = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalleDere).getListaDeNodosPeaton().get(1).getId());
-                        AristaGrafoMapa aristaPeaton12 = new AristaGrafoMapa(listaNodosMapa.get(idNodoAPeaton2), calles.get(posicionCalle), listaNodosMapa.get(idNodoBPeaton2));
-                        AristaGrafoMapa aristaPeaton22 = new AristaGrafoMapa(listaNodosMapa.get(idNodoBPeaton2), calles.get(posicionCalle), listaNodosMapa.get(idNodoAPeaton2));
-                        aristasGrafoPeaton.add(aristaPeaton12);
-                        aristasGrafoPeaton.add(aristaPeaton22);
-                    
                     }
                     if (matrizCopia[j + 1][i].equals("XX") || matrizCopia[j + 1][i].equals("xx")) {
                         int idNodoB = this.buscarPosicionDeNodoConID(calles.get(posicionCalle).getListaDeNodosEnCalle().get(0).getId());
                         int idNodoA = this.buscarPosicionDeNodoConID(calles.get(posicionCalleDere).getListaDeNodosEnCalle().get(0).getId());
                         AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(posicionCalle), listaNodosMapa.get(idNodoB));
                         aristasGrafoMapa.add(arista);
-                        int idNodoAPeaton = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalle).getListaDeNodosPeaton().get(0).getId());
-                        int idNodoBPeaton = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalleDere).getListaDeNodosPeaton().get(0).getId());
-                        AristaGrafoMapa aristaPeaton1 = new AristaGrafoMapa(listaNodosMapa.get(idNodoAPeaton), calles.get(posicionCalle), listaNodosMapa.get(idNodoBPeaton));
-                        AristaGrafoMapa aristaPeaton2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoBPeaton), calles.get(posicionCalle), listaNodosMapa.get(idNodoAPeaton));
-                        aristasGrafoPeaton.add(aristaPeaton1);
-                        aristasGrafoPeaton.add(aristaPeaton2);
-                        int idNodoAPeaton2 = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalle).getListaDeNodosPeaton().get(1).getId());
-                        int idNodoBPeaton2 = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalleDere).getListaDeNodosPeaton().get(2).getId());
-                        AristaGrafoMapa aristaPeaton12 = new AristaGrafoMapa(listaNodosMapa.get(idNodoAPeaton2), calles.get(posicionCalle), listaNodosMapa.get(idNodoBPeaton2));
-                        AristaGrafoMapa aristaPeaton22 = new AristaGrafoMapa(listaNodosMapa.get(idNodoBPeaton2), calles.get(posicionCalle), listaNodosMapa.get(idNodoAPeaton2));
-                        aristasGrafoPeaton.add(aristaPeaton12);
-                        aristasGrafoPeaton.add(aristaPeaton22);
-                    
                     }
                 }
                 if (matrizCopia[j][i].equals("H") || matrizCopia[j][i].equals("h")) {
@@ -961,12 +872,6 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                         int idNodoB2 = this.buscarPosicionDeNodoConID(calles.get(posicionCalleDere).getListaDeNodosEnCalle().get(1).getId());
                         AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA2), calles.get(posicionCalle), listaNodosMapa.get(idNodoB2));
                         aristasGrafoMapa.add(arista2);
-                        int idNodoAPeaton = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalle).getListaDeNodosPeaton().get(0).getId());
-                        int idNodoBPeaton = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalleDere).getListaDeNodosPeaton().get(0).getId());
-                        AristaGrafoMapa aristaPeaton1 = new AristaGrafoMapa(listaNodosMapa.get(idNodoAPeaton), calles.get(posicionCalle), listaNodosMapa.get(idNodoBPeaton));
-                        AristaGrafoMapa aristaPeaton2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoBPeaton), calles.get(posicionCalle), listaNodosMapa.get(idNodoAPeaton));
-                        aristasGrafoPeaton.add(aristaPeaton1);
-                        aristasGrafoPeaton.add(aristaPeaton2);
                     }
                     if (matrizCopia[j + 1][i].equals("XUL") || matrizCopia[j + 1][i].equals("xUL")) {
                         int idNodoB = this.buscarPosicionDeNodoConID(calles.get(posicionCalle).getListaDeNodosEnCalle().get(0).getId());
@@ -977,14 +882,6 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                         int idNodoB2 = this.buscarPosicionDeNodoConID(calles.get(posicionCalleDere).getListaDeNodosEnCalle().get(1).getId());
                         AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA2), calles.get(posicionCalle), listaNodosMapa.get(idNodoB2));
                         aristasGrafoMapa.add(arista2);
-                        int idNodoAPeaton2 = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalle).getListaDeNodosPeaton().get(1).getId());
-                        int idNodoBPeaton2 = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalleDere).getListaDeNodosPeaton().get(1).getId());
-                        AristaGrafoMapa aristaPeaton12 = new AristaGrafoMapa(listaNodosMapa.get(idNodoAPeaton2), calles.get(posicionCalle), listaNodosMapa.get(idNodoBPeaton2));
-                        AristaGrafoMapa aristaPeaton22 = new AristaGrafoMapa(listaNodosMapa.get(idNodoBPeaton2), calles.get(posicionCalle), listaNodosMapa.get(idNodoAPeaton2));
-                        aristasGrafoPeaton.add(aristaPeaton12);
-                        aristasGrafoPeaton.add(aristaPeaton22);
-                    
-                        
                     }
                     if (matrizCopia[j + 1][i].equals("XDL") || matrizCopia[j + 1][i].equals("xDL")) {
                         int idNodoB = this.buscarPosicionDeNodoConID(calles.get(posicionCalle).getListaDeNodosEnCalle().get(0).getId());
@@ -995,35 +892,18 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                         int idNodoB2 = this.buscarPosicionDeNodoConID(calles.get(posicionCalleDere).getListaDeNodosEnCalle().get(1).getId());
                         AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA2), calles.get(posicionCalle), listaNodosMapa.get(idNodoB2));
                         aristasGrafoMapa.add(arista2);
-                        int idNodoAPeaton2 = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalle).getListaDeNodosPeaton().get(1).getId());
-                        int idNodoBPeaton2 = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalleDere).getListaDeNodosPeaton().get(1).getId());
-                        AristaGrafoMapa aristaPeaton12 = new AristaGrafoMapa(listaNodosMapa.get(idNodoAPeaton2), calles.get(posicionCalle), listaNodosMapa.get(idNodoBPeaton2));
-                        AristaGrafoMapa aristaPeaton22 = new AristaGrafoMapa(listaNodosMapa.get(idNodoBPeaton2), calles.get(posicionCalle), listaNodosMapa.get(idNodoAPeaton2));
-                        aristasGrafoPeaton.add(aristaPeaton12);
-                        aristasGrafoPeaton.add(aristaPeaton22);
-                    
                     }
                     if (matrizCopia[j + 1][i].equals("XX") || matrizCopia[j + 1][i].equals("xx")) {
                         int idNodoB = this.buscarPosicionDeNodoConID(calles.get(posicionCalle).getListaDeNodosEnCalle().get(0).getId());
                         int idNodoA = this.buscarPosicionDeNodoConID(calles.get(posicionCalleDere).getListaDeNodosEnCalle().get(0).getId());
                         AristaGrafoMapa arista = new AristaGrafoMapa(listaNodosMapa.get(idNodoA), calles.get(posicionCalle), listaNodosMapa.get(idNodoB));
                         aristasGrafoMapa.add(arista);
-                        int idNodoA2 = this.buscarPosicionDeNodoConID(calles.get(posicionCalle).getListaDeNodosEnCalle().get(0).getId());
-                        int idNodoB2 = this.buscarPosicionDeNodoConID(calles.get(posicionCalleDere).getListaDeNodosEnCalle().get(0).getId());
+                        int idNodoA2 = this.buscarPosicionDeNodoConID(calles.get(posicionCalle).getListaDeNodosEnCalle().get(1).getId());
+                        int idNodoB2 = this.buscarPosicionDeNodoConID(calles.get(posicionCalleDere).getListaDeNodosEnCalle().get(2).getId());
                         AristaGrafoMapa arista2 = new AristaGrafoMapa(listaNodosMapa.get(idNodoA2), calles.get(posicionCalle), listaNodosMapa.get(idNodoB2));
                         aristasGrafoMapa.add(arista2);
-                        int idNodoAPeaton2 = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalle).getListaDeNodosPeaton().get(1).getId());
-                        int idNodoBPeaton2 = this.buscarPosicionDeNodoConIDPeaton(calles.get(posicionCalleDere).getListaDeNodosPeaton().get(2).getId());
-                        AristaGrafoMapa aristaPeaton12 = new AristaGrafoMapa(listaNodosMapa.get(idNodoAPeaton2), calles.get(posicionCalle), listaNodosMapa.get(idNodoBPeaton2));
-                        AristaGrafoMapa aristaPeaton22 = new AristaGrafoMapa(listaNodosMapa.get(idNodoBPeaton2), calles.get(posicionCalle), listaNodosMapa.get(idNodoAPeaton2));
-                        aristasGrafoPeaton.add(aristaPeaton12);
-                        aristasGrafoPeaton.add(aristaPeaton22);
-                    
                     }
                 }
-                
-                /////vic continue de aca hacia abajo haga commit pull push .. y continua aca. picos lindo
-                
                 //verificado
                 if (matrizCopia[j][i].equals("T") || matrizCopia[j][i].equals("t")) {
                     if (matrizCopia[j][i + 1].equals("T") || matrizCopia[j][i + 1].equals("t")) {
@@ -1895,7 +1775,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
 
     private int buscarPosicionDeNodoConID(int id) {
         for (int i = 0; i < listaNodosMapa.size(); i++) {
-            if (listaNodosMapa.get(i).getId() == id) {
+            if (listaNodosMapa.get(i).getId()==id) {
                 return i;
             }
         }
@@ -1903,12 +1783,8 @@ public class FrameCrearMapa extends javax.swing.JFrame {
     }
 
     private void borrarTransicionesCreadas() {
-        this.aristasGrafoMapa = new LinkedList<>();
-        this.aristasGrafoPeaton = new LinkedList<>();
-    }
-
-    private int buscarPosicionDeNodoConIDPeaton(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.aristasGrafoMapa=new LinkedList<>();
+        this.aristasGrafoPeaton=new LinkedList<>();
     }
 
 }

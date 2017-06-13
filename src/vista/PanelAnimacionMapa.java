@@ -25,7 +25,6 @@ import modelo.Peaton;
 import modelo.Suceso;
 import modelo.ValorCola;
 
-
 /**
  *
  * @author SAMAEL
@@ -117,22 +116,22 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                 if (!"".equals(matrizLetrasElementosInternosCuadriculaMapa[j][i])) {
                     if (matrizCuadriculaMapaIdCalles[j][i] != -1) {
                         //////System.out.println("calle"+frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getId());
-                        g.drawImage(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getImagen().getImage(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getX(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getY(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getAncho(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getAlto(), this);
-                        for (int k = 0; k < frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().size(); k++) {
+                        g.drawImage(frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getImagen().getImage(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getX(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getY(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getAncho(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getAlto(), this);
+                        for (int k = 0; k < frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosEnCalle().size(); k++) {
                             //g.setColor(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getColor());
                             g.setColor(Color.red);
-                            g.drawOval(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getX(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getY(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getAncho(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getAlto());
-                            //  g.drawString(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getId() + "", frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getX(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getY());
+                            g.drawOval(frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosEnCalle().get(k).getX(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosEnCalle().get(k).getY(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosEnCalle().get(k).getAncho(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosEnCalle().get(k).getAlto());
+                            g.drawString(frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosEnCalle().get(k).getId() + "", frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosEnCalle().get(k).getX(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosEnCalle().get(k).getY());
                         }
-                        for (int k = 0; k < frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosPeaton().size(); k++) {
+                        for (int k = 0; k < frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosPeaton().size(); k++) {
                             //g.setColor(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosPeaton().get(k).getColor());
                             g.setColor(Color.red);
-                            g.drawOval(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosPeaton().get(k).getX(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosPeaton().get(k).getY(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosPeaton().get(k).getAncho(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosPeaton().get(k).getAlto());
-                            //  g.drawString(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getId() + "", frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getX(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosEnCalle().get(k).getY());
+                            g.drawOval(frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosPeaton().get(k).getX(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosPeaton().get(k).getY(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosPeaton().get(k).getAncho(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosPeaton().get(k).getAlto());
+                            g.drawString(frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosEnCalle().get(k).getId() + "", frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosEnCalle().get(k).getX(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosEnCalle().get(k).getY());
                         }
 
-                        if (frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso() != null) {
-                            g.drawImage(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso().getImagen().getImage(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso().getX() + 10, frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso().getY() + 10, frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso().getAncho(), frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getSuceso().getAlto(), this);
+                        if (frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getSuceso() != null) {
+                            g.drawImage(frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getSuceso().getImagen().getImage(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getSuceso().getX() + 10, frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getSuceso().getY() + 10, frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getSuceso().getAncho(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getSuceso().getAlto(), this);
                         }
                     }
                     if (matrizCuadriculaMapaIdArboles[j][i] != -1) {
@@ -146,716 +145,325 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         }
 
         //Espacio para pintar los carros
-//        for (int i = 0; i < listaDeCarros.size(); i++) {
-//            int[] cuadroSeleccionado = new int[2];
-//            cuadroSeleccionado = retornarPosicionCuadriculaSeleccionada(listaDeCarros.get(i).getX(), listaDeCarros.get(i).getY());
-//
-//            int idCalle = matrizCuadriculaMapaIdCalles[cuadroSeleccionado[0]][cuadroSeleccionado[1]];
-//            if (idCalle != -1) {
-//
-//                if ("Derecha".equals(frame.getCalles().get(idCalle).getSentido())) {
-//
-//                    if ("XULR".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
-//                            || "xULR".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
-//                            || "XDRR".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
-//                            || "xDRR".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())) {
-//                        //cuando Y de lista de carros es mayor o menor que el Y del nodo de esa calle en XUL y XDR y en X se mantiene igual.
-//                        if ((listaDeCarros.get(i).getY() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY() || listaDeCarros.get(i).getY() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY()) && listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(0).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(true);
-//                            listaDeCarros.get(i).setImgAnterior1(false);
-//                            listaDeCarros.get(i).setImgAnterior2(false);
-//                            listaDeCarros.get(i).setImgAnterior3(false);
-//                        }
-//                        //cuando X de lista de carros es mayor o menor que el X del nodo de esa calle en XUL y XDR y en X se mantiene igual.
-//                        if ((listaDeCarros.get(i).getX() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX() || listaDeCarros.get(i).getX() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) && listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY()) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(false);
-//                            listaDeCarros.get(i).setImgAnterior1(false);
-//                            listaDeCarros.get(i).setImgAnterior2(false);
-//                            listaDeCarros.get(i).setImgAnterior3(true);
-//                        }
-//                        //para cuando x y y de la lista de carros son iguales  a la de los nodos 
-//                        if (listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY() && listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(false);
-//                            listaDeCarros.get(i).setImgAnterior1(false);
-//                            listaDeCarros.get(i).setImgAnterior2(false);
-//                            listaDeCarros.get(i).setImgAnterior3(true);
-//                        }
-//
-//                    }
-//                    if ("XURR".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
-//                            || "xURR".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
-//                            || "XDLR".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
-//                            || "xDLR".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())) {
-//                        //cuando Y de lista de carros es mayor o menor que el Y del nodo de esa calle en XUL y XDR y en X se mantiene igual.
-//                        if ((listaDeCarros.get(i).getY() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY() || listaDeCarros.get(i).getY() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY()) && listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(1).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(false);
-//                            listaDeCarros.get(i).setImgAnterior1(true);
-//                            listaDeCarros.get(i).setImgAnterior2(false);
-//                            listaDeCarros.get(i).setImgAnterior3(false);
-//                        }
-//                        //cuando X de lista de carros es mayor o menor que el X del nodo de esa calle en XUL y XDR y en X se mantiene igual.
-//                        if ((listaDeCarros.get(i).getX() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX() || listaDeCarros.get(i).getX() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) && listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY()) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(false);
-//                            listaDeCarros.get(i).setImgAnterior1(false);
-//                            listaDeCarros.get(i).setImgAnterior2(false);
-//                            listaDeCarros.get(i).setImgAnterior3(true);
-//                        }
-//                        //para cuando x y y de la lista de carros son iguales  a la de los nodos 
-//                        if (listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY() && listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(false);
-//                            listaDeCarros.get(i).setImgAnterior1(false);
-//                            listaDeCarros.get(i).setImgAnterior2(false);
-//                            listaDeCarros.get(i).setImgAnterior3(true);
-//                        }
-//
-//                    }
-//                    if ("R".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
-//                            || "r".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())) {
-//                        g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX(), listaDeCarros.get(i).getY(), listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
-//                        listaDeCarros.get(i).setImgAnterior0(false);
-//                        listaDeCarros.get(i).setImgAnterior1(false);
-//                        listaDeCarros.get(i).setImgAnterior2(false);
-//                        listaDeCarros.get(i).setImgAnterior3(true);
-//                    }
-//
-//                }
-//                if ("Izquierda".equals(frame.getCalles().get(idCalle).getSentido())) {
-//
-//                    if ("XULL".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
-//                            || "xULL".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
-//                            || "XDRL".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
-//                            || "xDRL".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())) {
-//                        //cuando Y de lista de carros es mayor o menor que el Y del nodo de esa calle en XUL y XDR y en X se mantiene igual.
-//                        if ((listaDeCarros.get(i).getY() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY() || listaDeCarros.get(i).getY() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY()) && listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(1).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(false);
-//                            listaDeCarros.get(i).setImgAnterior1(true);
-//                            listaDeCarros.get(i).setImgAnterior2(false);
-//                            listaDeCarros.get(i).setImgAnterior3(false);
-//                        }
-//                        //cuando X de lista de carros es mayor o menor que el X del nodo de esa calle en XUL y XDR y en X se mantiene igual.
-//                        if ((listaDeCarros.get(i).getX() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX() || listaDeCarros.get(i).getX() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) && listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY()) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(false);
-//                            listaDeCarros.get(i).setImgAnterior1(false);
-//                            listaDeCarros.get(i).setImgAnterior2(true);
-//                            listaDeCarros.get(i).setImgAnterior3(false);
-//                        }
-//                        //para cuando x y y de la lista de carros son iguales  a la de los nodos 
-//                        if (listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY() && listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(false);
-//                            listaDeCarros.get(i).setImgAnterior1(false);
-//                            listaDeCarros.get(i).setImgAnterior2(true);
-//                            listaDeCarros.get(i).setImgAnterior3(false);
-//                        }
-//
-//                    }
-//                    if ("XURL".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
-//                            || "xURL".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
-//                            || "XDLL".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
-//                            || "xDLL".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())) {
-//                        //cuando Y de lista de carros es mayor o menor que el Y del nodo de esa calle en XUL y XDR y en X se mantiene igual.
-//                        if ((listaDeCarros.get(i).getY() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY() || listaDeCarros.get(i).getY() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY()) && listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(0).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(true);
-//                            listaDeCarros.get(i).setImgAnterior1(false);
-//                            listaDeCarros.get(i).setImgAnterior2(false);
-//                            listaDeCarros.get(i).setImgAnterior3(false);
-//                        }
-//                        //cuando X de lista de carros es mayor o menor que el X del nodo de esa calle en XUL y XDR y en X se mantiene igual.
-//                        if ((listaDeCarros.get(i).getX() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX() || listaDeCarros.get(i).getX() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) && listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY()) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(false);
-//                            listaDeCarros.get(i).setImgAnterior1(false);
-//                            listaDeCarros.get(i).setImgAnterior2(true);
-//                            listaDeCarros.get(i).setImgAnterior3(false);
-//                        }
-//                        //para cuando x y y de la lista de carros son iguales  a la de los nodos 
-//                        if (listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY() && listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(false);
-//                            listaDeCarros.get(i).setImgAnterior1(false);
-//                            listaDeCarros.get(i).setImgAnterior2(true);
-//                            listaDeCarros.get(i).setImgAnterior3(false);
-//                        }
-//
-//                    }
-//                    if ("L".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
-//                            || "l".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())) {
-//                        g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
-//                        listaDeCarros.get(i).setImgAnterior0(false);
-//                        listaDeCarros.get(i).setImgAnterior1(false);
-//                        listaDeCarros.get(i).setImgAnterior2(true);
-//                        listaDeCarros.get(i).setImgAnterior3(false);
-//                    }
-//
-//                }
-//                if ("Arriba".equals(frame.getCalles().get(idCalle).getSentido())) {
-//                    g.drawImage(listaDeCarros.get(i).getImagen().get(0).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
-//                    listaDeCarros.get(i).setImgAnterior0(true);
-//                    listaDeCarros.get(i).setImgAnterior1(false);
-//                    listaDeCarros.get(i).setImgAnterior2(false);
-//                    listaDeCarros.get(i).setImgAnterior3(false);
-//                }
-//                if ("Abajo".equals(frame.getCalles().get(idCalle).getSentido())) {
-//                    g.drawImage(listaDeCarros.get(i).getImagen().get(1).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
-//                    listaDeCarros.get(i).setImgAnterior0(false);
-//                    listaDeCarros.get(i).setImgAnterior1(true);
-//                    listaDeCarros.get(i).setImgAnterior2(false);
-//                    listaDeCarros.get(i).setImgAnterior3(false);
-//                }
-//                if ("Doble sentido".equals(frame.getCalles().get(idCalle).getSentido())) {
-//                    //falta cuando son doble sentido 
-//                    // es igual que las de arriba pero se verifica con mas nodos, y con las posiciones de la lista.
-//
-//                    if ("XUL".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getSentido())
-//                            || "xUL".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getSentido())
-//                            || "XDR".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getSentido())
-//                            || "xDR".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getSentido())) {
-//                        //para cuando 0  
-//                        //cuando Y de lista de carros es mayor o menor que el Y del nodo de esa calle en XUL y XDR y en X se mantiene igual.
-//                        if ((listaDeCarros.get(i).getY() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getY() || listaDeCarros.get(i).getY() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getY()) && listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getX()) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(0).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(true);
-//                            listaDeCarros.get(i).setImgAnterior1(false);
-//                            listaDeCarros.get(i).setImgAnterior2(false);
-//                            listaDeCarros.get(i).setImgAnterior3(false);
-//                        }
-//                        //cuando X de lista de carros es mayor o menor que el X del nodo de esa calle en XUL y XDR y en X se mantiene igual.
-//                        if ((listaDeCarros.get(i).getX() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getX() || listaDeCarros.get(i).getX() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getX()) && listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getY()) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(false);
-//                            listaDeCarros.get(i).setImgAnterior1(false);
-//                            listaDeCarros.get(i).setImgAnterior2(false);
-//                            listaDeCarros.get(i).setImgAnterior3(true);
-//                        }
-//                        //para cuando x y y de la lista de carros son iguales  a la de los nodos 
-//                        if (listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getY() && listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getX()) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(false);
-//                            listaDeCarros.get(i).setImgAnterior1(false);
-//                            listaDeCarros.get(i).setImgAnterior2(false);
-//                            listaDeCarros.get(i).setImgAnterior3(true);
-//                        }
-//
-//                        // para cuando 1
-//                        //cuando Y de lista de carros es mayor o menor que el Y del nodo de esa calle en XUL y XDR y en X se mantiene igual.
-//                        if ((listaDeCarros.get(i).getY() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY() || listaDeCarros.get(i).getY() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY()) && listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(1).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(false);
-//                            listaDeCarros.get(i).setImgAnterior1(true);
-//                            listaDeCarros.get(i).setImgAnterior2(false);
-//                            listaDeCarros.get(i).setImgAnterior3(false);
-//                        }
-//                        //cuando X de lista de carros es mayor o menor que el X del nodo de esa calle en XUL y XDR y en X se mantiene igual.
-//                        if ((listaDeCarros.get(i).getX() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX() || listaDeCarros.get(i).getX() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) && listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY()) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(false);
-//                            listaDeCarros.get(i).setImgAnterior1(false);
-//                            listaDeCarros.get(i).setImgAnterior2(true);
-//                            listaDeCarros.get(i).setImgAnterior3(false);
-//                        }
-//                        //para cuando x y y de la lista de carros son iguales  a la de los nodos 
-//                        if (listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY() && listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(false);
-//                            listaDeCarros.get(i).setImgAnterior1(false);
-//                            listaDeCarros.get(i).setImgAnterior2(true);
-//                            listaDeCarros.get(i).setImgAnterior3(false);
-//
-//                        }
-//                    }
-//                    if ("XUR".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getSentido())
-//                            || "xUR".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getSentido())
-//                            || "XDL".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getSentido())
-//                            || "xDL".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getSentido())) {
-//                        ///para cuando 0    
-//                        //cuando Y de lista de carros es mayor o menor que el Y del nodo de esa calle en XUL y XDR y en X se mantiene igual.
-//                        if ((listaDeCarros.get(i).getY() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getY() || listaDeCarros.get(i).getY() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getY()) && listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getX()) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(1).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(false);
-//                            listaDeCarros.get(i).setImgAnterior1(true);
-//                            listaDeCarros.get(i).setImgAnterior2(false);
-//                            listaDeCarros.get(i).setImgAnterior3(false);
-//                        }
-//                        //cuando X de lista de carros es mayor o menor que el X del nodo de esa calle en XUL y XDR y en X se mantiene igual.
-//                        if ((listaDeCarros.get(i).getX() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getX() || listaDeCarros.get(i).getX() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getX()) && listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getY()) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(false);
-//                            listaDeCarros.get(i).setImgAnterior1(false);
-//                            listaDeCarros.get(i).setImgAnterior2(false);
-//                            listaDeCarros.get(i).setImgAnterior3(true);
-//                        }
-//                        //para cuando x y y de la lista de carros son iguales  a la de los nodos 
-//                        if (listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getY() && listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getX()) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(false);
-//                            listaDeCarros.get(i).setImgAnterior1(false);
-//                            listaDeCarros.get(i).setImgAnterior2(false);
-//                            listaDeCarros.get(i).setImgAnterior3(true);
-//                        }
-//
-//                        ///para cuando 1   
-//                        //cuando Y de lista de carros es mayor o menor que el Y del nodo de esa calle en XUL y XDR y en X se mantiene igual.
-//                        if ((listaDeCarros.get(i).getY() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY() || listaDeCarros.get(i).getY() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY()) && listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(0).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(true);
-//                            listaDeCarros.get(i).setImgAnterior1(false);
-//                            listaDeCarros.get(i).setImgAnterior2(false);
-//                            listaDeCarros.get(i).setImgAnterior3(false);
-//
-//                        }
-//                        //cuando X de lista de carros es mayor o menor que el X del nodo de esa calle en XUL y XDR y en X se mantiene igual.
-//                        if ((listaDeCarros.get(i).getX() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX() || listaDeCarros.get(i).getX() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) && listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY()) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(false);
-//                            listaDeCarros.get(i).setImgAnterior1(false);
-//                            listaDeCarros.get(i).setImgAnterior2(true);
-//                            listaDeCarros.get(i).setImgAnterior3(false);
-//                        }
-//                        //para cuando x y y de la lista de carros son iguales  a la de los nodos 
-//                        if (listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY() && listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(false);
-//                            listaDeCarros.get(i).setImgAnterior1(false);
-//                            listaDeCarros.get(i).setImgAnterior2(true);
-//                            listaDeCarros.get(i).setImgAnterior3(false);
-//
-//                        }
-//                    }
-//
-//                    //para izquierda o derecha se verifica es con las posiciones Y de los nodos si coinciden Y con 0
-//                    //esta hacia la izquierda y si coincide con 1 esta hacia la derecha
-//                    if ("H".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
-//                            || "h".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())) {
-//                        if (listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY()) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(false);
-//                            listaDeCarros.get(i).setImgAnterior1(false);
-//                            listaDeCarros.get(i).setImgAnterior2(true);
-//                            listaDeCarros.get(i).setImgAnterior3(false);
-//
-//                        }
-//                        if (listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX() && listaDeCarros.get(i).getY() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY()) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(1).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(false);
-//                            listaDeCarros.get(i).setImgAnterior1(true);
-//                            listaDeCarros.get(i).setImgAnterior2(false);
-//                            listaDeCarros.get(i).setImgAnterior3(false);
-//
-//                        }
-//                        if (listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getY()) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(false);
-//                            listaDeCarros.get(i).setImgAnterior1(false);
-//                            listaDeCarros.get(i).setImgAnterior2(false);
-//                            listaDeCarros.get(i).setImgAnterior3(true);
-//
-//                        }
-//                        if (listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getX() && listaDeCarros.get(i).getY() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getY()) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(0).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(true);
-//                            listaDeCarros.get(i).setImgAnterior1(false);
-//                            listaDeCarros.get(i).setImgAnterior2(false);
-//                            listaDeCarros.get(i).setImgAnterior3(false);
-//
-//                        }
-//
-//                    }
-//
-//                    //para arriba o abajo se verifica es con las posiciones x de los nodos si coincide x con nodo 0 
-//                    //esta subiendo y si coincide con x  nodo 1 esta bajando se coloca la imagen respectiva a ese movimiento.
-//                    if ("V".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
-//                            || "v".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())) {
-//                        if (listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(0).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(true);
-//                            listaDeCarros.get(i).setImgAnterior1(false);
-//                            listaDeCarros.get(i).setImgAnterior2(false);
-//                            listaDeCarros.get(i).setImgAnterior3(false);
-//                        }
-//                        if (listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getX()) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(1).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(false);
-//                            listaDeCarros.get(i).setImgAnterior1(true);
-//                            listaDeCarros.get(i).setImgAnterior2(false);
-//                            listaDeCarros.get(i).setImgAnterior3(false);
-//                        }
-//                        if (listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY() && listaDeCarros.get(i).getX() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(false);
-//                            listaDeCarros.get(i).setImgAnterior1(false);
-//                            listaDeCarros.get(i).setImgAnterior2(false);
-//                            listaDeCarros.get(i).setImgAnterior3(true);
-//                        }
-//                        if (listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getY() && listaDeCarros.get(i).getX() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getX()) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(false);
-//                            listaDeCarros.get(i).setImgAnterior1(false);
-//                            listaDeCarros.get(i).setImgAnterior2(true);
-//                            listaDeCarros.get(i).setImgAnterior3(false);
-//                        }
-//
-//                    }
-//
-//                    ///para XX o xx cuando concuerda x y Y con la del nodo no pinta.
-//                    if ("XX".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
-//                            || "xx".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())) {
-//
-//                        //para izquierda
-//                        if ((listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY() || listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getY())
-//                                && (listaDeCarros.get(i).getX() != frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getX())) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(false);
-//                            listaDeCarros.get(i).setImgAnterior1(false);
-//                            listaDeCarros.get(i).setImgAnterior2(true);
-//                            listaDeCarros.get(i).setImgAnterior3(false);
-//                            ////System.out.println("1");
-//                        }
-//
-//                        //para derecha
-//                        if ((listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(2).getY() || listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(3).getY())
-//                                && (listaDeCarros.get(i).getX() != frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(2).getX())) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
-//
-//                            listaDeCarros.get(i).setImgAnterior0(false);
-//                            listaDeCarros.get(i).setImgAnterior1(false);
-//                            listaDeCarros.get(i).setImgAnterior2(false);
-//                            listaDeCarros.get(i).setImgAnterior3(true);
-//                            ////System.out.println("2");
-//                        }
-//
-//                        //para abajo
-//                        if ((listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX() || listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(2).getX())
-//                                && (listaDeCarros.get(i).getY() != frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY())) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(1).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(false);
-//                            listaDeCarros.get(i).setImgAnterior1(true);
-//                            listaDeCarros.get(i).setImgAnterior2(false);
-//                            listaDeCarros.get(i).setImgAnterior3(false);
-//                            ////System.out.println("3");
-//
-//                        }
-//
-//                        //para arriba
-//                        if ((listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getX() || listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(3).getX())
-//                                && (listaDeCarros.get(i).getY() != frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(3).getY())) {
-//                            g.drawImage(listaDeCarros.get(i).getImagen().get(0).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
-//                            listaDeCarros.get(i).setImgAnterior0(true);
-//                            listaDeCarros.get(i).setImgAnterior1(false);
-//                            listaDeCarros.get(i).setImgAnterior2(false);
-//                            listaDeCarros.get(i).setImgAnterior3(false);
-//                            ////System.out.println("4");
-//
-//                        }
-//                        //para cuando son iguales en 0
-//                        if (listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX() && listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY()) {
-//
-//                            if (listaDeCarros.get(i).isImgAnterior1() == true) {
-//                                g.drawImage(listaDeCarros.get(i).getImagen().get(1).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
-//                                ////System.out.println("5");
-//                            }
-//                            if (listaDeCarros.get(i).isImgAnterior2() == true) {
-//                                g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
-//                                ////System.out.println("6");
-//                            }
-//                        }
-//                        //para cuando son iguales en 1
-//                        if (listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getX() && listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getY()) {
-//
-//                            if (listaDeCarros.get(i).isImgAnterior0() == true) {
-//                                g.drawImage(listaDeCarros.get(i).getImagen().get(0).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
-//                                ////System.out.println("7");
-//                            }
-//                            if (listaDeCarros.get(i).isImgAnterior2() == true) {
-//                                g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
-//                                ////System.out.println("8");
-//                            }
-//                        }
-//                        //para cuando son iguales en 2
-//                        if (listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(2).getX() && listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(2).getY()) {
-//
-//                            if (listaDeCarros.get(i).isImgAnterior1() == true) {
-//                                g.drawImage(listaDeCarros.get(i).getImagen().get(1).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
-//                                ////System.out.println("9");
-//                            }
-//                            if (listaDeCarros.get(i).isImgAnterior3() == true) {
-//                                g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
-//                                ////System.out.println("10");
-//                            }
-//                        }
-//                        //para cuando son iguales en 3
-//                        if (listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(3).getX() && listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(3).getY()) {
-//
-//                            if (listaDeCarros.get(i).isImgAnterior0() == true) {
-//                                g.drawImage(listaDeCarros.get(i).getImagen().get(0).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
-//                                ////System.out.println("11");
-//                            }
-//                            if (listaDeCarros.get(i).isImgAnterior3() == true) {
-//                                g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
-//                                ////System.out.println("12");
-//                            }
-//                        }
-//                        //para 0 cuando es primera vez 
-//                        if (listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX() && listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY()) {
-//                            if (listaDeCarros.get(i).isImgAnterior0() == false && listaDeCarros.get(i).isImgAnterior1() == false && listaDeCarros.get(i).isImgAnterior2() == false && listaDeCarros.get(i).isImgAnterior3() == false) {
-//                                g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
-//                                ////System.out.println("13");
-//                            }
-//                        }
-//
-//                        //para 1 cuando es primera vez 
-//                        if (listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getX() && listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getY()) {
-//                            if (listaDeCarros.get(i).isImgAnterior0() == false && listaDeCarros.get(i).isImgAnterior1() == false && listaDeCarros.get(i).isImgAnterior2() == false && listaDeCarros.get(i).isImgAnterior3() == false) {
-//                                g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
-//                                ////System.out.println("14");
-//                            }
-//                        }
-//                        //para 2 cuando es primera vez 
-//                        if (listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(2).getX() && listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(2).getY()) {
-//                            if (listaDeCarros.get(i).isImgAnterior0() == false && listaDeCarros.get(i).isImgAnterior1() == false && listaDeCarros.get(i).isImgAnterior2() == false && listaDeCarros.get(i).isImgAnterior3() == false) {
-//                                g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
-//                                ////System.out.println("15");
-//                            }
-//                        }
-//                        //para 3 cuando es primera vez 
-//                        if (listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(3).getX() && listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(3).getY()) {
-//                            if (listaDeCarros.get(i).isImgAnterior0() == false && listaDeCarros.get(i).isImgAnterior1() == false && listaDeCarros.get(i).isImgAnterior2() == false && listaDeCarros.get(i).isImgAnterior3() == false) {
-//                                g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
-//                                ////System.out.println("16");
-//                            }
-//                        }
-//
-//                    }
-//
-//                }
-//
-//            }
-//
-//        }
-        
-        //para pintar los peatones
-        
-                for (int i = 0; i < listaDePeatones.size(); i++) {
+        for (int i = 0; i < listaDeCarros.size(); i++) {
             int[] cuadroSeleccionado = new int[2];
-            cuadroSeleccionado = retornarPosicionCuadriculaSeleccionada(listaDePeatones.get(i).getX(), listaDePeatones.get(i).getY());
+            cuadroSeleccionado = retornarPosicionCuadriculaSeleccionada(listaDeCarros.get(i).getX(), listaDeCarros.get(i).getY());
 
-            int idCalle = matrizCuadriculaMapaIdCalles[cuadroSeleccionado[0]][cuadroSeleccionado[1]];
+            int idCalle = this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[cuadroSeleccionado[0]][cuadroSeleccionado[1]]);
             if (idCalle != -1) {
 
                 if ("Derecha".equals(frame.getCalles().get(idCalle).getSentido())) {
 
-                    if ("XULR".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getSentido())
-                            || "xULR".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getSentido())
-                            || "XDRR".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getSentido())
-                            || "xDRR".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getSentido())) {
+                    if ("XULR".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
+                            || "xULR".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
+                            || "XDRR".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
+                            || "xDRR".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())) {
                         //cuando Y de lista de carros es mayor o menor que el Y del nodo de esa calle en XUL y XDR y en X se mantiene igual.
-                        if ((listaDePeatones.get(i).getY() > frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getY() || listaDePeatones.get(i).getY() < frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getY()) && listaDePeatones.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getX()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 1, listaDePeatones.get(i).getY() - 0, listaDePeatones.get(i).getAncho(), listaDePeatones.get(i).getAlto(), this);
-                            System.out.println("entro paint componets");
+                        if ((listaDeCarros.get(i).getY() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY() || listaDeCarros.get(i).getY() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY()) && listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(0).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
+                            listaDeCarros.get(i).setImgAnterior0(true);
+                            listaDeCarros.get(i).setImgAnterior1(false);
+                            listaDeCarros.get(i).setImgAnterior2(false);
+                            listaDeCarros.get(i).setImgAnterior3(false);
                         }
                         //cuando X de lista de carros es mayor o menor que el X del nodo de esa calle en XUL y XDR y en X se mantiene igual.
-                        if ((listaDePeatones.get(i).getX() > frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getX() || listaDePeatones.get(i).getX() < frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getX()) && listaDePeatones.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getY()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 1, listaDePeatones.get(i).getY() - 0, listaDePeatones.get(i).getAncho(), listaDePeatones.get(i).getAlto(), this);
-                            
+                        if ((listaDeCarros.get(i).getX() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX() || listaDeCarros.get(i).getX() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) && listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY()) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
+                            listaDeCarros.get(i).setImgAnterior0(false);
+                            listaDeCarros.get(i).setImgAnterior1(false);
+                            listaDeCarros.get(i).setImgAnterior2(false);
+                            listaDeCarros.get(i).setImgAnterior3(true);
                         }
                         //para cuando x y y de la lista de carros son iguales  a la de los nodos 
-                        if (listaDePeatones.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getY() && listaDePeatones.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getX()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 1, listaDePeatones.get(i).getY() - 0, listaDePeatones.get(i).getAncho(), listaDePeatones.get(i).getAlto(), this);
-                            
+                        if (listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY() && listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
+                            listaDeCarros.get(i).setImgAnterior0(false);
+                            listaDeCarros.get(i).setImgAnterior1(false);
+                            listaDeCarros.get(i).setImgAnterior2(false);
+                            listaDeCarros.get(i).setImgAnterior3(true);
                         }
 
                     }
-                    if ("XURR".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getSentido())
-                            || "xURR".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getSentido())
-                            || "XDLR".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getSentido())
-                            || "xDLR".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getSentido())) {
+                    if ("XURR".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
+                            || "xURR".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
+                            || "XDLR".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
+                            || "xDLR".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())) {
                         //cuando Y de lista de carros es mayor o menor que el Y del nodo de esa calle en XUL y XDR y en X se mantiene igual.
-                        if ((listaDePeatones.get(i).getY() > frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getY() || listaDePeatones.get(i).getY() < frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getY()) && listaDePeatones.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getX()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 1, listaDePeatones.get(i).getY() - 0, listaDePeatones.get(i).getAncho(), listaDePeatones.get(i).getAlto(), this);
-                            
+                        if ((listaDeCarros.get(i).getY() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY() || listaDeCarros.get(i).getY() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY()) && listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(1).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
+                            listaDeCarros.get(i).setImgAnterior0(false);
+                            listaDeCarros.get(i).setImgAnterior1(true);
+                            listaDeCarros.get(i).setImgAnterior2(false);
+                            listaDeCarros.get(i).setImgAnterior3(false);
                         }
                         //cuando X de lista de carros es mayor o menor que el X del nodo de esa calle en XUL y XDR y en X se mantiene igual.
-                        if ((listaDePeatones.get(i).getX() > frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getX() || listaDePeatones.get(i).getX() < frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getX()) && listaDePeatones.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getY()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 1, listaDePeatones.get(i).getY() - 0, listaDePeatones.get(i).getAncho(), listaDePeatones.get(i).getAlto(), this);
-                            
+                        if ((listaDeCarros.get(i).getX() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX() || listaDeCarros.get(i).getX() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) && listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY()) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
+                            listaDeCarros.get(i).setImgAnterior0(false);
+                            listaDeCarros.get(i).setImgAnterior1(false);
+                            listaDeCarros.get(i).setImgAnterior2(false);
+                            listaDeCarros.get(i).setImgAnterior3(true);
                         }
                         //para cuando x y y de la lista de carros son iguales  a la de los nodos 
-                        if (listaDePeatones.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getY() && listaDePeatones.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getX()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 1, listaDePeatones.get(i).getY() - 0, listaDePeatones.get(i).getAncho(), listaDePeatones.get(i).getAlto(), this);
-                            
+                        if (listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY() && listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
+                            listaDeCarros.get(i).setImgAnterior0(false);
+                            listaDeCarros.get(i).setImgAnterior1(false);
+                            listaDeCarros.get(i).setImgAnterior2(false);
+                            listaDeCarros.get(i).setImgAnterior3(true);
                         }
 
                     }
-                    if ("R".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getSentido())
-                            || "r".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getSentido())) {
-                        g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX(), listaDePeatones.get(i).getY(), listaDePeatones.get(i).getAncho(), listaDePeatones.get(i).getAlto(), this);
+                    if ("R".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
+                            || "r".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())) {
+                        g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX(), listaDeCarros.get(i).getY(), listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
+                        listaDeCarros.get(i).setImgAnterior0(false);
+                        listaDeCarros.get(i).setImgAnterior1(false);
+                        listaDeCarros.get(i).setImgAnterior2(false);
+                        listaDeCarros.get(i).setImgAnterior3(true);
                     }
 
                 }
                 if ("Izquierda".equals(frame.getCalles().get(idCalle).getSentido())) {
 
-                    if ("XULL".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getSentido())
-                            || "xULL".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getSentido())
-                            || "XDRL".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getSentido())
-                            || "xDRL".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getSentido())) {
+                    if ("XULL".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
+                            || "xULL".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
+                            || "XDRL".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
+                            || "xDRL".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())) {
                         //cuando Y de lista de carros es mayor o menor que el Y del nodo de esa calle en XUL y XDR y en X se mantiene igual.
-                        if ((listaDePeatones.get(i).getY() > frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getY() || listaDePeatones.get(i).getY() < frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getY()) && listaDePeatones.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getX()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 1, listaDePeatones.get(i).getY() - 0, listaDePeatones.get(i).getAncho(), listaDePeatones.get(i).getAlto(), this);
-                            
+                        if ((listaDeCarros.get(i).getY() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY() || listaDeCarros.get(i).getY() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY()) && listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(1).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
+                            listaDeCarros.get(i).setImgAnterior0(false);
+                            listaDeCarros.get(i).setImgAnterior1(true);
+                            listaDeCarros.get(i).setImgAnterior2(false);
+                            listaDeCarros.get(i).setImgAnterior3(false);
                         }
                         //cuando X de lista de carros es mayor o menor que el X del nodo de esa calle en XUL y XDR y en X se mantiene igual.
-                        if ((listaDePeatones.get(i).getX() > frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getX() || listaDePeatones.get(i).getX() < frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getX()) && listaDePeatones.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getY()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 1, listaDePeatones.get(i).getY() - 0, listaDePeatones.get(i).getAncho(), listaDePeatones.get(i).getAlto(), this);
-                            
+                        if ((listaDeCarros.get(i).getX() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX() || listaDeCarros.get(i).getX() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) && listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY()) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
+                            listaDeCarros.get(i).setImgAnterior0(false);
+                            listaDeCarros.get(i).setImgAnterior1(false);
+                            listaDeCarros.get(i).setImgAnterior2(true);
+                            listaDeCarros.get(i).setImgAnterior3(false);
                         }
                         //para cuando x y y de la lista de carros son iguales  a la de los nodos 
-                        if (listaDePeatones.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getY() && listaDePeatones.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getX()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 1, listaDePeatones.get(i).getY() - 0, listaDePeatones.get(i).getAncho(), listaDePeatones.get(i).getAlto(), this);
-                            
+                        if (listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY() && listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
+                            listaDeCarros.get(i).setImgAnterior0(false);
+                            listaDeCarros.get(i).setImgAnterior1(false);
+                            listaDeCarros.get(i).setImgAnterior2(true);
+                            listaDeCarros.get(i).setImgAnterior3(false);
                         }
 
                     }
-                    if ("XURL".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getSentido())
-                            || "xURL".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getSentido())
-                            || "XDLL".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getSentido())
-                            || "xDLL".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getSentido())) {
+                    if ("XURL".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
+                            || "xURL".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
+                            || "XDLL".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
+                            || "xDLL".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())) {
                         //cuando Y de lista de carros es mayor o menor que el Y del nodo de esa calle en XUL y XDR y en X se mantiene igual.
-                        if ((listaDePeatones.get(i).getY() > frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getY() || listaDePeatones.get(i).getY() < frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getY()) && listaDePeatones.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getX()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 1, listaDePeatones.get(i).getY() - 0, listaDePeatones.get(i).getAncho(), listaDePeatones.get(i).getAlto(), this);
-                            
+                        if ((listaDeCarros.get(i).getY() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY() || listaDeCarros.get(i).getY() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY()) && listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(0).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
+                            listaDeCarros.get(i).setImgAnterior0(true);
+                            listaDeCarros.get(i).setImgAnterior1(false);
+                            listaDeCarros.get(i).setImgAnterior2(false);
+                            listaDeCarros.get(i).setImgAnterior3(false);
                         }
                         //cuando X de lista de carros es mayor o menor que el X del nodo de esa calle en XUL y XDR y en X se mantiene igual.
-                        if ((listaDePeatones.get(i).getX() > frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getX() || listaDePeatones.get(i).getX() < frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getX()) && listaDePeatones.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getY()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 1, listaDePeatones.get(i).getY() - 0, listaDePeatones.get(i).getAncho(), listaDePeatones.get(i).getAlto(), this);
-                            
+                        if ((listaDeCarros.get(i).getX() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX() || listaDeCarros.get(i).getX() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) && listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY()) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
+                            listaDeCarros.get(i).setImgAnterior0(false);
+                            listaDeCarros.get(i).setImgAnterior1(false);
+                            listaDeCarros.get(i).setImgAnterior2(true);
+                            listaDeCarros.get(i).setImgAnterior3(false);
                         }
                         //para cuando x y y de la lista de carros son iguales  a la de los nodos 
-                        if (listaDePeatones.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getY() && listaDePeatones.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getX()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 1, listaDePeatones.get(i).getY() - 0, listaDePeatones.get(i).getAncho(), listaDePeatones.get(i).getAlto(), this);
-                            
+                        if (listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY() && listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
+                            listaDeCarros.get(i).setImgAnterior0(false);
+                            listaDeCarros.get(i).setImgAnterior1(false);
+                            listaDeCarros.get(i).setImgAnterior2(true);
+                            listaDeCarros.get(i).setImgAnterior3(false);
                         }
 
                     }
-                    if ("L".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getSentido())
-                            || "l".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getSentido())) {
-                        g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 1, listaDePeatones.get(i).getY() - 0, listaDePeatones.get(i).getAncho(), listaDePeatones.get(i).getAlto(), this);
-                                            }
+                    if ("L".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
+                            || "l".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())) {
+                        g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
+                        listaDeCarros.get(i).setImgAnterior0(false);
+                        listaDeCarros.get(i).setImgAnterior1(false);
+                        listaDeCarros.get(i).setImgAnterior2(true);
+                        listaDeCarros.get(i).setImgAnterior3(false);
+                    }
 
                 }
                 if ("Arriba".equals(frame.getCalles().get(idCalle).getSentido())) {
-                    g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 0, listaDePeatones.get(i).getY() + 0, listaDePeatones.get(i).getAlto(), listaDePeatones.get(i).getAncho(), this);
-                                    }
+                    g.drawImage(listaDeCarros.get(i).getImagen().get(0).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
+                    listaDeCarros.get(i).setImgAnterior0(true);
+                    listaDeCarros.get(i).setImgAnterior1(false);
+                    listaDeCarros.get(i).setImgAnterior2(false);
+                    listaDeCarros.get(i).setImgAnterior3(false);
+                }
                 if ("Abajo".equals(frame.getCalles().get(idCalle).getSentido())) {
-                    g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 0, listaDePeatones.get(i).getY() + 0, listaDePeatones.get(i).getAlto(), listaDePeatones.get(i).getAncho(), this);
-                                    }
+                    g.drawImage(listaDeCarros.get(i).getImagen().get(1).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
+                    listaDeCarros.get(i).setImgAnterior0(false);
+                    listaDeCarros.get(i).setImgAnterior1(true);
+                    listaDeCarros.get(i).setImgAnterior2(false);
+                    listaDeCarros.get(i).setImgAnterior3(false);
+                }
                 if ("Doble sentido".equals(frame.getCalles().get(idCalle).getSentido())) {
                     //falta cuando son doble sentido 
                     // es igual que las de arriba pero se verifica con mas nodos, y con las posiciones de la lista.
 
-                    if ("XUL".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getSentido())
-                            || "xUL".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getSentido())
-                            || "XDR".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getSentido())
-                            || "xDR".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getSentido())) {
+                    if ("XUL".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getSentido())
+                            || "xUL".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getSentido())
+                            || "XDR".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getSentido())
+                            || "xDR".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getSentido())) {
                         //para cuando 0  
                         //cuando Y de lista de carros es mayor o menor que el Y del nodo de esa calle en XUL y XDR y en X se mantiene igual.
-                        if ((listaDePeatones.get(i).getY() > frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getY() || listaDePeatones.get(i).getY() < frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getY()) && listaDePeatones.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getX()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 1, listaDePeatones.get(i).getY() - 0, listaDePeatones.get(i).getAncho(), listaDePeatones.get(i).getAlto(), this);
-                            
+                        if ((listaDeCarros.get(i).getY() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getY() || listaDeCarros.get(i).getY() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getY()) && listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getX()) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(0).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
+                            listaDeCarros.get(i).setImgAnterior0(true);
+                            listaDeCarros.get(i).setImgAnterior1(false);
+                            listaDeCarros.get(i).setImgAnterior2(false);
+                            listaDeCarros.get(i).setImgAnterior3(false);
                         }
                         //cuando X de lista de carros es mayor o menor que el X del nodo de esa calle en XUL y XDR y en X se mantiene igual.
-                        if ((listaDePeatones.get(i).getX() > frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getX() || listaDePeatones.get(i).getX() < frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getX()) && listaDePeatones.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getY()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 1, listaDePeatones.get(i).getY() - 0, listaDePeatones.get(i).getAncho(), listaDePeatones.get(i).getAlto(), this);
-                            
+                        if ((listaDeCarros.get(i).getX() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getX() || listaDeCarros.get(i).getX() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getX()) && listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getY()) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
+                            listaDeCarros.get(i).setImgAnterior0(false);
+                            listaDeCarros.get(i).setImgAnterior1(false);
+                            listaDeCarros.get(i).setImgAnterior2(false);
+                            listaDeCarros.get(i).setImgAnterior3(true);
                         }
                         //para cuando x y y de la lista de carros son iguales  a la de los nodos 
-                        if (listaDePeatones.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getY() && listaDePeatones.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getX()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 1, listaDePeatones.get(i).getY() - 0, listaDePeatones.get(i).getAncho(), listaDePeatones.get(i).getAlto(), this);
-                            
+                        if (listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getY() && listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getX()) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
+                            listaDeCarros.get(i).setImgAnterior0(false);
+                            listaDeCarros.get(i).setImgAnterior1(false);
+                            listaDeCarros.get(i).setImgAnterior2(false);
+                            listaDeCarros.get(i).setImgAnterior3(true);
                         }
 
                         // para cuando 1
                         //cuando Y de lista de carros es mayor o menor que el Y del nodo de esa calle en XUL y XDR y en X se mantiene igual.
-                        if ((listaDePeatones.get(i).getY() > frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getY() || listaDePeatones.get(i).getY() < frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getY()) && listaDePeatones.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getX()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 1, listaDePeatones.get(i).getY() - 0, listaDePeatones.get(i).getAncho(), listaDePeatones.get(i).getAlto(), this);
-                           
+                        if ((listaDeCarros.get(i).getY() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY() || listaDeCarros.get(i).getY() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY()) && listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(1).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
+                            listaDeCarros.get(i).setImgAnterior0(false);
+                            listaDeCarros.get(i).setImgAnterior1(true);
+                            listaDeCarros.get(i).setImgAnterior2(false);
+                            listaDeCarros.get(i).setImgAnterior3(false);
                         }
                         //cuando X de lista de carros es mayor o menor que el X del nodo de esa calle en XUL y XDR y en X se mantiene igual.
-                        if ((listaDePeatones.get(i).getX() > frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getX() || listaDePeatones.get(i).getX() < frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getX()) && listaDePeatones.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getY()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 1, listaDePeatones.get(i).getY() - 0, listaDePeatones.get(i).getAncho(), listaDePeatones.get(i).getAlto(), this);
-                            
+                        if ((listaDeCarros.get(i).getX() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX() || listaDeCarros.get(i).getX() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) && listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY()) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
+                            listaDeCarros.get(i).setImgAnterior0(false);
+                            listaDeCarros.get(i).setImgAnterior1(false);
+                            listaDeCarros.get(i).setImgAnterior2(true);
+                            listaDeCarros.get(i).setImgAnterior3(false);
                         }
                         //para cuando x y y de la lista de carros son iguales  a la de los nodos 
-                        if (listaDePeatones.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getY() && listaDePeatones.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getX()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 1, listaDePeatones.get(i).getY() - 0, listaDePeatones.get(i).getAncho(), listaDePeatones.get(i).getAlto(), this);
-                            
+                        if (listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY() && listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
+                            listaDeCarros.get(i).setImgAnterior0(false);
+                            listaDeCarros.get(i).setImgAnterior1(false);
+                            listaDeCarros.get(i).setImgAnterior2(true);
+                            listaDeCarros.get(i).setImgAnterior3(false);
 
                         }
                     }
-                    if ("XUR".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getSentido())
-                            || "xUR".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getSentido())
-                            || "XDL".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getSentido())
-                            || "xDL".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getSentido())) {
+                    if ("XUR".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getSentido())
+                            || "xUR".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getSentido())
+                            || "XDL".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getSentido())
+                            || "xDL".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getSentido())) {
                         ///para cuando 0    
                         //cuando Y de lista de carros es mayor o menor que el Y del nodo de esa calle en XUL y XDR y en X se mantiene igual.
-                        if ((listaDePeatones.get(i).getY() > frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getY() || listaDePeatones.get(i).getY() < frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getY()) && listaDePeatones.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getX()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 1, listaDePeatones.get(i).getY() - 0, listaDePeatones.get(i).getAncho(), listaDePeatones.get(i).getAlto(), this);
-                            
+                        if ((listaDeCarros.get(i).getY() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getY() || listaDeCarros.get(i).getY() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getY()) && listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getX()) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(1).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
+                            listaDeCarros.get(i).setImgAnterior0(false);
+                            listaDeCarros.get(i).setImgAnterior1(true);
+                            listaDeCarros.get(i).setImgAnterior2(false);
+                            listaDeCarros.get(i).setImgAnterior3(false);
                         }
                         //cuando X de lista de carros es mayor o menor que el X del nodo de esa calle en XUL y XDR y en X se mantiene igual.
-                        if ((listaDePeatones.get(i).getX() > frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getX() || listaDePeatones.get(i).getX() < frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getX()) && listaDePeatones.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getY()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 1, listaDePeatones.get(i).getY() - 0, listaDePeatones.get(i).getAncho(), listaDePeatones.get(i).getAlto(), this);
-                            
+                        if ((listaDeCarros.get(i).getX() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getX() || listaDeCarros.get(i).getX() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getX()) && listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getY()) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
+                            listaDeCarros.get(i).setImgAnterior0(false);
+                            listaDeCarros.get(i).setImgAnterior1(false);
+                            listaDeCarros.get(i).setImgAnterior2(false);
+                            listaDeCarros.get(i).setImgAnterior3(true);
                         }
                         //para cuando x y y de la lista de carros son iguales  a la de los nodos 
-                        if (listaDePeatones.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getY() && listaDePeatones.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getX()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 1, listaDePeatones.get(i).getY() - 0, listaDePeatones.get(i).getAncho(), listaDePeatones.get(i).getAlto(), this);
-                            
+                        if (listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getY() && listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getX()) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
+                            listaDeCarros.get(i).setImgAnterior0(false);
+                            listaDeCarros.get(i).setImgAnterior1(false);
+                            listaDeCarros.get(i).setImgAnterior2(false);
+                            listaDeCarros.get(i).setImgAnterior3(true);
                         }
 
                         ///para cuando 1   
                         //cuando Y de lista de carros es mayor o menor que el Y del nodo de esa calle en XUL y XDR y en X se mantiene igual.
-                        if ((listaDePeatones.get(i).getY() > frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getY() || listaDePeatones.get(i).getY() < frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getY()) && listaDePeatones.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getX()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 1, listaDePeatones.get(i).getY() - 0, listaDePeatones.get(i).getAncho(), listaDePeatones.get(i).getAlto(), this);
-                            
+                        if ((listaDeCarros.get(i).getY() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY() || listaDeCarros.get(i).getY() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY()) && listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(0).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
+                            listaDeCarros.get(i).setImgAnterior0(true);
+                            listaDeCarros.get(i).setImgAnterior1(false);
+                            listaDeCarros.get(i).setImgAnterior2(false);
+                            listaDeCarros.get(i).setImgAnterior3(false);
+
                         }
                         //cuando X de lista de carros es mayor o menor que el X del nodo de esa calle en XUL y XDR y en X se mantiene igual.
-                        if ((listaDePeatones.get(i).getX() > frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getX() || listaDePeatones.get(i).getX() < frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getX()) && listaDePeatones.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getY()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 1, listaDePeatones.get(i).getY() - 0, listaDePeatones.get(i).getAncho(), listaDePeatones.get(i).getAlto(), this);
-                            
+                        if ((listaDeCarros.get(i).getX() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX() || listaDeCarros.get(i).getX() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) && listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY()) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
+                            listaDeCarros.get(i).setImgAnterior0(false);
+                            listaDeCarros.get(i).setImgAnterior1(false);
+                            listaDeCarros.get(i).setImgAnterior2(true);
+                            listaDeCarros.get(i).setImgAnterior3(false);
                         }
                         //para cuando x y y de la lista de carros son iguales  a la de los nodos 
-                        if (listaDePeatones.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getY() && listaDePeatones.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getX()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 1, listaDePeatones.get(i).getY() - 0, listaDePeatones.get(i).getAncho(), listaDePeatones.get(i).getAlto(), this);
-                            
+                        if (listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY() && listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
+                            listaDeCarros.get(i).setImgAnterior0(false);
+                            listaDeCarros.get(i).setImgAnterior1(false);
+                            listaDeCarros.get(i).setImgAnterior2(true);
+                            listaDeCarros.get(i).setImgAnterior3(false);
+
                         }
                     }
 
                     //para izquierda o derecha se verifica es con las posiciones Y de los nodos si coinciden Y con 0
                     //esta hacia la izquierda y si coincide con 1 esta hacia la derecha
-                    if ("H".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getSentido())
-                            || "h".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getSentido())) {
-                        if (listaDePeatones.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getY()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 0, listaDePeatones.get(i).getY() + 0, listaDePeatones.get(i).getAlto(), listaDePeatones.get(i).getAncho(), this);
+                    if ("H".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
+                            || "h".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())) {
+                        if (listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY()) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
+                            listaDeCarros.get(i).setImgAnterior0(false);
+                            listaDeCarros.get(i).setImgAnterior1(false);
+                            listaDeCarros.get(i).setImgAnterior2(true);
+                            listaDeCarros.get(i).setImgAnterior3(false);
 
                         }
-                        if (listaDePeatones.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getX() && listaDePeatones.get(i).getY() > frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getY()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 0, listaDePeatones.get(i).getY() + 0, listaDePeatones.get(i).getAlto(), listaDePeatones.get(i).getAncho(), this);
+                        if (listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX() && listaDeCarros.get(i).getY() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY()) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(1).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
+                            listaDeCarros.get(i).setImgAnterior0(false);
+                            listaDeCarros.get(i).setImgAnterior1(true);
+                            listaDeCarros.get(i).setImgAnterior2(false);
+                            listaDeCarros.get(i).setImgAnterior3(false);
 
                         }
-                        if (listaDePeatones.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getY()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 1, listaDePeatones.get(i).getY() - 0, listaDePeatones.get(i).getAncho(), listaDePeatones.get(i).getAlto(), this);
-                            
+                        if (listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getY()) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX() - 1, listaDeCarros.get(i).getY() - 0, listaDeCarros.get(i).getAncho(), listaDeCarros.get(i).getAlto(), this);
+                            listaDeCarros.get(i).setImgAnterior0(false);
+                            listaDeCarros.get(i).setImgAnterior1(false);
+                            listaDeCarros.get(i).setImgAnterior2(false);
+                            listaDeCarros.get(i).setImgAnterior3(true);
+
                         }
-                        if (listaDePeatones.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getX() && listaDePeatones.get(i).getY() < frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getY()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 0, listaDePeatones.get(i).getY() + 0, listaDePeatones.get(i).getAlto(), listaDePeatones.get(i).getAncho(), this);
+                        if (listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getX() && listaDeCarros.get(i).getY() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getY()) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(0).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
+                            listaDeCarros.get(i).setImgAnterior0(true);
+                            listaDeCarros.get(i).setImgAnterior1(false);
+                            listaDeCarros.get(i).setImgAnterior2(false);
+                            listaDeCarros.get(i).setImgAnterior3(false);
 
                         }
 
@@ -863,107 +471,185 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
                     //para arriba o abajo se verifica es con las posiciones x de los nodos si coincide x con nodo 0 
                     //esta subiendo y si coincide con x  nodo 1 esta bajando se coloca la imagen respectiva a ese movimiento.
-                    if ("V".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getSentido())
-                            || "v".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getSentido())) {
-                        if (listaDePeatones.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getX()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 0, listaDePeatones.get(i).getY() + 0, listaDePeatones.get(i).getAlto(), listaDePeatones.get(i).getAncho(), this);
-                            
+                    if ("V".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
+                            || "v".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())) {
+                        if (listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(0).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
+                            listaDeCarros.get(i).setImgAnterior0(true);
+                            listaDeCarros.get(i).setImgAnterior1(false);
+                            listaDeCarros.get(i).setImgAnterior2(false);
+                            listaDeCarros.get(i).setImgAnterior3(false);
                         }
-                        if (listaDePeatones.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getX()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 0, listaDePeatones.get(i).getY() + 0, listaDePeatones.get(i).getAlto(), listaDePeatones.get(i).getAncho(), this);
-                            
+                        if (listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getX()) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(1).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
+                            listaDeCarros.get(i).setImgAnterior0(false);
+                            listaDeCarros.get(i).setImgAnterior1(true);
+                            listaDeCarros.get(i).setImgAnterior2(false);
+                            listaDeCarros.get(i).setImgAnterior3(false);
                         }
-                        if (listaDePeatones.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getY() && listaDePeatones.get(i).getX() < frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getX()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 0, listaDePeatones.get(i).getY() + 0, listaDePeatones.get(i).getAlto(), listaDePeatones.get(i).getAncho(), this);
-                            
+                        if (listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY() && listaDeCarros.get(i).getX() < frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX()) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
+                            listaDeCarros.get(i).setImgAnterior0(false);
+                            listaDeCarros.get(i).setImgAnterior1(false);
+                            listaDeCarros.get(i).setImgAnterior2(false);
+                            listaDeCarros.get(i).setImgAnterior3(true);
                         }
-                        if (listaDePeatones.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getY() && listaDePeatones.get(i).getX() > frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getX()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 0, listaDePeatones.get(i).getY() + 0, listaDePeatones.get(i).getAlto(), listaDePeatones.get(i).getAncho(), this);
-                            
+                        if (listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getY() && listaDeCarros.get(i).getX() > frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getX()) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
+                            listaDeCarros.get(i).setImgAnterior0(false);
+                            listaDeCarros.get(i).setImgAnterior1(false);
+                            listaDeCarros.get(i).setImgAnterior2(true);
+                            listaDeCarros.get(i).setImgAnterior3(false);
                         }
 
                     }
 
                     ///para XX o xx cuando concuerda x y Y con la del nodo no pinta.
-                    if ("XX".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getSentido())
-                            || "xx".equals(frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getSentido())) {
+                    if ("XX".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())
+                            || "xx".equals(frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getSentido())) {
 
                         //para izquierda
-                        if ((listaDePeatones.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getY() || listaDePeatones.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getY())
-                                && (listaDePeatones.get(i).getX() != frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getX())) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 0, listaDePeatones.get(i).getY() + 0, listaDePeatones.get(i).getAlto(), listaDePeatones.get(i).getAncho(), this);
-                            
+                        if ((listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY() || listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getY())
+                                && (listaDeCarros.get(i).getX() != frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getX())) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
+                            listaDeCarros.get(i).setImgAnterior0(false);
+                            listaDeCarros.get(i).setImgAnterior1(false);
+                            listaDeCarros.get(i).setImgAnterior2(true);
+                            listaDeCarros.get(i).setImgAnterior3(false);
                             ////System.out.println("1");
                         }
 
                         //para derecha
-                        if ((listaDePeatones.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(2).getY() || listaDePeatones.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(3).getY())
-                                && (listaDePeatones.get(i).getX() != frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(2).getX())) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 0, listaDePeatones.get(i).getY() + 0, listaDePeatones.get(i).getAlto(), listaDePeatones.get(i).getAncho(), this);
+                        if ((listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(2).getY() || listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(3).getY())
+                                && (listaDeCarros.get(i).getX() != frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(2).getX())) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
 
-                            
+                            listaDeCarros.get(i).setImgAnterior0(false);
+                            listaDeCarros.get(i).setImgAnterior1(false);
+                            listaDeCarros.get(i).setImgAnterior2(false);
+                            listaDeCarros.get(i).setImgAnterior3(true);
                             ////System.out.println("2");
                         }
 
                         //para abajo
-                        if ((listaDePeatones.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getX() || listaDePeatones.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(2).getX())
-                                && (listaDePeatones.get(i).getY() != frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getY())) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 0, listaDePeatones.get(i).getY() + 0, listaDePeatones.get(i).getAlto(), listaDePeatones.get(i).getAncho(), this);
-                            
+                        if ((listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX() || listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(2).getX())
+                                && (listaDeCarros.get(i).getY() != frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY())) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(1).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
+                            listaDeCarros.get(i).setImgAnterior0(false);
+                            listaDeCarros.get(i).setImgAnterior1(true);
+                            listaDeCarros.get(i).setImgAnterior2(false);
+                            listaDeCarros.get(i).setImgAnterior3(false);
+                            ////System.out.println("3");
+
                         }
 
                         //para arriba
-                        if ((listaDePeatones.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getX() || listaDePeatones.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(3).getX())
-                                && (listaDePeatones.get(i).getY() != frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(3).getY())) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 0, listaDePeatones.get(i).getY() + 0, listaDePeatones.get(i).getAlto(), listaDePeatones.get(i).getAncho(), this);
+                        if ((listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getX() || listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(3).getX())
+                                && (listaDeCarros.get(i).getY() != frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(3).getY())) {
+                            g.drawImage(listaDeCarros.get(i).getImagen().get(0).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
+                            listaDeCarros.get(i).setImgAnterior0(true);
+                            listaDeCarros.get(i).setImgAnterior1(false);
+                            listaDeCarros.get(i).setImgAnterior2(false);
+                            listaDeCarros.get(i).setImgAnterior3(false);
+                            ////System.out.println("4");
 
                         }
                         //para cuando son iguales en 0
-                        if (listaDePeatones.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getX() && listaDePeatones.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getY()) {
-                                g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 0, listaDePeatones.get(i).getY() + 0, listaDePeatones.get(i).getAlto(), listaDePeatones.get(i).getAncho(), this);                            
-                                g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 0, listaDePeatones.get(i).getY() + 0, listaDePeatones.get(i).getAlto(), listaDePeatones.get(i).getAncho(), this);                            
-                        }
-                        //para cuando son iguales en 1
-                        if (listaDePeatones.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getX() && listaDePeatones.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getY()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 0, listaDePeatones.get(i).getY() + 0, listaDePeatones.get(i).getAlto(), listaDePeatones.get(i).getAncho(), this);
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 0, listaDePeatones.get(i).getY() + 0, listaDePeatones.get(i).getAlto(), listaDePeatones.get(i).getAncho(), this);
-                            
-                        }
-                        //para cuando son iguales en 2
-                        if (listaDePeatones.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(2).getX() && listaDePeatones.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(2).getY()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 0, listaDePeatones.get(i).getY() + 0, listaDePeatones.get(i).getAlto(), listaDePeatones.get(i).getAncho(), this);
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 0, listaDePeatones.get(i).getY() + 0, listaDePeatones.get(i).getAlto(), listaDePeatones.get(i).getAncho(), this);
-                            
-                        }
-                        //para cuando son iguales en 3
-                        if (listaDePeatones.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(3).getX() && listaDePeatones.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(3).getY()) {
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 0, listaDePeatones.get(i).getY() + 0, listaDePeatones.get(i).getAlto(), listaDePeatones.get(i).getAncho(), this);
-                            g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 0, listaDePeatones.get(i).getY() + 0, listaDePeatones.get(i).getAlto(), listaDePeatones.get(i).getAncho(), this);
+                        if (listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX() && listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY()) {
+
+                            if (listaDeCarros.get(i).isImgAnterior1() == true) {
+                                g.drawImage(listaDeCarros.get(i).getImagen().get(1).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
+                                ////System.out.println("5");
+                            }
+                            if (listaDeCarros.get(i).isImgAnterior2() == true) {
+                                g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
+                                ////System.out.println("6");
                             }
                         }
-//                        //para 0 cuando es primera vez 
-//                        if (listaDePeatones.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getX() && listaDePeatones.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(0).getY()) {
-//                                g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 0, listaDePeatones.get(i).getY() + 0, listaDePeatones.get(i).getAlto(), listaDePeatones.get(i).getAncho(), this);
-//                            }
-//                        }
+                        //para cuando son iguales en 1
+                        if (listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getX() && listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getY()) {
 
-//                        //para 1 cuando es primera vez 
-//                        if (listaDePeatones.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getX() && listaDePeatones.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(1).getY()) {
-//                                g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 0, listaDePeatones.get(i).getY() + 0, listaDePeatones.get(i).getAlto(), listaDePeatones.get(i).getAncho(), this);
-//                            }
-//                        }
-//                        //para 2 cuando es primera vez 
-//                        if (listaDePeatones.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(2).getX() && listaDePeatones.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(2).getY()) {
-//                                g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 0, listaDePeatones.get(i).getY() + 0, listaDePeatones.get(i).getAlto(), listaDePeatones.get(i).getAncho(), this);
-//                            }
-//                        
-//                        //para 3 cuando es primera vez 
-//                        if (listaDePeatones.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(2).getX() && listaDePeatones.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosPeaton().get(3).getY()) {
-//                                g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 0, listaDePeatones.get(i).getY() + 0, listaDePeatones.get(i).getAlto(), listaDePeatones.get(i).getAncho(), this);
-                          
-                }}
+                            if (listaDeCarros.get(i).isImgAnterior0() == true) {
+                                g.drawImage(listaDeCarros.get(i).getImagen().get(0).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
+                                ////System.out.println("7");
+                            }
+                            if (listaDeCarros.get(i).isImgAnterior2() == true) {
+                                g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
+                                ////System.out.println("8");
+                            }
+                        }
+                        //para cuando son iguales en 2
+                        if (listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(2).getX() && listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(2).getY()) {
+
+                            if (listaDeCarros.get(i).isImgAnterior1() == true) {
+                                g.drawImage(listaDeCarros.get(i).getImagen().get(1).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
+                                ////System.out.println("9");
+                            }
+                            if (listaDeCarros.get(i).isImgAnterior3() == true) {
+                                g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
+                                ////System.out.println("10");
+                            }
+                        }
+                        //para cuando son iguales en 3
+                        if (listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(3).getX() && listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(3).getY()) {
+
+                            if (listaDeCarros.get(i).isImgAnterior0() == true) {
+                                g.drawImage(listaDeCarros.get(i).getImagen().get(0).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
+                                ////System.out.println("11");
+                            }
+                            if (listaDeCarros.get(i).isImgAnterior3() == true) {
+                                g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
+                                ////System.out.println("12");
+                            }
+                        }
+                        //para 0 cuando es primera vez 
+                        if (listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getX() && listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(0).getY()) {
+                            if (listaDeCarros.get(i).isImgAnterior0() == false && listaDeCarros.get(i).isImgAnterior1() == false && listaDeCarros.get(i).isImgAnterior2() == false && listaDeCarros.get(i).isImgAnterior3() == false) {
+                                g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
+                                ////System.out.println("13");
+                            }
+                        }
+
+                        //para 1 cuando es primera vez 
+                        if (listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getX() && listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(1).getY()) {
+                            if (listaDeCarros.get(i).isImgAnterior0() == false && listaDeCarros.get(i).isImgAnterior1() == false && listaDeCarros.get(i).isImgAnterior2() == false && listaDeCarros.get(i).isImgAnterior3() == false) {
+                                g.drawImage(listaDeCarros.get(i).getImagen().get(3).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
+                                ////System.out.println("14");
+                            }
+                        }
+                        //para 2 cuando es primera vez 
+                        if (listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(2).getX() && listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(2).getY()) {
+                            if (listaDeCarros.get(i).isImgAnterior0() == false && listaDeCarros.get(i).isImgAnterior1() == false && listaDeCarros.get(i).isImgAnterior2() == false && listaDeCarros.get(i).isImgAnterior3() == false) {
+                                g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
+                                ////System.out.println("15");
+                            }
+                        }
+                        //para 3 cuando es primera vez 
+                        if (listaDeCarros.get(i).getX() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(3).getX() && listaDeCarros.get(i).getY() == frame.getCalles().get(idCalle).getListaDeNodosEnCalle().get(3).getY()) {
+                            if (listaDeCarros.get(i).isImgAnterior0() == false && listaDeCarros.get(i).isImgAnterior1() == false && listaDeCarros.get(i).isImgAnterior2() == false && listaDeCarros.get(i).isImgAnterior3() == false) {
+                                g.drawImage(listaDeCarros.get(i).getImagen().get(2).getImage(), listaDeCarros.get(i).getX() - 0, listaDeCarros.get(i).getY() + 0, listaDeCarros.get(i).getAlto(), listaDeCarros.get(i).getAncho(), this);
+                                ////System.out.println("16");
+                            }
+                        }
+
+                    }
+
+                }
+
+            }
+
         }
+        //para pintar los peatones
+        for (int i = 0; i < listaDePeatones.size(); i++) {
+            int[] cuadroSeleccionado = new int[2];
+            cuadroSeleccionado = retornarPosicionCuadriculaSeleccionada(listaDePeatones.get(i).getX(), listaDePeatones.get(i).getY());
 
+            int idCalle = matrizCuadriculaMapaIdCalles[cuadroSeleccionado[0]][cuadroSeleccionado[1]];
+            if (idCalle != -1) {
+                g.drawImage(listaDePeatones.get(i).getImagen().getImage(), listaDePeatones.get(i).getX() - 1, listaDePeatones.get(i).getY() - 0, listaDePeatones.get(i).getAncho(), listaDePeatones.get(i).getAlto(), this);
+
+            }
+        }
 
         repaint();
 
@@ -976,11 +662,10 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
             ///Se saca un primer formulario para identificar que desea hacer 
             ///o en el mismo formulario se identifica carros o ruta 
             //para llamar el formulario de los carros
-            //FormularioParaAnimacionCarro formulario = new FormularioParaAnimacionCarro();
-            
-            //para llamar el formulario de los peatones            
-            FormularioParaAnimacionPeaton formulario = new FormularioParaAnimacionPeaton();
+            FormularioParaAnimacionCarro formulario = new FormularioParaAnimacionCarro();
 
+            //para llamar el formulario de los peatones            
+            //FormularioParaAnimacionPeaton formulario = new FormularioParaAnimacionPeaton();
             int x = (int) e.getPoint().getX();
             int y = (int) e.getPoint().getY();
 
@@ -1026,7 +711,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
     //este metodo crea un carro de tipo Automovil y lo agrega a la lista de coches.
     public void crearCarro(LinkedList<ImageIcon> lista, int x, int y, int xNodoPosClick, int yNodoPosClick) {
         //recibe x y y de la matriz para saber en que posicion lo creo.
-        int iCalle = matrizCuadriculaMapaIdCalles[x][y];
+        int iCalle = this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[x][y]);
 
         if (iCalle != -1) {
             if (frame.getCalles().get(iCalle).getSentido().equals("Derecha")
@@ -1131,7 +816,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
     public void crearPeaton(ImageIcon imagenPeaton, int x, int y, int xNodoPosClick, int yNodoPosClick) {
         //recibe x y y de la matriz para saber en que posicion lo creo.
         int iCalle = matrizCuadriculaMapaIdCalles[x][y];
-        System.out.println("ruta en crearPeaton"+imagenPeaton);
+        System.out.println("ruta en crearPeaton" + imagenPeaton);
         if (iCalle != -1) {
             if (frame.getCalles().get(iCalle).getSentido().equals("Derecha")
                     || frame.getCalles().get(iCalle).getSentido().equals("Izquierda")
@@ -1139,97 +824,85 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                     || frame.getCalles().get(iCalle).getSentido().equals("Abajo")) {
                 //lo agrego en el nodo 0 de cada calle
                 int xNodo = frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(0).getX();
-                int yNodo = frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(0).getY();                
-                Peaton peatonEnAnden = new Peaton(listaDePeatones.size(), xNodo, yNodo, 15, 15,imagenPeaton, true);
+                int yNodo = frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(0).getY();
+                Peaton peatonEnAnden = new Peaton(listaDePeatones.size(), xNodo, yNodo, 15, 15, imagenPeaton, true);
                 listaDePeatones.add(peatonEnAnden);
 
-//            }
-//            if (frame.getCalles().get(iCalle).getSentido().equals("Doble sentido")) {
-//                if (matrizLetrasElementosInternosCuadriculaMapa[x][y].equals("XX") || matrizLetrasElementosInternosCuadriculaMapa[x][y].equals("xx")) {
-//
-//                    if (xNodoPosClick > frame.getCalles().get(iCalle).getListaDeNodosEnCalle().get(0).getX()
-//                            && xNodoPosClick < frame.getCalles().get(iCalle).getListaDeNodosEnCalle().get(0).getX() + 6
-//                            && yNodoPosClick > frame.getCalles().get(iCalle).getListaDeNodosEnCalle().get(0).getY()
-//                            && yNodoPosClick < frame.getCalles().get(iCalle).getListaDeNodosEnCalle().get(0).getY() + 6) {
-//                        //lo agrego en el nodo 0 de cada calle
-//                        int xNodo = frame.getCalles().get(iCalle).getListaDeNodosEnCalle().get(0).getX();
-//                        int yNodo = frame.getCalles().get(iCalle).getListaDeNodosEnCalle().get(0).getY();
-//
-//                        Automovil auto = new Automovil(listaDeCarros.size(), xNodo, yNodo, 15, 15, true);
-//                        auto.setImagen(lista);//aqui recibe un tipo imageIcon
-//
-//                        listaDeCarros.add(auto);
-//                    }
-//                    if (xNodoPosClick > frame.getCalles().get(iCalle).getListaDeNodosEnCalle().getX()
-//                            && xNodoPosClick < frame.getCalles().get(iCalle).getListaDeNodosEnCalle().getX() + 6
-//                            && yNodoPosClick > frame.getCalles().get(iCalle).getListaDeNodosEnCalle().getY()
-//                            && yNodoPosClick < frame.getCalles().get(iCalle).getListaDeNodosEnCalle().getY() + 6) {
-//                        //lo agrego en el nodo 1 de cada calle
-//                        int xNodo = frame.getCalles().get(iCalle).getListaDeNodosEnCalle().getX();
-//                        int yNodo = frame.getCalles().get(iCalle).getListaDeNodosEnCalle().getY();
-//
-//                        Automovil auto = new Automovil(listaDeCarros.size(), xNodo, yNodo, 15, 15, true);
-//                        auto.setImagen(lista);//aqui recibe un tipo imageIcon
-//
-//                        listaDeCarros.add(auto);
-//                    }
-//                    if (xNodoPosClick > frame.getCalles().get(iCalle).getListaDeNodosEnCalle().getX()
-//                            && xNodoPosClick < frame.getCalles().get(iCalle).getListaDeNodosEnCalle().getX() + 6
-//                            && yNodoPosClick > frame.getCalles().get(iCalle).getListaDeNodosEnCalle().getY()
-//                            && yNodoPosClick < frame.getCalles().get(iCalle).getListaDeNodosEnCalle().getY() + 6) {
-//                        //lo agrego en el nodo 2 de cada calle
-//                        int xNodo = frame.getCalles().get(iCalle).getListaDeNodosEnCalle().getX();
-//                        int yNodo = frame.getCalles().get(iCalle).getListaDeNodosEnCalle().getY();
-//
-//                        Automovil auto = new Automovil(listaDeCarros.size(), xNodo, yNodo, 15, 15, true);
-//                        auto.setImagen(lista);//aqui recibe un tipo imageIcon
-//
-//                        listaDeCarros.add(auto);
-//                    }
-//                    if (xNodoPosClick > frame.getCalles().get(iCalle).getListaDeNodosEnCalle().getX()
-//                            && xNodoPosClick < frame.getCalles().get(iCalle).getListaDeNodosEnCalle().getX() + 6
-//                            && yNodoPosClick > frame.getCalles().get(iCalle).getListaDeNodosEnCalle().getY()
-//                            && yNodoPosClick < frame.getCalles().get(iCalle).getListaDeNodosEnCalle().getY() + 6) {
-//                        //lo agrego en el nodo 3 de cada calle
-//                        int xNodo = frame.getCalles().get(iCalle).getListaDeNodosEnCalle().getX();
-//                        int yNodo = frame.getCalles().get(iCalle).getListaDeNodosEnCalle().getY();
-//
-//                        Automovil auto = new Automovil(listaDeCarros.size(), xNodo, yNodo, 15, 15, true);
-//                        auto.setImagen(lista);//aqui recibe un tipo imageIcon
-//
-//                        listaDeCarros.add(auto);
-//                    }
-//
-//                } else {
-//                    if (xNodoPosClick > frame.getCalles().get(iCalle).getListaDeNodosEnCalle().get(0).getX()
-//                            && xNodoPosClick < frame.getCalles().get(iCalle).getListaDeNodosEnCalle().get(0).getX() + 6
-//                            && yNodoPosClick > frame.getCalles().get(iCalle).getListaDeNodosEnCalle().get(0).getY()
-//                            && yNodoPosClick < frame.getCalles().get(iCalle).getListaDeNodosEnCalle().get(0).getY() + 6) {
-//                        //lo agrego en el nodo 0 de cada calle
-//                        int xNodo = frame.getCalles().get(iCalle).getListaDeNodosEnCalle().get(0).getX();
-//                        int yNodo = frame.getCalles().get(iCalle).getListaDeNodosEnCalle().get(0).getY();
-//
-//                        Automovil auto = new Automovil(listaDeCarros.size(), xNodo, yNodo, 15, 15, true);
-//                        auto.setImagen(lista);//aqui recibe un tipo imageIcon
-//
-//                        listaDeCarros.add(auto);
-//                    } else {
-//                        //lo agrego en el nodo 1 de cada calle
-//                        int xNodo = frame.getCalles().get(iCalle).getListaDeNodosEnCalle().getX();
-//                        int yNodo = frame.getCalles().get(iCalle).getListaDeNodosEnCalle().getY();
-//
-//                        Automovil auto = new Automovil(listaDeCarros.size(), xNodo, yNodo, 15, 15, true);
-//                        auto.setImagen(lista);//aqui recibe un tipo imageIcon
-//
-//                        listaDeCarros.add(auto);
-//                    }
-//                }
+            }
+            if (frame.getCalles().get(iCalle).getSentido().equals("Doble sentido")) {
+                if (matrizLetrasElementosInternosCuadriculaMapa[x][y].equals("XX") || matrizLetrasElementosInternosCuadriculaMapa[x][y].equals("xx")) {
+
+                    if (xNodoPosClick > frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(0).getX()
+                            && xNodoPosClick < frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(0).getX() + 6
+                            && yNodoPosClick > frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(0).getY()
+                            && yNodoPosClick < frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(0).getY() + 6) {
+                        //lo agrego en el nodo 0 de cada calle
+                        int xNodo = frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(0).getX();
+                        int yNodo = frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(0).getY();
+
+                        Peaton peatonEnAnden = new Peaton(listaDePeatones.size(), xNodo, yNodo, 15, 15, imagenPeaton, true);
+                        listaDePeatones.add(peatonEnAnden);
+
+                    }
+                    if (xNodoPosClick > frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(1).getX()
+                            && xNodoPosClick < frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(1).getX() + 6
+                            && yNodoPosClick > frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(1).getY()
+                            && yNodoPosClick < frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(1).getY() + 6) {
+                        //lo agrego en el nodo 1 de cada calle
+                        int xNodo = frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(1).getX();
+                        int yNodo = frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(1).getY();
+
+                        Peaton peatonEnAnden = new Peaton(listaDePeatones.size(), xNodo, yNodo, 15, 15, imagenPeaton, true);
+                        listaDePeatones.add(peatonEnAnden);
+                    }
+                    if (xNodoPosClick > frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(2).getX()
+                            && xNodoPosClick < frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(2).getX() + 6
+                            && yNodoPosClick > frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(2).getY()
+                            && yNodoPosClick < frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(2).getY() + 6) {
+                        //lo agrego en el nodo 2 de cada calle
+                        int xNodo = frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(2).getX();
+                        int yNodo = frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(2).getY();
+
+                        Peaton peatonEnAnden = new Peaton(listaDePeatones.size(), xNodo, yNodo, 15, 15, imagenPeaton, true);
+                        listaDePeatones.add(peatonEnAnden);
+                    }
+                    if (xNodoPosClick > frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(3).getX()
+                            && xNodoPosClick < frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(3).getX() + 6
+                            && yNodoPosClick > frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(3).getY()
+                            && yNodoPosClick < frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(3).getY() + 6) {
+                        //lo agrego en el nodo 3 de cada calle
+                        int xNodo = frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(3).getX();
+                        int yNodo = frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(3).getY();
+
+                        Peaton peatonEnAnden = new Peaton(listaDePeatones.size(), xNodo, yNodo, 15, 15, imagenPeaton, true);
+                        listaDePeatones.add(peatonEnAnden);
+                    }
+
+                } else {
+                    if (xNodoPosClick > frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(0).getX()
+                            && xNodoPosClick < frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(0).getX() + 6
+                            && yNodoPosClick > frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(0).getY()
+                            && yNodoPosClick < frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(0).getY() + 6) {
+                        //lo agrego en el nodo 0 de cada calle
+                        int xNodo = frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(0).getX();
+                        int yNodo = frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(0).getY();
+
+                        Peaton peatonEnAnden = new Peaton(listaDePeatones.size(), xNodo, yNodo, 15, 15, imagenPeaton, true);
+                        listaDePeatones.add(peatonEnAnden);
+                    } else {
+                        //lo agrego en el nodo 1 de cada calle
+                        int xNodo = frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(1).getX();
+                        int yNodo = frame.getCalles().get(iCalle).getListaDeNodosPeaton().get(1).getY();
+
+                        Peaton peatonEnAnden = new Peaton(listaDePeatones.size(), xNodo, yNodo, 15, 15, imagenPeaton, true);
+                        listaDePeatones.add(peatonEnAnden);
+                    }
+                }
             }
 
         }
     }
 
-    
     ///metodo para verificar si hay algun elemento en esa posicion de la matriz de elementos 
     public boolean hayAlgunElemento() {
         for (int i = 0; i < 10; i++) {
@@ -1337,11 +1010,17 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
     public NodoGrafoMapa retornarAleatoriamenteUnNodoB(NodoGrafoMapa nodoA) {
         LinkedList<NodoGrafoMapa> listaPosiblesB = new LinkedList<>();
         for (int i = 0; i < frame.getAristasGrafoMapa().size(); i++) {
+            System.out.println("entro--" + frame.getAristasGrafoMapa().get(i).getNodoA().getId() + " nodoB " + frame.getAristasGrafoMapa().get(i).getNodoB().getId());
+            System.out.println("condicion"+frame.getAristasGrafoMapa().get(i).getNodoA().getId()+"var entrante"+nodoA.getId());
             if (frame.getAristasGrafoMapa().get(i).getNodoA().getId() == nodoA.getId()) {
+                System.out.println("entro " + frame.getAristasGrafoMapa().get(i).getNodoA().getId() + " nodoB " + frame.getAristasGrafoMapa().get(i).getNodoB().getId());
                 listaPosiblesB.add(frame.getAristasGrafoMapa().get(i).getNodoB());
             }
         }
         if (listaPosiblesB.size() > 0) {
+            for (int i = 0; i < listaPosiblesB.size(); i++) {
+                System.out.println("lista de posibles" + listaPosiblesB.get(i).getId());
+            }
             return listaPosiblesB.get((int) Math.floor(Math.random() * listaPosiblesB.size()));
         }
         return null;
@@ -1350,7 +1029,11 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
     //Retorna el nodo actual en el cual se encuentra el carro 
     public NodoGrafoMapa retornarNodoEnElqueSeEstaParadoParaElCarro(Automovil carro) {
-
+        for (int i = 0; i < frame.getListaNodosMapa().size(); i++) {
+            System.out.println("listanodos"+frame.getListaNodosMapa().get(i).getId());
+        }
+        
+        
         for (int i = 0; i < frame.getListaNodosMapa().size(); i++) {
             if (frame.getListaNodosMapa().get(i).getX() == carro.getX() && frame.getListaNodosMapa().get(i).getY() == carro.getY()) {
                 return frame.getListaNodosMapa().get(i);
@@ -1359,6 +1042,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
         return null;
     }
+
     //Verifica si existe una transicion desde el nodo A hasta el nodo B
     public boolean saberSiHayTransicionDeNodoAaNodoB(NodoGrafoMapa nodoA, NodoGrafoMapa nodoB) {
         for (int i = 0; i < frame.getAristasGrafoMapa().size(); i++) {
@@ -1369,6 +1053,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
         return false;
     }
+
     //
     public void setColor(LinkedList<Integer> ruta, Color c) {
         for (int i = 0; i < frame.getListaNodosMapa().size(); i++) {
@@ -1397,7 +1082,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
     public void run() {
         //aca se mueven los carros aleatoriamente 
         while (true) {
-               System.out.println("corriendo");
+            System.out.println("corriendo");
             if (this.moverCarrosAleatoriamente == true) {
 
                 for (int i = 0; i < listaDeCarros.size(); i++) {
@@ -1593,7 +1278,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
     }
 
     /*este metodo valida que se realizo clic sobre un nodo y lo agrega en la lsita 
-    de nodos a visitar por el carro*/
+     de nodos a visitar por el carro*/
     public void setValidarClic(boolean validarClic, LinkedList<Integer> listaDeIdNodosAvisitar) {
         this.validarClic = validarClic;
         this.listaAuxiliarParaTomarRutaDeCarros = listaDeIdNodosAvisitar;
@@ -1706,6 +1391,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         }
         return false;
     }
+
     //Verifica si existe un carro por atras dentro de la ruta que lleva 
     //para parar y evitar la colision
     private boolean hayAlgunCarroAdelanteEnXmenosUno(Automovil carroV) {
@@ -1718,6 +1404,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         }
         return false;
     }
+
     //Verifica si existe un carro por abajo dentro de la ruta que lleva 
     //para parar y evitar la colision
     private boolean hayAlgunCarroAdelanteEnYmasUno(Automovil carroV) {
@@ -1731,6 +1418,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         return false;
 
     }
+
     //Verifica si existe un carro por arriba dentro de la ruta que lleva 
     //para parar y evitar la colision
     private boolean hayAlgunCarroAdelanteEnYmenosUno(Automovil carroV) {
@@ -1756,6 +1444,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         }
         return false;
     }
+
     //Retorna el entero id de un carro clickeado
     private int retornarCarroCLikeado(int x, int y, LinkedList<Automovil> listaDeCarros) {
         for (int i = 0; i < listaDeCarros.size(); i++) {
@@ -1766,6 +1455,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         }
         return -1;
     }
+
     //Agrega sucesos en las vias eliminando las transiciones entre los 
     //nodos involucrados en el suceso
     void crearSuceso(ImageIcon imageIcon, int x, int y, String suceso) {
@@ -1830,6 +1520,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         }
 
     }
+
     //Elimina los sucesos en las vias agregando las transiciones entre los 
     //nodos involucrados en el suceso ubicado por las coordenadas x^y
     public void eliminarSuceso(int x, int y) {
@@ -1870,6 +1561,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
             //para las que son intersecciones se hacen con los nodos de la calle
         }
     }
+
     //Elimina un carro de la lista de carros identificado por el id entrado por parametro
     void eliminarCarro(int idCarro) {
         for (int i = 0; i < listaDeCarros.size(); i++) {
@@ -1890,7 +1582,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         }
         return -1;
     }
-    
+
     //Lena la lista de la ruta en el carro
     void enviarListaEnElMismo(int idCarro, String tipoDeRuta) {
         LinkedList<Integer> listaCopiaAux = new LinkedList<>();
@@ -2005,6 +1697,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         listaDeCarros.get(id).setRuta(ruta);
 
     }
+
     //retorna la lista de los nodos a visitar por un carro
     private LinkedList<Integer> rutaParaMoverCarro(LinkedList<ValorCola> listaDijkstra, Integer nodoOrigen, Integer nodoDestino) {
 
@@ -2118,17 +1811,38 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         return false;
     }
 
+    /*este metodo busca un id en la lista de calles y retorna el contador que corresponde
+     al id de este*/
+    public int buscarIdEnlistaDeCalles(int id) {
+        for (int i = 0; i < frame.getCalles().size(); i++) {
+            if (frame.getCalles().get(i).getId() == id) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int buscarIdEnlistaDeNodos(int id) {
+        for (int i = 0; i < frame.getListaNodosMapa().size(); i++) {
+            if (frame.getListaNodosMapa().get(i).getId() == id) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     private void llenarMatrizDeRutaMasCorta() {
         for (int i = 0; i < frame.getAristasGrafoMapa().size(); i++) {
-            matrizGrafoMapaAdyacenciaRutaMasCorta[frame.getAristasGrafoMapa().get(i).getNodoA().getId()][frame.getAristasGrafoMapa().get(i).getNodoB().getId()] = 10;
+            matrizGrafoMapaAdyacenciaRutaMasCorta[this.buscarIdEnlistaDeNodos(frame.getAristasGrafoMapa().get(i).getNodoA().getId())][this.buscarIdEnlistaDeNodos(frame.getAristasGrafoMapa().get(i).getNodoB().getId())] = 10;
         }
     }
 
     private void llenarMatrizDeRutaMasVeloz() {
         for (int i = 0; i < frame.getAristasGrafoMapa().size(); i++) {
-            matrizGrafoMapaAdyacenciaRutaMasVeloz[frame.getAristasGrafoMapa().get(i).getNodoA().getId()][frame.getAristasGrafoMapa().get(i).getNodoB().getId()] = frame.getAristasGrafoMapa().get(i).getArista().getVelocidad();
+            matrizGrafoMapaAdyacenciaRutaMasVeloz[this.buscarIdEnlistaDeNodos(frame.getAristasGrafoMapa().get(i).getNodoA().getId())][this.buscarIdEnlistaDeNodos(frame.getAristasGrafoMapa().get(i).getNodoB().getId())] = frame.getAristasGrafoMapa().get(i).getArista().getVelocidad();
         }
     }
+
     //Llena la matriz de menor trafico verificando en la ruta cuantos carros existen sobre la ruta
     private void llenarMatrizDeRutaMenosTrafico(LinkedList<AristaGrafoMapa> aristasMapa, LinkedList<Automovil> automovilesLista) {
         LinkedList<AristaGrafoMapa> aristas = new LinkedList<>();
@@ -2147,17 +1861,17 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                 if (posicionXYdeLaCalleDelCarro[0] == posicionXYdeLaCalle[0] && posicionXYdeLaCalleDelCarro[1] == posicionXYdeLaCalle[1]) {
                     if ("h".equals(aristas.get(i).getNodoA().getSentido()) || "H".equals(aristas.get(i).getNodoA().getSentido())) {
                         if (automoviles.get(j).getX() == aristas.get(i).getNodoA().getX()) {
-                            matrizGrafoMapaAdyacenciaRutaMenosTrafico[aristas.get(i).getNodoA().getId()][aristas.get(i).getNodoB().getId()]++;
+                            matrizGrafoMapaAdyacenciaRutaMenosTrafico[this.buscarIdEnlistaDeNodos(aristas.get(i).getNodoA().getId())][this.buscarIdEnlistaDeNodos(aristas.get(i).getNodoB().getId())]++;
                         }
 
                     }
                     if ("v".equals(aristas.get(i).getNodoA().getSentido()) || "V".equals(aristas.get(i).getNodoA().getSentido())) {
                         if (automoviles.get(j).getY() == aristas.get(i).getNodoA().getY()) {
-                            matrizGrafoMapaAdyacenciaRutaMenosTrafico[aristas.get(i).getNodoA().getId()][aristas.get(i).getNodoB().getId()]++;
+                            matrizGrafoMapaAdyacenciaRutaMenosTrafico[this.buscarIdEnlistaDeNodos(aristas.get(i).getNodoA().getId())][this.buscarIdEnlistaDeNodos(aristas.get(i).getNodoB().getId())]++;
                         }
                     }
                     if (!"h".equals(aristas.get(i).getNodoA().getSentido()) && !"H".equals(aristas.get(i).getNodoA().getSentido()) && !"v".equals(aristas.get(i).getNodoA().getSentido()) && !"V".equals(aristas.get(i).getNodoA().getSentido())) {
-                        matrizGrafoMapaAdyacenciaRutaMenosTrafico[aristas.get(i).getNodoA().getId()][aristas.get(i).getNodoB().getId()]++;
+                        matrizGrafoMapaAdyacenciaRutaMenosTrafico[this.buscarIdEnlistaDeNodos(aristas.get(i).getNodoA().getId())][this.buscarIdEnlistaDeNodos(aristas.get(i).getNodoB().getId())]++;
                     }
                 }
             }
@@ -2165,16 +1879,16 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         }
 
     }
+
     //Genera un camino aleatorio para cada carro 
     void moverCarroAleatoriamente(int idCarro) {
         for (int i = 0; i < listaDeCarros.size(); i++) {
             if (listaDeCarros.get(i).getId() == idCarro) {
-                System.out.println("lista id nodos" + listaDeCarros.get(i).getRutaIdNodos().size());
                 listaDeCarros.get(i).setMover(true);
                 for (int j = 0; j < frame.getListaNodosMapa().size(); j++) {
-                     frame.getListaNodosMapa().get(j).setColor(Color.BLACK);
+                    frame.getListaNodosMapa().get(j).setColor(Color.BLACK);
                 }
-                
+
             }
         }
     }

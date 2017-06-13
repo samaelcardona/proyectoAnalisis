@@ -28,7 +28,6 @@ import modelo.Ciudad;
 import modelo.Edificio;
 import modelo.NodoGrafoMapa;
 
-
 /**
  *
  * @author SAMAEL
@@ -44,34 +43,28 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
     LinkedList<AristaGrafoMapa> aristasGrafoMapa;
     Thread hilo;
     boolean iniciarHilo;
-    
+
     /**
      * Creates new form FrameCrearMapa
      */
     public FrameAnimacionMapa() {
         initComponents();
-        
+
         calles = new LinkedList();
-        arboles=new LinkedList<>();
-        edificios=new LinkedList<>();
-        listaNodosMapa=new LinkedList<>();
-        aristasGrafoMapa=new LinkedList<>();
-        ciudad=new Ciudad();
-        
+        arboles = new LinkedList<>();
+        edificios = new LinkedList<>();
+        listaNodosMapa = new LinkedList<>();
+        aristasGrafoMapa = new LinkedList<>();
+        ciudad = new Ciudad();
+
         this.hilo = new Thread(this.panelAnimacionMapa1);
-        
-        
-        this.iniciarHilo=false;
-        
-         
-        
-    
-        
-      
-       // addKeyListener(crearMapaPanel1);
+
+        this.iniciarHilo = false;
+
+        // addKeyListener(crearMapaPanel1);
         setFocusable(true);
         this.setLocationRelativeTo(null);
-        
+
     }
 
     /**
@@ -168,53 +161,52 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
         //cargar el archivo de la ciudad
         ObjectInputStream objetoDeEntrada;
         String file = null;
-        JFileChooser ventanaDialogo=new JFileChooser("C:\\Users\\SAMAEL\\Documents\\NetBeansProjects\\proyectoAnalisis");
-        int option=ventanaDialogo.showOpenDialog(this);
-        if (option==JFileChooser.APPROVE_OPTION) {
-            file=ventanaDialogo.getSelectedFile().getPath();
-            
-             try {
-            objetoDeEntrada=new ObjectInputStream(new FileInputStream(file));
-            ciudad=(Ciudad)objetoDeEntrada.readObject();
-            objetoDeEntrada.close();
-            
-            
-        }catch(IOException e){ 
-            System.out.println("problema"+e.getMessage());
-        } catch (ClassNotFoundException ex) {
-            System.out.println("problema"+ex.getMessage());
-            Logger.getLogger(FrameAnimacionMapa.class.getName()).log(Level.SEVERE, null, ex);
-            
-        }
+        JFileChooser ventanaDialogo = new JFileChooser("C:\\Users\\VICTOR\\Documents\\analisis\\proyectoAnalisis");
+        int option = ventanaDialogo.showOpenDialog(this);
+        if (option == JFileChooser.APPROVE_OPTION) {
+            file = ventanaDialogo.getSelectedFile().getPath();
+            try {
+                objetoDeEntrada = new ObjectInputStream(new FileInputStream(file));
+                ciudad = (Ciudad) objetoDeEntrada.readObject();
+                objetoDeEntrada.close();
 
-        
-        panelAnimacionMapa1.setMatrizLetrasElementosInternosCuadriculaMapa(ciudad.getMatrizLetrasElementosInternosCuadriculaMapa());
-        panelAnimacionMapa1.setMatrizCuadriculaMapaIdArboles(ciudad.getMatrizCuadriculaMapaIdArboles());
-        panelAnimacionMapa1.setMatrizCuadriculaMapaIdCalles(ciudad.getMatrizCuadriculaMapaIdCalles());
-        panelAnimacionMapa1.setMatrizCuadriculaMapaIdEdificios(ciudad.getMatrizCuadriculaMapaIdEdificios());
-        panelAnimacionMapa1.setMatrizPuntosLimitesCuadriculaMapa(ciudad.getMatrizPuntosLimitesCuadriculaMapa());
-       
-        
-        this.calles=ciudad.getListaCalles();
-        this.arboles=ciudad.getArboles();
-        this.edificios=ciudad.getListaEdificos();
-        this.listaNodosMapa=ciudad.getListaNodosMapa();
-        this.aristasGrafoMapa=ciudad.getListaDeTransicionesAristas();
-        
-         panelAnimacionMapa1.setFrame(this);
+            } catch (IOException e) {
+                System.out.println("problema" + e.getMessage());
+                JOptionPane.showMessageDialog(this, "SELECCIONE UN ARCHIVO VALIDO");
+
+            } catch (ClassNotFoundException ex) {
+                System.out.println("problema" + ex.getMessage());
+                Logger.getLogger(FrameAnimacionMapa.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, "SELECCIONE UN ARCHIVO VALIDO");
+
+            }
+
+            panelAnimacionMapa1.setMatrizLetrasElementosInternosCuadriculaMapa(ciudad.getMatrizLetrasElementosInternosCuadriculaMapa());
+            panelAnimacionMapa1.setMatrizCuadriculaMapaIdArboles(ciudad.getMatrizCuadriculaMapaIdArboles());
+            panelAnimacionMapa1.setMatrizCuadriculaMapaIdCalles(ciudad.getMatrizCuadriculaMapaIdCalles());
+            panelAnimacionMapa1.setMatrizCuadriculaMapaIdEdificios(ciudad.getMatrizCuadriculaMapaIdEdificios());
+            panelAnimacionMapa1.setMatrizPuntosLimitesCuadriculaMapa(ciudad.getMatrizPuntosLimitesCuadriculaMapa());
+
+            this.calles = ciudad.getListaCalles();
+            this.arboles = ciudad.getArboles();
+            this.edificios = ciudad.getListaEdificos();
+            this.listaNodosMapa = ciudad.getListaNodosMapa();
+            this.aristasGrafoMapa = ciudad.getListaDeTransicionesAristas();
+
+            panelAnimacionMapa1.setFrame(this);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         panelAnimacionMapa1.moverCarros();
-        if (this.iniciarHilo==false) {
+        if (this.iniciarHilo == false) {
             this.hilo.start();
         }
-        this.iniciarHilo=true;
+        this.iniciarHilo = true;
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -223,7 +215,7 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        paginaInicial inicio=new paginaInicial();
+        paginaInicial inicio = new paginaInicial();
         inicio.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -231,23 +223,27 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
     public void agregarCalleALaLista(Calle calle) {
         calles.add(calle);
     }
-     public void agregarArbolALaLista(Arbol arbol) {
+
+    public void agregarArbolALaLista(Arbol arbol) {
         arboles.add(arbol);
     }
-     public void agregarEdificioALaLista(Edificio edificio) { 
+
+    public void agregarEdificioALaLista(Edificio edificio) {
         edificios.add(edificio);
     }
-     
-    public void agregarNodoALista(NodoGrafoMapa nodo){
+
+    public void agregarNodoALista(NodoGrafoMapa nodo) {
         listaNodosMapa.add(nodo);
-        
+
     }
+
     //agrega los nodos a la lista de nodos de la calle
-    public void agregarNodosAlistaDeCalle(){
+
+    public void agregarNodosAlistaDeCalle() {
         for (int i = 0; i < calles.size(); i++) {
-                for (int j = 0; j < listaNodosMapa.size(); j++) {
-                     if (listaNodosMapa.get(j).getIdCalle()==calles.get(i).getId()) {
-                         calles.get(i).getListaDeNodosEnCalle().add(listaNodosMapa.get(j));
+            for (int j = 0; j < listaNodosMapa.size(); j++) {
+                if (listaNodosMapa.get(j).getIdCalle() == calles.get(i).getId()) {
+                    calles.get(i).getListaDeNodosEnCalle().add(listaNodosMapa.get(j));
                 }
             }
         }
@@ -257,11 +253,10 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
         return listaNodosMapa;
     }
 
-    
     public LinkedList<AristaGrafoMapa> getAristasGrafoMapa() {
         return aristasGrafoMapa;
     }
- 
+
     public LinkedList<Calle> getCalles() {
         return calles;
     }
@@ -273,10 +268,7 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
     public LinkedList<Edificio> getEdificios() {
         return edificios;
     }
-    
-    
 
-    
     /**
      * @param args the command line arguments
      */
@@ -308,14 +300,12 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                 frameMapa=new FrameAnimacionMapa();
-                  frameMapa.setVisible(true);
+                frameMapa = new FrameAnimacionMapa();
+                frameMapa.setVisible(true);
             }
         });
     }
-    
-   
-   
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -327,6 +317,4 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
     private vista.PanelAnimacionMapa panelAnimacionMapa1;
     // End of variables declaration//GEN-END:variables
 
-   
-    
 }

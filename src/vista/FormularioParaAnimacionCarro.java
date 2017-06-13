@@ -14,7 +14,7 @@ import javax.swing.JRadioButton;
  * @author Victor
  */
 public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
-    
+
     PanelAnimacionMapa panelAnimacion;
     LinkedList<ImageIcon> imagenes;
     int x;
@@ -22,11 +22,13 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
     int xNodoPosClick;
     int yNodoPosClick;
     LinkedList<JRadioButton> botones;
+    LinkedList<JRadioButton> botonesPeatones;
 
     public FormularioParaAnimacionCarro() {
         initComponents();
         this.setLocationRelativeTo(null);
         botones = new LinkedList<>();
+        botonesPeatones = new LinkedList<>();
 
         this.botones.add(jRadioButton1);
         this.botones.add(jRadioButton2);
@@ -36,42 +38,60 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
         this.botones.add(jRadioButton6);
         this.botones.add(jRadioButton7);
         this.botones.add(jRadioButton8);
+        
+        this.botonesPeatones.add(jRadioButton11);
+        this.botonesPeatones.add(jRadioButton12);
+        this.botonesPeatones.add(jRadioButton13);
 
         for (int i = 0; i < botones.size(); i++) {
             this.buttonGroup1.add(botones.get(i));
             ImageIcon imagen = new ImageIcon("src\\imagenes\\carros\\c" + (i + 1) + ".png");
             this.botones.get(i).setIcon(imagen);
         }
+        
+        for (int i = 0; i < botonesPeatones.size(); i++) {
+            this.buttonGroup1.add(botonesPeatones.get(i));
+            ImageIcon imagen = new ImageIcon("src\\imagenes\\peatones\\"+(i+1)+".png");
+            this.botonesPeatones.get(i).setIcon(imagen);
+        }
 
     }
+
     // Recibe el panel de la animacion del mapa para posicionar los carros en el mapa
     public void recibirPanel(PanelAnimacionMapa panelAnimacion, int x, int y, int xNodoPosClick, int yNodoPosClick) {
         this.panelAnimacion = panelAnimacion;
         this.x = x;
         this.y = y;
-        this.xNodoPosClick=xNodoPosClick;
-        this.yNodoPosClick=yNodoPosClick;
+        this.xNodoPosClick = xNodoPosClick;
+        this.yNodoPosClick = yNodoPosClick;
     }
+
     //carga las rutas de las imagenes de los carros para mostrar en el panel
     public void rutas(int seleccion) {
         LinkedList<ImageIcon> direccionesCarros = new LinkedList<>();
-        direccionesCarros.add(new ImageIcon("src\\imagenes\\carros\\" + "C" + (seleccion)+".png"));
+        direccionesCarros.add(new ImageIcon("src\\imagenes\\carros\\" + "C" + (seleccion) + ".png"));
         direccionesCarros.add(new ImageIcon("src\\imagenes\\carros\\" + "C" + (seleccion) + "D.png"));
         direccionesCarros.add(new ImageIcon("src\\imagenes\\carros\\" + "C" + (seleccion) + "L.png"));
         direccionesCarros.add(new ImageIcon("src\\imagenes\\carros\\" + "C" + (seleccion) + "R.png"));
-        this.panelAnimacion.crearCarro(direccionesCarros, this.x, this.y,this.xNodoPosClick, this.yNodoPosClick);
+        this.panelAnimacion.crearCarro(direccionesCarros, this.x, this.y, this.xNodoPosClick, this.yNodoPosClick);
     }
+    
+    public void rutasPeaton(int seleccion) {
+        ImageIcon imagenPeaton = new ImageIcon("src\\imagenes\\peatones\\"+seleccion+".png");
+        this.panelAnimacion.crearPeaton(imagenPeaton, this.x, this.y,this.xNodoPosClick, this.yNodoPosClick);
+        System.out.println("ruta: "+(imagenPeaton) );
+    }
+
     // Posiciona los imprevistos en la via
-    public void accidente(int seleccion){
-        if (seleccion==0) {
-            this.panelAnimacion.crearSuceso(new ImageIcon("src\\imagenes\\AccionesEnCalle\\Accidente.png"),this.x,this.y,"Accidente");
+    public void accidente(int seleccion) {
+        if (seleccion == 0) {
+            this.panelAnimacion.crearSuceso(new ImageIcon("src\\imagenes\\AccionesEnCalle\\Accidente.png"), this.x, this.y, "Accidente");
         }
-        if (seleccion==1) {
-             this.panelAnimacion.crearSuceso(new ImageIcon("src\\imagenes\\AccionesEnCalle\\Construccion.png"),this.x,this.y,"Construccion");
+        if (seleccion == 1) {
+            this.panelAnimacion.crearSuceso(new ImageIcon("src\\imagenes\\AccionesEnCalle\\Construccion.png"), this.x, this.y, "Construccion");
         }
     }
 
-        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -98,6 +118,11 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
         jRadioButton17 = new javax.swing.JRadioButton();
         jRadioButton18 = new javax.swing.JRadioButton();
         jButton2 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jRadioButton11 = new javax.swing.JRadioButton();
+        jRadioButton12 = new javax.swing.JRadioButton();
+        jRadioButton13 = new javax.swing.JRadioButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -246,6 +271,52 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
             }
         });
 
+        jPanel2.setPreferredSize(new java.awt.Dimension(76, 1500));
+
+        jRadioButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton11ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton12ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton13ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(3, 3, 3)
+                .addComponent(jRadioButton11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jRadioButton12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jRadioButton13)
+                .addContainerGap(396, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jRadioButton13)
+                    .addComponent(jRadioButton11)
+                    .addComponent(jRadioButton12))
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
+
+        jLabel2.setText("AGREGAR PEATON");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -258,61 +329,70 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
                             .addComponent(jLabel3)
+                            .addComponent(jLabel1)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(38, 38, 38)
-                                .addComponent(jButton2)))
-                        .addContainerGap(38, Short.MAX_VALUE))))
+                                .addComponent(jButton2))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 92, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGap(23, 23, 23)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
+                        .addGap(73, 73, 73)
                         .addComponent(jButton2)))
+                .addGap(22, 22, 22)
+                .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                .addComponent(jButton1))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
-        
-            rutas(3);
-            this.dispose();
-        
+
+        rutas(3);
+        this.dispose();
+
     }//GEN-LAST:event_jRadioButton3ActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        
-            rutas(2);
-            this.dispose();
-        
+
+        rutas(2);
+        this.dispose();
+
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-       
-            rutas(1);
-            this.dispose();
-       
+
+        rutas(1);
+        this.dispose();
+
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       this.dispose();
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
@@ -350,8 +430,8 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton8ActionPerformed
 
     private void jRadioButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton17ActionPerformed
-       this.accidente(0);
-       this.dispose();
+        this.accidente(0);
+        this.dispose();
     }//GEN-LAST:event_jRadioButton17ActionPerformed
 
     private void jRadioButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton18ActionPerformed
@@ -363,6 +443,21 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
         this.panelAnimacion.eliminarSuceso(this.x, this.y);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jRadioButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton13ActionPerformed
+        rutasPeaton(3);
+        this.dispose();
+    }//GEN-LAST:event_jRadioButton13ActionPerformed
+
+    private void jRadioButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton12ActionPerformed
+        rutasPeaton(2);
+        this.dispose();
+    }//GEN-LAST:event_jRadioButton12ActionPerformed
+
+    private void jRadioButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton11ActionPerformed
+        rutasPeaton(1);
+        this.dispose();
+    }//GEN-LAST:event_jRadioButton11ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -411,10 +506,15 @@ public class FormularioParaAnimacionCarro extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton11;
+    private javax.swing.JRadioButton jRadioButton12;
+    private javax.swing.JRadioButton jRadioButton13;
     private javax.swing.JRadioButton jRadioButton17;
     private javax.swing.JRadioButton jRadioButton18;
     private javax.swing.JRadioButton jRadioButton2;
