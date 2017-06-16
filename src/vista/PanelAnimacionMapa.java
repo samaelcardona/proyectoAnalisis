@@ -123,13 +123,6 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                             g.drawOval(frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosEnCalle().get(k).getX(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosEnCalle().get(k).getY(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosEnCalle().get(k).getAncho(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosEnCalle().get(k).getAlto());
                             g.drawString(frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosEnCalle().get(k).getId() + "", frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosEnCalle().get(k).getX(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosEnCalle().get(k).getY());
                         }
-                        for (int k = 0; k < frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosPeaton().size(); k++) {
-                            //g.setColor(frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getListaDeNodosPeaton().get(k).getColor());
-                            g.setColor(Color.red);
-                            g.drawOval(frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosPeaton().get(k).getX(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosPeaton().get(k).getY(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosPeaton().get(k).getAncho(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosPeaton().get(k).getAlto());
-                            g.drawString(frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosEnCalle().get(k).getId() + "", frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosEnCalle().get(k).getX(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosEnCalle().get(k).getY());
-                        }
-
                         if (frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getSuceso() != null) {
                             g.drawImage(frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getSuceso().getImagen().getImage(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getSuceso().getX() + 10, frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getSuceso().getY() + 10, frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getSuceso().getAncho(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getSuceso().getAlto(), this);
                         }
@@ -681,8 +674,8 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                 while (this.carroEstaEnUnNodo(listaDeCarros.get(idCarro)) == false) {
                     System.out.println("Esperando A llegar Al Nodo");
                 }
-                System.out.println("id caroo"+idCarro);
-                System.out.println("carro esta en el nodo "+this.retornarNodoClickeado(listaDeCarros.get(idCarro).getX(), listaDeCarros.get(idCarro).getY()));
+                System.out.println("id caroo" + idCarro);
+                System.out.println("carro esta en el nodo " + this.retornarNodoClickeado(listaDeCarros.get(idCarro).getX(), listaDeCarros.get(idCarro).getY()));
                 listaDeCarros.get(idCarro).setMover(false);
 
                 configuararRutaCarro.recibirPanel(this, idCarro);
@@ -1571,9 +1564,9 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
     //Retorna el id de tipo entero que identifica a un nodo
     //que es buscado por una posicion x ^ y entradas por parametro
     private int retornarNodoClickeado(int x, int y) {
-        
+
         for (int j = 0; j < frame.getListaNodosMapa().size(); j++) {
-            
+
             if (x >= frame.getListaNodosMapa().get(j).getX() && x < frame.getListaNodosMapa().get(j).getX() + 10
                     && y >= frame.getListaNodosMapa().get(j).getY() && y < frame.getListaNodosMapa().get(j).getY() + 10) {
                 return j;
@@ -1620,12 +1613,19 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
         ///si la ruta es el camino mas corto
         if (tipoDeRuta.equals("Ruta Mas Corta")) {
+
+            //aca ordeno la lista de la ruta que tiene el carro para dejarla con la mas optima para moverlo rapidamente
+            listaDeCarros.get(id).setRutaIdNodos(this.modificarRutaParaLamasOptima(matrizGrafoMapaAdyacenciaRutaMasCorta, listaDeCarros.get(id).getRutaIdNodos()));
+
             //se hace el dijkstra
+            for (int i = 0; i < listaDeCarros.get(id).getRutaIdNodos().size(); i++) {
+                System.out.println("ruta " + listaDeCarros.get(id).getRutaIdNodos().get(i));
+            }
 
             //aca se hace la validacion y se cambia la lista de la ruta del carro para escoger el mejor camino 
             for (int i = 0; i < listaDeCarros.get(id).getRutaIdNodos().size() - 1; i++) {
                 ///aca modificamos los metodos para encontrar la mejor ruta posible tomando diferentes puntos
-              //  System.out.println("---nodo fuente"+listaDeCarros.get(id).getRutaIdNodos().get(i)+" o " +listaDeCarros.get(id).getRutaIdNodos().get(i) );
+                // System.out.println("---nodo fuente"+listaDeCarros.get(id).getRutaIdNodos().get(i)+" o " +listaDeCarros.get(id).getRutaIdNodos().get(i) );
                 listaDeDijkstraPorCadaNodoFuente.add(this.dijkstra(matrizGrafoMapaAdyacenciaRutaMasCorta, listaDeCarros.get(id).getRutaIdNodos().get(i)));
             }
 
@@ -1648,6 +1648,10 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         }
 
         if (tipoDeRuta.equals("Ruta Mas Veloz")) {
+
+            //aca ordeno la lista de la ruta que tiene el carro para dejarla con la mas optima para moverlo rapidamente
+            listaDeCarros.get(id).setRutaIdNodos(this.modificarRutaParaLamasOptima(matrizGrafoMapaAdyacenciaRutaMasVeloz, listaDeCarros.get(id).getRutaIdNodos()));
+
             //se hace el dijkstra
             for (int i = 0; i < listaDeCarros.get(id).getRutaIdNodos().size() - 1; i++) {
                 listaDeDijkstraPorCadaNodoFuente.add(this.dijkstra(matrizGrafoMapaAdyacenciaRutaMasVeloz, listaDeCarros.get(id).getRutaIdNodos().get(i)));
@@ -1672,6 +1676,10 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         }
 
         if (tipoDeRuta.equals("Ruta Menos Trafico")) {
+
+            //aca ordeno la lista de la ruta que tiene el carro para dejarla con la mas optima para moverlo rapidamente
+            listaDeCarros.get(id).setRutaIdNodos(this.modificarRutaParaLamasOptima(matrizGrafoMapaAdyacenciaRutaMenosTrafico, listaDeCarros.get(id).getRutaIdNodos()));
+
             //se hace el dijkstra
             for (int i = 0; i < listaDeCarros.get(id).getRutaIdNodos().size() - 1; i++) {
                 listaDeDijkstraPorCadaNodoFuente.add(this.dijkstra(matrizGrafoMapaAdyacenciaRutaMenosTrafico, listaDeCarros.get(id).getRutaIdNodos().get(i)));
@@ -1695,8 +1703,6 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
             }
         }
 
-        System.out.println("lista id nodos" + listaDeCarros.get(id).getRutaIdNodos().size());
-
         listaDeCarros.get(id).setRuta(ruta);
 
     }
@@ -1716,7 +1722,58 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                 }
             }
         }
+        //aca verfico con esta ruta a ver si  puedo alcanzar al nodo  o no 
         return listaRutaAlReves;
+    }
+
+    //metodo que modifica la ruta seleccionada por el personaje para volverla la mas optima tomando los costos este lo utilizamos
+    //en el metodo recibirListaDeNodosAVisitarPorCarro el las lineas despues de verificar que tipo de ruta
+    //es y para los peatones tambien. 
+    private LinkedList<Integer> modificarRutaParaLamasOptima(int[][] matrizGrafoMapaAdyacenciaRutaMasCorta, LinkedList<Integer> rutaIdNodos) {
+
+        int[] sumas = new int[rutaIdNodos.size()];
+        LinkedList<ValorCola> listaDeDijkstraPorCadaNodoFuenteDelNodoArevisar = new LinkedList<>();
+
+        for (int i = 0; i < rutaIdNodos.size() - 1; i++) {
+            listaDeDijkstraPorCadaNodoFuenteDelNodoArevisar = this.dijkstra(matrizGrafoMapaAdyacenciaRutaMasCorta, rutaIdNodos.get(i));
+            sumas[i] = Integer.MAX_VALUE;
+            for (int j = i + 1; j < rutaIdNodos.size(); j++) {
+                sumas[j] = costoDeLaRutaParaMoverCarro(listaDeDijkstraPorCadaNodoFuenteDelNodoArevisar, rutaIdNodos.get(i), rutaIdNodos.get(j));
+            }
+
+            //sacar el mejor dato
+            int min = Integer.MAX_VALUE;
+            int posicionDelMinimo = -1;
+            for (int j = 0; j < sumas.length; j++) {
+                if (sumas[j] < min) {
+                    min = sumas[j];
+                    posicionDelMinimo = j;
+                }
+            }
+            if (posicionDelMinimo != -1) {
+                int idPosicionVieja = rutaIdNodos.get(i + 1);
+                rutaIdNodos.set(i + 1, rutaIdNodos.get(posicionDelMinimo));
+                rutaIdNodos.set(posicionDelMinimo, idPosicionVieja);
+            }
+        }
+
+        return rutaIdNodos;
+    }
+
+    //retorna la suma de los costos de nodos a visitar por un carro para generar la ruta mas optima se utiliza en el meotodo
+    //modificarRutaParaLamasOptima
+    private int costoDeLaRutaParaMoverCarro(LinkedList<ValorCola> listaDijkstra, Integer nodoOrigen, Integer nodoDestino) {
+        int nodoAir = nodoDestino;
+        int suma = 0;
+        while (nodoAir != nodoOrigen) {
+            for (int j = 0; j < listaDijkstra.size(); j++) {
+                if (listaDijkstra.get(j).getIdNodo() == nodoAir) {
+                    nodoAir = listaDijkstra.get(j).getPadre();
+                    suma = suma + listaDijkstra.get(j).getCosto();
+                }
+            }
+        }
+        return suma;
     }
 
     private LinkedList dijkstra(int[][] matrizGrafoMapaAdyacenciaRutaMasCorta, Integer nodoFuente) {
@@ -1725,8 +1782,6 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         int padre[] = new int[matrizGrafoMapaAdyacenciaRutaMasCorta.length];
         boolean visto[] = new boolean[matrizGrafoMapaAdyacenciaRutaMasCorta.length];
         LinkedList<ValorCola> cola = new LinkedList<>();
-        
-       
 
         for (int i = 0; i < matrizGrafoMapaAdyacenciaRutaMasCorta.length; i++) {
             distancias[i] = Integer.MAX_VALUE;
@@ -1804,12 +1859,12 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
     private boolean carroEstaEnUnNodo(Automovil carro) {
         for (int i = 0; i < frame.getListaNodosMapa().size(); i++) {
-            
+
             if (carro.getX() == frame.getListaNodosMapa().get(i).getX() && carro.getY() == frame.getListaNodosMapa().get(i).getY()) {
-                System.out.println("x carro "+carro.getX()+" nodo x "+frame.getListaNodosMapa().get(i).getX()
-                        +"\n y carro "+carro.getY()+" nodo y "+frame.getListaNodosMapa().get(i).getY());
-                
-                System.out.println("nodo id "+frame.getListaNodosMapa().get(i).getId()+"nodo posicion en lista"+this.buscarIdEnlistaDeNodos(frame.getListaNodosMapa().get(i).getId()));
+                System.out.println("x carro " + carro.getX() + " nodo x " + frame.getListaNodosMapa().get(i).getX()
+                        + "\n y carro " + carro.getY() + " nodo y " + frame.getListaNodosMapa().get(i).getY());
+
+                System.out.println("nodo id " + frame.getListaNodosMapa().get(i).getId() + "nodo posicion en lista" + this.buscarIdEnlistaDeNodos(frame.getListaNodosMapa().get(i).getId()));
                 return true;
             }
         }
