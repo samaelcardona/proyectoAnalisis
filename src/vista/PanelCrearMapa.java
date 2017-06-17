@@ -162,6 +162,9 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                             for (int k = 0; k < frame.getAristasGrafoMapa().size(); k++) {
                                 g.drawLine(frame.getAristasGrafoMapa().get(k).getNodoA().getX(), frame.getAristasGrafoMapa().get(k).getNodoA().getY(), frame.getAristasGrafoMapa().get(k).getNodoB().getX(), frame.getAristasGrafoMapa().get(k).getNodoB().getY());
                             }
+                            for (int k = 0; k < frame.getAristasGrafoPeaton().size(); k++) {
+                                g.drawLine(frame.getAristasGrafoPeaton().get(k).getNodoA().getX(), frame.getAristasGrafoPeaton().get(k).getNodoA().getY(), frame.getAristasGrafoPeaton().get(k).getNodoB().getX(), frame.getAristasGrafoPeaton().get(k).getNodoB().getY());
+                            }
 
                         }
                     }
