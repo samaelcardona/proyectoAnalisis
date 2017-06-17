@@ -226,9 +226,22 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
         }
 
     }
+    
+    public void imprimirNodosPeatonCalle(int id)
+    {
+        for (int i = 0; i < frame.calles.size(); i++) {
+            if (id==frame.calles.get(i).getId()) {
+                for (int j = 0; j < frame.calles.get(i).getListaDeNodosPeaton().size(); j++) {
+                     System.out.println("nodo de calle seleccionada"+frame.calles.get(i).getListaDeNodosPeaton().get(j).getId());
+                }
+               
+            }
+        }
+    }
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        
         int x = (int) e.getPoint().getX();
         int y = (int) e.getPoint().getY();
 
@@ -243,6 +256,8 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                 ///menu para mover o eliminar elemento seleccionado 
                 FormularioParaCorregirElementosEnElPanel formulario = new FormularioParaCorregirElementosEnElPanel();
                 int posicionCalle = this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[cuadroSeleccionado[0]][cuadroSeleccionado[1]]);
+                System.out.println("posicion calle "+posicionCalle);
+                imprimirNodosPeatonCalle(posicionCalle);                
                 formulario.recibirPanel(this, cuadroSeleccionado[0], cuadroSeleccionado[1], this.frame.getCalles().get(posicionCalle).getSentido());
                 formulario.setVisible(true);
             }
@@ -451,7 +466,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                             frame.agregarNodoAListaPeatones(nodoPeaton);
                             contadorDeNodosPeatones++;
 
-                            System.out.println("tamaño nodos anden: " + contadorDeNodosPeatones);
+                            //System.out.println("tamaño nodos anden: " + contadorDeNodosPeatones);
 
                         }
                         if ("Izquierda".equals(calle.getSentido())) {
