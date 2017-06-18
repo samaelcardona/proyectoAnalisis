@@ -815,7 +815,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
     public void crearPeaton(ImageIcon imagenPeaton, int x, int y, int xNodoPosClick, int yNodoPosClick) {
         //recibe x y y de la matriz para saber en que posicion lo creo.
-        int iCalle = matrizCuadriculaMapaIdCalles[x][y];
+        int iCalle = this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[x][y]);
         System.out.println("ruta en crearPeaton" + imagenPeaton);
         if (iCalle != -1) {
             if (frame.getCalles().get(iCalle).getSentido().equals("Derecha")

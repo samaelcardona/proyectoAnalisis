@@ -157,7 +157,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                             //para pintar los nodos de los andenes
                             for (int k = 0; k < frame.getCalles().get(posicionCalle).getListaDeNodosPeaton().size(); k++) {
                                 g.drawOval(frame.getCalles().get(posicionCalle).getListaDeNodosPeaton().get(k).getX(), frame.getCalles().get(posicionCalle).getListaDeNodosPeaton().get(k).getY(), frame.getCalles().get(posicionCalle).getListaDeNodosPeaton().get(k).getAncho(), frame.getCalles().get(posicionCalle).getListaDeNodosPeaton().get(k).getAlto());
-                                g.drawString(k+ "", frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosPeaton().get(k).getX(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosPeaton().get(k).getY());
+                                g.drawString(frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosPeaton().get(k).getId() + "-"+this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i]) , frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosPeaton().get(k).getX(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosPeaton().get(k).getY());
                             }
                             //para pintar las aristas
                             for (int k = 0; k < frame.getAristasGrafoMapa().size(); k++) {
@@ -189,7 +189,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
         this.frame = frameRecibido;
     }
 
-    public void recibirTodasLasMatricezYdemasCuandoCarga(String[][] matrizElementos, int[][] idCalles, int[][] idArboles, int[][] idEdificios, int contadorCalles, int contadorEdificios, int contadorArboles, int contadorNodos) {
+    public void recibirTodasLasMatricezYdemasCuandoCarga(String[][] matrizElementos, int[][] idCalles, int[][] idArboles, int[][] idEdificios, int contadorCalles, int contadorEdificios, int contadorArboles, int contadorNodos,int contadorNodosPeatones) {
         this.matrizLetrasElementosInternosCuadriculaMapa = matrizElementos;
         this.matrizCuadriculaMapaIdCalles = idCalles;
         this.matrizCuadriculaMapaIdArboles = idArboles;
@@ -198,6 +198,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
         this.contadorDeEdificios = contadorEdificios;
         this.contadorDeArboles = contadorArboles;
         this.contadorDeNodos = contadorNodos;
+        this.contadorDeNodosPeatones=contadorNodosPeatones;
         this.esPrimeraCalle = false;
     }
 
@@ -4415,11 +4416,16 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
 
         if (matrizCuadriculaMapaIdCalles[x][y] != -1) {
 
-            for (int i = 0; i < frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[x][y])).getListaDeNodosEnCalle().size(); i++) {
-                frame.getListaNodosMapa().remove(frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[x][y])).getListaDeNodosEnCalle().get(i));
+             int posicionCalle = this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[x][y]);
+           
+             for (int i = 0; i < frame.getCalles().get(posicionCalle).getListaDeNodosEnCalle().size(); i++) {
+                frame.getListaNodosMapa().remove(frame.getCalles().get(posicionCalle).getListaDeNodosEnCalle().get(i));
+            }
+            for (int i = 0; i < frame.getCalles().get(posicionCalle).getListaDeNodosPeaton().size(); i++) {
+                frame.getListaNodosMapa().remove(frame.getCalles().get(posicionCalle).getListaDeNodosPeaton().get(i));
             }
 
-            int posicionCalle = this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[x][y]);
+           
             frame.getCalles().remove(frame.getCalles().get(posicionCalle));
 
             matrizCuadriculaMapaIdCalles[x][y] = -1;

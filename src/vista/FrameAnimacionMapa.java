@@ -43,6 +43,8 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
     LinkedList<AristaGrafoMapa> aristasGrafoMapa;
     Thread hilo;
     boolean iniciarHilo;
+    LinkedList<NodoGrafoMapa> listaNodosPeaton;
+    LinkedList<AristaGrafoMapa> aristasGrafoPeaton;
 
     /**
      * Creates new form FrameCrearMapa
@@ -55,6 +57,8 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
         edificios = new LinkedList<>();
         listaNodosMapa = new LinkedList<>();
         aristasGrafoMapa = new LinkedList<>();
+        listaNodosPeaton = new LinkedList<>();
+        aristasGrafoPeaton = new LinkedList<>();
         ciudad = new Ciudad();
 
         this.hilo = new Thread(this.panelAnimacionMapa1);
@@ -196,6 +200,8 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
             this.edificios = ciudad.getListaEdificos();
             this.listaNodosMapa = ciudad.getListaNodosMapa();
             this.aristasGrafoMapa = ciudad.getListaDeTransicionesAristas();
+            this.listaNodosPeaton = ciudad.getListaNodosPeatones();
+            this.aristasGrafoPeaton = ciudad.getListaDeTransicionesAristasPeatones();
 
             panelAnimacionMapa1.setFrame(this);
         }
@@ -238,7 +244,6 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
     }
 
     //agrega los nodos a la lista de nodos de la calle
-
     public void agregarNodosAlistaDeCalle() {
         for (int i = 0; i < calles.size(); i++) {
             for (int j = 0; j < listaNodosMapa.size(); j++) {
