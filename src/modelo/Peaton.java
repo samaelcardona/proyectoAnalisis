@@ -29,6 +29,7 @@ public class Peaton implements Serializable{
     NodoGrafoMapa nodoA;
     NodoGrafoMapa nodoB;
     int contarNodoRuta;
+    String tipoDeRutaActual;
 
     public Peaton(int id, int x, int y, int ancho, int alto, ImageIcon imagen, boolean mover) {
         this.id = id;
@@ -148,6 +149,14 @@ public class Peaton implements Serializable{
 
     public void setContarNodoRuta(int contarNodoRuta) {
         this.contarNodoRuta = contarNodoRuta;
+    }
+
+    public String getTipoDeRutaActual() {
+        return tipoDeRutaActual;
+    }
+
+    public void setTipoDeRutaActual(String tipoDeRutaActual) {
+        this.tipoDeRutaActual = tipoDeRutaActual;
     }
     
     

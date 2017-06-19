@@ -474,7 +474,6 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.jRadioButton1.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[0].getIconWidth(), listaImagenesParaSeleccionar[0].getIconHeight(), listaImagenesParaSeleccionar[0], "", "", 0, true), "horizontal", false);
-System.out.println("soy 1");
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
@@ -482,7 +481,6 @@ System.out.println("soy 1");
         this.jRadioButton2.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[1].getIconWidth(), listaImagenesParaSeleccionar[1].getIconHeight(), listaImagenesParaSeleccionar[1], "", "", 0, true), "vertical", false);
-System.out.println("soy 2");
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
@@ -490,7 +488,6 @@ System.out.println("soy 2");
         this.jRadioButton3.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[2].getIconWidth(), listaImagenesParaSeleccionar[2].getIconHeight(), listaImagenesParaSeleccionar[2], "", "", 0, true), "horizontal", true);
-        System.out.println("soy 3");
     }//GEN-LAST:event_jRadioButton3ActionPerformed
 
     private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
@@ -498,7 +495,6 @@ System.out.println("soy 2");
         this.ocultarBordes();
         this.jRadioButton4.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
-        System.out.println("soy 4");
         this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[3].getIconWidth(), listaImagenesParaSeleccionar[3].getIconHeight(), listaImagenesParaSeleccionar[3], "", "", 0, true), "interseccionCruzada", false);
     }//GEN-LAST:event_jRadioButton4ActionPerformed
 
@@ -508,7 +504,6 @@ System.out.println("soy 2");
         this.jRadioButton5.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[4].getIconWidth(), listaImagenesParaSeleccionar[4].getIconHeight(), listaImagenesParaSeleccionar[4], "", "", 0, true), "horizontal", false);
-        System.out.println("soy 5");
     }//GEN-LAST:event_jRadioButton5ActionPerformed
 
     private void jRadioButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton6ActionPerformed
@@ -517,7 +512,6 @@ System.out.println("soy 2");
 //        this.jRadioButton6.setBorderPainted(true);
 //        this.panelCrearMapa1.recibirFrameCrearMapa(this);
 //        this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[5].getIconWidth(), listaImagenesParaSeleccionar[5].getIconHeight(), listaImagenesParaSeleccionar[5], "", "", 0, true), "vertical",false);
-//        System.out.println("6");
 
     }//GEN-LAST:event_jRadioButton6ActionPerformed
 
@@ -525,7 +519,6 @@ System.out.println("soy 2");
         this.ocultarBordes();
         this.jRadioButton7.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
-        System.out.println("soy 7");
         this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[6].getIconWidth(), listaImagenesParaSeleccionar[6].getIconHeight(), listaImagenesParaSeleccionar[6], "", "", 0, true), "vertical", true);
     }//GEN-LAST:event_jRadioButton7ActionPerformed
 
@@ -533,7 +526,6 @@ System.out.println("soy 2");
         this.ocultarBordes();
         this.jRadioButton8.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
-        System.out.println("soy 8");
         ///interseccion
         this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[7].getIconWidth(), listaImagenesParaSeleccionar[7].getIconHeight(), listaImagenesParaSeleccionar[7], "", "", 0, true), "interseccionArribaDerecha", false);
     }//GEN-LAST:event_jRadioButton8ActionPerformed
@@ -542,7 +534,6 @@ System.out.println("soy 2");
         this.ocultarBordes();
         this.jRadioButton9.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
-        System.out.println("soy 9");
         //interseccion
         this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[8].getIconWidth(), listaImagenesParaSeleccionar[8].getIconHeight(), listaImagenesParaSeleccionar[8], "", "", 0, true), "interseccionArribaIzquierda", false);
 
@@ -552,7 +543,6 @@ System.out.println("soy 2");
         this.ocultarBordes();
         this.jRadioButton10.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
-        System.out.println("soy 10");
         //interseccion
         this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[9].getIconWidth(), listaImagenesParaSeleccionar[9].getIconHeight(), listaImagenesParaSeleccionar[9], "", "", 0, true), "interseccionAbajoDerecha", false);
 
@@ -562,7 +552,6 @@ System.out.println("soy 2");
         this.ocultarBordes();
         this.jRadioButton11.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
-        System.out.println("soy 11");
         //interseccion
         this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[10].getIconWidth(), listaImagenesParaSeleccionar[10].getIconHeight(), listaImagenesParaSeleccionar[10], "", "", 0, true), "interseccionAbajoIzquierda", false);
     }//GEN-LAST:event_jRadioButton11ActionPerformed
@@ -571,7 +560,6 @@ System.out.println("soy 2");
         this.ocultarBordes();
         this.jRadioButton12.setBorderPainted(true);
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
-        System.out.println("soy 12");
         //interseccion
         this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[11].getIconWidth(), listaImagenesParaSeleccionar[11].getIconHeight(), listaImagenesParaSeleccionar[11], "", "", 0, true), "vertical", false);
 
@@ -583,7 +571,6 @@ System.out.println("soy 2");
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //interseccion
         this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[12].getIconWidth(), listaImagenesParaSeleccionar[12].getIconHeight(), listaImagenesParaSeleccionar[12], "", "", 0, true), "interseccionCruzada", false);
-        System.out.println("13");
     }//GEN-LAST:event_jRadioButton13ActionPerformed
 
     private void jRadioButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton14ActionPerformed
@@ -593,7 +580,6 @@ System.out.println("soy 2");
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //interseccion
         this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[13].getIconWidth(), listaImagenesParaSeleccionar[13].getIconHeight(), listaImagenesParaSeleccionar[13], "", "", 0, true), "interseccionCruzada", false);
-        System.out.println("14");
     }//GEN-LAST:event_jRadioButton14ActionPerformed
 
     private void jRadioButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton15ActionPerformed
@@ -602,7 +588,6 @@ System.out.println("soy 2");
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //interseccion
         this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[14].getIconWidth(), listaImagenesParaSeleccionar[14].getIconHeight(), listaImagenesParaSeleccionar[14], "", "", 0, true), "interseccionCruzada", false);
-        System.out.println("15");
     }//GEN-LAST:event_jRadioButton15ActionPerformed
 
     private void jRadioButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton16ActionPerformed
@@ -612,7 +597,6 @@ System.out.println("soy 2");
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //interseccion
         this.panelCrearMapa1.setCalle(new Calle(0, -50, -50, listaImagenesParaSeleccionar[15].getIconWidth(), listaImagenesParaSeleccionar[15].getIconHeight(), listaImagenesParaSeleccionar[15], "", "", 0, true), "interseccionCruzada", false);
-        System.out.println("16");
 
     }//GEN-LAST:event_jRadioButton16ActionPerformed
 
@@ -626,7 +610,6 @@ System.out.println("soy 2");
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //arbol
         this.panelCrearMapa1.setArbol(new Arbol(0, -50, -50, listaImagenesParaSeleccionar[16].getIconWidth(), listaImagenesParaSeleccionar[16].getIconHeight(), listaImagenesParaSeleccionar[16]));
-        System.out.println("17");
     }//GEN-LAST:event_jRadioButton17ActionPerformed
 
     private void jRadioButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton18ActionPerformed
@@ -635,7 +618,6 @@ System.out.println("soy 2");
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //arbol
         this.panelCrearMapa1.setArbol(new Arbol(0, -50, -50, listaImagenesParaSeleccionar[17].getIconWidth(), listaImagenesParaSeleccionar[17].getIconHeight(), listaImagenesParaSeleccionar[17]));
-        System.out.println("18");
     }//GEN-LAST:event_jRadioButton18ActionPerformed
 
     private void jRadioButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton19ActionPerformed
@@ -644,7 +626,6 @@ System.out.println("soy 2");
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //arbol
         this.panelCrearMapa1.setArbol(new Arbol(0, -50, -50, listaImagenesParaSeleccionar[18].getIconWidth(), listaImagenesParaSeleccionar[18].getIconHeight(), listaImagenesParaSeleccionar[18]));
-        System.out.println("19");
     }//GEN-LAST:event_jRadioButton19ActionPerformed
 
     private void jRadioButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton20ActionPerformed
@@ -653,21 +634,11 @@ System.out.println("soy 2");
         this.panelCrearMapa1.recibirFrameCrearMapa(this);
         //edificio
         this.panelCrearMapa1.setEdificio(new Edificio(0, "casa", -50, -50, listaImagenesParaSeleccionar[19].getIconWidth(), listaImagenesParaSeleccionar[19].getIconHeight(), listaImagenesParaSeleccionar[19]));
-        System.out.println("20");
     }//GEN-LAST:event_jRadioButton20ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-//esto es para mostrar los datos por si estaban alterados
-//        for (int i = 0; i < calles.size(); i++) {
-//            String cadena="";
-//            cadena=""+calles.get(i).getListaDeNodosEnCalle().size();
-//            for (int j = 0; j < calles.get(i).getListaDeNodosEnCalle().size(); j++) {
-//                cadena=cadena+calles.get(i).getListaDeNodosEnCalle().get(j).getId()+" , ";
-//            }
-//                System.out.println("calle-> "+calles.get(i).getId()+" -- "+cadena);
-//        }
-//        panelCrearMapa1.mostrarMatricezEnConsola();
+
 ///realizar las transiciones para generar grafo del movimiento
         this.borrarTransicionesCreadas();
         this.crearTransicionesGrafoMapa();
@@ -747,7 +718,7 @@ System.out.println("soy 2");
                 Logger.getLogger(FrameAnimacionMapa.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            panelCrearMapa1.recibirTodasLasMatricezYdemasCuandoCarga(ciudad.getMatrizLetrasElementosInternosCuadriculaMapa(), ciudad.getMatrizCuadriculaMapaIdCalles(), ciudad.getMatrizCuadriculaMapaIdArboles(), ciudad.getMatrizCuadriculaMapaIdEdificios(), ciudad.getListaCalles().getLast().getId() + 1, ciudad.getListaEdificos().size(), ciudad.getArboles().size(), ciudad.getListaNodosMapa().getLast().getId() + 1,ciudad.getListaNodosPeatones().getLast().getId()+1);
+            panelCrearMapa1.recibirTodasLasMatricezYdemasCuandoCarga(ciudad.getMatrizLetrasElementosInternosCuadriculaMapa(), ciudad.getMatrizCuadriculaMapaIdCalles(), ciudad.getMatrizCuadriculaMapaIdArboles(), ciudad.getMatrizCuadriculaMapaIdEdificios(), ciudad.getListaCalles().getLast().getId() + 1, ciudad.getListaEdificos().size(), ciudad.getArboles().size(), ciudad.getListaNodosMapa().getLast().getId() + 1, ciudad.getListaNodosPeatones().getLast().getId() + 1);
 
             this.calles = ciudad.getListaCalles();
             this.arboles = ciudad.getArboles();
@@ -827,13 +798,10 @@ System.out.println("soy 2");
 
     private void crearTransicionesGrafoMapa() {
         String[][] matrizCopia = panelCrearMapa1.getMatrizLetrasElementosInternosCuadriculaMapa();
-        for (int i = 0; i < this.listaNodosPeaton.size(); i++) {
-            System.out.println("lista nodos peaton " + this.listaNodosPeaton.get(i).getId());
-        }
+       
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 20; j++) {
-
-                int posicionCalle = panelCrearMapa1.buscarIdEnlistaDeCalles(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]);
+                 int posicionCalle = panelCrearMapa1.buscarIdEnlistaDeCalles(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]);
                 int posicionCalleDere = -1;
                 int posicionCalleAba = -1;
 
@@ -1909,7 +1877,6 @@ System.out.println("soy 2");
 
                         //Agregar aristas de anden para peatones
                         int idNodoAp = this.buscarPosicionDeNodoConIDpeaton(calles.get(posicionCalle).getListaDeNodosPeaton().get(0).getId());
-                        System.out.println("posicion calle " + posicionCalle +"posicion nodo"+posicionCalleAba);
                         int idNodoBp = this.buscarPosicionDeNodoConIDpeaton(calles.get(posicionCalleAba).getListaDeNodosPeaton().get(1).getId());
                         AristaGrafoMapa aristapeatonDerecha = new AristaGrafoMapa(listaNodosPeaton.get(idNodoAp), calles.get(posicionCalle), listaNodosPeaton.get(idNodoBp));
                         AristaGrafoMapa aristapeatonIzquierda = new AristaGrafoMapa(listaNodosPeaton.get(idNodoBp), calles.get(posicionCalle), listaNodosPeaton.get(idNodoAp));
@@ -3037,32 +3004,33 @@ System.out.println("soy 2");
                     aristasGrafoPeaton.add(aristap);
                     //2 -- 3
                     AristaGrafoMapa arista1p = new AristaGrafoMapa(listaNodosPeaton.get(idNodo2Peaton), calles.get(posicionCalle), listaNodosPeaton.get(idNodo3Peaton));
-                    aristasGrafoMapa.add(arista1p);
+                    aristasGrafoPeaton.add(arista1p);
                     //3 -- 1
                     AristaGrafoMapa arista2p = new AristaGrafoMapa(listaNodosPeaton.get(idNodo3Peaton), calles.get(posicionCalle), listaNodosPeaton.get(idNodo1Peaton));
-                    aristasGrafoMapa.add(arista2p);
+                    aristasGrafoPeaton.add(arista2p);
                     //1 -- 0
                     AristaGrafoMapa arista3p = new AristaGrafoMapa(listaNodosPeaton.get(idNodo1Peaton), calles.get(posicionCalle), listaNodosPeaton.get(idNodo0Peaton));
-                    aristasGrafoMapa.add(arista3p);
+                    aristasGrafoPeaton.add(arista3p);
 
                     //0 -- 2
                     AristaGrafoMapa aristap2 = new AristaGrafoMapa(listaNodosPeaton.get(idNodo2Peaton), calles.get(posicionCalle), listaNodosPeaton.get(idNodo0Peaton));
-                    aristasGrafoPeaton.add(aristap);
+                    aristasGrafoPeaton.add(aristap2);
                     //2 -- 3
                     AristaGrafoMapa arista1p2 = new AristaGrafoMapa(listaNodosPeaton.get(idNodo3Peaton), calles.get(posicionCalle), listaNodosPeaton.get(idNodo2Peaton));
-                    aristasGrafoMapa.add(arista1p);
+                    aristasGrafoPeaton.add(arista1p2);
                     //3 -- 1
                     AristaGrafoMapa arista2p2 = new AristaGrafoMapa(listaNodosPeaton.get(idNodo1Peaton), calles.get(posicionCalle), listaNodosPeaton.get(idNodo3Peaton));
-                    aristasGrafoMapa.add(arista2p);
+                    aristasGrafoPeaton.add(arista2p2);
                     //1 -- 0
                     AristaGrafoMapa arista3p2 = new AristaGrafoMapa(listaNodosPeaton.get(idNodo0Peaton), calles.get(posicionCalle), listaNodosPeaton.get(idNodo1Peaton));
-                    aristasGrafoMapa.add(arista3p);
+                    aristasGrafoPeaton.add(arista3p2);
 
                 }
 
                 /*
                 aca termina samael el nino lindo hermoso 
                  */
+
             }
         }
     }

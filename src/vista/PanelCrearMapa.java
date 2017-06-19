@@ -142,13 +142,11 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
         //y graficando toca que crear una matriz de edificios y los arboles si normal 
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 20; j++) {
-                //System.out.println("matriz " + matrizLetrasElementosInternosCuadriculaMapa[j][i] +" calle id "+matrizCuadriculaMapaIdCalles[j][i]);
                 if (!"".equals(matrizLetrasElementosInternosCuadriculaMapa[j][i])) {
                     if (matrizCuadriculaMapaIdCalles[j][i] != -1) {
 
                         int posicionCalle = this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i]);
                         if (posicionCalle != -1) {
-                            //System.out.println("calle"+frame.getCalles().get(matrizCuadriculaMapaIdCalles[j][i]).getId());
                             g.drawImage(frame.getCalles().get(posicionCalle).getImagen().getImage(), frame.getCalles().get(posicionCalle).getX(), frame.getCalles().get(posicionCalle).getY(), frame.getCalles().get(posicionCalle).getAncho(), frame.getCalles().get(posicionCalle).getAlto(), this);
                             //para pintar los nodos de las calles
                             for (int k = 0; k < frame.getCalles().get(posicionCalle).getListaDeNodosEnCalle().size(); k++) {
@@ -249,8 +247,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
 
         int[] cuadroSeleccionado = new int[2];
         cuadroSeleccionado = retornarPosicionCuadriculaSeleccionada(x, y);
-        System.out.println("cuadro seleccionado: " + cuadroSeleccionado[0]);
-        System.out.println("cuadro seleccionado: " + cuadroSeleccionado[1]);
+       
         if (cuadroSeleccionado != null) {
 
             //caundo dan click encima de una imagen, verifica si lo quiere eliminar
@@ -258,7 +255,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                 ///menu para mover o eliminar elemento seleccionado 
                 FormularioParaCorregirElementosEnElPanel formulario = new FormularioParaCorregirElementosEnElPanel();
                 int posicionCalle = this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[cuadroSeleccionado[0]][cuadroSeleccionado[1]]);
-                System.out.println("posicion calle "+posicionCalle);
+             
                 imprimirNodosPeatonCalle(posicionCalle);                
                 formulario.recibirPanel(this, cuadroSeleccionado[0], cuadroSeleccionado[1], this.frame.getCalles().get(posicionCalle).getSentido());
                 formulario.setVisible(true);
@@ -468,7 +465,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                             frame.agregarNodoAListaPeatones(nodoPeaton);
                             contadorDeNodosPeatones++;
 
-                            //System.out.println("tamaño nodos anden: " + contadorDeNodosPeatones);
+                           
 
                         }
                         if ("Izquierda".equals(calle.getSentido())) {

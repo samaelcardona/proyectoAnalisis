@@ -111,7 +111,7 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
         getContentPane().add(jButton3);
         jButton3.setBounds(1180, 0, 20, 20);
 
-        jButton2.setText("Mover Carros");
+        jButton2.setText("Mover");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -120,7 +120,7 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
         getContentPane().add(jButton2);
         jButton2.setBounds(150, 590, 100, 23);
 
-        jButton4.setText("Detener Carros");
+        jButton4.setText("Detener");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
