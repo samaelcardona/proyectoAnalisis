@@ -155,7 +155,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                             //para pintar los nodos de los andenes
                             for (int k = 0; k < frame.getCalles().get(posicionCalle).getListaDeNodosPeaton().size(); k++) {
                                 g.drawOval(frame.getCalles().get(posicionCalle).getListaDeNodosPeaton().get(k).getX(), frame.getCalles().get(posicionCalle).getListaDeNodosPeaton().get(k).getY(), frame.getCalles().get(posicionCalle).getListaDeNodosPeaton().get(k).getAncho(), frame.getCalles().get(posicionCalle).getListaDeNodosPeaton().get(k).getAlto());
-                                g.drawString(frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosPeaton().get(k).getId() + "-"+this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i]) , frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosPeaton().get(k).getX(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosPeaton().get(k).getY());
+                            //    g.drawString(frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosPeaton().get(k).getId() + "-"+this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i]) , frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosPeaton().get(k).getX(), frame.getCalles().get(this.buscarIdEnlistaDeCalles(matrizCuadriculaMapaIdCalles[j][i])).getListaDeNodosPeaton().get(k).getY());
                             }
                             //para pintar las aristas
                             for (int k = 0; k < frame.getAristasGrafoMapa().size(); k++) {
@@ -458,7 +458,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                             frame.agregarNodoALista(nodo);
                             contadorDeNodos++;
 
-                            nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 2, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
+                            nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 1, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
                             frame.agregarNodoAListaPeatones(nodoPeaton);
                             contadorDeNodosPeatones++;
                             nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 50, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
@@ -481,7 +481,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                             frame.agregarNodoAListaPeatones(nodoPeaton);
                             contadorDeNodosPeatones++;
 
-                            nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 2, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
+                            nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 1, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
                             frame.agregarNodoAListaPeatones(nodoPeaton);
                             contadorDeNodosPeatones++;
                             nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 50, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
@@ -502,7 +502,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                             frame.agregarNodoALista(nodo);
                             contadorDeNodos++;
 
-                            nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 2, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
+                            nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 1, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
                             frame.agregarNodoAListaPeatones(nodoPeaton);
                             contadorDeNodosPeatones++;
                             nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 50, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
@@ -524,7 +524,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                             frame.agregarNodoALista(nodo);
                             contadorDeNodos++;
 
-                            nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 2, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
+                            nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 1, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
                             frame.agregarNodoAListaPeatones(nodoPeaton);
                             contadorDeNodosPeatones++;
                             nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 50, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
@@ -541,7 +541,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                             frame.agregarNodoALista(nodo);
                             contadorDeNodos++;
 
-                            nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 2, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
+                            nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 1, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
                             frame.agregarNodoAListaPeatones(nodoPeaton);
                             contadorDeNodosPeatones++;
                             nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 50, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
@@ -561,7 +561,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                             frame.agregarNodoALista(nodo);
                             contadorDeNodos++;
 
-                            nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 2, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
+                            nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 1, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
                             frame.agregarNodoAListaPeatones(nodoPeaton);
                             contadorDeNodosPeatones++;
                             nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 50, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
@@ -1252,7 +1252,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                                 frame.agregarNodoALista(nodo);
                                 contadorDeNodos++;
 
-                                nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 2, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
+                                nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 1, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
                                 frame.agregarNodoAListaPeatones(nodoPeaton);
                                 contadorDeNodosPeatones++;
                                 nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 50, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
@@ -1279,7 +1279,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                                 frame.agregarNodoALista(nodo);
                                 contadorDeNodos++;
 
-                                nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 2, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
+                                nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 1, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
                                 frame.agregarNodoAListaPeatones(nodoPeaton);
                                 contadorDeNodosPeatones++;
                                 nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 50, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
@@ -1308,7 +1308,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                                 frame.agregarNodoALista(nodo);
                                 contadorDeNodos++;
 
-                                nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 2, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
+                                nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 1, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
                                 frame.agregarNodoAListaPeatones(nodoPeaton);
                                 contadorDeNodosPeatones++;
                                 nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 50, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
@@ -1338,7 +1338,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                                 frame.agregarNodoALista(nodo);
                                 contadorDeNodos++;
 
-                                nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 2, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
+                                nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 1, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
                                 frame.agregarNodoAListaPeatones(nodoPeaton);
                                 contadorDeNodosPeatones++;
                                 nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 50, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
@@ -1364,7 +1364,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                                 frame.agregarNodoALista(nodo);
                                 contadorDeNodos++;
 
-                                nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 2, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
+                                nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 1, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
                                 frame.agregarNodoAListaPeatones(nodoPeaton);
                                 contadorDeNodosPeatones++;
                                 nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 50, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
@@ -1393,7 +1393,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                                 frame.agregarNodoALista(nodo);
                                 contadorDeNodos++;
 
-                                nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 2, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
+                                nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 1, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
                                 frame.agregarNodoAListaPeatones(nodoPeaton);
                                 contadorDeNodosPeatones++;
                                 nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 50, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
@@ -4419,7 +4419,7 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                 frame.getListaNodosMapa().remove(frame.getCalles().get(posicionCalle).getListaDeNodosEnCalle().get(i));
             }
             for (int i = 0; i < frame.getCalles().get(posicionCalle).getListaDeNodosPeaton().size(); i++) {
-                frame.getListaNodosMapa().remove(frame.getCalles().get(posicionCalle).getListaDeNodosPeaton().get(i));
+                frame.getListaNodosPeaton().remove(frame.getCalles().get(posicionCalle).getListaDeNodosPeaton().get(i));
             }
 
            

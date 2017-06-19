@@ -18,7 +18,9 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import modelo.Arbol;
@@ -274,6 +276,112 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
         return edificios;
     }
 
+    public static FrameAnimacionMapa getFrameMapa() {
+        return frameMapa;
+    }
+
+    public static void setFrameMapa(FrameAnimacionMapa frameMapa) {
+        FrameAnimacionMapa.frameMapa = frameMapa;
+    }
+
+    public Ciudad getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(Ciudad ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public Thread getHilo() {
+        return hilo;
+    }
+
+    public void setHilo(Thread hilo) {
+        this.hilo = hilo;
+    }
+
+    public boolean isIniciarHilo() {
+        return iniciarHilo;
+    }
+
+    public void setIniciarHilo(boolean iniciarHilo) {
+        this.iniciarHilo = iniciarHilo;
+    }
+
+    public LinkedList<NodoGrafoMapa> getListaNodosPeaton() {
+        return listaNodosPeaton;
+    }
+
+    public void setListaNodosPeaton(LinkedList<NodoGrafoMapa> listaNodosPeaton) {
+        this.listaNodosPeaton = listaNodosPeaton;
+    }
+
+    public LinkedList<AristaGrafoMapa> getAristasGrafoPeaton() {
+        return aristasGrafoPeaton;
+    }
+
+    public void setAristasGrafoPeaton(LinkedList<AristaGrafoMapa> aristasGrafoPeaton) {
+        this.aristasGrafoPeaton = aristasGrafoPeaton;
+    }
+
+    public JButton getjButton1() {
+        return jButton1;
+    }
+
+    public void setjButton1(JButton jButton1) {
+        this.jButton1 = jButton1;
+    }
+
+    public JButton getjButton2() {
+        return jButton2;
+    }
+
+    public void setjButton2(JButton jButton2) {
+        this.jButton2 = jButton2;
+    }
+
+    public JButton getjButton3() {
+        return jButton3;
+    }
+
+    public void setjButton3(JButton jButton3) {
+        this.jButton3 = jButton3;
+    }
+
+    public JButton getjButton4() {
+        return jButton4;
+    }
+
+    public void setjButton4(JButton jButton4) {
+        this.jButton4 = jButton4;
+    }
+
+    public JButton getjButton5() {
+        return jButton5;
+    }
+
+    public void setjButton5(JButton jButton5) {
+        this.jButton5 = jButton5;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public PanelAnimacionMapa getPanelAnimacionMapa1() {
+        return panelAnimacionMapa1;
+    }
+
+    public void setPanelAnimacionMapa1(PanelAnimacionMapa panelAnimacionMapa1) {
+        this.panelAnimacionMapa1 = panelAnimacionMapa1;
+    }
+
+    
+    
     /**
      * @param args the command line arguments
      */
