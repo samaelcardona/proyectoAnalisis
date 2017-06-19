@@ -50,7 +50,12 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
     LinkedList<Integer> listaAuxiliarParaTomarRutaDeCarros;
 
     private FrameAnimacionMapa frame;
-    private boolean moverPeatonesAleatoriamente;
+    private boolean moverPeatonesAleatoriamente = false;
+    private boolean validarClicPeaton;
+    private LinkedList<Integer> listaAuxiliarParaTomarRutaDePeaton;
+    private int[][] matrizGrafoMapaAdyacenciaRutaMasCortaPeaton;
+    private int[][] matrizGrafoMapaAdyacenciaRutaMasVelozPeaton;
+    private int[][] matrizGrafoMapaAdyacenciaRutaMenosTraficoPeaton;
 
     /**
      * Creates new form PanelCrearMapa
@@ -58,6 +63,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
     public PanelAnimacionMapa() {
         initComponents();
         validarClic = false;
+        validarClicPeaton = false;
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
@@ -66,6 +72,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         listaDeCarros = new LinkedList<>();
         listaDePeatones = new LinkedList<>();
         listaAuxiliarParaTomarRutaDeCarros = new LinkedList<>();
+        listaAuxiliarParaTomarRutaDePeaton = new LinkedList<>();
 
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 10; j++) {
@@ -638,7 +645,9 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
     @Override
     public void mouseClicked(MouseEvent e) {
         formularioConfiguararRutaCarro configuararRutaCarro = new formularioConfiguararRutaCarro();
-        if (this.clickEnUnCarro(e.getX(), e.getY(), listaDeCarros) == false && validarClic == false) {
+        formularioConfiguararRutaPeaton configurarRutaPeaton = new formularioConfiguararRutaPeaton();
+
+        if (this.clickEnUnCarro(e.getX(), e.getY(), listaDeCarros) == false && validarClic == false && this.clickEnUnPeaton(e.getX(), e.getY(), listaDePeatones) == false && validarClicPeaton == false) {
             ///Se saca un primer formulario para identificar que desea hacer 
             ///o en el mismo formulario se identifica carros o ruta 
             //para llamar el formulario de los carros
@@ -655,6 +664,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
             formulario.recibirPanel(this, cuadroSeleccionado[0], cuadroSeleccionado[1], x, y);
             formulario.setVisible(true);
         }
+
         if (this.clickEnUnCarro(e.getX(), e.getY(), listaDeCarros) == true && validarClic == false) {
             int idCarro = this.retornarCarroCLikeado(e.getX(), e.getY(), listaDeCarros);
             if (idCarro != -1) {
@@ -669,11 +679,35 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
             }
         }
 
+        if (this.clickEnUnPeaton(e.getX(), e.getY(), listaDePeatones) == true && validarClicPeaton == false) {
+            int idPeaton = this.retornarPeatonCLikeado(e.getX(), e.getY(), listaDePeatones);
+            if (idPeaton != -1) {
+                while (this.peatonEstaEnUnNodo(listaDePeatones.get(idPeaton)) == false) {
+                    System.out.println("Esperando A llegar Al Nodo");
+                }
+                listaDePeatones.get(idPeaton).setMover(false);
+
+                configurarRutaPeaton.recibirPanel(this, idPeaton);
+                configurarRutaPeaton.ingresarPrimerNodoAlalistaPeaton(this.retornarNodoClickeadoPeaton(listaDePeatones.get(idPeaton).getX(), listaDePeatones.get(idPeaton).getY()));
+                configurarRutaPeaton.setVisible(true);
+            }
+        }
+
         if (validarClic == true) {
             int nodo = this.retornarNodoClickeado((int) e.getPoint().getX(), (int) e.getPoint().getY());
 
             if (nodo != -1) {
                 listaAuxiliarParaTomarRutaDeCarros.add(nodo);
+            } else {
+                JOptionPane.showMessageDialog(this, "El nodo clickeado no es correcto" + nodo);
+            }
+        }
+
+        if (validarClicPeaton == true) {
+            int nodo = this.retornarNodoClickeadoPeaton((int) e.getPoint().getX(), (int) e.getPoint().getY());
+
+            if (nodo != -1) {
+                listaAuxiliarParaTomarRutaDePeaton.add(nodo);
             } else {
                 JOptionPane.showMessageDialog(this, "El nodo clickeado no es correcto" + nodo);
             }
@@ -1001,6 +1035,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
     }
 
+    //retorna un nodo aleatoriamente para ruta aleatoria 
     public NodoGrafoMapa retornarAleatoriamenteUnNodoBParaPeaton(NodoGrafoMapa nodoA) {
         LinkedList<NodoGrafoMapa> listaPosiblesB = new LinkedList<>();
         for (int i = 0; i < frame.getAristasGrafoPeaton().size(); i++) {
@@ -1048,7 +1083,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         return false;
     }
 
-    //Verifica si existe una transicion desde el nodo A hasta el nodo B
+    //Verifica si existe una transicion desde el nodo A hasta el nodo B Para la lista del peaton
     public boolean saberSiHayTransicionDeNodoAaNodoBPeaton(NodoGrafoMapa nodoA, NodoGrafoMapa nodoB) {
         for (int i = 0; i < frame.getAristasGrafoPeaton().size(); i++) {
             if (frame.getAristasGrafoPeaton().get(i).getNodoA().getId() == nodoA.getId() && frame.getAristasGrafoPeaton().get(i).getNodoB().getId() == nodoB.getId()) {
@@ -1183,13 +1218,13 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                             || (listaDeCarros.get(i).isMover() == false && this.retornarNodoEnElqueSeEstaParadoParaElCarro(listaDeCarros.get(i)) == null)) {
 
                         if (listaDeCarros.get(i).getNodoA() == null && listaDeCarros.get(i).getNodoB() == null) {
-                            
+
                             NodoGrafoMapa nodoA = this.retornarNodoEnElqueSeEstaParadoParaElCarro(listaDeCarros.get(i));
                             NodoGrafoMapa nodoB = this.retornarAleatoriamenteUnNodoB(nodoA);
 
                             listaDeCarros.get(i).setNodoA(nodoA);
                             listaDeCarros.get(i).setNodoB(nodoB);
-                            
+
                         }
 
                         if (listaDeCarros.get(i).getNodoB() != null) {
@@ -1199,21 +1234,21 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                                         || listaDeCarros.get(i).getY() != listaDeCarros.get(i).getNodoB().getY()) {
                                     if (listaDeCarros.get(i).getNodoA().getX() < listaDeCarros.get(i).getNodoB().getX()
                                             && listaDeCarros.get(i).getNodoA().getY() == listaDeCarros.get(i).getNodoB().getY()) {
-                                        if (this.hayAlgunCarroAdelanteEnXmasUno(listaDeCarros.get(i)) == false&&this.hayAlgunPeatonAdelanteEnXmasUno(listaDeCarros.get(i))==false) {
+                                        if (this.hayAlgunCarroAdelanteEnXmasUno(listaDeCarros.get(i)) == false && this.hayAlgunPeatonAdelanteEnXmasUno(listaDeCarros.get(i)) == false) {
                                             listaDeCarros.get(i).setX(listaDeCarros.get(i).getX() + 1);
                                         }
 
                                     }
                                     if (listaDeCarros.get(i).getNodoA().getX() > listaDeCarros.get(i).getNodoB().getX()
                                             && listaDeCarros.get(i).getNodoA().getY() == listaDeCarros.get(i).getNodoB().getY()) {
-                                        if (this.hayAlgunCarroAdelanteEnXmenosUno(listaDeCarros.get(i)) == false&&this.hayAlgunPeatonAdelanteEnXmenosUno(listaDeCarros.get(i))==false) {
+                                        if (this.hayAlgunCarroAdelanteEnXmenosUno(listaDeCarros.get(i)) == false && this.hayAlgunPeatonAdelanteEnXmenosUno(listaDeCarros.get(i)) == false) {
                                             listaDeCarros.get(i).setX(listaDeCarros.get(i).getX() - 1);
                                         }
 
                                     }
                                     if (listaDeCarros.get(i).getNodoA().getY() < listaDeCarros.get(i).getNodoB().getY()
                                             && listaDeCarros.get(i).getNodoA().getX() == listaDeCarros.get(i).getNodoB().getX()) {
-                                        if (this.hayAlgunCarroAdelanteEnYmasUno(listaDeCarros.get(i)) == false&&this.hayAlgunPeatonAdelanteEnYmasUno(listaDeCarros.get(i))==false) {
+                                        if (this.hayAlgunCarroAdelanteEnYmasUno(listaDeCarros.get(i)) == false && this.hayAlgunPeatonAdelanteEnYmasUno(listaDeCarros.get(i)) == false) {
                                             listaDeCarros.get(i).setY(listaDeCarros.get(i).getY() + 1);
 
                                         }
@@ -1221,7 +1256,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                                     }
                                     if (listaDeCarros.get(i).getNodoA().getY() > listaDeCarros.get(i).getNodoB().getY()
                                             && listaDeCarros.get(i).getNodoA().getX() == listaDeCarros.get(i).getNodoB().getX()) {
-                                        if (this.hayAlgunCarroAdelanteEnYmenosUno(listaDeCarros.get(i)) == false&&this.hayAlgunPeatonAdelanteEnYmenosUno(listaDeCarros.get(i))==false) {
+                                        if (this.hayAlgunCarroAdelanteEnYmenosUno(listaDeCarros.get(i)) == false && this.hayAlgunPeatonAdelanteEnYmenosUno(listaDeCarros.get(i)) == false) {
                                             listaDeCarros.get(i).setY(listaDeCarros.get(i).getY() - 1);
                                         }
 
@@ -1241,112 +1276,44 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                     }
                 }
 
-                ////mover peatones
-                if (this.moverPeatonesAleatoriamente == true) {
+            }
+            ////mover peatones
+            if (this.moverPeatonesAleatoriamente == true) {
 
-                    for (int i = 0; i < this.listaDePeatones.size(); i++) {
+                for (int i = 0; i < this.listaDePeatones.size(); i++) {
 
-                        //para mover peaton con una ruta 
-                        if (listaDePeatones.get(i).isMover() == false && this.retornarNodoEnElqueSeEstaParadoParaElPeaton(listaDePeatones.get(i)) != null) {
+                    //para mover peaton con una ruta 
+                    if (listaDePeatones.get(i).isMover() == false && this.retornarNodoEnElqueSeEstaParadoParaElPeaton(listaDePeatones.get(i)) != null) {
 
-                            if (listaDePeatones.get(i).getRuta().size() > 0) {
-                                setColor(listaDePeatones.get(i).getRuta(), colorAleatorio());
-                                ///tendria el mismo problema se moveria primero este en su ruta y los otros no 
-                                if (listaDePeatones.get(i).getNodoA() == null && listaDePeatones.get(i).getNodoB() == null) {
-                                    if (listaDePeatones.get(i).getRuta().size() > listaDePeatones.get(i).getContarNodoRuta() + 1) {
+                        if (listaDePeatones.get(i).getRuta().size() > 0) {
 
-                                        NodoGrafoMapa nodoA = frame.getListaNodosPeaton().get(listaDePeatones.get(i).getRuta().get(listaDePeatones.get(i).getContarNodoRuta()));
-                                        NodoGrafoMapa nodoB = frame.getListaNodosPeaton().get(listaDePeatones.get(i).getRuta().get(listaDePeatones.get(i).getContarNodoRuta() + 1));
-
-                                        listaDePeatones.get(i).setNodoA(nodoA);
-                                        listaDePeatones.get(i).setNodoB(nodoB);
-                                        frame.getListaNodosPeaton().get(listaDePeatones.get(i).getRuta().get(listaDePeatones.get(i).getContarNodoRuta())).setColor(Color.BLACK);
-                                        listaDePeatones.get(i).setContarNodoRuta(listaDePeatones.get(i).getContarNodoRuta() + 1);
-
-                                    }
-                                }
-
-                                if (listaDePeatones.get(i).getNodoB() != null) {
-                                    if (saberSiHayTransicionDeNodoAaNodoBPeaton(listaDePeatones.get(i).getNodoA(), listaDePeatones.get(i).getNodoB()) == true) {
-
-                                        ///error aca verificar valores...
-                                        if (listaDePeatones.get(i).getRuta().get(listaDePeatones.get(i).getContarNodoRuta() - 1).equals(listaDePeatones.get(i).getRutaIdNodos().get(0))) {
-                                            listaDePeatones.get(i).getRutaIdNodos().removeFirst();
-                                            listaDePeatones.get(i).getRutaIdNodos().addFirst(this.buscarIdEnlistaDeNodosPeaton(listaDePeatones.get(i).getNodoB().getId()));
-                                        }
-
-                                        if (listaDePeatones.get(i).getX() != listaDePeatones.get(i).getNodoB().getX()
-                                                || listaDePeatones.get(i).getY() != listaDePeatones.get(i).getNodoB().getY()) {
-                                            if (listaDePeatones.get(i).getNodoA().getX() < listaDePeatones.get(i).getNodoB().getX()
-                                                    && listaDePeatones.get(i).getNodoA().getY() == listaDePeatones.get(i).getNodoB().getY()) {
-                                               
-                                                listaDePeatones.get(i).setX(listaDePeatones.get(i).getX() + 1);
-
-                                            }
-                                            if (listaDePeatones.get(i).getNodoA().getX() > listaDePeatones.get(i).getNodoB().getX()
-                                                    && listaDePeatones.get(i).getNodoA().getY() == listaDePeatones.get(i).getNodoB().getY()) {
-                                                
-                                                listaDePeatones.get(i).setX(listaDePeatones.get(i).getX() - 1);
-
-                                            }
-                                            if (listaDePeatones.get(i).getNodoA().getY() < listaDePeatones.get(i).getNodoB().getY()
-                                                    && listaDePeatones.get(i).getNodoA().getX() == listaDePeatones.get(i).getNodoB().getX()) {
-
-                                                listaDePeatones.get(i).setY(listaDePeatones.get(i).getY() + 1);
-
-
-                                            }
-                                            if (listaDePeatones.get(i).getNodoA().getY() > listaDePeatones.get(i).getNodoB().getY()
-                                                    && listaDePeatones.get(i).getNodoA().getX() == listaDePeatones.get(i).getNodoB().getX()) {
-                                                 
-                                                listaDePeatones.get(i).setY(listaDePeatones.get(i).getY() - 1);
-
-                                            }
-                                        }
-                                        if (listaDePeatones.get(i).getX() == listaDePeatones.get(i).getNodoB().getX()
-                                                && listaDePeatones.get(i).getY() == listaDePeatones.get(i).getNodoB().getY()) {
-                                            listaDePeatones.get(i).setNodoA(null);
-                                            listaDePeatones.get(i).setNodoB(null);
-                                        }
-
-                                    }
-                                }
-                                if (listaDePeatones.get(i).getNodoB() == null) {
-                                    listaDePeatones.get(i).setNodoA(null);
-                                    listaDePeatones.get(i).setNodoB(null);
-                                }
-
-                                //esta es por si llega al nodo final de la ruta entonces reinicia la lista y el contador
-                                if (listaDePeatones.get(i).getX() == frame.getListaNodosPeaton().get(listaDePeatones.get(i).getRuta().getLast()).getX()
-                                        && listaDePeatones.get(i).getY() == frame.getListaNodosPeaton().get(listaDePeatones.get(i).getRuta().getLast()).getY()) {
-
-                                    listaDePeatones.get(i).getRuta().clear();
-                                    listaDePeatones.get(i).setContarNodoRuta(0);
-
-                                }
-                            }
-                        }
-
-                        ///para mover carros aleatoriamente
-                        if ((listaDePeatones.get(i).isMover() == true && this.retornarNodoEnElqueSeEstaParadoParaElPeaton(listaDePeatones.get(i)) == null)
-                                || (listaDePeatones.get(i).isMover() == true && this.retornarNodoEnElqueSeEstaParadoParaElPeaton(listaDePeatones.get(i)) != null)
-                                || (listaDePeatones.get(i).isMover() == false && this.retornarNodoEnElqueSeEstaParadoParaElPeaton(listaDePeatones.get(i)) == null)) {
-
+                            setColor(listaDePeatones.get(i).getRuta(), colorAleatorio());
+                            ///tendria el mismo problema se moveria primero este en su ruta y los otros no 
                             if (listaDePeatones.get(i).getNodoA() == null && listaDePeatones.get(i).getNodoB() == null) {
+                                if (listaDePeatones.get(i).getRuta().size() > listaDePeatones.get(i).getContarNodoRuta() + 1) {
 
-                                NodoGrafoMapa nodoA = this.retornarNodoEnElqueSeEstaParadoParaElPeaton(listaDePeatones.get(i));
-                                NodoGrafoMapa nodoB = this.retornarAleatoriamenteUnNodoBParaPeaton(nodoA);
+                                    NodoGrafoMapa nodoA = frame.getListaNodosPeaton().get(listaDePeatones.get(i).getRuta().get(listaDePeatones.get(i).getContarNodoRuta()));
+                                    NodoGrafoMapa nodoB = frame.getListaNodosPeaton().get(listaDePeatones.get(i).getRuta().get(listaDePeatones.get(i).getContarNodoRuta() + 1));
 
-                                listaDePeatones.get(i).setNodoA(nodoA);
-                                listaDePeatones.get(i).setNodoB(nodoB);
+                                    listaDePeatones.get(i).setNodoA(nodoA);
+                                    listaDePeatones.get(i).setNodoB(nodoB);
+                                    frame.getListaNodosPeaton().get(listaDePeatones.get(i).getRuta().get(listaDePeatones.get(i).getContarNodoRuta())).setColor(Color.BLACK);
+                                    listaDePeatones.get(i).setContarNodoRuta(listaDePeatones.get(i).getContarNodoRuta() + 1);
+
+                                }
                             }
 
                             if (listaDePeatones.get(i).getNodoB() != null) {
                                 if (saberSiHayTransicionDeNodoAaNodoBPeaton(listaDePeatones.get(i).getNodoA(), listaDePeatones.get(i).getNodoB()) == true) {
-                                    
+
+                                    ///error aca verificar valores...
+                                    if (listaDePeatones.get(i).getRuta().get(listaDePeatones.get(i).getContarNodoRuta() - 1).equals(listaDePeatones.get(i).getRutaIdNodos().get(0))) {
+                                        listaDePeatones.get(i).getRutaIdNodos().removeFirst();
+                                        listaDePeatones.get(i).getRutaIdNodos().addFirst(this.buscarIdEnlistaDeNodosPeaton(listaDePeatones.get(i).getNodoB().getId()));
+                                    }
+
                                     if (listaDePeatones.get(i).getX() != listaDePeatones.get(i).getNodoB().getX()
                                             || listaDePeatones.get(i).getY() != listaDePeatones.get(i).getNodoB().getY()) {
-
                                         if (listaDePeatones.get(i).getNodoA().getX() < listaDePeatones.get(i).getNodoB().getX()
                                                 && listaDePeatones.get(i).getNodoA().getY() == listaDePeatones.get(i).getNodoB().getY()) {
 
@@ -1379,23 +1346,92 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                                     }
 
                                 }
-                            } else {
-                                System.out.println("es nulll");
+                            }
+                            if (listaDePeatones.get(i).getNodoB() == null) {
                                 listaDePeatones.get(i).setNodoA(null);
                                 listaDePeatones.get(i).setNodoB(null);
+                            }
+
+                            //esta es por si llega al nodo final de la ruta entonces reinicia la lista y el contador
+                            if (listaDePeatones.get(i).getX() == frame.getListaNodosPeaton().get(listaDePeatones.get(i).getRuta().getLast()).getX()
+                                    && listaDePeatones.get(i).getY() == frame.getListaNodosPeaton().get(listaDePeatones.get(i).getRuta().getLast()).getY()) {
+
+                                listaDePeatones.get(i).getRuta().clear();
+                                listaDePeatones.get(i).setContarNodoRuta(0);
+
                             }
                         }
                     }
 
-                }
+                    ///para mover carros aleatoriamente
+                    if ((listaDePeatones.get(i).isMover() == true && this.retornarNodoEnElqueSeEstaParadoParaElPeaton(listaDePeatones.get(i)) == null)
+                            || (listaDePeatones.get(i).isMover() == true && this.retornarNodoEnElqueSeEstaParadoParaElPeaton(listaDePeatones.get(i)) != null)
+                            || (listaDePeatones.get(i).isMover() == false && this.retornarNodoEnElqueSeEstaParadoParaElPeaton(listaDePeatones.get(i)) == null)) {
 
-                try {
-                    Thread.sleep(35);
-                } catch (Exception e) {
-                }
+                        if (listaDePeatones.get(i).getNodoA() == null && listaDePeatones.get(i).getNodoB() == null) {
+
+                            NodoGrafoMapa nodoA = this.retornarNodoEnElqueSeEstaParadoParaElPeaton(listaDePeatones.get(i));
+                            NodoGrafoMapa nodoB = this.retornarAleatoriamenteUnNodoBParaPeaton(nodoA);
+
+                            listaDePeatones.get(i).setNodoA(nodoA);
+                            listaDePeatones.get(i).setNodoB(nodoB);
+                        }
+
+                        if (listaDePeatones.get(i).getNodoB() != null) {
+                            if (saberSiHayTransicionDeNodoAaNodoBPeaton(listaDePeatones.get(i).getNodoA(), listaDePeatones.get(i).getNodoB()) == true) {
+
+                                if (listaDePeatones.get(i).getX() != listaDePeatones.get(i).getNodoB().getX()
+                                        || listaDePeatones.get(i).getY() != listaDePeatones.get(i).getNodoB().getY()) {
+
+                                    if (listaDePeatones.get(i).getNodoA().getX() < listaDePeatones.get(i).getNodoB().getX()
+                                            && listaDePeatones.get(i).getNodoA().getY() == listaDePeatones.get(i).getNodoB().getY()) {
+
+                                        listaDePeatones.get(i).setX(listaDePeatones.get(i).getX() + 1);
+
+                                    }
+                                    if (listaDePeatones.get(i).getNodoA().getX() > listaDePeatones.get(i).getNodoB().getX()
+                                            && listaDePeatones.get(i).getNodoA().getY() == listaDePeatones.get(i).getNodoB().getY()) {
+
+                                        listaDePeatones.get(i).setX(listaDePeatones.get(i).getX() - 1);
+
+                                    }
+                                    if (listaDePeatones.get(i).getNodoA().getY() < listaDePeatones.get(i).getNodoB().getY()
+                                            && listaDePeatones.get(i).getNodoA().getX() == listaDePeatones.get(i).getNodoB().getX()) {
+
+                                        listaDePeatones.get(i).setY(listaDePeatones.get(i).getY() + 1);
+
+                                    }
+                                    if (listaDePeatones.get(i).getNodoA().getY() > listaDePeatones.get(i).getNodoB().getY()
+                                            && listaDePeatones.get(i).getNodoA().getX() == listaDePeatones.get(i).getNodoB().getX()) {
+
+                                        listaDePeatones.get(i).setY(listaDePeatones.get(i).getY() - 1);
+
+                                    }
+                                }
+                                if (listaDePeatones.get(i).getX() == listaDePeatones.get(i).getNodoB().getX()
+                                        && listaDePeatones.get(i).getY() == listaDePeatones.get(i).getNodoB().getY()) {
+                                    listaDePeatones.get(i).setNodoA(null);
+                                    listaDePeatones.get(i).setNodoB(null);
+                                }
+
+                            }
+                        } else {
+                            System.out.println("es nulll");
+                            listaDePeatones.get(i).setNodoA(null);
+                            listaDePeatones.get(i).setNodoB(null);
+                        }
+                    }
+                    ///fin del condcional aleatorio
+
+                } //fin del for para recorrer los peatones
+
+            }//fin del mover  los peatones
+            try {
+                Thread.sleep(35);
+            } catch (Exception e) {
             }
 
-        }
+        }///fin del while 
 
     }
 
@@ -1413,11 +1449,22 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         this.validarClic = validarClic;
     }
 
+    void setValidarClicPeaton(boolean validarClicPeaton) {
+        this.validarClicPeaton = validarClicPeaton;
+    }
+
     /*este metodo valida que se realizo clic sobre un nodo y lo agrega en la lsita 
      de nodos a visitar por el carro*/
     public void setValidarClic(boolean validarClic, LinkedList<Integer> listaDeIdNodosAvisitar) {
         this.validarClic = validarClic;
         this.listaAuxiliarParaTomarRutaDeCarros = listaDeIdNodosAvisitar;
+    }
+
+    /*este metodo valida que se realizo clic sobre un nodo y lo agrega en la lsita 
+     de nodos a visitar por el carro*/
+    public void setValidarClicPeaton(boolean validarClicPeaton, LinkedList<Integer> listaDeIdNodosAvisitar) {
+        this.validarClicPeaton = validarClicPeaton;
+        this.listaAuxiliarParaTomarRutaDePeaton = listaDeIdNodosAvisitar;
     }
 
     public String[][] getMatrizLetrasElementosInternosCuadriculaMapa() {
@@ -1465,6 +1512,9 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         matrizGrafoMapaAdyacenciaRutaMasCorta = new int[frame.getListaNodosMapa().size()][frame.getListaNodosMapa().size()];
         matrizGrafoMapaAdyacenciaRutaMasVeloz = new int[frame.getListaNodosMapa().size()][frame.getListaNodosMapa().size()];
         matrizGrafoMapaAdyacenciaRutaMenosTrafico = new int[frame.getListaNodosMapa().size()][frame.getListaNodosMapa().size()];
+        matrizGrafoMapaAdyacenciaRutaMasCortaPeaton = new int[frame.getListaNodosPeaton().size()][frame.getListaNodosPeaton().size()];
+        matrizGrafoMapaAdyacenciaRutaMasVelozPeaton = new int[frame.getListaNodosPeaton().size()][frame.getListaNodosPeaton().size()];
+        matrizGrafoMapaAdyacenciaRutaMenosTraficoPeaton = new int[frame.getListaNodosPeaton().size()][frame.getListaNodosPeaton().size()];
 
         for (int i = 0; i < matrizGrafoMapaAdyacenciaRutaMasCorta.length; i++) {
             for (int j = 0; j < matrizGrafoMapaAdyacenciaRutaMasCorta.length; j++) {
@@ -1474,8 +1524,19 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
             }
         }
 
+        for (int i = 0; i < matrizGrafoMapaAdyacenciaRutaMasCortaPeaton.length; i++) {
+            for (int j = 0; j < matrizGrafoMapaAdyacenciaRutaMasCortaPeaton.length; j++) {
+                matrizGrafoMapaAdyacenciaRutaMasCortaPeaton[j][i] = -1;
+                matrizGrafoMapaAdyacenciaRutaMasVelozPeaton[j][i] = -1;
+                matrizGrafoMapaAdyacenciaRutaMenosTraficoPeaton[j][i] = 0;
+            }
+        }
+
         this.llenarMatrizDeRutaMasCorta();
         this.llenarMatrizDeRutaMasVeloz();
+
+        this.llenarMatrizDeRutaMasCortaPeaton();
+        this.llenarMatrizDeRutaMasVelozPeaton();
 
     }
 
@@ -1528,7 +1589,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         return false;
     }
 
-      //Verifica si existe un carro por atras dentro de la ruta que lleva 
+    //Verifica si existe un carro por atras dentro de la ruta que lleva 
     //para parar y evitar la colision
     private boolean hayAlgunCarroAdelanteEnXmenosUno(Automovil carroV) {
         for (int i = 0; i < listaDeCarros.size(); i++) {
@@ -1540,8 +1601,8 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         }
         return false;
     }
-    
-     //Verifica si existe un carro por abajo dentro de la ruta que lleva 
+
+    //Verifica si existe un carro por abajo dentro de la ruta que lleva 
     //para parar y evitar la colision
     private boolean hayAlgunCarroAdelanteEnYmasUno(Automovil carroV) {
         for (int i = 0; i < listaDeCarros.size(); i++) {
@@ -1554,8 +1615,8 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         return false;
 
     }
-    
-      //Verifica si existe un carro por arriba dentro de la ruta que lleva 
+
+    //Verifica si existe un carro por arriba dentro de la ruta que lleva 
     //para parar y evitar la colision
     private boolean hayAlgunCarroAdelanteEnYmenosUno(Automovil carroV) {
 
@@ -1568,7 +1629,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         }
         return false;
     }
-    
+
     //Verifica si existe un Peaton por delante dentro de la ruta que lleva 
     //para parar y evitar la colision
     private boolean hayAlgunPeatonAdelanteEnXmasUno(Automovil carroV) {
@@ -1595,8 +1656,6 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         return false;
     }
 
-   
-
     //Verifica si existe un carro por abajo dentro de la ruta que lleva 
     //para parar y evitar la colision
     private boolean hayAlgunPeatonAdelanteEnYmasUno(Automovil carroV) {
@@ -1610,7 +1669,6 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         return false;
 
     }
-
 
     //Verifica si existe un carro por arriba dentro de la ruta que lleva 
     //para parar y evitar la colision
@@ -1638,11 +1696,34 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         return false;
     }
 
+    //Retorna un booleano al hacer click en un carro 
+    private boolean clickEnUnPeaton(int x, int y, LinkedList<Peaton> listaDePeatones) {
+
+        for (int i = 0; i < listaDePeatones.size(); i++) {
+            if (listaDePeatones.get(i).getX() < x && listaDePeatones.get(i).getX() + 15 > x
+                    && listaDePeatones.get(i).getY() < y && listaDePeatones.get(i).getY() + 15 > y) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     //Retorna el entero id de un carro clickeado
     private int retornarCarroCLikeado(int x, int y, LinkedList<Automovil> listaDeCarros) {
         for (int i = 0; i < listaDeCarros.size(); i++) {
             if (listaDeCarros.get(i).getX() < x && listaDeCarros.get(i).getX() + 15 > x
                     && listaDeCarros.get(i).getY() < y && listaDeCarros.get(i).getY() + 15 > y) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    //Retorna el entero id de un carro clickeado
+    private int retornarPeatonCLikeado(int x, int y, LinkedList<Peaton> listaDePeatones) {
+        for (int i = 0; i < listaDePeatones.size(); i++) {
+            if (listaDePeatones.get(i).getX() < x && listaDePeatones.get(i).getX() + 10 > x
+                    && listaDePeatones.get(i).getY() < y && listaDePeatones.get(i).getY() + 10 > y) {
                 return i;
             }
         }
@@ -1765,6 +1846,15 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         }
     }
 
+    //Elimina un peaton de la lista de peatones identificado por el id entrado por parametro
+    void eliminarPeaton(int idPeaton) {
+        for (int i = 0; i < listaDePeatones.size(); i++) {
+            if (listaDePeatones.get(i).getId() == idPeaton) {
+                listaDePeatones.remove(listaDePeatones.get(i));
+            }
+        }
+    }
+
     //Retorna el id de tipo entero que identifica a un nodo
     //que es buscado por una posicion x ^ y entradas por parametro
     private int retornarNodoClickeado(int x, int y) {
@@ -1773,6 +1863,20 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
             if (x >= frame.getListaNodosMapa().get(j).getX() && x < frame.getListaNodosMapa().get(j).getX() + 10
                     && y >= frame.getListaNodosMapa().get(j).getY() && y < frame.getListaNodosMapa().get(j).getY() + 10) {
+                return j;
+            }
+        }
+        return -1;
+    }
+
+    //Retorna el id de tipo entero que identifica a un nodo
+    //que es buscado por una posicion x ^ y entradas por parametro
+    private int retornarNodoClickeadoPeaton(int x, int y) {
+
+        for (int j = 0; j < frame.getListaNodosPeaton().size(); j++) {
+
+            if (x >= frame.getListaNodosPeaton().get(j).getX() && x < frame.getListaNodosPeaton().get(j).getX() + 10
+                    && y >= frame.getListaNodosPeaton().get(j).getY() && y < frame.getListaNodosPeaton().get(j).getY() + 10) {
                 return j;
             }
         }
@@ -1818,17 +1922,17 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         if (tipoDeRuta.equals("Ruta Mas Corta")) {
 
             //aca ordeno la lista de la ruta que tiene el carro para dejarla con la mas optima para moverlo rapidamente
-            listaDeCarros.get(id).setRutaIdNodos(this.modificarRutaParaLamasOptima(matrizGrafoMapaAdyacenciaRutaMasCorta, listaDeCarros.get(id).getRutaIdNodos()));
+            listaDeCarros.get(id).setRutaIdNodos(this.modificarRutaParaLamasOptima(matrizGrafoMapaAdyacenciaRutaMasCorta, listaDeCarros.get(id).getRutaIdNodos(), "carro"));
             if (listaDeCarros.get(id).getRutaIdNodos().size() > 0) {
                 //aca se hace la validacion y se cambia la lista de la ruta del carro para escoger el mejor camino 
                 for (int i = 0; i < listaDeCarros.get(id).getRutaIdNodos().size() - 1; i++) {
                     ///aca modificamos los metodos para encontrar la mejor ruta posible tomando diferentes puntos
-                    listaDeDijkstraPorCadaNodoFuente.add(this.dijkstra(matrizGrafoMapaAdyacenciaRutaMasCorta, listaDeCarros.get(id).getRutaIdNodos().get(i)));
+                    listaDeDijkstraPorCadaNodoFuente.add(this.dijkstra(matrizGrafoMapaAdyacenciaRutaMasCorta, listaDeCarros.get(id).getRutaIdNodos().get(i), "carro"));
                 }
 
                 //se saca la lista de las rutas
                 for (int i = 1; i < listaDeCarros.get(id).getRutaIdNodos().size(); i++) {
-                    listaDeRutas.add(this.rutaParaMoverCarro(listaDeDijkstraPorCadaNodoFuente.get(i - 1), listaDeCarros.get(id).getRutaIdNodos().get(i - 1), listaDeCarros.get(id).getRutaIdNodos().get(i)));
+                    listaDeRutas.add(this.rutaParaMoverCarroOPeatones(listaDeDijkstraPorCadaNodoFuente.get(i - 1), listaDeCarros.get(id).getRutaIdNodos().get(i - 1), listaDeCarros.get(id).getRutaIdNodos().get(i)));
                 }
 
                 // se eliminan los ultimos de la lista de la ruta para evitar repetidos
@@ -1849,17 +1953,17 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         if (tipoDeRuta.equals("Ruta Mas Veloz")) {
 
             //aca ordeno la lista de la ruta que tiene el carro para dejarla con la mas optima para moverlo rapidamente
-            listaDeCarros.get(id).setRutaIdNodos(this.modificarRutaParaLamasOptima(matrizGrafoMapaAdyacenciaRutaMasVeloz, listaDeCarros.get(id).getRutaIdNodos()));
+            listaDeCarros.get(id).setRutaIdNodos(this.modificarRutaParaLamasOptima(matrizGrafoMapaAdyacenciaRutaMasVeloz, listaDeCarros.get(id).getRutaIdNodos(), "carro"));
 
             if (listaDeCarros.get(id).getRutaIdNodos().size() > 0) {
                 //se hace el dijkstra
                 for (int i = 0; i < listaDeCarros.get(id).getRutaIdNodos().size() - 1; i++) {
-                    listaDeDijkstraPorCadaNodoFuente.add(this.dijkstra(matrizGrafoMapaAdyacenciaRutaMasVeloz, listaDeCarros.get(id).getRutaIdNodos().get(i)));
+                    listaDeDijkstraPorCadaNodoFuente.add(this.dijkstra(matrizGrafoMapaAdyacenciaRutaMasVeloz, listaDeCarros.get(id).getRutaIdNodos().get(i), "carro"));
                 }
 
                 //se saca la lista de las rutas
                 for (int i = 1; i < listaDeCarros.get(id).getRutaIdNodos().size(); i++) {
-                    listaDeRutas.add(this.rutaParaMoverCarro(listaDeDijkstraPorCadaNodoFuente.get(i - 1), listaDeCarros.get(id).getRutaIdNodos().get(i - 1), listaDeCarros.get(id).getRutaIdNodos().get(i)));
+                    listaDeRutas.add(this.rutaParaMoverCarroOPeatones(listaDeDijkstraPorCadaNodoFuente.get(i - 1), listaDeCarros.get(id).getRutaIdNodos().get(i - 1), listaDeCarros.get(id).getRutaIdNodos().get(i)));
                 }
 
                 // se eliminan los ultimos de la lista de la ruta para evitar repetidos
@@ -1879,17 +1983,17 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         if (tipoDeRuta.equals("Ruta Menos Trafico")) {
 
             //aca ordeno la lista de la ruta que tiene el carro para dejarla con la mas optima para moverlo rapidamente
-            listaDeCarros.get(id).setRutaIdNodos(this.modificarRutaParaLamasOptima(matrizGrafoMapaAdyacenciaRutaMenosTrafico, listaDeCarros.get(id).getRutaIdNodos()));
+            listaDeCarros.get(id).setRutaIdNodos(this.modificarRutaParaLamasOptima(matrizGrafoMapaAdyacenciaRutaMenosTrafico, listaDeCarros.get(id).getRutaIdNodos(), "carro"));
 
             if (listaDeCarros.get(id).getRutaIdNodos().size() > 0) {
                 //se hace el dijkstra
                 for (int i = 0; i < listaDeCarros.get(id).getRutaIdNodos().size() - 1; i++) {
-                    listaDeDijkstraPorCadaNodoFuente.add(this.dijkstra(matrizGrafoMapaAdyacenciaRutaMenosTrafico, listaDeCarros.get(id).getRutaIdNodos().get(i)));
+                    listaDeDijkstraPorCadaNodoFuente.add(this.dijkstra(matrizGrafoMapaAdyacenciaRutaMenosTrafico, listaDeCarros.get(id).getRutaIdNodos().get(i), "carro"));
                 }
 
                 //se saca la lista de las rutas
                 for (int i = 1; i < listaDeCarros.get(id).getRutaIdNodos().size(); i++) {
-                    listaDeRutas.add(this.rutaParaMoverCarro(listaDeDijkstraPorCadaNodoFuente.get(i - 1), listaDeCarros.get(id).getRutaIdNodos().get(i - 1), listaDeCarros.get(id).getRutaIdNodos().get(i)));
+                    listaDeRutas.add(this.rutaParaMoverCarroOPeatones(listaDeDijkstraPorCadaNodoFuente.get(i - 1), listaDeCarros.get(id).getRutaIdNodos().get(i - 1), listaDeCarros.get(id).getRutaIdNodos().get(i)));
                 }
 
                 // se eliminan los ultimos de la lista de la ruta para evitar repetidos
@@ -1909,8 +2013,138 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         listaDeCarros.get(id).setRuta(ruta);
     }
 
+    //Lena la lista de la ruta en el carro
+    void enviarListaEnElMismoPeaton(int idPeaton, String tipoDeRuta) {
+        LinkedList<Integer> listaCopiaAux = new LinkedList<>();
+        for (int i = 0; i < this.listaAuxiliarParaTomarRutaDePeaton.size(); i++) {
+            listaCopiaAux.add(this.listaAuxiliarParaTomarRutaDePeaton.get(i));
+        }
+        this.recibirListaDeNodosAVisitarPorPeaton(idPeaton, this.listaAuxiliarParaTomarRutaDePeaton, tipoDeRuta);
+        listaDePeatones.get(idPeaton).setRutaIdNodos(listaCopiaAux);
+        this.listaAuxiliarParaTomarRutaDePeaton.clear();
+    }
+
+    ///recibe la lista de nodos a visitar para un carro y le agrega a ese carro una ruta segun los nodos seleccionados
+    void recibirListaDeNodosAVisitarPorPeaton(int idPeaton, LinkedList<Integer> listaDeIdNodosAvisitar, String tipoDeRuta) {
+
+        int id = -1;
+        LinkedList<LinkedList<ValorCola>> listaDeDijkstraPorCadaNodoFuente = new LinkedList<>();//lista que tiene el dijkstra por cada nodo fuente
+        LinkedList<LinkedList<Integer>> listaDeRutas = new LinkedList<>();//lista que se agrega las rutas por cada nodo fuente segun el dijkstra
+        LinkedList<Integer> ruta = new LinkedList<>(); //la ruta final que sale de la lista de listas de lista de rutas.
+
+        //busco el peaton
+        for (int i = 0; i < listaDePeatones.size(); i++) {
+            if (listaDePeatones.get(i).getId() == idPeaton) {
+                id = i;
+            }
+        }
+
+        listaDePeatones.get(id).setTipoDeRutaActual(tipoDeRuta);
+
+        //aca a este carro le agrego los nodos seleccionados
+        listaDePeatones.get(id).setRutaIdNodos(listaDeIdNodosAvisitar);
+
+        this.llenarMatrizDeRutaMenosTraficoPeaton(frame.getAristasGrafoPeaton(), this.listaDePeatones);
+
+        //this.mostrarMatricezEnConsola();
+        ///si la ruta es el camino mas corto
+        if (tipoDeRuta.equals("Ruta Mas Corta")) {
+
+            //aca ordeno la lista de la ruta que tiene el carro para dejarla con la mas optima para moverlo rapidamente
+            listaDePeatones.get(id).setRutaIdNodos(this.modificarRutaParaLamasOptima(matrizGrafoMapaAdyacenciaRutaMasCortaPeaton, listaDePeatones.get(id).getRutaIdNodos(), "peaton"));
+
+            if (listaDePeatones.get(id).getRutaIdNodos().size() > 0) {
+                //aca se hace la validacion y se cambia la lista de la ruta del carro para escoger el mejor camino 
+                for (int i = 0; i < listaDePeatones.get(id).getRutaIdNodos().size() - 1; i++) {
+                    ///aca modificamos los metodos para encontrar la mejor ruta posible tomando diferentes puntos
+                    listaDeDijkstraPorCadaNodoFuente.add(this.dijkstra(matrizGrafoMapaAdyacenciaRutaMasCortaPeaton, listaDePeatones.get(id).getRutaIdNodos().get(i), "peaton"));
+                }
+
+                //se saca la lista de las rutas
+                for (int i = 1; i < listaDePeatones.get(id).getRutaIdNodos().size(); i++) {
+                    listaDeRutas.add(this.rutaParaMoverCarroOPeatones(listaDeDijkstraPorCadaNodoFuente.get(i - 1), listaDePeatones.get(id).getRutaIdNodos().get(i - 1), listaDePeatones.get(id).getRutaIdNodos().get(i)));
+                }
+
+                // se eliminan los ultimos de la lista de la ruta para evitar repetidos
+                for (int i = 0; i < listaDeRutas.size() - 1; i++) {
+                    listaDeRutas.get(i).removeLast();
+                }
+
+                //genera la ruta en secuencia.
+                for (int i = 0; i < listaDeRutas.size(); i++) {
+                    for (int j = 0; j < listaDeRutas.get(i).size(); j++) {
+                        ruta.add(listaDeRutas.get(i).get(j));
+                    }
+                }
+            }
+
+        }
+
+        if (tipoDeRuta.equals("Ruta Mas Veloz")) {
+
+            //aca ordeno la lista de la ruta que tiene el carro para dejarla con la mas optima para moverlo rapidamente
+            listaDePeatones.get(id).setRutaIdNodos(this.modificarRutaParaLamasOptima(matrizGrafoMapaAdyacenciaRutaMasVelozPeaton, listaDePeatones.get(id).getRutaIdNodos(), "peaton"));
+
+            if (listaDePeatones.get(id).getRutaIdNodos().size() > 0) {
+                //se hace el dijkstra
+                for (int i = 0; i < listaDePeatones.get(id).getRutaIdNodos().size() - 1; i++) {
+                    listaDeDijkstraPorCadaNodoFuente.add(this.dijkstra(matrizGrafoMapaAdyacenciaRutaMasVelozPeaton, listaDePeatones.get(id).getRutaIdNodos().get(i), "peaton"));
+                }
+
+                //se saca la lista de las rutas
+                for (int i = 1; i < listaDePeatones.get(id).getRutaIdNodos().size(); i++) {
+                    listaDeRutas.add(this.rutaParaMoverCarroOPeatones(listaDeDijkstraPorCadaNodoFuente.get(i - 1), listaDePeatones.get(id).getRutaIdNodos().get(i - 1), listaDePeatones.get(id).getRutaIdNodos().get(i)));
+                }
+
+                // se eliminan los ultimos de la lista de la ruta para evitar repetidos
+                for (int i = 0; i < listaDeRutas.size() - 1; i++) {
+                    listaDeRutas.get(i).removeLast();
+                }
+
+                //genera la ruta en secuencia.
+                for (int i = 0; i < listaDeRutas.size(); i++) {
+                    for (int j = 0; j < listaDeRutas.get(i).size(); j++) {
+                        ruta.add(listaDeRutas.get(i).get(j));
+                    }
+                }
+            }
+        }
+
+        if (tipoDeRuta.equals("Ruta Menos Trafico")) {
+
+            //aca ordeno la lista de la ruta que tiene el carro para dejarla con la mas optima para moverlo rapidamente
+            listaDePeatones.get(id).setRutaIdNodos(this.modificarRutaParaLamasOptima(matrizGrafoMapaAdyacenciaRutaMenosTraficoPeaton, listaDePeatones.get(id).getRutaIdNodos(), "peaton"));
+
+            if (listaDePeatones.get(id).getRutaIdNodos().size() > 0) {
+                //se hace el dijkstra
+                for (int i = 0; i < listaDePeatones.get(id).getRutaIdNodos().size() - 1; i++) {
+                    listaDeDijkstraPorCadaNodoFuente.add(this.dijkstra(matrizGrafoMapaAdyacenciaRutaMenosTraficoPeaton, listaDePeatones.get(id).getRutaIdNodos().get(i), "peaton"));
+                }
+
+                //se saca la lista de las rutas
+                for (int i = 1; i < listaDePeatones.get(id).getRutaIdNodos().size(); i++) {
+                    listaDeRutas.add(this.rutaParaMoverCarroOPeatones(listaDeDijkstraPorCadaNodoFuente.get(i - 1), listaDePeatones.get(id).getRutaIdNodos().get(i - 1), listaDePeatones.get(id).getRutaIdNodos().get(i)));
+                }
+
+                // se eliminan los ultimos de la lista de la ruta para evitar repetidos
+                for (int i = 0; i < listaDeRutas.size() - 1; i++) {
+                    listaDeRutas.get(i).removeLast();
+                }
+
+                //genera la ruta en secuencia.
+                for (int i = 0; i < listaDeRutas.size(); i++) {
+                    for (int j = 0; j < listaDeRutas.get(i).size(); j++) {
+                        ruta.add(listaDeRutas.get(i).get(j));
+                    }
+                }
+            }
+        }
+
+        listaDePeatones.get(id).setRuta(ruta);
+    }
+
     //retorna la lista de los nodos a visitar por un carro
-    private LinkedList<Integer> rutaParaMoverCarro(LinkedList<ValorCola> listaDijkstra, Integer nodoOrigen, Integer nodoDestino) {
+    private LinkedList<Integer> rutaParaMoverCarroOPeatones(LinkedList<ValorCola> listaDijkstra, Integer nodoOrigen, Integer nodoDestino) {
 
         int nodoAir = nodoDestino;
         LinkedList<Integer> listaRutaAlReves = new LinkedList<>();
@@ -1930,18 +2164,18 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
     //metodo que modifica la ruta seleccionada por el personaje para volverla la mas optima tomando los costos este lo utilizamos
     //en el metodo recibirListaDeNodosAVisitarPorCarro el las lineas despues de verificar que tipo de ruta
     //es y para los peatones tambien. 
-    private LinkedList<Integer> modificarRutaParaLamasOptima(int[][] matrizGrafoMapaAdyacenciaRutaMasCorta, LinkedList<Integer> rutaIdNodos) {
+    private LinkedList<Integer> modificarRutaParaLamasOptima(int[][] matrizGrafoMapaAdyacenciaRutaMasCorta, LinkedList<Integer> rutaIdNodos, String tipoDeUsuario) {
 
         int[] sumas = new int[rutaIdNodos.size()];
         LinkedList<ValorCola> listaDeDijkstraPorCadaNodoFuenteDelNodoArevisar = new LinkedList<>();
 
         for (int i = 0; i < rutaIdNodos.size() - 1; i++) {
-            listaDeDijkstraPorCadaNodoFuenteDelNodoArevisar = this.dijkstra(matrizGrafoMapaAdyacenciaRutaMasCorta, rutaIdNodos.get(i));
+            listaDeDijkstraPorCadaNodoFuenteDelNodoArevisar = this.dijkstra(matrizGrafoMapaAdyacenciaRutaMasCorta, rutaIdNodos.get(i), tipoDeUsuario);
             if (listaDeDijkstraPorCadaNodoFuenteDelNodoArevisar.size() > 0) {
 
                 sumas[i] = Integer.MAX_VALUE;
                 for (int j = i + 1; j < rutaIdNodos.size(); j++) {
-                    sumas[j] = costoDeLaRutaParaMoverCarro(listaDeDijkstraPorCadaNodoFuenteDelNodoArevisar, rutaIdNodos.get(i), rutaIdNodos.get(j));
+                    sumas[j] = costoDeLaRutaParaMoverCarroOPeaton(listaDeDijkstraPorCadaNodoFuenteDelNodoArevisar, rutaIdNodos.get(i), rutaIdNodos.get(j));
                 }
 
                 //sacar el mejor dato
@@ -1967,7 +2201,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
     //retorna la suma de los costos de nodos a visitar por un carro para generar la ruta mas optima se utiliza en el meotodo
     //modificarRutaParaLamasOptima
-    private int costoDeLaRutaParaMoverCarro(LinkedList<ValorCola> listaDijkstra, Integer nodoOrigen, Integer nodoDestino) {
+    private int costoDeLaRutaParaMoverCarroOPeaton(LinkedList<ValorCola> listaDijkstra, Integer nodoOrigen, Integer nodoDestino) {
         int nodoAir = nodoDestino;
         int suma = 0;
         while (nodoAir != nodoOrigen) {
@@ -1981,7 +2215,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         return suma;
     }
 
-    private LinkedList dijkstra(int[][] matrizGrafoMapaAdyacenciaRutaMasCorta, Integer nodoFuente) {
+    private LinkedList dijkstra(int[][] matrizGrafoMapaAdyacenciaRutaMasCorta, Integer nodoFuente, String tipoDeUsuario) {
 
         int distancias[] = new int[matrizGrafoMapaAdyacenciaRutaMasCorta.length];
         int padre[] = new int[matrizGrafoMapaAdyacenciaRutaMasCorta.length];
@@ -2006,7 +2240,7 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
             if (nodoCostoMin != -1) {
                 visto[nodoCostoMin] = true;
 
-                LinkedList<Integer> adyacentesANodoCostoMin = this.retornarAdyacentesDeNodo(nodoCostoMin);
+                LinkedList<Integer> adyacentesANodoCostoMin = this.retornarAdyacentesDeNodo(nodoCostoMin, tipoDeUsuario);
 
                 if (adyacentesANodoCostoMin.size() > 0) {
                     for (int i = 0; i < adyacentesANodoCostoMin.size(); i++) {
@@ -2058,12 +2292,21 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         return idMenorCosto;
     }
 
-    private LinkedList<Integer> retornarAdyacentesDeNodo(int nodoCostoMin) {
+    private LinkedList<Integer> retornarAdyacentesDeNodo(int nodoCostoMin, String tipoDeUsuario) {
         LinkedList<Integer> adyacentes = new LinkedList<>();
 
-        for (int i = 0; i < frame.getAristasGrafoMapa().size(); i++) {
-            if (this.buscarIdEnlistaDeNodos(frame.getAristasGrafoMapa().get(i).getNodoA().getId()) == nodoCostoMin) {
-                adyacentes.add(this.buscarIdEnlistaDeNodos(frame.getAristasGrafoMapa().get(i).getNodoB().getId()));
+        if (tipoDeUsuario.equals("carro")) {
+            for (int i = 0; i < frame.getAristasGrafoMapa().size(); i++) {
+                if (this.buscarIdEnlistaDeNodos(frame.getAristasGrafoMapa().get(i).getNodoA().getId()) == nodoCostoMin) {
+                    adyacentes.add(this.buscarIdEnlistaDeNodos(frame.getAristasGrafoMapa().get(i).getNodoB().getId()));
+                }
+            }
+        }
+        if (tipoDeUsuario.equals("peaton")) {
+            for (int i = 0; i < frame.getAristasGrafoPeaton().size(); i++) {
+                if (this.buscarIdEnlistaDeNodosPeaton(frame.getAristasGrafoPeaton().get(i).getNodoA().getId()) == nodoCostoMin) {
+                    adyacentes.add(this.buscarIdEnlistaDeNodosPeaton(frame.getAristasGrafoPeaton().get(i).getNodoB().getId()));
+                }
             }
         }
 
@@ -2079,6 +2322,16 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         }
         return false;
     }
+
+    private boolean peatonEstaEnUnNodo(Peaton peaton) {
+        for (int i = 0; i < frame.getListaNodosPeaton().size(); i++) {
+            if (peaton.getX() == frame.getListaNodosPeaton().get(i).getX() && peaton.getY() == frame.getListaNodosPeaton().get(i).getY()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     /*este metodo busca un id en la lista de calles y retorna el contador que corresponde
      al id de este*/
@@ -2118,9 +2371,22 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
         }
     }
 
+    private void llenarMatrizDeRutaMasCortaPeaton() {
+
+        for (int i = 0; i < frame.getAristasGrafoPeaton().size(); i++) {
+            matrizGrafoMapaAdyacenciaRutaMasCortaPeaton[this.buscarIdEnlistaDeNodosPeaton(frame.getAristasGrafoPeaton().get(i).getNodoA().getId())][this.buscarIdEnlistaDeNodosPeaton(frame.getAristasGrafoPeaton().get(i).getNodoB().getId())] = 10;
+        }
+    }
+
     private void llenarMatrizDeRutaMasVeloz() {
         for (int i = 0; i < frame.getAristasGrafoMapa().size(); i++) {
             matrizGrafoMapaAdyacenciaRutaMasVeloz[this.buscarIdEnlistaDeNodos(frame.getAristasGrafoMapa().get(i).getNodoA().getId())][this.buscarIdEnlistaDeNodos(frame.getAristasGrafoMapa().get(i).getNodoB().getId())] = frame.getAristasGrafoMapa().get(i).getArista().getVelocidad();
+        }
+    }
+
+    private void llenarMatrizDeRutaMasVelozPeaton() {
+        for (int i = 0; i < frame.getAristasGrafoPeaton().size(); i++) {
+            matrizGrafoMapaAdyacenciaRutaMasVelozPeaton[this.buscarIdEnlistaDeNodosPeaton(frame.getAristasGrafoPeaton().get(i).getNodoA().getId())][this.buscarIdEnlistaDeNodosPeaton(frame.getAristasGrafoPeaton().get(i).getNodoB().getId())] = frame.getAristasGrafoPeaton().get(i).getArista().getVelocidad();
         }
     }
 
@@ -2160,6 +2426,42 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
 
     }
 
+    //Llena la matriz de menor trafico verificando en la ruta cuantos carros existen sobre la ruta
+    private void llenarMatrizDeRutaMenosTraficoPeaton(LinkedList<AristaGrafoMapa> aristasMapa, LinkedList<Peaton> peatonesLista) {
+        LinkedList<AristaGrafoMapa> aristas = new LinkedList<>();
+        LinkedList<Peaton> peatones = new LinkedList<>();
+
+        aristas = aristasMapa;
+        peatones = peatonesLista;
+
+        for (int j = 0; j < peatones.size(); j++) {
+            int[] posicionXYdeLaCalleDelPeaton = new int[2];
+            posicionXYdeLaCalleDelPeaton = this.retornarPosicionCuadriculaSeleccionada(peatones.get(j).getX(), peatones.get(j).getY());
+            for (int i = 0; i < aristas.size(); i++) {
+                int[] posicionXYdeLaCalle = new int[2];
+                posicionXYdeLaCalle = this.retornarPosicionCuadriculaSeleccionada(aristas.get(i).getArista().getX() + 2, aristas.get(i).getArista().getY() + 2);
+                if (posicionXYdeLaCalleDelPeaton[0] == posicionXYdeLaCalle[0] && posicionXYdeLaCalleDelPeaton[1] == posicionXYdeLaCalle[1]) {
+                    if ("h".equals(aristas.get(i).getNodoA().getSentido()) || "H".equals(aristas.get(i).getNodoA().getSentido())) {
+                        if (peatones.get(j).getX() == aristas.get(i).getNodoA().getX()) {
+                            matrizGrafoMapaAdyacenciaRutaMenosTraficoPeaton[this.buscarIdEnlistaDeNodosPeaton(aristas.get(i).getNodoA().getId())][this.buscarIdEnlistaDeNodosPeaton(aristas.get(i).getNodoB().getId())]++;
+                        }
+
+                    }
+                    if ("v".equals(aristas.get(i).getNodoA().getSentido()) || "V".equals(aristas.get(i).getNodoA().getSentido())) {
+                        if (peatones.get(j).getY() == aristas.get(i).getNodoA().getY()) {
+                            matrizGrafoMapaAdyacenciaRutaMenosTraficoPeaton[this.buscarIdEnlistaDeNodosPeaton(aristas.get(i).getNodoA().getId())][this.buscarIdEnlistaDeNodosPeaton(aristas.get(i).getNodoB().getId())]++;
+                        }
+                    }
+                    if (!"h".equals(aristas.get(i).getNodoA().getSentido()) && !"H".equals(aristas.get(i).getNodoA().getSentido()) && !"v".equals(aristas.get(i).getNodoA().getSentido()) && !"V".equals(aristas.get(i).getNodoA().getSentido())) {
+                        matrizGrafoMapaAdyacenciaRutaMenosTraficoPeaton[this.buscarIdEnlistaDeNodosPeaton(aristas.get(i).getNodoA().getId())][this.buscarIdEnlistaDeNodosPeaton(aristas.get(i).getNodoB().getId())]++;
+                    }
+                }
+            }
+
+        }
+
+    }
+
     //Genera un camino aleatorio para cada carro 
     void moverCarroAleatoriamente(int idCarro) {
         for (int i = 0; i < listaDeCarros.size(); i++) {
@@ -2167,6 +2469,19 @@ public class PanelAnimacionMapa extends javax.swing.JPanel implements MouseMotio
                 listaDeCarros.get(i).setMover(true);
                 for (int j = 0; j < frame.getListaNodosMapa().size(); j++) {
                     frame.getListaNodosMapa().get(j).setColor(Color.BLACK);
+                }
+
+            }
+        }
+    }
+
+    //Genera un camino aleatorio para cada peaton 
+    void moverPeatonAleatoriamente(int idPeaton) {
+        for (int i = 0; i < listaDePeatones.size(); i++) {
+            if (listaDePeatones.get(i).getId() == idPeaton) {
+                listaDePeatones.get(i).setMover(true);
+                for (int j = 0; j < frame.getListaNodosPeaton().size(); j++) {
+                    frame.getListaNodosPeaton().get(j).setColor(Color.BLACK);
                 }
 
             }
