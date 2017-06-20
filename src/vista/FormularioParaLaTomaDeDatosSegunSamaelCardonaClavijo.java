@@ -23,8 +23,12 @@ public class FormularioParaLaTomaDeDatosSegunSamaelCardonaClavijo extends javax.
         initComponents();
         this.setLocationRelativeTo(null);
     }
-    //Recibe el panel donde se esta creando el mapa y de este se obtienen 
-    //las posiciones x ^ y donde se hizo clic para ubicar un objeto seleccionado
+    
+    /**
+     * Recibe el panel donde se esta creando el mapa y de este se obtienen 
+    las posiciones x ^ y donde se hizo clic para ubicar un objeto seleccionado
+     */
+    
     public void recibirPanel(PanelCrearMapa panelA,int x,int y){
         this.panel=panelA;
         this.xPosicionDelEvento=x;

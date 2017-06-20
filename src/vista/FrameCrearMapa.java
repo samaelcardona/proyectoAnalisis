@@ -45,7 +45,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
     LinkedList<AristaGrafoMapa> aristasGrafoPeaton;
 
     /**
-     * Creates new form FrameCrearMapa
+     * Este frame permite la creacion de una ciudad
      */
     public FrameCrearMapa() {
         initComponents();
@@ -91,11 +91,9 @@ public class FrameCrearMapa extends javax.swing.JFrame {
             this.buttonGroup1.add(botones.get(i));
             ImageIcon imagen = new ImageIcon("src\\imagenes\\calles\\" + i + ".png");
             this.botones.get(i).setIcon(imagen);
-            //Calle(int id, int x, int y, int ancho, int alto, ImageIcon imagen, String tipo, String sentido, int velocidad, boolean movimiento); 
             listaImagenesParaSeleccionar[i] = imagen;
-
         }
-        // addKeyListener(crearMapaPanel1);
+
         setFocusable(true);
         this.setLocationRelativeTo(null);
 
@@ -638,8 +636,9 @@ public class FrameCrearMapa extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-
-///realizar las transiciones para generar grafo del movimiento
+        /**
+         * Este boton permite guardar una ciudad con un identificador numerico
+         */
         this.borrarTransicionesCreadas();
         this.crearTransicionesGrafoMapa();
         Ciudad cNueva = new Ciudad(Integer.parseInt(JOptionPane.showInputDialog("ingrese numero para ciudad")), calles, arboles, edificios, panelCrearMapa1.getMatrizPuntosLimitesCuadriculaMapa(), panelCrearMapa1.getMatrizLetrasElementosInternosCuadriculaMapa(), panelCrearMapa1.getMatrizCuadriculaMapaIdCalles(), panelCrearMapa1.getMatrizCuadriculaMapaIdArboles(), panelCrearMapa1.getMatrizCuadriculaMapaIdEdificios(), listaNodosMapa, aristasGrafoMapa);
@@ -701,7 +700,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         Ciudad ciudad = new Ciudad();//esta ciudad es para la carga de una ciudad ya elaborada
         ObjectInputStream objetoDeEntrada;
         String file;
-        JFileChooser ventanaDialogo = new JFileChooser();
+        JFileChooser ventanaDialogo = new JFileChooser("C:\\Users\\SAMAEL\\Documents\\NetBeansProjects\\proyectoAnalisis");
         int option = ventanaDialogo.showOpenDialog(this);
         if (option == JFileChooser.APPROVE_OPTION) {
             file = ventanaDialogo.getSelectedFile().getPath();
@@ -796,12 +795,17 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         this.aristasGrafoPeaton = aristasGrafoPeaton;
     }
 
+    /**
+     * Este metodo crea las transiciones del grafo, dependiendo del tipo de via
+     * y sentido de la via se agrega una o dos transiciones. Ademas este metodo
+     * genera las transiciones para los andenes de cada calle.
+     */
     private void crearTransicionesGrafoMapa() {
         String[][] matrizCopia = panelCrearMapa1.getMatrizLetrasElementosInternosCuadriculaMapa();
-       
+
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 20; j++) {
-                 int posicionCalle = panelCrearMapa1.buscarIdEnlistaDeCalles(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]);
+                int posicionCalle = panelCrearMapa1.buscarIdEnlistaDeCalles(panelCrearMapa1.getMatrizCuadriculaMapaIdCalles()[j][i]);
                 int posicionCalleDere = -1;
                 int posicionCalleAba = -1;
 
@@ -813,7 +817,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                 }
 
                 /*
-                aca empieza victor el vironcho  
+                 aca empieza victor el vironcho  
                  */
                 if (posicionCalle != -1) {
                     if (calles.get(posicionCalle).isCebra() == true) {
@@ -1960,10 +1964,10 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                 }
 
                 /*
-                aca termina la loca de victor el gay.
+                 aca termina la loca de victor el gay.
                  */
- /*
-                aca empieza samael el nino lindo hermoso "cacorro aca estan los errores"
+                /*
+                 aca empieza samael el nino lindo hermoso "cacorro aca estan los errores"
                  */
                 if (matrizCopia[j][i].equals("XDR") || matrizCopia[j][i].equals("xDR")) {
                     if (matrizCopia[j][i + 1].equals("V") || matrizCopia[j][i + 1].equals("v")) {
@@ -2353,7 +2357,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                         AristaGrafoMapa aristapeatonIzquierda = new AristaGrafoMapa(listaNodosPeaton.get(idNodoBp), calles.get(posicionCalle), listaNodosPeaton.get(idNodoAp));
                         aristasGrafoPeaton.add(aristapeatonDerecha);
                         aristasGrafoPeaton.add(aristapeatonIzquierda);
-                        
+
                         int idNodoAp2 = this.buscarPosicionDeNodoConIDpeaton(calles.get(posicionCalle).getListaDeNodosPeaton().get(1).getId());
                         int idNodoBp2 = this.buscarPosicionDeNodoConIDpeaton(calles.get(posicionCalleAba).getListaDeNodosPeaton().get(1).getId());
                         AristaGrafoMapa aristapeatonDerecha2 = new AristaGrafoMapa(listaNodosPeaton.get(idNodoAp2), calles.get(posicionCalle), listaNodosPeaton.get(idNodoBp2));
@@ -2434,7 +2438,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                         AristaGrafoMapa aristapeatonIzquierda = new AristaGrafoMapa(listaNodosPeaton.get(idNodoBp), calles.get(posicionCalle), listaNodosPeaton.get(idNodoAp));
                         aristasGrafoPeaton.add(aristapeatonDerecha);
                         aristasGrafoPeaton.add(aristapeatonIzquierda);
-                        
+
                         int idNodoAp2 = this.buscarPosicionDeNodoConIDpeaton(calles.get(posicionCalle).getListaDeNodosPeaton().get(1).getId());
                         int idNodoBp2 = this.buscarPosicionDeNodoConIDpeaton(calles.get(posicionCalleDere).getListaDeNodosPeaton().get(1).getId());
                         AristaGrafoMapa aristapeatonDerecha2 = new AristaGrafoMapa(listaNodosPeaton.get(idNodoAp2), calles.get(posicionCalle), listaNodosPeaton.get(idNodoBp2));
@@ -3030,9 +3034,8 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                 }
 
                 /*
-                aca termina samael el nino lindo hermoso 
+                 aca termina samael el nino lindo hermoso 
                  */
-
             }
         }
     }
@@ -3219,6 +3222,12 @@ public class FrameCrearMapa extends javax.swing.JFrame {
     private vista.PanelCrearMapa panelCrearMapa1;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Este metodo retorna el id de un nodo de la lista de nodos mapa que es
+     * buscado por el id de una calle, si no lo encuentra retorna -1
+     *
+     * @param id este entero es un id de calle
+     */
     private int buscarPosicionDeNodoConID(int id) {
         for (int i = 0; i < listaNodosMapa.size(); i++) {
             if (listaNodosMapa.get(i).getId() == id) {
@@ -3228,6 +3237,12 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         return -1;
     }
 
+    /**
+     * Este metodo retorna el id de un nodo de la lista de nodos peaton que es
+     * buscado por el id de una calle, si no lo encuentra retorna -1
+     *
+     * @param id este entero es un id de calle
+     */
     private int buscarPosicionDeNodoConIDpeaton(int id) {
         for (int i = 0; i < listaNodosPeaton.size(); i++) {
             if (listaNodosPeaton.get(i).getId() == id) {
@@ -3237,6 +3252,10 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         return -1;
     }
 
+    
+    /**
+     * Este metodo borra las transiciones creadas tanto de calles como de peatones
+     */
     private void borrarTransicionesCreadas() {
         this.aristasGrafoMapa = new LinkedList<>();
         this.aristasGrafoPeaton = new LinkedList<>();

@@ -49,7 +49,8 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
     LinkedList<AristaGrafoMapa> aristasGrafoPeaton;
 
     /**
-     * Creates new form FrameCrearMapa
+     * Dentro de este frame podemos cargar las ciudades para realizar la
+     * animacion
      */
     public FrameAnimacionMapa() {
         initComponents();
@@ -168,10 +169,15 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        //cargar el archivo de la ciudad
+        /**
+         * Cargar el archivo de la ciudad
+         */
         ObjectInputStream objetoDeEntrada;
         String file = null;
+
         JFileChooser ventanaDialogo = new JFileChooser();
+
+        //JFileChooser ventanaDialogo = new JFileChooser("C:\\Users\\SAMAEL\\Documents\\NetBeansProjects\\proyectoAnalisis");
         int option = ventanaDialogo.showOpenDialog(this);
         if (option == JFileChooser.APPROVE_OPTION) {
             file = ventanaDialogo.getSelectedFile().getPath();
@@ -228,24 +234,40 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    /**
+     * Este metodo agrega calle recibida por parametro a una lista 
+     * @param calle variable tipo calle
+     */
     public void agregarCalleALaLista(Calle calle) {
         calles.add(calle);
     }
 
+    /**
+     * Este metodo agrega arbol recibido por parametro a una lista 
+     * @param arbol variable tipo arbol
+     */
     public void agregarArbolALaLista(Arbol arbol) {
         arboles.add(arbol);
     }
 
+    /**
+     * Este metodo agrega los nodos asociados a una calle
+     */
     public void agregarEdificioALaLista(Edificio edificio) {
         edificios.add(edificio);
     }
 
+    /**
+     * Este metodo agrega los nodos asociados a una calle
+     */
     public void agregarNodoALista(NodoGrafoMapa nodo) {
         listaNodosMapa.add(nodo);
 
     }
 
-    //agrega los nodos a la lista de nodos de la calle
+    /**
+     * Este metodo agrega los nodos asociados a una calle
+     */
     public void agregarNodosAlistaDeCalle() {
         for (int i = 0; i < calles.size(); i++) {
             for (int j = 0; j < listaNodosMapa.size(); j++) {
@@ -380,8 +402,6 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
         this.panelAnimacionMapa1 = panelAnimacionMapa1;
     }
 
-    
-    
     /**
      * @param args the command line arguments
      */
