@@ -701,7 +701,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
         Ciudad ciudad = new Ciudad();//esta ciudad es para la carga de una ciudad ya elaborada
         ObjectInputStream objetoDeEntrada;
         String file;
-        JFileChooser ventanaDialogo = new JFileChooser();
+        JFileChooser ventanaDialogo = new JFileChooser("C:\\Users\\SAMAEL\\Documents\\NetBeansProjects\\proyectoAnalisis");
         int option = ventanaDialogo.showOpenDialog(this);
         if (option == JFileChooser.APPROVE_OPTION) {
             file = ventanaDialogo.getSelectedFile().getPath();
