@@ -476,13 +476,15 @@ public class PanelCrearMapa extends javax.swing.JPanel implements MouseMotionLis
                             matrizCuadriculaMapaIdCalles[x][y] = calle.getId();
                             frame.agregarCalleALaLista(calle);
                             contadorDeCalles++;
+                            
                             nodo = new NodoGrafoMapa(contadorDeNodos, calle.getId(), calle.getX() + 13, calle.getY() + 13, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
                             frame.agregarNodoALista(nodo);
                             contadorDeNodos++;
-                            nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 50, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
-                            frame.agregarNodoAListaPeatones(nodoPeaton);
-                            contadorDeNodosPeatones++;
-
+                            
+                            
+//                            nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 50, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
+//                            frame.agregarNodoAListaPeatones(nodoPeaton);
+//                            contadorDeNodosPeatones++;
                             nodoPeaton = new NodoGrafoMapa(contadorDeNodosPeatones, calle.getId(), calle.getX() + 13, calle.getY() + 2, 5, 5, true, matrizLetrasElementosInternosCuadriculaMapa[x][y]);
                             frame.agregarNodoAListaPeatones(nodoPeaton);
                             contadorDeNodosPeatones++;

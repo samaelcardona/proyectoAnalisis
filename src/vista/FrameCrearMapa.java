@@ -1229,14 +1229,14 @@ public class FrameCrearMapa extends javax.swing.JFrame {
 
                         //Agregar aristas de anden para peatones
                         int idNodoAp = this.buscarPosicionDeNodoConIDpeaton(calles.get(posicionCalle).getListaDeNodosPeaton().get(0).getId());
-                        int idNodoBp = this.buscarPosicionDeNodoConIDpeaton(calles.get(posicionCalleDere).getListaDeNodosPeaton().get(0).getId());
+                        int idNodoBp = this.buscarPosicionDeNodoConIDpeaton(calles.get(posicionCalleAba).getListaDeNodosPeaton().get(0).getId());
                         AristaGrafoMapa aristapeatonDerecha = new AristaGrafoMapa(listaNodosPeaton.get(idNodoAp), calles.get(posicionCalle), listaNodosPeaton.get(idNodoBp));
                         AristaGrafoMapa aristapeatonIzquierda = new AristaGrafoMapa(listaNodosPeaton.get(idNodoBp), calles.get(posicionCalle), listaNodosPeaton.get(idNodoAp));
                         aristasGrafoPeaton.add(aristapeatonDerecha);
                         aristasGrafoPeaton.add(aristapeatonIzquierda);
                         //Agregar aristas de anden para peatones
                         int idNodoAp2 = this.buscarPosicionDeNodoConIDpeaton(calles.get(posicionCalle).getListaDeNodosPeaton().get(1).getId());
-                        int idNodoBp2 = this.buscarPosicionDeNodoConIDpeaton(calles.get(posicionCalleDere).getListaDeNodosPeaton().get(1).getId());
+                        int idNodoBp2 = this.buscarPosicionDeNodoConIDpeaton(calles.get(posicionCalleAba).getListaDeNodosPeaton().get(1).getId());
                         AristaGrafoMapa aristapeatonDerecha2 = new AristaGrafoMapa(listaNodosPeaton.get(idNodoAp2), calles.get(posicionCalle), listaNodosPeaton.get(idNodoBp2));
                         AristaGrafoMapa aristapeatonIzquierda2 = new AristaGrafoMapa(listaNodosPeaton.get(idNodoBp2), calles.get(posicionCalle), listaNodosPeaton.get(idNodoAp2));
                         aristasGrafoPeaton.add(aristapeatonDerecha2);
@@ -1250,14 +1250,14 @@ public class FrameCrearMapa extends javax.swing.JFrame {
 
                         //Agregar aristas de anden para peatones
                         int idNodoAp = this.buscarPosicionDeNodoConIDpeaton(calles.get(posicionCalle).getListaDeNodosPeaton().get(0).getId());
-                        int idNodoBp = this.buscarPosicionDeNodoConIDpeaton(calles.get(posicionCalleDere).getListaDeNodosPeaton().get(0).getId());
+                        int idNodoBp = this.buscarPosicionDeNodoConIDpeaton(calles.get(posicionCalleAba).getListaDeNodosPeaton().get(0).getId());
                         AristaGrafoMapa aristapeatonDerecha = new AristaGrafoMapa(listaNodosPeaton.get(idNodoAp), calles.get(posicionCalle), listaNodosPeaton.get(idNodoBp));
                         AristaGrafoMapa aristapeatonIzquierda = new AristaGrafoMapa(listaNodosPeaton.get(idNodoBp), calles.get(posicionCalle), listaNodosPeaton.get(idNodoAp));
                         aristasGrafoPeaton.add(aristapeatonDerecha);
                         aristasGrafoPeaton.add(aristapeatonIzquierda);
                         //Agregar aristas de anden para peatones
                         int idNodoAp2 = this.buscarPosicionDeNodoConIDpeaton(calles.get(posicionCalle).getListaDeNodosPeaton().get(1).getId());
-                        int idNodoBp2 = this.buscarPosicionDeNodoConIDpeaton(calles.get(posicionCalleDere).getListaDeNodosPeaton().get(1).getId());
+                        int idNodoBp2 = this.buscarPosicionDeNodoConIDpeaton(calles.get(posicionCalleAba).getListaDeNodosPeaton().get(1).getId());
                         AristaGrafoMapa aristapeatonDerecha2 = new AristaGrafoMapa(listaNodosPeaton.get(idNodoAp2), calles.get(posicionCalle), listaNodosPeaton.get(idNodoBp2));
                         AristaGrafoMapa aristapeatonIzquierda2 = new AristaGrafoMapa(listaNodosPeaton.get(idNodoBp2), calles.get(posicionCalle), listaNodosPeaton.get(idNodoAp2));
                         aristasGrafoPeaton.add(aristapeatonDerecha2);
@@ -1271,14 +1271,14 @@ public class FrameCrearMapa extends javax.swing.JFrame {
 
                         //Agregar aristas de anden para peatones
                         int idNodoAp = this.buscarPosicionDeNodoConIDpeaton(calles.get(posicionCalle).getListaDeNodosPeaton().get(0).getId());
-                        int idNodoBp = this.buscarPosicionDeNodoConIDpeaton(calles.get(posicionCalleDere).getListaDeNodosPeaton().get(0).getId());
+                        int idNodoBp = this.buscarPosicionDeNodoConIDpeaton(calles.get(posicionCalleAba).getListaDeNodosPeaton().get(0).getId());
                         AristaGrafoMapa aristapeatonDerecha = new AristaGrafoMapa(listaNodosPeaton.get(idNodoAp), calles.get(posicionCalle), listaNodosPeaton.get(idNodoBp));
                         AristaGrafoMapa aristapeatonIzquierda = new AristaGrafoMapa(listaNodosPeaton.get(idNodoBp), calles.get(posicionCalle), listaNodosPeaton.get(idNodoAp));
                         aristasGrafoPeaton.add(aristapeatonDerecha);
                         aristasGrafoPeaton.add(aristapeatonIzquierda);
                         //Agregar aristas de anden para peatones
                         int idNodoAp2 = this.buscarPosicionDeNodoConIDpeaton(calles.get(posicionCalle).getListaDeNodosPeaton().get(1).getId());
-                        int idNodoBp2 = this.buscarPosicionDeNodoConIDpeaton(calles.get(posicionCalleDere).getListaDeNodosPeaton().get(2).getId());
+                        int idNodoBp2 = this.buscarPosicionDeNodoConIDpeaton(calles.get(posicionCalleAba).getListaDeNodosPeaton().get(2).getId());
                         AristaGrafoMapa aristapeatonDerecha2 = new AristaGrafoMapa(listaNodosPeaton.get(idNodoAp2), calles.get(posicionCalle), listaNodosPeaton.get(idNodoBp2));
                         AristaGrafoMapa aristapeatonIzquierda2 = new AristaGrafoMapa(listaNodosPeaton.get(idNodoBp2), calles.get(posicionCalle), listaNodosPeaton.get(idNodoAp2));
                         aristasGrafoPeaton.add(aristapeatonDerecha2);
@@ -1951,7 +1951,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                 aca termina la loca de victor el gay.
                  */
  /*
-                aca empieza samael el nino lindo hermoso 
+                aca empieza samael el nino lindo hermoso "cacorro aca estan los errores"
                  */
                 if (matrizCopia[j][i].equals("XDR") || matrizCopia[j][i].equals("xDR")) {
                     if (matrizCopia[j][i + 1].equals("V") || matrizCopia[j][i + 1].equals("v")) {
@@ -2341,6 +2341,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                         AristaGrafoMapa aristapeatonIzquierda = new AristaGrafoMapa(listaNodosPeaton.get(idNodoBp), calles.get(posicionCalle), listaNodosPeaton.get(idNodoAp));
                         aristasGrafoPeaton.add(aristapeatonDerecha);
                         aristasGrafoPeaton.add(aristapeatonIzquierda);
+                        
                         int idNodoAp2 = this.buscarPosicionDeNodoConIDpeaton(calles.get(posicionCalle).getListaDeNodosPeaton().get(1).getId());
                         int idNodoBp2 = this.buscarPosicionDeNodoConIDpeaton(calles.get(posicionCalleAba).getListaDeNodosPeaton().get(1).getId());
                         AristaGrafoMapa aristapeatonDerecha2 = new AristaGrafoMapa(listaNodosPeaton.get(idNodoAp2), calles.get(posicionCalle), listaNodosPeaton.get(idNodoBp2));
@@ -2421,6 +2422,7 @@ public class FrameCrearMapa extends javax.swing.JFrame {
                         AristaGrafoMapa aristapeatonIzquierda = new AristaGrafoMapa(listaNodosPeaton.get(idNodoBp), calles.get(posicionCalle), listaNodosPeaton.get(idNodoAp));
                         aristasGrafoPeaton.add(aristapeatonDerecha);
                         aristasGrafoPeaton.add(aristapeatonIzquierda);
+                        
                         int idNodoAp2 = this.buscarPosicionDeNodoConIDpeaton(calles.get(posicionCalle).getListaDeNodosPeaton().get(1).getId());
                         int idNodoBp2 = this.buscarPosicionDeNodoConIDpeaton(calles.get(posicionCalleDere).getListaDeNodosPeaton().get(1).getId());
                         AristaGrafoMapa aristapeatonDerecha2 = new AristaGrafoMapa(listaNodosPeaton.get(idNodoAp2), calles.get(posicionCalle), listaNodosPeaton.get(idNodoBp2));
