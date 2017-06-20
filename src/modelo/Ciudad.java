@@ -27,6 +27,7 @@ public class Ciudad implements Serializable{
     private int [][] matrizCuadriculaMapaIdArboles;
     private int [][] matrizCuadriculaMapaIdEdificios;
     private LinkedList<NodoGrafoMapa> listaNodosMapa;
+    private LinkedList<NodoGrafoMapa> listaNodosPeatones;
     private LinkedList<AristaGrafoMapa> listaDeTransicionesAristas;
     private LinkedList<AristaGrafoMapa> listaDeTransicionesAristasPeatones;
     
@@ -46,9 +47,19 @@ public class Ciudad implements Serializable{
         this.matrizCuadriculaMapaIdEdificios = matrizCuadriculaMapaIdEdificios;
         this.listaNodosMapa = listaNodosMapa;
         this.listaDeTransicionesAristas = listaDeTransicionesAristas;
+        this.listaNodosPeatones=new LinkedList<>();
         this.listaDeTransicionesAristasPeatones=new LinkedList<>();
     }
 
+    public LinkedList<NodoGrafoMapa> getListaNodosPeatones() {
+        return listaNodosPeatones;
+    }
+
+    public void setListaNodosPeatones(LinkedList<NodoGrafoMapa> listaNodosPeatones) {
+        this.listaNodosPeatones = listaNodosPeatones;
+    }
+
+    
     public LinkedList<AristaGrafoMapa> getListaDeTransicionesAristasPeatones() {
         return listaDeTransicionesAristasPeatones;
     }

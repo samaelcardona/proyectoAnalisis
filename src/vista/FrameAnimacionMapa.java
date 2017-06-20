@@ -18,7 +18,9 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import modelo.Arbol;
@@ -43,6 +45,8 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
     LinkedList<AristaGrafoMapa> aristasGrafoMapa;
     Thread hilo;
     boolean iniciarHilo;
+    LinkedList<NodoGrafoMapa> listaNodosPeaton;
+    LinkedList<AristaGrafoMapa> aristasGrafoPeaton;
 
     /**
      * Creates new form FrameCrearMapa
@@ -55,6 +59,8 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
         edificios = new LinkedList<>();
         listaNodosMapa = new LinkedList<>();
         aristasGrafoMapa = new LinkedList<>();
+        listaNodosPeaton = new LinkedList<>();
+        aristasGrafoPeaton = new LinkedList<>();
         ciudad = new Ciudad();
 
         this.hilo = new Thread(this.panelAnimacionMapa1);
@@ -107,7 +113,7 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
         getContentPane().add(jButton3);
         jButton3.setBounds(1180, 0, 20, 20);
 
-        jButton2.setText("Mover Carros");
+        jButton2.setText("Mover");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -116,7 +122,7 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
         getContentPane().add(jButton2);
         jButton2.setBounds(150, 590, 100, 23);
 
-        jButton4.setText("Detener Carros");
+        jButton4.setText("Detener");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -165,7 +171,7 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
         //cargar el archivo de la ciudad
         ObjectInputStream objetoDeEntrada;
         String file = null;
-        JFileChooser ventanaDialogo = new JFileChooser("C:\\Users\\VICTOR\\Documents\\proyectoAnalisis");
+        JFileChooser ventanaDialogo = new JFileChooser();
         int option = ventanaDialogo.showOpenDialog(this);
         if (option == JFileChooser.APPROVE_OPTION) {
             file = ventanaDialogo.getSelectedFile().getPath();
@@ -196,6 +202,8 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
             this.edificios = ciudad.getListaEdificos();
             this.listaNodosMapa = ciudad.getListaNodosMapa();
             this.aristasGrafoMapa = ciudad.getListaDeTransicionesAristas();
+            this.listaNodosPeaton = ciudad.getListaNodosPeatones();
+            this.aristasGrafoPeaton = ciudad.getListaDeTransicionesAristasPeatones();
 
             panelAnimacionMapa1.setFrame(this);
         }
@@ -238,7 +246,6 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
     }
 
     //agrega los nodos a la lista de nodos de la calle
-
     public void agregarNodosAlistaDeCalle() {
         for (int i = 0; i < calles.size(); i++) {
             for (int j = 0; j < listaNodosMapa.size(); j++) {
@@ -269,6 +276,112 @@ public class FrameAnimacionMapa extends javax.swing.JFrame {
         return edificios;
     }
 
+    public static FrameAnimacionMapa getFrameMapa() {
+        return frameMapa;
+    }
+
+    public static void setFrameMapa(FrameAnimacionMapa frameMapa) {
+        FrameAnimacionMapa.frameMapa = frameMapa;
+    }
+
+    public Ciudad getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(Ciudad ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public Thread getHilo() {
+        return hilo;
+    }
+
+    public void setHilo(Thread hilo) {
+        this.hilo = hilo;
+    }
+
+    public boolean isIniciarHilo() {
+        return iniciarHilo;
+    }
+
+    public void setIniciarHilo(boolean iniciarHilo) {
+        this.iniciarHilo = iniciarHilo;
+    }
+
+    public LinkedList<NodoGrafoMapa> getListaNodosPeaton() {
+        return listaNodosPeaton;
+    }
+
+    public void setListaNodosPeaton(LinkedList<NodoGrafoMapa> listaNodosPeaton) {
+        this.listaNodosPeaton = listaNodosPeaton;
+    }
+
+    public LinkedList<AristaGrafoMapa> getAristasGrafoPeaton() {
+        return aristasGrafoPeaton;
+    }
+
+    public void setAristasGrafoPeaton(LinkedList<AristaGrafoMapa> aristasGrafoPeaton) {
+        this.aristasGrafoPeaton = aristasGrafoPeaton;
+    }
+
+    public JButton getjButton1() {
+        return jButton1;
+    }
+
+    public void setjButton1(JButton jButton1) {
+        this.jButton1 = jButton1;
+    }
+
+    public JButton getjButton2() {
+        return jButton2;
+    }
+
+    public void setjButton2(JButton jButton2) {
+        this.jButton2 = jButton2;
+    }
+
+    public JButton getjButton3() {
+        return jButton3;
+    }
+
+    public void setjButton3(JButton jButton3) {
+        this.jButton3 = jButton3;
+    }
+
+    public JButton getjButton4() {
+        return jButton4;
+    }
+
+    public void setjButton4(JButton jButton4) {
+        this.jButton4 = jButton4;
+    }
+
+    public JButton getjButton5() {
+        return jButton5;
+    }
+
+    public void setjButton5(JButton jButton5) {
+        this.jButton5 = jButton5;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public PanelAnimacionMapa getPanelAnimacionMapa1() {
+        return panelAnimacionMapa1;
+    }
+
+    public void setPanelAnimacionMapa1(PanelAnimacionMapa panelAnimacionMapa1) {
+        this.panelAnimacionMapa1 = panelAnimacionMapa1;
+    }
+
+    
+    
     /**
      * @param args the command line arguments
      */
